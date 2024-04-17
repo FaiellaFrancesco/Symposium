@@ -7,12 +7,25 @@
 <title>Footer</title>
 </head>
 <body>
+    <style>
+        /* Stile per il footer */
+        footer {
+            position: fixed;
+            left: 0;
+            bottom: 0;
+            width: 100%;
+            background-color: #990E3C;
+            color: #fff;
+            text-align: center;
+            padding: 10px 0;
+        }
+    </style>
  
         <p>&copy; 2024 Symposium</p>
-        <ul>
-            <li><a href="privacy.html">Informativa sulla privacy</a></li>
-            <li><a href="contatti.html">Contatti</a></li>
-        </ul>
+        
+            <a href="privacy.html">Informativa sulla privacy</a></li>
+            <a href="contatti.html">Contatti</a></li>
+        
   
 </body>
 </html>
