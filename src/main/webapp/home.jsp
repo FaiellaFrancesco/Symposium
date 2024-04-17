@@ -4,9 +4,23 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>home</title>
 </head>
+<!-- Header -->
+<%@ include file="utility/header.jsp" %>
 <body>
+kdskdsds
+ds
+dssds
+dsd
+
+sdds
+ds
+ds
+sd
+ds
 
 </body>
+ <!-- Footer -->
+ <footer><%@ include file="utility/footer.jsp" %></footer>
 </html>
