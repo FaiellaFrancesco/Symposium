@@ -1,4 +1,4 @@
-package model.beans;
+package model.Beans;
 
 public class Prodotto{
 	
