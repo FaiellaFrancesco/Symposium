@@ -75,7 +75,7 @@ public class ProdottoDAO implements DaoInterface<Prodotto, Integer>{
     
     @Override
     public void doSave(Prodotto p) throws SQLException{
-        String query="INSERT INTO prodotto (nome, prezzo, iva, descrizione, immagine, stock, alcol, formato, provenienza, tipologia, annata, denominazione) VALUES (?, ?, ?, ?, null, ?, ?, ?, ?, ?, ?, ?);";
+        String query="INSERT INTO prodotto (nome, prezzo, iva, descrizione, immagine, stock, alcol, formato, provenienza, tipologia, annata, denominazione) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);";
         try{
             Connection connessione=ds.getConnection();
             PreparedStatement statement=connessione.prepareStatement(query);
@@ -87,12 +87,12 @@ public class ProdottoDAO implements DaoInterface<Prodotto, Integer>{
 
     @Override
     public void doUpdate(Prodotto p) throws SQLException {
-        String query="UPDATE prodotto SET nome=?, prezzo=?, iva=?, descrizione=?, immagine=null, stock=?, alcol=?, formato=?, provenienza=?, tipologia=?, annata=?, denominazione=? WHERE id=?;";
+        String query="UPDATE prodotto SET nome=?, prezzo=?, iva=?, descrizione=?, immagine=?, stock=?, alcol=?, formato=?, provenienza=?, tipologia=?, annata=?, denominazione=? WHERE id=?;";
         try{
             Connection connessione=ds.getConnection();
             PreparedStatement statement=connessione.prepareStatement(query);
             setMagliettaStatement(statement, p);
-            statement.setInt(12, p.getId());
+            statement.setInt(13, p.getId());
             preparedStatement.executeUpdate();
         }
         catch(Exception e){throw e;}
@@ -115,6 +115,7 @@ public class ProdottoDAO implements DaoInterface<Prodotto, Integer>{
         p.setPrezzo(rs.getDouble("prezzo"));
         p.setIva(rs.getInt("iva"));
         p.setDescrizione(rs.getString("descrizione"));
+        p.setImmagine(rs.getString("immagine"));
         p.setStock(rs.getInt("stock"));
         p.getAlcol(rs.getInt("alcol"));
         p.getFormato(rs.getDouble("formato"));
@@ -129,13 +130,14 @@ public class ProdottoDAO implements DaoInterface<Prodotto, Integer>{
         statement.setDouble(2, p.getPrezzo());
         statement.setInt(3, p.getIva());
         statement.setString(4, p.getDescrizione());
-        statement.setInt(5, p.getStock());
-        statement.setDouble(6, p.getAlcol());
-        statement.setDouble(7, p.getFormato());
-        statement.setString(8, p.getProvenienza());
-        statement.setString(9, p.getTipologia());
-        statement.setInt(10, p.getAnnata());
-        statement.setString(11, p.getDenominazione());
+        statement.setString(5, p.getImmagine());
+        statement.setInt(6, p.getStock());
+        statement.setDouble(7, p.getAlcol());
+        statement.setDouble(8, p.getFormato());
+        statement.setString(9, p.getProvenienza());
+        statement.setString(10, p.getTipologia());
+        statement.setInt(11, p.getAnnata());
+        statement.setString(12, p.getDenominazione());
     }
 	
 }
