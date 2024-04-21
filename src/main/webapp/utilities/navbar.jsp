@@ -11,13 +11,14 @@
     <title>Navigation Bar</title>
     <style>
         nav {
-            background-color: #990E3C;
+            background-color: #FFFF;
             color: #000;
-            padding: 10px;
+            padding: 5px;
             display: flex; /* Utilizza flexbox per allineare i link */
             justify-content: space-between; /* Distribuisci gli elementi uniformemente */
             align-items: center; /* Allinea verticalmente al centro */
-            border-top: 1px solid #CCC; /* Linea superiore */
+           
+            border-bottom: 1px solid black;
             font-size: 20px;
              /* font-weight: bold;  */
            font-family: 'Cormorant Garamond', serif;
@@ -28,11 +29,13 @@
             text-decoration: none;
             padding: 5px 10px;
             border-radius: 5px;
+            font-family: 'Courier New', monospace ;
+            font-size: 20px;
         }
 
         nav a:hover {
-            background-color: #441D2A;
-            border-radius: 25px;
+            color: #990E3C;
+            
         }
     </style>
 </head>

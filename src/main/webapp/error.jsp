@@ -4,11 +4,12 @@
 <html>
 <head>
 <meta charset="UTF-8">
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Pagina mancante</title>
 </head>
 <body>
-Pagina non esistente! Ritorna alla <a href="home.jsp?">Home.</a>
+<h3>Pagina non esistente! Ritorna alla <a href="home.jsp">Home.</a></h3>
 
 </body>
- <footer><%@ include file="utility/footer.jsp" %></footer>
+ <footer><%@ include file="utilities/footer.jsp" %></footer>
 </html>

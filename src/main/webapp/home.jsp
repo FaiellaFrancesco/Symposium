@@ -17,7 +17,7 @@
 <title>home</title>
 </head>
 <!-- Header -->
-<%@ include file="utility/header.jsp" %>
+<%@ include file="utilities/header.jsp" %>
 <style>
 /* Stile per una griglia di 3 colonne */
 .container {
@@ -66,5 +66,5 @@
 
 </body>
  <!-- Footer -->
- <footer><%@ include file="utility/footer.jsp" %></footer>
+ <footer><%@ include file="utilities/footer.jsp" %></footer>
 </html>
