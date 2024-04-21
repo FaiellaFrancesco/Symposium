@@ -8,6 +8,7 @@ public class Prodotto{
 	private double prezzo;
 	private int iva;
 	private String descrizione;
+	private String immagine;
 	private String denominazione;
 	private int stock;
 	private double alcol;
@@ -15,7 +16,6 @@ public class Prodotto{
 	private String provenienza;
 	private String tipologia;
 	private int annata;
-	private String immagine;
 	
 	
 	//method
@@ -36,6 +36,9 @@ public class Prodotto{
 
 	public void setDescrizione(String descrizione) { this.descrizione=descrizione;}
 	public String getDescrizione() { return this.descrizione;}
+
+	public void setImmagine(String immagine) { this.immagine=immagine;}
+	public String getImmagine() { return this.immagine;}
 	
 	public void setDenominazione(String denominazione) { this.denominazione=denominazione;}
 	public String getDenominazione() { return this.denominazione;}
@@ -57,9 +60,6 @@ public class Prodotto{
 	
 	public void setAnnata(int annata) {	this.annata=annata;}
 	public int getAnnata() { return this.annata;}
-	
-	public void setImmagine(String img) {	this.immagine=img;}
-	public String getImmagine() { return this.immagine;}
 	
 	@Override
 	public String toString() {
