@@ -7,12 +7,12 @@ CREATE TABLE IF NOT EXISTS prodotto(
     prezzo numeric(10,2) not null,
     iva int not null,
     descrizione VARCHAR(1000) not null,
-    immagine blob, -- !!! soggetta a cambiamenti !!!
+    immagine VARCHAR(500),
     stock int default 0 not null,
     alcol numeric(4,2) not null,
     formato numeric(5, 2) not null,
     provenienza varchar(50) not null,
-    tipologia VARCHAR(30) NOT NULL CHECK(tipologia IN('rosso', 'spumante', 'champagne', 'altro', 'binaco', 'rosé')),
+    tipologia VARCHAR(30) NOT NULL CHECK(tipologia IN('rosso', 'spumante', 'champagne', 'altro', 'bianco', 'rosé')),
     annata int not null check(annata>1900),
     denominazione varchar(30) not null
 );
