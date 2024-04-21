@@ -1,4 +1,4 @@
-package model.Beans;
+package model.beans;
 
 public class Prodotto{
 	
@@ -8,6 +8,7 @@ public class Prodotto{
 	private double prezzo;
 	private int iva;
 	private String descrizione;
+	private String immagine;
 	private String denominazione;
 	private int stock;
 	private double alcol;
@@ -35,6 +36,9 @@ public class Prodotto{
 
 	public void setDescrizione(String descrizione) { this.descrizione=descrizione;}
 	public String getDescrizione() { return this.descrizione;}
+
+	public void setImmagine(String immagine) { this.immagine=immagine;}
+	public String getImmagine() { return this.immagine;}
 	
 	public void setDenominazione(String denominazione) { this.denominazione=denominazione;}
 	public String getDenominazione() { return this.denominazione;}
