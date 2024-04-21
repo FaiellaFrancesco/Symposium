@@ -1,4 +1,4 @@
-package model.Beans;
+package model.beans;
 
 public class Prodotto{
 	
@@ -15,6 +15,7 @@ public class Prodotto{
 	private String provenienza;
 	private String tipologia;
 	private int annata;
+	private String immagine;
 	
 	
 	//method
@@ -56,6 +57,9 @@ public class Prodotto{
 	
 	public void setAnnata(int annata) {	this.annata=annata;}
 	public int getAnnata() { return this.annata;}
+	
+	public void setImmagine(String img) {	this.immagine=img;}
+	public String getImmagine() { return this.immagine;}
 	
 	@Override
 	public String toString() {

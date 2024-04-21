@@ -6,14 +6,53 @@
 <meta charset="UTF-8">
 <title>Header</title>
 </head>
+
 <body>
+<style> 
+	header{
+	background-color: #990E3C;
+	padding: 10px 0;
+	color: #fff;
+	}
+	  body {
+            margin: 0;
+            padding: 0;
+        }
+       form {
+            text-align: center;
+           
+        }
+
+        input[type="text"] {
+            padding: 10px;
+            width: 300px;
+            border: none;
+            border-radius: 25px;
+        }
+
+        button {
+            padding: 10px 10px;
+            background-color: #6F1C38;
+            color: #fff;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+           
+        }
+
+        button:hover {
+            background-color: #441D2A;
+        }
+
+</style>
+<header>
 <div>
 <!--  Facciamo una tabella perchè non abbiamo fatto css e quindi non possiamo farlo diversamente -->
 
  <table width=100%>
         <tr>
             <td align="left"> <!-- qui ci va il logo-->
-               LOGO
+                 LOGO
             </td>
             <td align="center"> <!-- Barra di ricerca -->
                 <form action="" method="get">
@@ -28,13 +67,8 @@
         </tr>
     </table>
 </div>
-<div>
-<!--  Menu -->
+</header>
 
-<table>
-
-
-</table>
-</div>
+<%@ include file="navbar.jsp"%>
 </body>
 </html>

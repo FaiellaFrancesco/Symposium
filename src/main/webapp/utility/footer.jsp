@@ -6,8 +6,7 @@
 <meta charset="UTF-8">
 <title>Footer</title>
 </head>
-<body>
-    <style>
+<style>
         /* Stile per il footer */
         footer {
             position: fixed;
@@ -20,11 +19,12 @@
             padding: 10px 0;
         }
     </style>
+<body>
  
         <p>&copy; 2024 Symposium</p>
         
-            <a href="privacy.html">Informativa sulla privacy</a></li>
-            <a href="contatti.html">Contatti</a></li>
+            <a href="privacy.html">Informativa sulla privacy</a>
+            <a href="contatti.html">Contatti</a>
         
   
 </body>
