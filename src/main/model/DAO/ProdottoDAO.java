@@ -1,5 +1,6 @@
 package model.DAO;
 
+import model.DaoInterface;
 import model.Beans.Prodotto;
 
 import javax.naming.Context;
@@ -29,8 +30,8 @@ public class ProdottoDAO implements DaoInterface<Prodotto, Integer>{
         }
     }
 
-	@Override
 	public Prodotto doRetrieveByKey(Integer  pk){
+		return
 		
 	}
 	

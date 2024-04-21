@@ -5,15 +5,11 @@
 <head>
 <meta charset="UTF-8">
  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Symposium</title>
+<title>Pagina mancante</title>
 </head>
-
-<!-- Header -->
-<header><%@ include file="utilities/header.jsp" %></header>
 <body>
-
+<h3>Pagina non esistente! Ritorna alla <a href="home.jsp">Home.</a></h3>
 
 </body>
- <!-- Footer -->
  <footer><%@ include file="utilities/footer.jsp" %></footer>
 </html>
