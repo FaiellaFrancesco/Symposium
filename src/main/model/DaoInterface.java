@@ -1,9 +1,9 @@
-package model.DAO;
+package model;
 
 import java.sql.SQLException;
 import java.util.Collection;
 
-public interface DAOInterface<T, K> {
+public interface DaoInterface<T, K> {
     T doRetrieveByKey(K pk) throws SQLException;
     Collection<T> doRetriveAll(String order) throws SQLException;
     void doSave(T product) throws SQLException;

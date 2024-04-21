@@ -4,7 +4,8 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Footer</title>
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Footer</title> 
 </head>
 <body>
     <style>
@@ -14,17 +15,28 @@
             left: 0;
             bottom: 0;
             width: 100%;
-            background-color: #990E3C;
+            background-color: #6F1C38;
             color: #fff;
             text-align: center;
-            padding: 10px 0;
+            padding: 20px 0;
+            
         }
+        footer a {
+    color: #FFF; /* Colore del testo dei link nel footer */
+    text-decoration: none; /* Rimuove la sottolineatura dei link */
+}
+        footer a:hover {
+    color: #441D2A; /* Colore del testo quando il mouse è sopra il link */
+    text-decoration: none; 
+}
+
+        
     </style>
  
-        <p>&copy; 2024 Symposium</p>
+       <span> <p>&copy;2024 Symposium &nbsp; <a href="privacy.html"> &nbsp; Informativa sulla privacy</a> &nbsp; 
+            <a href="contatti.html">Contatti &nbsp; </a></p></span>
         
-            <a href="privacy.html">Informativa sulla privacy</a></li>
-            <a href="contatti.html">Contatti</a></li>
+           
         
   
 </body>
