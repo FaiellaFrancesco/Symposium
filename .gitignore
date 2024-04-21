@@ -1,8 +1,6 @@
 # Ignora i file .class
 *.class
-
-
-
-#Ignora i file macOS
-
 .DS_Store
+
+
+
