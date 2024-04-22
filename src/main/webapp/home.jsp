@@ -19,6 +19,18 @@
 <!-- Header -->
 <%@ include file="utilities/header.jsp" %>
 <style>
+
+	html{
+	height: 100%;
+	}
+	body {
+            margin: 0;
+            padding: 0;
+            min-height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+
 /* Stile per una griglia di 3 colonne */
 .container {
   display: flex;
@@ -63,8 +75,8 @@
   </div>
 	<% } %> </div> <% } else { %>
 	<% } %>
-
-</body>
  <!-- Footer -->
- <footer><%@ include file="utilities/footer.jsp" %></footer>
+<footer><%@ include file="utilities/footer.jsp" %></footer> 
+</body>
+
 </html>
