@@ -15,14 +15,14 @@ import model.beans.Prodotto;
 /**
  * Servlet implementation class product
  */
-@WebServlet("/product")
-public class product extends HttpServlet {
+@WebServlet("/catalogo")
+public class catalogo extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public product() {
+    public catalogo() {
         super();
         // TODO Auto-generated constructor stub
     }
