@@ -6,7 +6,7 @@
 <%
 	Collection<?> products = (Collection<?>) request.getAttribute("prodotti");
 	if(products == null) {
-		response.sendRedirect("./product");	
+		response.sendRedirect("./catalogo");	
 		return;
 	}
 %>
