@@ -55,9 +55,9 @@
 			
 		%>
 <div class="container">
-  <div class="item">
+   <div class="item">
     <h2><%= bean.getNome() %></h2>
-    <img src="<%= bean.getImmagine() %>" alt="<%= bean.getNome() %>">
+    <a href="product?id=<%= bean.getId() %>"><img src="<%= bean.getImmagine() %>" alt="<%= bean.getNome() %>"></a>
     <p><%= bean.getPrezzo() %></p>
     <p><%= bean.getDescrizione() %></p>
   </div>
