@@ -17,16 +17,15 @@ public class ProdottoDAO implements DaoInterface<Prodotto, Integer>{
 	private static final String TABLE_NAME = "prodotto";
     private static final DataSource ds;
 
-	static {
+    static {
         try {
-            Context init = new InitialContext();
-            Context env = (Context) init.lookup("java:comp/env");
-
-            ds = (DataSource) env.lookup("jdbc/Symposium");
+            Context ctx = new InitialContext();
+            ds = (DataSource) ctx.lookup("java:/comp/env/jdbc/Symposium");
         } catch (NamingException e) {
             throw new RuntimeException(e);
         }
     }
+
 
 	@Override
 	public Prodotto doRetrieveByKey(Integer pk) throws SQLException {
@@ -52,15 +51,21 @@ public class ProdottoDAO implements DaoInterface<Prodotto, Integer>{
     @Override
     public Collection<Prodotto> doRetrieveAll(String order) throws SQLException{
         ArrayList<Prodotto> prodotti=new ArrayList<Prodotto>();
+        Connection connessione = null;
         try{
-            String query="SELECT * FROM "+TABLE_NAME+" ORDER BY ?;";
-            Connection connessione=ds.getConnection();
+            String query="SELECT * FROM "+TABLE_NAME;
+            connessione=ds.getConnection();
+            
+            if (order != null && !order.equals("")) {
+    			query += " ORDER BY " + order;
+    		}
+            
+            
             PreparedStatement statement=connessione.prepareStatement(query);
-            statement.setString(1, order);
 
             ResultSet rs=statement.executeQuery();
-
-            while (rs.next()) {
+            
+             while (rs.next()) {
                 Prodotto p=new Prodotto();
                 setProdotto(rs, p);
                 prodotti.add(p);
@@ -68,6 +73,9 @@ public class ProdottoDAO implements DaoInterface<Prodotto, Integer>{
         }
         catch(Exception e){
             throw e;
+        }
+        finally{
+        	connessione.close();
         }
 
         return prodotti;

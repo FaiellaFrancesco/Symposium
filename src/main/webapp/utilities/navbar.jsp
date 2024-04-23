@@ -45,6 +45,9 @@
     <a href="aa.html">Vini</a>
     <a href="aa.html">Champagne</a>
     <a href="aa.html">Produttori</a>
+    <a href="catalogo?order=prezzo"> Prezzo </a>
+    <a href="catalogo?order=nome"> Nome </a>
+    <a href="catalogo?order=id"> ID </a>
 </nav>
 
 </body>

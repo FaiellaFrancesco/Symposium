@@ -6,7 +6,7 @@
 <%
 	Collection<?> products = (Collection<?>) request.getAttribute("prodotti");
 	if(products == null) {
-		response.sendRedirect("./product");	
+		response.sendRedirect("./catalogo?order=");	
 		return;
 	}
 %>
@@ -19,9 +19,14 @@
 <!-- Header -->
 <%@ include file="utilities/header.jsp" %>
 <style>
+
+.riga {
+  display:block;
+  gap: 20px; /* Spazio tra le colonne */
+}
 /* Stile per una griglia di 3 colonne */
 .container {
-  display: flex;
+  display:flex;
   gap: 20px; /* Spazio tra le colonne */
 }
 
@@ -30,6 +35,7 @@
   padding: 20px;
   border-radius: 5px;
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+  text-align:center;
 }
 
 /* Stile per il testo del prodotto */
@@ -40,10 +46,9 @@
 
 /* Stile per l'immagine del prodotto */
 .item img {
-  max-width: 75%;
-  height: auto;
+  max-height: 200px; /* Imposta un'altezza massima per l'immagine */
+  width: auto; /* Per mantenere le proporzioni originali dell'immagine */
   border-radius: 5px;
-  display:flex;
 }
 </style>
 <body>
@@ -54,14 +59,15 @@
 					Prodotto bean = (Prodotto) it.next();
 			
 		%>
-<div class="container">
-  <div class="item">
+<div class="riga">
+  <div class="container">
+   <div class="item">
     <h2><%= bean.getNome() %></h2>
-    <img src="<%= bean.getImmagine() %>" alt="<%= bean.getNome() %>">
+    <a href="product?id=<%= bean.getId() %>"><img src="<%= bean.getImmagine() %>" alt="<%= bean.getNome() %>"></a>
     <p><%= bean.getPrezzo() %></p>
     <p><%= bean.getDescrizione() %></p>
   </div>
-	<% } %> </div> <% } else { %>
+	<% } %> </div> </div><% } else { %>
 	<% } %>
 
 </body>

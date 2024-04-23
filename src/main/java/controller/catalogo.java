@@ -15,14 +15,14 @@ import model.beans.Prodotto;
 /**
  * Servlet implementation class product
  */
-@WebServlet("/product")
-public class product extends HttpServlet {
+@WebServlet("/catalogo")
+public class catalogo extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public product() {
+    public catalogo() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -32,18 +32,17 @@ public class product extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-			ProdottoDAO pd = new ProdottoDAO();
-			Prodotto p=new Prodotto();
-			Integer productId = Integer.parseInt(request.getParameter("id"));
+			ProdottoDAO model = new ProdottoDAO();
+			ArrayList<Prodotto> prodotti = null;
 			try {
-				p = pd.doRetrieveByKey(productId);
+				prodotti = (ArrayList<Prodotto>) model.doRetrieveAll((String)request.getParameter("order"));
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-            request.setAttribute("prodotto", p);
+            request.setAttribute("prodotti", prodotti);
             
-            RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/prodotto.jsp");
+            RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/home.jsp");
     		dispatcher.forward(request, response);
             
 	}
