@@ -37,14 +37,19 @@ public class product extends HttpServlet {
 			Integer productId = Integer.parseInt(request.getParameter("id"));
 			try {
 				p = pd.doRetrieveByKey(productId);
+				if (p.getId()==productId.intValue()) {
+			        // Procedi con l'instradamento alla pagina prodotto.jsp
+			        request.setAttribute("prodotto", p);
+			        request.getRequestDispatcher("/prodotto.jsp").forward(request, response);
+			    } else {
+			        // Prodotto non trovato, instradamento alla pagina error.jsp
+			        request.getRequestDispatcher("/error.jsp").forward(request, response);
+			    }
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block
-				e.printStackTrace();
+				//e.printStackTrace();
+				request.getRequestDispatcher("/error.jsp").forward(request, response);
 			}
-            request.setAttribute("prodotto", p);
-            
-            RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/prodotto.jsp");
-    		dispatcher.forward(request, response);
             
 	}
 
