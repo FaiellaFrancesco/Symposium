@@ -7,8 +7,24 @@
 <title>Footer</title>
 </head>
 <style>
+   h1{
+   font-family: 'Brush Script MT', cursive; 
+   text-align: left;
+   color: #FFF;
+   }
+    footer p{
+   text-align: left;
+   color: #FFF;
+   }
+   footer a{
+   text-decoration: none;
+   color: #FFF;
+   }
+   footer a:hover{
+   color: #6F1C38;
+   }
 	footer{
-	 background-color: #6F1C38;
+	 background-color: #990E3C;;
      text-align: center;
     padding: 1em;
     margin-top: auto;
@@ -28,9 +44,11 @@
 </style>
 <body>
 
-<footer>
- <span>&copy;2024 Symposium &nbsp; <a href="privacy.html"> &nbsp; Informativa sulla privacy</a> &nbsp; 
-            <a href="contatti.html">Contatti &nbsp; </a></span>
+<footer>    
+ <h1>Symposium</h1>
+<p><a href="privacy.html"> Informativa sulla privacy</a> </p>
+           <p> <a href="contatti.html">Contatti </a></p>
+              <p>&copy;2024 Symposium</p> 
 </footer>
 </body>
 </html>
