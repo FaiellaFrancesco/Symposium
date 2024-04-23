@@ -6,7 +6,7 @@
 <%
 	Collection<?> products = (Collection<?>) request.getAttribute("prodotti");
 	if(products == null) {
-		response.sendRedirect("./catalogo");	
+		response.sendRedirect("./catalogo&order=''");	
 		return;
 	}
 %>
@@ -15,25 +15,15 @@
 <head>
 <meta charset="UTF-8">
 <title>home</title>
-</head>
-<!-- Header -->
-<%@ include file="utilities/header.jsp" %>
 <style>
 
-	html{
-	height: 100%;
-	}
-	body {
-            margin: 0;
-            padding: 0;
-            min-height: 100%;
-            display: flex;
-            flex-direction: column;
-        }
-
+.riga {
+  display:flex;
+  gap: 20px; /* Spazio tra le colonne */
+}
 /* Stile per una griglia di 3 colonne */
 .container {
-  display: flex;
+  display:flex;
   gap: 20px; /* Spazio tra le colonne */
 }
 
@@ -42,6 +32,7 @@
   padding: 20px;
   border-radius: 5px;
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+  text-align:center;
 }
 
 /* Stile per il testo del prodotto */
@@ -52,31 +43,37 @@
 
 /* Stile per l'immagine del prodotto */
 .item img {
-  max-width: 75%;
-  height: auto;
+  max-height: 200px; /* Imposta un'altezza massima per l'immagine */
+  width: auto; /* Per mantenere le proporzioni originali dell'immagine */
   border-radius: 5px;
-  display:flex;
 }
 </style>
+</head>
+<!-- Header -->
+<%@ include file="utilities/header.jsp" %>
 <body>
 	<%
+			request.setAttribute("prodotti", null);
 			if (products != null && products.size() != 0) {
 				Iterator<?> it = products.iterator();
-				while (it.hasNext()) {
+	%>
+	<div class="riga">
+	<% while (it.hasNext()) { %>
+		<div class="container">
+			<div class="item">
+				<%
 					Prodotto bean = (Prodotto) it.next();
-			
-		%>
-<div class="container">
-   <div class="item">
-    <h2><%= bean.getNome() %></h2>
-    <a href="product?id=<%= bean.getId() %>"><img src="<%= bean.getImmagine() %>" alt="<%= bean.getNome() %>"></a>
-    <p><%= bean.getPrezzo() %></p>
-    <p><%= bean.getDescrizione() %></p>
-  </div>
-	<% } %> </div> <% } else { %>
+				%>
+				<h2><%= bean.getNome() %></h2>
+				<a href="product?id=<%= bean.getId() %>"><img src="<%= bean.getImmagine() %>" alt="<%= bean.getNome() %>"></a>
+				<p><%= bean.getPrezzo() %></p>
+				<p><%= bean.getDescrizione() %></p>
+			</div>
+		</div>
+	<% } %>
+	</div>
 	<% } %>
  <!-- Footer -->
-<footer><%@ include file="utilities/footer.jsp" %></footer> 
+ <footer><%@ include file="utilities/footer.jsp" %></footer>
 </body>
-
 </html>

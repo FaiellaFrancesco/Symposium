@@ -4,13 +4,13 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>Footer</title>
 </head>
 <style>
 	footer{
 	 background-color: #6F1C38;
      text-align: center;
-    padding: 2em;
+    padding: 1em;
     margin-top: auto;
     color: #FFF;
 	}
