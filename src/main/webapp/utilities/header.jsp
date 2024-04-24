@@ -31,7 +31,7 @@
             outline: none;
         }
 
-        button {
+        #search {
             padding: 10px 10px;
             background-color: #990E3C;
             color: #fff;
@@ -58,7 +58,7 @@
             <td align="center"> <!-- Barra di ricerca -->
                 <form action="" method="get">
                     <input type="text" name="q" placeholder="Cerca...">
-                    <button type="submit">Cerca</button>
+                    <button id="search" type="submit">Cerca</button>
                 </form>
             </td>
             <td align="right"> <!-- img di cart e accesso-->
