@@ -35,7 +35,7 @@ public class catalogo extends HttpServlet {
 			ProdottoDAO model = new ProdottoDAO();
 			ArrayList<Prodotto> prodotti = null;
 			try {
-				prodotti = (ArrayList<Prodotto>) model.doRetrieveAll("");
+				prodotti = (ArrayList<Prodotto>) model.doRetrieveAll((String)request.getParameter("order"));
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
