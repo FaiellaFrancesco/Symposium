@@ -19,59 +19,91 @@
 <!-- Header -->
 <%@ include file="utilities/header.jsp" %>
 <style>
+  /* Stile per il contenitore della tabella */
+  .table-container {
+    display: block;
+    justify-content: center; /* Centra orizzontalmente il contenuto */
+    height: 100vh; /* Altezza del contenitore uguale all'altezza della viewport */
+    margin-left: auto;
+    border-top: 19px solid rgba(0, 0, 0, 0);
+    margin-right: auto;
+    width: 100%;
+  }
 
-.riga {
-  display:block;
-  gap: 20px; /* Spazio tra le colonne */
-}
-/* Stile per una griglia di 3 colonne */
-.container {
-  display:flex;
-  gap: 20px; /* Spazio tra le colonne */
-}
+  /* Stili per la tabella (come prima) */
+  .table {
+    width: 70%;
+    border-collapse: collapse;
+  }
 
-.item {
-  background-color: #f2f2f2;
-  padding: 20px;
-  border-radius: 5px;
-  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-  text-align:center;
-}
+  .table th,
+  .table td {
+    padding: 8px;
+    text-align: center;
+    border-bottom: 1px solid #ddd;
+  }
+	
+	table th a {
+            color: #000;
+            text-decoration: none;
+            padding: 5px 10px;
+        }
+        
+  table th {
+    background-color: #f2f2f2;
+    font-family: 'Courier New', monospace ;
+    font-size: 20px;
+  }
 
-/* Stile per il testo del prodotto */
-.item h2 {
-  font-size: 18px;
-  margin-bottom: 10px;
-}
+  table img {
+    max-height: 100px;
+    max-width: 100px;
+    border-radius: 5px;
+  }
+  .error-message {
+    text-align: center; /* Allineamento del testo al centro */
+    margin-top: 50px; /* Margine superiore */
+  }
 
-/* Stile per l'immagine del prodotto */
-.item img {
-  max-height: 200px; /* Imposta un'altezza massima per l'immagine */
-  width: auto; /* Per mantenere le proporzioni originali dell'immagine */
-  border-radius: 5px;
-}
+  /* Stile per il testo del messaggio di errore */
+  .error-message p {
+    font-weight: bold; /* Grassetto */
+    color:#990E3C;
+    font-family: 'Courier New', monospace ;
+    font-size: 40px;
+  }
 </style>
-<body>
-	<%
-			request.setAttribute("prodotti", null);
-			if (products != null && products.size() != 0) {
-				Iterator<?> it = products.iterator();
-				while (it.hasNext()) {
-					Prodotto bean = (Prodotto) it.next();
-			
-		%>
-<div class="riga">
-  <div class="container">
-   <div class="item">
-    <h2><%= bean.getNome() %></h2>
-    <a href="product?id=<%= bean.getId() %>"><img src="<%= bean.getImmagine() %>" alt="<%= bean.getNome() %>"></a>
-    <p><%= bean.getPrezzo() %></p>
-    <p><%= bean.getDescrizione() %></p>
-  </div>
-	<% } %> </div> </div><% } else { %>
-	<% } %>
-
-</body>
- <!-- Footer -->
+ <% if (products != null && products.size() != 0) { %>
+<div class="table-container" align="center">
+  <table class="table">
+    <thead>
+      <tr>
+        <th><a href="catalogo?order=nome"> Nome </a></th>
+        <th>Immagine</th>
+        <th><a href="catalogo?order=prezzo"> Prezzo </a></th>
+        <th><a href="catalogo?order=descrizione"> Descrizione </a></th>
+      </tr>
+    </thead>
+    <tbody>
+    <%   Iterator<?> it = products.iterator();
+          while (it.hasNext()) {
+            Prodotto bean = (Prodotto) it.next();
+      %>
+      <tr>
+        <td><a href="product?id=<%= bean.getId() %>"><%= bean.getNome() %></a></td>
+        <td><a href="product?id=<%= bean.getId() %>"><img src="<%= bean.getImmagine() %>" alt="<%= bean.getNome() %>"></a></td>
+        <td>€<%= bean.getPrezzo() %></td>
+        <td><%= bean.getDescrizione() %></td>
+      </tr>
+      <% } %>
+      </tbody>
+  	</table>
+	</div>
+      <% } else { %> 
+      <div class="error-message">
+ 		 <p>Nessun prodotto disponibile al momento.</p>
+	</div>
+      <% } %>
  <footer><%@ include file="utilities/footer.jsp" %></footer>
+</body>
 </html>
