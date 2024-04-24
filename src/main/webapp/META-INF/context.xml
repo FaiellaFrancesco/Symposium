@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Context>
     <Resource name="jdbc/Symposium" auth="Container" type="javax.sql.DataSource"
+<<<<<<< HEAD
               username="root" password="&lt;[Gg@08#02,04!?]&gt;" driverClassName="com.mysql.cj.jdbc.Driver"
+=======
+              username="root" password="root" driverClassName="com.mysql.cj.jdbc.Driver"
+>>>>>>> main
               url="jdbc:mysql://localhost:3306/Symposium?serverTimezone=UTC"/>
 </Context>

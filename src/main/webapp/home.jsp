@@ -21,12 +21,21 @@
 <style>
   /* Stile per il contenitore della tabella */
   .table-container {
+<<<<<<< HEAD
   	width:100%;
+=======
+>>>>>>> main
     display: block;
     justify-content: center; /* Centra orizzontalmente il contenuto */
     height: 100vh; /* Altezza del contenitore uguale all'altezza della viewport */
     margin-left: auto;
+<<<<<<< HEAD
     margin-right: auto;
+=======
+    border-top: 19px solid rgba(0, 0, 0, 0);
+    margin-right: auto;
+    width: 100%;
+>>>>>>> main
   }
 
   /* Stili per la tabella (come prima) */
@@ -105,4 +114,8 @@
       <% } %>
  <footer><%@ include file="utilities/footer.jsp" %></footer>
 </body>
+<<<<<<< HEAD
 </html>
+=======
+</html>
+>>>>>>> main
