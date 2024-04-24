@@ -17,7 +17,6 @@
             display: flex; /* Utilizza flexbox per allineare i link */
             justify-content: space-between; /* Distribuisci gli elementi uniformemente */
             align-items: center; /* Allinea verticalmente al centro */
-           
             border-bottom: 1px solid black;
             font-size: 20px;
              /* font-weight: bold;  */
