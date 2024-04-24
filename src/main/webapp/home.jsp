@@ -25,7 +25,9 @@
     justify-content: center; /* Centra orizzontalmente il contenuto */
     height: 100vh; /* Altezza del contenitore uguale all'altezza della viewport */
     margin-left: auto;
+    border-top: 19px solid rgba(0, 0, 0, 0);
     margin-right: auto;
+    width: 100%;
   }
 
   /* Stili per la tabella (come prima) */

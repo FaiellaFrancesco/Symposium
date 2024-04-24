@@ -4,7 +4,7 @@ INSERT INTO prodotto (nome, prezzo, iva, descrizione, immagine, stock, alcol, fo
 VALUES
 ('Vino Rosso', 12.99, 22, 'Un ottimo vino rosso dal gusto intenso.', 'immagini/vinorosso', 100, 13.5, 750, 'Italia', 'rosso', 2018, 'Chianti'),
 ('Spumante Brut', 19.99, 22, 'Un delicato spumante con bollicine fini e persistenti.', 'immagini/spumantebrut', 50, 12.5, 750, 'Francia', 'spumante', 2019, 'Prosecco'),
-('Champagne Rosé', 39.99, 22, 'Uno champagne rosé di alta qualità, perfetto per occasioni speciali.','immagini/chamapgne.webp', 20, 12.0, 750, 'Francia', 'champagne', 2017, 'Moët & Chandon'),
+('Champagne Rosé', 39.99, 22, 'Uno champagne rosé di alta qualità, perfetto per occasioni speciali.','immagini/champagne', 20, 12.0, 750, 'Francia', 'champagne', 2017, 'Moët & Chandon'),
 ('Vino Bianco', 9.99, 22, 'Un vino bianco fresco e fruttato, ideale per l''estate.','immagini/vinobianco', 80, 11.0, 750, 'Italia', 'bianco', 2020, 'Pinot Grigio'),
 ('Rosé', 14.99, 22, 'Un vino rosé leggero e rinfrescante, perfetto per le giornate estive.','immagini/rose', 60, 10.5, 750, 'Spagna', 'bianco', 2019, 'Rosato di Toscana');
 
