@@ -114,8 +114,4 @@
       <% } %>
  <footer><%@ include file="utilities/footer.jsp" %></footer>
 </body>
-<<<<<<< HEAD
 </html>
-=======
-</html>
->>>>>>> main

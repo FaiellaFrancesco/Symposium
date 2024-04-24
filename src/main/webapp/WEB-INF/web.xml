@@ -23,9 +23,4 @@
         <error-code>500</error-code>
         <location>/error.jsp</location>
     </error-page>
-    
-<<<<<<< HEAD
 </web-app>
-=======
-</web-app>
->>>>>>> main
