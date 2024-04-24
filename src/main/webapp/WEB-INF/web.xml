@@ -11,7 +11,7 @@
 
     <!-- Definizione della pagina di benvenuto -->
     <welcome-file-list>
-        <welcome-file>home.jsp</welcome-file>
+        <welcome-file>/home.jsp</welcome-file>
     </welcome-file-list>
 
     <!-- Gestione delle pagine di errore -->
@@ -23,5 +23,5 @@
         <error-code>500</error-code>
         <location>/error.jsp</location>
     </error-page>
-
+    
 </web-app>

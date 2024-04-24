@@ -6,7 +6,7 @@
 <%
 	Prodotto prodotto = (Prodotto) request.getAttribute("prodotto");
 	if(prodotto == null) {
-		response.sendRedirect("./catalogo&order=''");	
+		response.sendRedirect("./catalogo");	
 		return;
 	}
 	request.setAttribute("prodotto", null);

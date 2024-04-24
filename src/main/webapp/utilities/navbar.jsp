@@ -17,7 +17,6 @@
             display: flex; /* Utilizza flexbox per allineare i link */
             justify-content: space-between; /* Distribuisci gli elementi uniformemente */
             align-items: center; /* Allinea verticalmente al centro */
-           
             border-bottom: 1px solid black;
             font-size: 20px;
              /* font-weight: bold;  */
@@ -45,9 +44,6 @@
     <a href="aa.html">Vini</a>
     <a href="aa.html">Champagne</a>
     <a href="aa.html">Produttori</a>
-    <a href="catalogo?order=prezzo"> Prezzo </a>
-    <a href="catalogo?order=nome"> Nome </a>
-    <a href="catalogo?order=id"> ID </a>
 </nav>
 
 </body>
