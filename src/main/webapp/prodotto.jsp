@@ -16,6 +16,9 @@
 <head>
 <meta charset="UTF-8">
 <title><%= prodotto.getNome() %></title>
+<link rel="stylesheet" href="utilities/css/header.css">
+<link rel="stylesheet" href="utilities/css/footer.css">
+
 </head>
 <!-- Header -->
 <%@ include file="utilities/header.jsp" %>

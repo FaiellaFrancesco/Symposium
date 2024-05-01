@@ -15,98 +15,32 @@
 <head>
 <meta charset="UTF-8">
 <title>home</title>
+<link rel="stylesheet" href="utilities/css/header.css">
+<link rel="stylesheet" href="utilities/css/footer.css">
+<link rel="stylesheet" href="utilities/css/home.css">
 </head>
 <!-- Header -->
 <%@ include file="utilities/header.jsp" %>
-<style>
-  /* Stile per il contenitore della tabella */
-  .table-container {
-<<<<<<< HEAD
-  	width:100%;
-=======
->>>>>>> main
-    display: block;
-    justify-content: center; /* Centra orizzontalmente il contenuto */
-    height: 100vh; /* Altezza del contenitore uguale all'altezza della viewport */
-    margin-left: auto;
-<<<<<<< HEAD
-    margin-right: auto;
-=======
-    border-top: 19px solid rgba(0, 0, 0, 0);
-    margin-right: auto;
-    width: 100%;
->>>>>>> main
-  }
 
-  /* Stili per la tabella (come prima) */
-  .table {
-    width: 70%;
-    border-collapse: collapse;
-  }
-
-  .table th,
-  .table td {
-    padding: 8px;
-    text-align: center;
-    border-bottom: 1px solid #ddd;
-  }
-	
-	table th a {
-            color: #000;
-            text-decoration: none;
-            padding: 5px 10px;
-        }
-        
-  table th {
-    background-color: #f2f2f2;
-    font-family: 'Courier New', monospace ;
-    font-size: 20px;
-  }
-
-  table img {
-    max-height: 100px;
-    max-width: 100px;
-    border-radius: 5px;
-  }
-  .error-message {
-    text-align: center; /* Allineamento del testo al centro */
-    margin-top: 50px; /* Margine superiore */
-  }
-
-  /* Stile per il testo del messaggio di errore */
-  .error-message p {
-    font-weight: bold; /* Grassetto */
-    color:#990E3C;
-    font-family: 'Courier New', monospace ;
-    font-size: 40px;
-  }
-</style>
  <% if (products != null && products.size() != 0) { %>
-<div class="table-container" align="center">
-  <table class="table">
-    <thead>
-      <tr>
-        <th><a href="catalogo?order=nome"> Nome </a></th>
-        <th>Immagine</th>
-        <th><a href="catalogo?order=prezzo"> Prezzo </a></th>
-        <th><a href="catalogo?order=descrizione"> Descrizione </a></th>
-      </tr>
-    </thead>
-    <tbody>
-    <%   Iterator<?> it = products.iterator();
-          while (it.hasNext()) {
-            Prodotto bean = (Prodotto) it.next();
-      %>
-      <tr>
-        <td><a href="product?id=<%= bean.getId() %>"><%= bean.getNome() %></a></td>
-        <td><a href="product?id=<%= bean.getId() %>"><img src="<%= bean.getImmagine() %>" alt="<%= bean.getNome() %>"></a></td>
-        <td>€<%= bean.getPrezzo() %></td>
-        <td><%= bean.getDescrizione() %></td>
-      </tr>
-      <% } %>
-      </tbody>
-  	</table>
-	</div>
+<div class="grid-container">
+  <% 
+    Iterator<?> it = products.iterator();
+    while (it.hasNext()) {
+      Prodotto bean = (Prodotto) it.next();
+  %>
+  <div class="product-container">
+  <a href="product?id=<%= bean.getId() %>">
+    <img src="<%= bean.getImmagine() %>" alt="<%= bean.getNome() %>">
+    <h3 class="nome"><%= bean.getNome() %></h3>
+    <div class="details">
+      <p class="price">€<%= bean.getPrezzo() %></p>
+      <a href="carrello" class="carrello-button">Carrello</a>
+    </div>
+  </a>
+</div>
+  <% } %>
+</div>
       <% } else { %> 
       <div class="error-message">
  		 <p>Nessun prodotto disponibile al momento.</p>

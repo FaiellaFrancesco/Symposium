@@ -6,46 +6,11 @@
 <meta charset="UTF-8">
  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Header</title>
+<link rel="stylesheet" href="css/header.css">
 </head>
 
 <body>
- <style> 
-	header{
-	background-color: #FFFF;
-	padding: 0px 0;
-	color: #990E3C;
-	}
-	  body {
-            margin: 0;
-            padding: 0;
-        }
-       form {
-            text-align: center;
-        }
 
-        input[type="text"] {
-            padding: 10px;
-            width: 600px;
-            border: 2px solid #990E3C;
-            border-radius: 25px;
-            outline: none;
-        }
-
-        #search {
-            padding: 10px 10px;
-            background-color: #990E3C;
-            color: #fff;
-            border: none;
-            border-radius: 25px;
-            cursor: pointer;
-           
-        }
-
-        button:hover {
-            background-color: #6F1C38;
-        }
-
-</style>
 <header>
 <div>
 <!--  Facciamo una tabella perchè non abbiamo fatto css e quindi non possiamo farlo diversamente -->
