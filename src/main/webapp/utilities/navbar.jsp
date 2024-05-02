@@ -5,12 +5,8 @@
 <head>
 <meta charset="UTF-8">
 <title>NavBar</title>
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Navigation Bar</title>
-    <style>
-        nav {
+<style>
+	nav {
             background-color: #FFFF;
             color: #000;
             padding: 5px;
@@ -36,14 +32,21 @@
             color: #990E3C;
             
         }
-    </style>
+</style>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Navigation Bar</title>
+    <link rel="stylesheet" type="text/css" href="./stile/navbar.css">
 </head>
 <body>
 
 <nav>
     <a href="aa.html">Vini</a>
+    <a href="aa.html">Spumante</a>
     <a href="aa.html">Champagne</a>
-    <a href="aa.html">Produttori</a>
+    <a href="aa.html">Altri Prodotti</a>
+    <a href="aa.html">About Us</a>
 </nav>
 
 </body>
