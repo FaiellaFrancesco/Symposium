@@ -34,7 +34,7 @@
     <img src="<%= bean.getImmagine() %>" alt="<%= bean.getNome() %>">
     <h3 class="nome"><%= bean.getNome() %></h3>
     <div class="details">
-      <p class="price">€<%= bean.getPrezzo() %></p>
+      <p class="price"><%= bean.getPrezzo() %>€ </p>
       <a href="carrello" class="carrello-button">Carrello</a>
     </div>
   </a>

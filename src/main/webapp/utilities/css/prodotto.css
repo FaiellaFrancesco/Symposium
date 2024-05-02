@@ -1,0 +1,70 @@
+@charset "UTF-8";
+
+         .container {
+    display: flex;
+    align-items: center;
+    text-align: rigth;
+    padding: 20px;
+    border: 1px solid #ccc;
+}
+	
+	.item{
+	display: flex;
+    align-items: center;
+    text-align: rigth;
+    margin: 100px auto; /* Centra il contenitore */
+    max-height: 800px; /* Limita la larghezza del contenitore */
+    height: 400px;
+	}
+	
+.name{
+	font-size: 30px;
+}
+.desc{
+	font-size: 23px;
+}
+.price{
+	color: #990E3C;
+	font-size: 35px; 
+	 
+}
+
+.image img {
+	padding: 100px;
+    max-height: 500px; /* Utilizza il 50% dell'altezza della finestra del browser */
+    max-width:auto;
+  
+}
+ .product-info {
+ 			margin-top: 40px;
+            font-size: 18px;
+            color: black;
+        }
+        
+ .buttons .add-to-cart{
+ 		border-radius: 5px;
+ 	   padding: 10px 30px; /* Aggiunge spazio interno al pulsante */
+        font-size: 16px; /* Imposta la dimensione del carattere */
+        color: white; /* Imposta il colore del testo */
+        border: none; /* Rimuove il bordo */
+        cursor: pointer; /* Cambia il cursore al passaggio del mouse */
+    	margin-left: 10px;
+    	background-color: #990E3C;
+    }
+    
+    .buttons .add-to-cart:hover{
+	background-color: #6F1C38;
+	
+}
+.buttons input[type="number"]{
+	        width: 70px; /* Imposta la larghezza */
+        padding: 5px; /* Aggiunge spazio interno */
+        font-size: 16px; /* Imposta la dimensione del carattere */
+        border: 1px solid #990E3C; /* Aggiunge un bordo */
+        border-radius: 5px; /* Aggiunge angoli arrotondati */
+        box-sizing: border-box; 
+        outline: none;
+	
+	
+}
+ 

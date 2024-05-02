@@ -18,37 +18,11 @@
 <title><%= prodotto.getNome() %></title>
 <link rel="stylesheet" href="utilities/css/header.css">
 <link rel="stylesheet" href="utilities/css/footer.css">
-
+<link rel="stylesheet" href="utilities/css/prodotto.css">
 </head>
 <!-- Header -->
 <%@ include file="utilities/header.jsp" %>
-<style>
-        .container {
-    display: flex;
-    align-items: center;
-    text-align: rigth;
-    padding: 20px;
-    border: 1px solid #ccc;
-}
-	
-	.item{
-		display: flex;
-    align-items: center;
-    text-align: rigth;
-    margin: 20px auto; /* Centra il contenitore */
-    max-height: 800px; /* Limita la larghezza del contenitore */
-    height: 400px;
-	}
-        .image img {
-    max-height: 400px; /* Utilizza il 50% dell'altezza della finestra del browser */
-    max-width:auto;
-  
-}
-        .product-info {
-            font-size: 14px;
-            color: #666;
-        }
-    </style>
+
 <body>
 	<div class="container">
 	<div class="item">
@@ -56,17 +30,22 @@
             <img src="<%= prodotto.getImmagine() %>" alt="Immagine Prodotto">
         </div>
         <div class="details">
-            <h2><%= prodotto.getNome() %></h2>
-            <p><%= prodotto.getDescrizione() %></p>
-            <p>Prezzo: €<%= prodotto.getPrezzo() %></p>
+            <h2 class="name"><%= prodotto.getNome() %></h2>
+            <p class="desc"><%= prodotto.getDescrizione() %></p>
+            <p class="price"><%= prodotto.getPrezzo()%> € </p>
+            <div class="buttons">
+            	
+                <input type="number" id="quantity" name="quantity" min="1" max="<%= prodotto.getStock() %>"value="1">
+                <button onclick="" class="add-to-cart">Aggiungi al carrello</button>
+            </div>
             <div class="product-info">
-                <p>Denominazione: <%= prodotto.getDenominazione() %></p>
-                <p>Stock: <%= prodotto.getStock() %></p>
-                <p>Formato: <%= prodotto.getFormato() %></p>
-                <p>Provenienza: <%= prodotto.getProvenienza() %></p>
-                <p>Tipologia: <%= prodotto.getTipologia() %></p>
-                <p>Annata: <%= prodotto.getAnnata() %></p>
-                <p>Alcol: <%= prodotto.getAlcol() %></p>
+                <p><b>Denominazione: </b><%= prodotto.getDenominazione() %></p>
+                <p><b>Stock: </b><%= prodotto.getStock() %></p>
+                <p><b>Formato: </b><%= prodotto.getFormato() %></p>
+                <p><b>Provenienza: </b><%= prodotto.getProvenienza() %></p>
+                <p><b>Tipologia: </b><%= prodotto.getTipologia() %></p>
+                <p><b>Annata: </b><%= prodotto.getAnnata() %></p>
+                <p><b>Alcol:</b> <%= prodotto.getAlcol() %></p>
                 <!-- Aggiungi altre informazioni se necessario -->
             </div>
         </div>
