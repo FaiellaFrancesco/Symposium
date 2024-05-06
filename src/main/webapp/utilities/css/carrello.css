@@ -6,6 +6,22 @@
     margin: 20px;
 }
 
+.informazioni{
+	
+	margin-left: 20px; 
+}
+.num-products{
+	text-align:left;
+	font-size:13px;
+	margin-top: 40px;
+	margin-bottom: 0px;  
+}
+.info{
+	font-size:40px;
+	font-family: 'Courier New', monospace ;
+	
+}
+
 .products {
      flex: 0 0 900px;
 }
@@ -24,13 +40,13 @@
     position: absolute;
     top: 400px;
     right: 100px;
-    border: 0px solid #ccc;
+    border: 0px solid #990E3C;
     padding: 50px;
     text-align: center; 
-    border-top: 1px solid #ccc;
-    border-bottom: 1px solid #ccc;
-    border-left: 1px solid #ccc;
-    border-right: 1px solid #ccc;
+    border-top: 1px solid #990E3C;
+    border-bottom: 1px solid #990E3C;
+    border-left: 1px solid #990E3C;
+    border-right: 1px solid #990E3C;
 }
 
 .cart button {

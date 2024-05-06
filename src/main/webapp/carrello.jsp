@@ -8,11 +8,15 @@
 <link rel="stylesheet" href="utilities/css/header.css">
 <link rel="stylesheet" href="utilities/css/footer.css">
 <link rel="stylesheet" href="utilities/css/carrello.css">
+<link rel="stylesheet" href="utilities/css/navbar.css">
 </head>
 <body>
 <!-- Header -->
 <%@ include file="utilities/header.jsp" %>
-
+<div class="informazioni">
+  <h2 class="info">Carrello</h2>
+  <p class="num-products"><b>X</b> Articoli</p>
+  </div> <!--  INFORMAZIONI  -->
   <div class="container">
         <div class="products">
         

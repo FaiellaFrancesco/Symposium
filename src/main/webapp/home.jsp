@@ -18,6 +18,7 @@
 <link rel="stylesheet" href="utilities/css/header.css">
 <link rel="stylesheet" href="utilities/css/footer.css">
 <link rel="stylesheet" href="utilities/css/home.css">
+<link rel="stylesheet" href="utilities/css/navbar.css">
 </head>
 <!-- Header -->
 <%@ include file="utilities/header.jsp" %>
