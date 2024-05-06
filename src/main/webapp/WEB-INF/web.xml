@@ -25,6 +25,6 @@
     </error-page>
 
     <listener>
-        <listener-class>com.example.SessionListener</listener-class>
+        <listener-class>controller.SessionListener</listener-class>
     </listener>
 </web-app>

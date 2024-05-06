@@ -87,7 +87,7 @@ public class ProdottoDAO implements DaoInterface<Prodotto, Integer>{
         try{
             Connection connessione=ds.getConnection();
             PreparedStatement statement=connessione.prepareStatement(query);
-            setMagliettaStatement(statement, p);
+            setProdottoStatement(statement, p);
             statement.executeUpdate();
         }
         catch (Exception e){ throw e;}
@@ -99,7 +99,7 @@ public class ProdottoDAO implements DaoInterface<Prodotto, Integer>{
         try{
             Connection connessione=ds.getConnection();
             PreparedStatement statement=connessione.prepareStatement(query);
-            setMagliettaStatement(statement, p);
+            setProdottoStatement(statement, p);
             statement.setInt(13, p.getId());
             statement.executeUpdate();
         }
@@ -133,7 +133,7 @@ public class ProdottoDAO implements DaoInterface<Prodotto, Integer>{
         p.setDenominazione(rs.getString("denominazione"));
     }
 
-    private void setMagliettaStatement(PreparedStatement statement, Prodotto p) throws SQLException{
+    private void setProdottoStatement(PreparedStatement statement, Prodotto p) throws SQLException{
         statement.setString(1, p.getNome());
         statement.setDouble(2, p.getPrezzo());
         statement.setInt(3, p.getIva());

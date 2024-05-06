@@ -2,6 +2,8 @@ package model.DAO;
 
 import model.beans.Carrello;
 import model.beans.CartLine;
+import model.beans.Prodotto;
+
 import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.naming.NamingException;
@@ -43,7 +45,8 @@ public class CarrelloDAO implements DaoInterface<Carrello, Integer>{
 
             while (rs.next()) {
                 CartLine cl=new CartLine();
-                cl.setProdotto(rs.getInt("prodotto"));
+                //cl.setProdotto(rs.getInt("prodotto"));
+                cl.setProdotto((Prodotto)rs.getObject("prodotto"));
                 cl.setQuant(rs.getInt("quantita"));
                 cl.setDataAggiunta(new GregorianCalendar());
                 cl.getDataAggiunta().setTime(rs.getDate("data_aggiunta"));
@@ -71,7 +74,8 @@ public class CarrelloDAO implements DaoInterface<Carrello, Integer>{
                 Connection connessione=ds.getConnection();
                 PreparedStatement statement=connessione.prepareStatement(query);
                 statement.setInt(2, cart.getUtente());
-                statement.setInt(1, c.getProdotto());
+                //statement.setInt(1, c.getProdotto());
+                statement.setInt(1, c.getProdotto().getId());
                 statement.setInt(3, c.getQuant());
                 statement.setDate(4, new java.sql.Date(c.getDataAggiunta().getTime().getTime()));
                 statement.executeUpdate();

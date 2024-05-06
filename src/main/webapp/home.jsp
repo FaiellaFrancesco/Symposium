@@ -9,6 +9,9 @@
 		response.sendRedirect("./catalogo");	
 		return;
 	}
+
+	Carrello cart = (Carrello) request.getSession().getAttribute("cart");
+	
 %>
 <!DOCTYPE html>
 <html>
@@ -24,7 +27,6 @@
   	width:100%;
     display: block;
     justify-content: center; /* Centra orizzontalmente il contenuto */
-    height: 100vh; /* Altezza del contenitore uguale all'altezza della viewport */
     margin-left: auto;
     border-top: 19px solid rgba(0, 0, 0, 0);
     margin-right: auto;
@@ -74,6 +76,17 @@
     font-size: 40px;
   }
 </style>
+
+<% if(cart!=null){
+	Iterator<?> it = cart.getProdotti().iterator();
+	%> <ul> 
+	<% while(it.hasNext()){
+		CartLine prodotto = (CartLine) it.next();
+		%>  <li> Prodotto:  <%= prodotto.getProdotto().getNome() %> Quantita:  <%= prodotto.getQuant() %> </li> <% } %> </ul> <% }
+	%>
+
+
+
  <% if (products != null && products.size() != 0) { %>
 <div class="table-container" align="center">
   <table class="table">
@@ -95,6 +108,7 @@
         <td><a href="product?id=<%= bean.getId() %>"><img src="<%= bean.getImmagine() %>" alt="<%= bean.getNome() %>"></a></td>
         <td>€<%= bean.getPrezzo() %></td>
         <td><%= bean.getDescrizione() %></td>
+        <td><a href="ControlloProdotto?action=addToC&id=<%= bean.getId() %>"> Aggiungi al carrello </a></td>
       </tr>
       <% } %>
       </tbody>
@@ -104,7 +118,7 @@
       <div class="error-message">
  		 <p>Nessun prodotto disponibile al momento.</p>
 	</div>
-      <% } %>
+      <% }  %>
  <footer><%@ include file="utilities/footer.jsp" %></footer>
 </body>
 </html>
