@@ -23,12 +23,12 @@
             </td>
             <td align="center"> <!-- Barra di ricerca -->
                 <form action="" method="get">
-                    <input type="text" name="q" placeholder="Cerca...">
-                    <button id="search" type="submit">Cerca</button>
+                    <input class="search-bar"type="text" name="q" placeholder="Cerca...">
+                    <button class="search-button"id="search" type="submit">Cerca</button>
                 </form>
             </td>
             <td align="right"> <!-- img di cart e accesso-->
-                <span><h2>ACCEDI  &nbsp; CART &nbsp; </h2></span>
+                <span><h2>ACCEDI  &nbsp; <a class="link" href="carrello.jsp">CART &nbsp; </h2></span>
                  
             </td>
         </tr>

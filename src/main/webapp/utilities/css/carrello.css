@@ -60,11 +60,11 @@
     border: 0px solid #ccc;
     text-align: center; /* Allinea il testo al centro */
     line-height: 150px; /* Altezza linea centrale */
-    font-size: 16px; /* Dimensione del carattere */
+    font-size: 35px; /* Dimensione del carattere */
     margin: 0 auto;
     font-weight: bold;
 }
-	
+
 
 .checkout{
 	padidng: 10px 10px;

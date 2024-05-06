@@ -5,9 +5,10 @@
   justify-items: center; }
 
 .product-container {
+	
   text-align: center; 
-  border: 2px solid grey;
-  padding: 5px;
+  border: 1px solid grey;
+  padding: 20px;
    border-radius: 10px;
    margin: 5px 0px;
    transition: box-shadow 0.3s ease;
