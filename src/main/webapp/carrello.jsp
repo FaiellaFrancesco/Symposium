@@ -90,7 +90,7 @@
         
             </div>
             <p><h1>Totale:</h1> <span class="total-price">$0</span></p>
-            <button class="checkout">Acquista</button>
+            <button type="submit" class="checkout">Acquista</button>
         </div>
     </div>
 

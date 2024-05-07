@@ -19,16 +19,16 @@
 
 <div class="container">
 <div class="form">
-<p class="text-center">Ho già un account</p>
+<p class="text-center">Crea Account</p>
 <form  action="" method="get">
 <input class="form-user" type="text" name="username" placeholder="Username">
                   
  </form>
  <form action=""><input class="form-pass" type="password" name="password" placeholder="Password"></form>
 
-<button class="accedi">ACCEDI</button>
+<button class="accedi">REGISTRATI</button>
 
-<p class="text-right">Non sei registrato? <a href="register.jsp">Registrati</a></p>
+<p class="text-right">Sei già registrato? <a href="login.jsp">Login</a></p>
 </div>
 </div>
 

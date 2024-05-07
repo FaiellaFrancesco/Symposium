@@ -37,14 +37,14 @@
 	.footer-item2 {
     margin: 0 350px; /* Margine tra gli elementi all'interno del footer */
 }
-	  footer input[type="text"] {
+	  .footer-search {
             padding: 10px;
             width: 300px;
           
             border-radius: 25px;
             outline: none;
         }
-         button {
+        .footer-button {
             padding: 10px 15px;
             background-color: #FFF;
             color: #990E3C;
