@@ -11,6 +11,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  * Servlet implementation class ControlloProdotto
@@ -19,26 +20,30 @@ import javax.servlet.http.HttpServletResponse;
 public class ControlloProdotto extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
+	RequestDispatcher dispatcher;
     /**
      * @see HttpServlet#HttpServlet()
      */
     public ControlloProdotto() {
-        super();
+		super();
         // TODO Auto-generated constructor stub
     }
 
 	/**
+	 * @throws ServletException 
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
+			throws IOException, ServletException {
 		
 		ProdottoDAO model = new ProdottoDAO();
+		
+		HttpSession sessione = request.getSession();
 
-		Carrello cart = (Carrello)request.getSession().getAttribute("cart");
+		Carrello cart = (Carrello)sessione.getAttribute("cart");
 		if(cart == null) {
 			cart = new Carrello();
-			request.getSession().setAttribute("cart", cart);
+			sessione.setAttribute("cart", cart);
 		}
 		
 		String action = request.getParameter("action");
@@ -47,18 +52,15 @@ public class ControlloProdotto extends HttpServlet {
 			if (action != null) {
 				if (action.equalsIgnoreCase("addToC")) {
 					int id = Integer.parseInt(request.getParameter("id"));
-					cart.addProdotto(model.doRetrieveByKey(id));
+					cart.addProdotto((Prodotto)model.doRetrieveByKey(id));
 				}
 			}
 		} catch (SQLException e) {
 			System.out.println("Error:" + e.getMessage());
 		}
 			
-		cart.getProdotti().stream().forEach((e)->System.out.print(e.getProdotto().getNome()+" "+e.getQuant()+" "));
-		System.out.print("\n");
 		
-		request.getSession().setAttribute("cart", cart);
-		
+		sessione.setAttribute("cart", cart);
 		RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/home.jsp");
 		dispatcher.forward(request, response);
 	}

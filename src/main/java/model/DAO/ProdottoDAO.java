@@ -30,9 +30,10 @@ public class ProdottoDAO implements DaoInterface<Prodotto, Integer>{
 	@Override
 	public Prodotto doRetrieveByKey(Integer pk) throws SQLException {
 		Prodotto p=new Prodotto();
+		Connection connessione = null;
         try{
             String query="SELECT * FROM "+TABLE_NAME+" WHERE id=?;";
-            Connection connessione=ds.getConnection();
+            connessione=ds.getConnection();
             PreparedStatement statement=connessione.prepareStatement(query);
             statement.setInt(1, pk.intValue());
 
@@ -44,7 +45,10 @@ public class ProdottoDAO implements DaoInterface<Prodotto, Integer>{
         } catch(Exception e){
             throw e;
         }
-
+        finally{
+        	connessione.close();
+        }
+        
         return p;
 	}
 
@@ -84,26 +88,34 @@ public class ProdottoDAO implements DaoInterface<Prodotto, Integer>{
     @Override
     public void doSave(Prodotto p) throws SQLException{
         String query="INSERT INTO prodotto (nome, prezzo, iva, descrizione, immagine, stock, alcol, formato, provenienza, tipologia, annata, denominazione) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);";
+        Connection connessione=null;
         try{
-            Connection connessione=ds.getConnection();
+            connessione=ds.getConnection();
             PreparedStatement statement=connessione.prepareStatement(query);
             setProdottoStatement(statement, p);
             statement.executeUpdate();
         }
         catch (Exception e){ throw e;}
+        finally{
+        	connessione.close();
+        }
     }
 
     @Override
     public void doUpdate(Prodotto p) throws SQLException {
         String query="UPDATE prodotto SET nome=?, prezzo=?, iva=?, descrizione=?, immagine=?, stock=?, alcol=?, formato=?, provenienza=?, tipologia=?, annata=?, denominazione=? WHERE id=?;";
+        Connection connessione=null;
         try{
-            Connection connessione=ds.getConnection();
+            connessione=ds.getConnection();
             PreparedStatement statement=connessione.prepareStatement(query);
             setProdottoStatement(statement, p);
             statement.setInt(13, p.getId());
             statement.executeUpdate();
         }
         catch(Exception e){throw e;}
+        finally{
+        	connessione.close();
+        }
     }
 
     @Override

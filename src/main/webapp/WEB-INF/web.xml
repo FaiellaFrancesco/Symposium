@@ -23,8 +23,9 @@
         <error-code>500</error-code>
         <location>/error.jsp</location>
     </error-page>
-
+    
     <listener>
         <listener-class>controller.SessionListener</listener-class>
     </listener>
+
 </web-app>

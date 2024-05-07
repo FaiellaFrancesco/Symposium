@@ -34,7 +34,7 @@ public class CarrelloDAO implements DaoInterface<Carrello, Integer>{
 	public Carrello doRetrieveByKey(Integer pk) throws SQLException {
 		Carrello cart=new Carrello();
         cart.setUtente(pk.intValue());
-        cart.setProdotti(new ArrayList<CartLine>());
+        //cart.setProdotti(new ArrayList<CartLine>());
         try{
             String query="SELECT * FROM "+TABLE_NAME+" WHERE utente=?;";
             Connection connessione=ds.getConnection();

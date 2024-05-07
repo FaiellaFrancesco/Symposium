@@ -6,11 +6,9 @@
 <%
 	Collection<?> products = (Collection<?>) request.getAttribute("prodotti");
 	if(products == null) {
-		response.sendRedirect("./catalogo");	
+		response.sendRedirect("./catalogo");
 		return;
 	}
-
-	Carrello cart = (Carrello) request.getSession().getAttribute("cart");
 	
 %>
 <!DOCTYPE html>
@@ -77,16 +75,6 @@
   }
 </style>
 
-<% if(cart!=null){
-	Iterator<?> it = cart.getProdotti().iterator();
-	%> <ul> 
-	<% while(it.hasNext()){
-		CartLine prodotto = (CartLine) it.next();
-		%>  <li> Prodotto:  <%= prodotto.getProdotto().getNome() %> Quantita:  <%= prodotto.getQuant() %> </li> <% } %> </ul> <% }
-	%>
-
-
-
  <% if (products != null && products.size() != 0) { %>
 <div class="table-container" align="center">
   <table class="table">
@@ -118,7 +106,7 @@
       <div class="error-message">
  		 <p>Nessun prodotto disponibile al momento.</p>
 	</div>
-      <% }  %>
+	<% }  %>
  <footer><%@ include file="utilities/footer.jsp" %></footer>
 </body>
 </html>
