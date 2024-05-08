@@ -6,9 +6,10 @@
 <%
 	Collection<?> products = (Collection<?>) request.getAttribute("prodotti");
 	if(products == null) {
-		response.sendRedirect("./catalogo");	
+		response.sendRedirect("./catalogo");
 		return;
 	}
+	
 %>
 <!DOCTYPE html>
 <html>
@@ -22,6 +23,7 @@
 </head>
 <!-- Header -->
 <%@ include file="utilities/header.jsp" %>
+<<<<<<< HEAD
 
  <% if (products != null && products.size() != 0) { %>
 <div class="grid-container">
@@ -46,7 +48,7 @@
       <div class="error-message">
  		 <p>Nessun prodotto disponibile al momento.</p>
 	</div>
-      <% } %>
+	<% }  %>
  <footer><%@ include file="utilities/footer.jsp" %></footer>
 </body>
 </html>

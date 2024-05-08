@@ -24,4 +24,8 @@
         <location>/error.jsp</location>
     </error-page>
     
+    <listener>
+        <listener-class>controller.SessionListener</listener-class>
+    </listener>
+
 </web-app>
