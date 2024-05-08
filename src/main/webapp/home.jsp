@@ -23,7 +23,7 @@
 </head>
 <!-- Header -->
 <%@ include file="utilities/header.jsp" %>
-<<<<<<< HEAD
+
 
  <% if (products != null && products.size() != 0) { %>
 <div class="grid-container">
