@@ -1,5 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ page import="java.util.*"%>
+<%@ page import="model.beans.*"%>
+<% Carrello cart = (Carrello) request.getSession().getAttribute("cart"); 
+ 	
+%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -15,84 +20,40 @@
 <%@ include file="utilities/header.jsp" %>
 <div class="informazioni">
   <h2 class="info">Carrello</h2>
-  <p class="num-products"><b>X</b> Articoli</p>
+  <% if(cart != null && cart.getProdotti().size()!=0){ %>
+  <p class="num-products"><b><%=cart.getProdotti().stream().count()%></b> Articoli</p>
   </div> <!--  INFORMAZIONI  -->
   <div class="container">
         <div class="products">
-        
+        	
+        	<%
+        			Iterator<CartLine> it = cart.getProdotti().iterator();
+        			CartLine prodotto;
+        			while(it.hasNext()){
+        				prodotto = it.next();
+        	%>
             <!-- Blocchi con i vari prodotti -->
             <div class="product">
-            	<img src="" alt="" class="image-product">
-                <h3 class="name">Prodotto 1</h3>
-                <p class="price">Prezzo: $10</p>
-               
+            	<div class="img-product"><img src="<%= prodotto.getProdotto().getImmagine()%>" alt=""></div>
+            	<div class="details">
+                <h3 class="name"><%= prodotto.getProdotto().getNome() %></h3>
+                <p class="price"><%= prodotto.getProdotto().getPrezzo() %></p>
+                Quantita: <%= prodotto.getQuant() %>
+               </div>
+               <a href="ControlloProdotto?action=deleteFromC&id=<%= prodotto.getProdotto().getId() %>">Rimuovi</a>
             </div>
-             <div class="product">
-            	<img src="" alt="" class="image-product">
-                <h3 class="name">Prodotto 1</h3>
-                <p class="price">Prezzo: $10</p>
-               
-            </div>
-             <div class="product">
-            	<img src="" alt="" class="image-product">
-                <h3 class="name">Prodotto 1</h3>
-                <p class="price">Prezzo: $10</p>
-               
-            </div>
-             <div class="product">
-            	<img src="" alt="" class="image-product">
-                <h3 class="name">Prodotto 1</h3>
-                <p class="price">Prezzo: $10</p>
-               
-            </div>
-             <div class="product">
-            	<img src="" alt="" class="image-product">
-                <h3 class="name">Prodotto 1</h3>
-                <p class="price">Prezzo: $10</p>
-               
-            </div>
-              <div class="product">
-            	<img src="" alt="" class="image-product">
-                <h3 class="name">Prodotto 1</h3>
-                <p class="price">Prezzo: $10</p>
-               
-            </div>
-              <div class="product">
-            	<img src="" alt="" class="image-product">
-                <h3 class="name">Prodotto 1</h3>
-                <p class="price">Prezzo: $10</p>
-               
-            </div>
-             <div class="product">
-            	<img src="" alt="" class="image-product">
-                <h3 class="name">Prodotto 1</h3>
-                <p class="price">Prezzo: $10</p>
-               
-            </div>
-             <div class="product">
-            	<img src="" alt="" class="image-product">
-                <h3 class="name">Prodotto 1</h3>
-                <p class="price">Prezzo: $10</p>
-               
-            </div>
-             <div class="product">
-            	<img src="" alt="" class="image-product">
-                <h3 class="name">Prodotto 1</h3>
-                <p class="price">Prezzo: $10</p>
-               
-            </div>
-           
-        </div>
+         <% } %>
         <div class="cart">
-            <!-- Riquadro con il totale dei prodotti -->
-      
-            <div id="cart-items">
-        
-            </div>
-            <p><h1>Totale:</h1> <span class="total-price">$0</span></p>
+       
+            <p><h1>Totale:</h1> <span class="total-price"><%= cart.getProdotti().stream().mapToDouble((e)-> e.getProdotto().getPrezzo()*e.getQuant()).sum()%> <b>€</b></span></p>
             <button type="submit" class="checkout">Acquista</button>
         </div>
+        <%  } else {%>
+           non ci sono prodotti
+           <% } %>
+    	</div>
     </div>
+    <div class="divisore"></div>
 
  <footer><%@ include file="utilities/footer.jsp" %></footer>
 </body>

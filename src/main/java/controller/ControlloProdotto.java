@@ -52,7 +52,12 @@ public class ControlloProdotto extends HttpServlet {
 			if (action != null) {
 				if (action.equalsIgnoreCase("addToC")) {
 					int id = Integer.parseInt(request.getParameter("id"));
-					cart.addProdotto((Prodotto)model.doRetrieveByKey(id));
+					int quant = Integer.parseInt(request.getParameter("quantity"));
+					cart.addProdotto((Prodotto)model.doRetrieveByKey(id),quant);
+				}
+				if (action.equalsIgnoreCase("deleteFromC")) {
+					int id = Integer.parseInt(request.getParameter("id"));
+					cart.removeProdotto((Prodotto)model.doRetrieveByKey(id));
 				}
 			}
 		} catch (SQLException e) {
@@ -61,7 +66,7 @@ public class ControlloProdotto extends HttpServlet {
 			
 		
 		sessione.setAttribute("cart", cart);
-		RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/home.jsp");
+		RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/"+request.getHeader("referer").substring(31));
 		dispatcher.forward(request, response);
 	}
 
