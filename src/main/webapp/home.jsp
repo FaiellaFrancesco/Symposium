@@ -9,7 +9,7 @@
 		response.sendRedirect("./catalogo");
 		return;
 	}
-	
+	HttpSession sessione = request.getSession();
 %>
 <!DOCTYPE html>
 <html>
@@ -23,11 +23,13 @@
 </head>
 <!-- Header -->
 <%@ include file="utilities/header.jsp" %>
-<<<<<<< HEAD
+<% if(sessione.getAttribute("nome") != null){%>
+Benvenuto <%= sessione.getAttribute("nome") %>
+<%} %>
 
  <% if (products != null && products.size() != 0) { %>
 <div class="grid-container">
-  <% 
+  <%
     Iterator<?> it = products.iterator();
     while (it.hasNext()) {
       Prodotto bean = (Prodotto) it.next();
@@ -38,13 +40,13 @@
     <h3 class="nome"><%= bean.getNome() %></h3>
     <div class="details">
       <p class="price"><%= bean.getPrezzo() %>€ </p>
-      <a href="carrello" class="carrello-button">Carrello</a>
+      <a href="carrello.jsp" class="carrello-button">Carrello</a>
     </div>
   </a>
 </div>
   <% } %>
 </div>
-      <% } else { %> 
+      <% } else { %>
       <div class="error-message">
  		 <p>Nessun prodotto disponibile al momento.</p>
 	</div>

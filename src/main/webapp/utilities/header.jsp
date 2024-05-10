@@ -28,7 +28,7 @@
                 </form>
             </td>
             <td align="right"> <!-- img di cart e accesso-->
-                <span><h2>ACCEDI  &nbsp; <a class="link" href="carrello.jsp">CART </a>&nbsp; </h2></span>
+                <span><h2><a href="login.jsp" class="link">ACCEDI</a>  &nbsp; <a class="link" href="carrello.jsp">CART </a>&nbsp; </h2></span>
                  
             </td>
         </tr>
