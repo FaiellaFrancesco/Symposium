@@ -87,7 +87,7 @@ public class register extends HttpServlet {
 	        
 	        // Imposta i parametri dell'utente
 	        user.setEmail(email);
-	        user.setPw(null);
+	        user.setPw(password);
 	        user.setNome(nome);
 	        user.setCognome(cognome);
 
