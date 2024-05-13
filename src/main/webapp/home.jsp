@@ -23,9 +23,11 @@
 </head>
 <!-- Header -->
 <%@ include file="utilities/header.jsp" %>
+
 <% if(sessione.getAttribute("nome") != null){%>
 Benvenuto <%= sessione.getAttribute("nome") %>
 <%} %>
+
 
  <% if (products != null && products.size() != 0) { %>
 <div class="grid-container">
