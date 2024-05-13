@@ -20,6 +20,7 @@
 <div class="container">
 <div class="form">
 <p class="text-center">Ho già un account</p>
+
 <form  action="" method="get">
 <div >
 <input class="form-user" type="text" name="username" placeholder="Username">
@@ -29,6 +30,7 @@
 </div>
 <button class="accedi">ACCEDI</button>
 </form>
+
 <p class="text-right">Non sei registrato? <a href="register.jsp">Registrati</a></p>
 </div>
 </div>
