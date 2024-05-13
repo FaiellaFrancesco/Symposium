@@ -21,13 +21,14 @@
 <div class="form">
 <p class="text-center">Ho già un account</p>
 <form  action="" method="get">
+<div >
 <input class="form-user" type="text" name="username" placeholder="Username">
-                  
- </form>
- <form action=""><input class="form-pass" type="password" name="password" placeholder="Password"></form>
-
+     </div>   
+<div >       
+<input class="form-pass" type="password" name="password" placeholder="Password">
+</div>
 <button class="accedi">ACCEDI</button>
-
+</form>
 <p class="text-right">Non sei registrato? <a href="register.jsp">Registrati</a></p>
 </div>
 </div>
