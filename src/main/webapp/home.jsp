@@ -24,10 +24,13 @@
 <!-- Header -->
 <%@ include file="utilities/header.jsp" %>
 
+<<<<<<< HEAD
 <% if(sessione.getAttribute("nome") != null){%>
 Benvenuto <%= sessione.getAttribute("nome") %>
 <%} %>
 
+=======
+>>>>>>> carrellojsp
 
  <% if (products != null && products.size() != 0) { %>
 <div class="grid-container">
@@ -38,11 +41,11 @@ Benvenuto <%= sessione.getAttribute("nome") %>
   %>
   <div class="product-container">
   <a href="product?id=<%= bean.getId() %>">
-    <img src="<%= bean.getImmagine() %>" alt="<%= bean.getNome() %>">
+    <img class="product-image" src="<%= bean.getImmagine() %>" alt="<%= bean.getNome() %>">
     <h3 class="nome"><%= bean.getNome() %></h3>
     <div class="details">
       <p class="price"><%= bean.getPrezzo() %>€ </p>
-      <a href="carrello.jsp" class="carrello-button">Carrello</a>
+      <a href="ControlloProdotto?action=addToC&id=<%= bean.getId() %>&quantity=1" class="carrello-button">Carrello</a>
     </div>
   </a>
 </div>

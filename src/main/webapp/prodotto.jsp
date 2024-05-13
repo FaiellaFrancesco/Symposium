@@ -9,7 +9,7 @@
 		response.sendRedirect("./catalogo");	
 		return;
 	}
-	request.setAttribute("prodotto", null);
+
 %>
 <!DOCTYPE html>
 <html>
@@ -35,9 +35,12 @@
             <p class="desc"><%= prodotto.getDescrizione() %></p>
             <p class="price"><%= prodotto.getPrezzo()%> € </p>
             <div class="buttons">
-            	
-                <input type="number" id="quantity" name="quantity" min="1" max="<%= prodotto.getStock() %>"value="1">
-                <button onclick="" class="add-to-cart">Aggiungi al carrello</button>
+            	<form action="ControlloProdotto" method="GET">
+            	<input type="hidden" name="action" value="addToC">
+            	<input type="hidden" name="id" value="<%= prodotto.getId() %>">
+                <input type="number" id="quantity" name="quantity" min="1" max="<%= prodotto.getStock() %>" value="1">
+                <input type="submit" class="add-to-cart" value="Aggiungi al carrello">
+                </form>
             </div>
             <div class="product-info">
                 <p><b>Denominazione: </b><%= prodotto.getDenominazione() %></p>
