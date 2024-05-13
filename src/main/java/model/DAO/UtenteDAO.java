@@ -42,6 +42,21 @@ public class UtenteDAO implements DaoInterface<Utente, Integer> {
         }
         return utente;
     }
+    
+    public Utente doRetrieveByUsr(String usr) throws SQLException {
+        Utente utente = null;
+        String query = "SELECT * FROM " + TABLE_NAME + " WHERE email=?";
+        try (Connection connection = ds.getConnection(); PreparedStatement preparedStatement = connection.prepareStatement(query)) {
+            preparedStatement.setString(1, usr);
+            try (ResultSet resultSet = preparedStatement.executeQuery()) {
+                if (resultSet.next()) {
+                    utente = new Utente();
+                    setUtente(resultSet, utente);
+                }
+            }
+        }
+        return utente;
+    }
 
     @Override
     public Collection<Utente> doRetrieveAll(String order) throws SQLException {
