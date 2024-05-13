@@ -22,7 +22,13 @@
 <p class="text-center">Crea Account</p>
 <form  action="" method="get">
 <div>
-<input class="form-user" type="text" name="username" placeholder="Username">
+<input class="form-user" type="text" name="Nome" placeholder="Nome">
+</div>  
+<div>
+<input class="form-user" type="text" name="Cognome" placeholder="Cognome">
+</div>  
+<div>
+<input class="form-user" type="text" name="email" placeholder="Email">
 </div>   
 <div>         
 <input class="form-pass" type="password" name="password" placeholder="Password">
