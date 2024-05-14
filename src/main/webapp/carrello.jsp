@@ -45,7 +45,7 @@
          <% } %>
         <div class="cart">
        
-            <p><h1>Totale:</h1> <span class="total-price"><%= cart.getProdotti().stream().mapToDouble((e)-> e.getProdotto().getPrezzo()*e.getQuant()).sum()%> <b>€</b></span></p>
+            <p><h1>Totale:</h1> <span class="total-price"><%=String.format("%.2f", cart.getProdotti().stream().mapToDouble((e) -> e.getProdotto().getPrezzo() * e.getQuant()).sum()) %> <b>€</b></span></p>
             <button type="submit" class="checkout">Acquista</button>
         </div>
         <%  } else {%>

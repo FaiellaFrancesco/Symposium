@@ -4,6 +4,11 @@
 	padding: 0px 0;
 	color: #990E3C;
 	}
+	.logo{
+	 text-decoration: none;
+	  cursor: pointer;
+	}
+	
 	  body {
             margin: 0;
             padding: 0;

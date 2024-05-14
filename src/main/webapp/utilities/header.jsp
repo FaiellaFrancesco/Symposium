@@ -11,6 +11,12 @@
 </head>
 
 <body>
+  <script>
+  //Funzione per rendere tutto l header cliccabile
+  function redirectToPage() {
+    window.location.href = 'home.jsp' ;
+  }
+</script>
 
 <header>
 <div>
@@ -19,7 +25,7 @@
  <table width=100%>
         <tr>
             <td align="left"> <!-- qui ci va il logo-->
-                 <h3 style="font-family: 'Brush Script MT', cursive; font-size: 50px;"> &nbsp; Symposium</h3>
+                <a class="logo"> <h3 onclick="redirectToPage()" style="font-family: 'Brush Script MT', cursive; font-size: 50px;"> &nbsp; Symposium</h3></a>
             </td>
             <td align="center"> <!-- Barra di ricerca -->
                 <form action="" method="get">
