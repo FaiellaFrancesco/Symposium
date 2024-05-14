@@ -9,7 +9,7 @@
 		response.sendRedirect("./catalogo");
 		return;
 	}
-	
+	HttpSession sessione = request.getSession();
 %>
 <!DOCTYPE html>
 <html>
@@ -24,27 +24,30 @@
 <!-- Header -->
 <%@ include file="utilities/header.jsp" %>
 
+<% if(sessione.getAttribute("nome") != null){%>
+Benvenuto <%= sessione.getAttribute("nome") %>
+<%} %>
 
  <% if (products != null && products.size() != 0) { %>
 <div class="grid-container">
-  <% 
+  <%
     Iterator<?> it = products.iterator();
     while (it.hasNext()) {
       Prodotto bean = (Prodotto) it.next();
   %>
   <div class="product-container">
   <a href="product?id=<%= bean.getId() %>">
-    <img src="<%= bean.getImmagine() %>" alt="<%= bean.getNome() %>">
+    <img class="product-image" src="<%= bean.getImmagine() %>" alt="<%= bean.getNome() %>">
     <h3 class="nome"><%= bean.getNome() %></h3>
     <div class="details">
       <p class="price"><%= bean.getPrezzo() %>€ </p>
-      <a href="carrello" class="carrello-button">Carrello</a>
+      <a href="ControlloProdotto?action=addToC&id=<%= bean.getId() %>&quantity=1" class="carrello-button">Carrello</a>
     </div>
   </a>
 </div>
   <% } %>
 </div>
-      <% } else { %> 
+      <% } else { %>
       <div class="error-message">
  		 <p>Nessun prodotto disponibile al momento.</p>
 	</div>

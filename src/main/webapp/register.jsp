@@ -21,13 +21,20 @@
 <div class="form">
 <p class="text-center">Crea Account</p>
 <form  action="" method="get">
-<input class="form-user" type="text" name="username" placeholder="Username">
-                  
- </form>
- <form action=""><input class="form-pass" type="password" name="password" placeholder="Password"></form>
-
+<div>
+<input class="form-user" type="text" name="Nome" placeholder="Nome">
+</div>  
+<div>
+<input class="form-user" type="text" name="Cognome" placeholder="Cognome">
+</div>  
+<div>
+<input class="form-user" type="text" name="email" placeholder="Email">
+</div>   
+<div>         
+<input class="form-pass" type="password" name="password" placeholder="Password">
+</div>
 <button class="accedi">REGISTRATI</button>
-
+</form>
 <p class="text-right">Sei già registrato? <a href="login.jsp">Login</a></p>
 </div>
 </div>

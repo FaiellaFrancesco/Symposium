@@ -24,34 +24,34 @@
 	font-family: 'Open Sans' Helvetica Arial sans-serif;
 }
 
-.form form{
-	margin-top:30px;
-	margin-bottom: 10px;
-	
-	
+.form {
+    margin-top: 30px;
+    margin-bottom: 10px;
+      
+    border-radius: 10px;
+    outline: none;
+    padding: 20px;
+    width: 350px;
+  
+  
 }
- .form-user{
-            padding: 20px;
-            width: 300px;
-            border: 2px solid #990E3C;
-            border-radius: 10px;
-            outline: none;
-           
-        }
- .form-pass{
-         padding: 20px;
-            width: 300px;
-            border: 2px solid #990E3C;
-            border-radius: 10px;
-            outline: none;
-	
-	
+
+.form-group {
+    margin-bottom: 15px;
 }
-.form-user:focus,
-.form-user textarea:focus{
+
+.form-user,
+.form-pass {
 	
-	font-size: 20px;
+    width: 100%;
+      border: 1px solid #990E3C;
+    border-radius: 10px;
+    outline: none;
+    padding: 20px;
+    width: 300px;
+     margin-bottom: 15px;
 }
+
 .accedi{
 	margin-top:10px;
 	  padding: 20px;
