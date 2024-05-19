@@ -13,7 +13,6 @@
 <link rel="stylesheet" href="utilities/css/header.css">
 <link rel="stylesheet" href="utilities/css/footer.css">
 <link rel="stylesheet" href="utilities/css/carrello.css">
-<link rel="stylesheet" href="utilities/css/navbar.css">
 </head>
 <body>
 <!-- Header -->
@@ -23,7 +22,7 @@
   <% if(cart != null && cart.getProdotti().size()!=0){ %>
   <p class="num-products"><b><%=cart.getProdotti().stream().count()%></b> Articoli</p>
   </div> <!--  INFORMAZIONI  -->
-  <div class="container">
+  <div class="container-car">
         <div class="products">
         	
         	<%
@@ -49,7 +48,7 @@
             <button type="submit" class="checkout">Acquista</button>
         </div>
         <%  } else {%>
-           non ci sono prodotti
+          <h4>Il tuo carrello è vuoto! Ritorna al <a class="ref-cat" href="home.jsp">catalogo</a></h4>
            <% } %>
     	</div>
     </div>
