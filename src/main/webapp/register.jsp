@@ -20,12 +20,12 @@
 <div class="container">
 <div class="form">
 <p class="text-center">Crea Account</p>
-<form  action="" method="get">
+<form  action="register" method="post">
 <div>
-<input class="form-user" type="text" name="Nome" placeholder="Nome">
+<input class="form-user" type="text" name="nome" placeholder="Nome">
 </div>  
 <div>
-<input class="form-user" type="text" name="Cognome" placeholder="Cognome">
+<input class="form-user" type="text" name="cognome" placeholder="Cognome">
 </div>  
 <div>
 <input class="form-user" type="text" name="email" placeholder="Email">

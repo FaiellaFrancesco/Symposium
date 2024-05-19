@@ -25,9 +25,9 @@ CREATE TABLE IF NOT EXISTS utente(
     cognome varchar(30) not null,
     email varchar(50) not null unique, -- unico account per mail.
     pw varchar(16) not null,
-    telefono char(10) not null,
-    data_nascita date not null,
-    amministratore boolean not null,
+    telefono char(10),
+    data_nascita date,
+    amministratore boolean,
     via varchar(50),
     cap char(5),
     citta varchar(40),

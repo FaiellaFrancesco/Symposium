@@ -45,7 +45,7 @@ public class UtenteDAO implements DaoInterface<Utente, Integer> {
     
     
     
-    public Utente doRetrieveByUsr(String usr) throws SQLException {
+    public Utente doRetrieveByUsr(String usr) throws SQLException{
         Utente utente = null;
         String query = "SELECT * FROM " + TABLE_NAME + " WHERE email=?";
         try (Connection connection = ds.getConnection(); PreparedStatement preparedStatement = connection.prepareStatement(query)) {
@@ -85,13 +85,15 @@ public class UtenteDAO implements DaoInterface<Utente, Integer> {
             preparedStatement.setString(3, utente.getEmail());
             preparedStatement.setString(4, utente.getPw());
             preparedStatement.setString(5, utente.getTelefono());
-            preparedStatement.setDate(6, new java.sql.Date(utente.getDataNascita().getTime()));
+            if(utente.getDataNascita()!=null) preparedStatement.setDate(6, new java.sql.Date(utente.getDataNascita().getTime()));
+            else preparedStatement.setDate(6, null);
             preparedStatement.setBoolean(7, utente.isAmministratore());
             preparedStatement.setString(8, utente.getVia());
             preparedStatement.setString(9, utente.getCap());
             preparedStatement.setString(10, utente.getCitta());
             preparedStatement.setString(11, utente.getNomeCarta());
-            preparedStatement.setDate(12, new java.sql.Date(utente.getScadenza().getTime()));
+            if(utente.getScadenza()!=null) preparedStatement.setDate(12, new java.sql.Date(utente.getScadenza().getTime()));
+            else preparedStatement.setDate(12, null);
             preparedStatement.setString(13, utente.getNumeroCarta());
             preparedStatement.setString(14, utente.getCvv());
             preparedStatement.executeUpdate();
@@ -150,8 +152,4 @@ public class UtenteDAO implements DaoInterface<Utente, Integer> {
         utente.setNumeroCarta(resultSet.getString("numero_carta"));
         utente.setCvv(resultSet.getString("cvv"));
     }
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> 7e2867c94c830f72c7c3657ac03f19e246a79da0

@@ -21,11 +21,27 @@ public class Utente {
     private String numeroCarta;
     private String cvv;
     
+    public Utente() {
+        this.id = 0;
+        this.nome = null;
+        this.cognome = null;
+        this.email = null;
+        this.pw = null;
+        this.telefono = null;
+        this.dataNascita = null;
+        this.amministratore = false;
+        this.via = null;
+        this.cap = null;
+        this.citta = null;
+        this.nomeCarta = null;
+        this.scadenza = null;
+        this.numeroCarta = null;
+        this.cvv = null;
+    }
+    
     // Methods
     // Constructor, getters, and setters
     
-    // Constructor
-    public Utente() {}
 
     // Getters and Setters
     public void setId(int id) { this.id = id; }

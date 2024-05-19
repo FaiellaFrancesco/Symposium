@@ -3,6 +3,8 @@ import java.io.IOException;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
+import java.util.regex.Pattern;
+import java.util.regex.Matcher;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -19,7 +21,8 @@ import model.beans.Utente;
 @WebServlet("/register")
 public class register extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
+	private static final String EMAIL_REGEX = "^[A-Za-z0-9+_.-]+@[A-Za-z0-9.-]+$";
+    private static final Pattern EMAIL_PATTERN = Pattern.compile(EMAIL_REGEX);
     /**
      * @see HttpServlet#HttpServlet()
      */
@@ -43,7 +46,8 @@ public class register extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 	    UtenteDAO utente_dao = new UtenteDAO();
 	    Utente user = new Utente();
-	    ArrayList<String> errori = new ArrayList<>();
+	    Utente utente_2=null;
+	    ArrayList<String> errori = new ArrayList<>(0);
 	    HttpSession sessione = request.getSession();
 	    
 	    // Recupera i parametri dalla richiesta
@@ -51,69 +55,56 @@ public class register extends HttpServlet {
 	    String password = request.getParameter("password");
 	    String nome = request.getParameter("nome");
 	    String cognome = request.getParameter("cognome");
-
-	    // Controllo se l'email è corretta e univoca
-	    if (email == null || !email.matches("[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}")) {
-	        errori.add("Email non valida");
-	    } else {
-	        try {
-	            user = utente_dao.doRetrieveByUsr(email);
-	            if (user != null) {
-	                errori.add("Esiste già un utente con questa email");
-	            }
-	        } catch (SQLException e) {
-	            // Gestione dell'eccezione
-	        }
+	    
+	    
+	    if(email==null || !isValidEmail(email)) errori.add("email");
+	    else {
+	    	try{
+	    		utente_2=utente_dao.doRetrieveByUsr(email);
+	    	}
+	    	catch(SQLException sqle) {
+	    		sqle.printStackTrace();
+	    	}
+	    	if(utente_2!=null) errori.add("Email inserita");
 	    }
-
-	    // Controllo lunghezza password
-	    if (password == null || password.length() < 8) {
-	        errori.add("La password deve essere lunga almeno 8 caratteri");
+	    
+	    if(password==null || password.length()<=8) errori.add("password");
+	    if(nome==null) errori.add("nome");
+	    if(cognome==null) errori.add("cognome");
+	    
+	    if(errori.size()==0) {
+	    	user.setEmail(email);
+	    	user.setPw(password);
+	    	user.setNome(nome);
+	    	user.setCognome(cognome);
+	    	
+	    	try {
+	    		utente_dao.doSave(user);
+	    		request.setAttribute("from", 1);
+	    		request.setAttribute("email", email);
+	    		request.setAttribute("password", password);
+	    		RequestDispatcher dispatcher = request.getRequestDispatcher("/login");
+		        dispatcher.forward(request, response);
+	    	}
+	    	catch(Exception e) {
+	    		e.printStackTrace();
+	    	}
 	    }
-
-	    // Controllo se nome e cognome sono valorizzati
-	    if (nome == null || nome.isEmpty()) {
-	        errori.add("Il nome non può essere vuoto");
-	    }
-
-	    if (cognome == null || cognome.isEmpty()) {
-	        errori.add("Il cognome non può essere vuoto");
-	    }
-
-	    // Se non ci sono errori, procedi con la registrazione
-	    if (errori.isEmpty()) {
-	        // Cifra la password
-	        //String passwordCifrata = BCrypt.hashpw(password, BCrypt.gensalt());
-	        
-	        // Imposta i parametri dell'utente
-	        user.setEmail(email);
-	        user.setPw(password);
-	        user.setNome(nome);
-	        user.setCognome(cognome);
-
-	        try {
-	            // Salva l'utente nel database
-	            utente_dao.doSave(user);
-	            
-	            //effettuo il login
-	            request.setAttribute("from", 1); // indica che vengo dalla registrazione
-	            request.setAttribute("username", email);
-	            request.setAttribute("password", password);
-	            RequestDispatcher dispatcher = request.getRequestDispatcher("/login.jsp");
-	            dispatcher.forward(request, response);
-	        } catch (SQLException e) {
-	            // Gestione dell'eccezione
-	        }
-	    } else {
-	        // Ci sono errori, gestiscili
+	    else {
 	    	request.setAttribute("errori", errori);
-
-	        // Reindirizza la richiesta alla pagina register.jsp
-	        RequestDispatcher dispatcher = request.getRequestDispatcher("/register.jsp");
+	    	RequestDispatcher dispatcher = request.getRequestDispatcher("/register.jsp");
 	        dispatcher.forward(request, response);
 	    }
+	    
 	}
-
+	
+	private boolean isValidEmail(String email) {
+        if (email == null) {
+            return false;
+        }
+        Matcher matcher = EMAIL_PATTERN.matcher(email);
+        return matcher.matches();
+    }
 		
 		
 }
