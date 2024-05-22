@@ -9,10 +9,26 @@
 <link rel="stylesheet" href="utilities/css/header.css">
 <link rel="stylesheet" href="utilities/css/footer.css">
 
+<link rel="stylesheet" href="utilities/css/error.css">
+
 </head>
 <body>
-<h3>Pagina non esistente! Ritorna alla <a href="home.jsp">Home.</a></h3>
+<!-- Header -->
+<%@ include file="utilities/header.jsp" %>
+
+<div class="container-err">
+<div class="text-container"><h3 class="text">Pagina non esistente!</h3> <h3 class="text2">Ritorna alla <a href="home.jsp">Home</a>.</h3></div>
+<div class="img-container">
+<image class="imageError" src="immagini/Errore.png"></image>
+
+</div>
+
+
+</div>
+
+
 
 </body>
- <footer><%@ include file="utilities/footer.jsp" %></footer>
+ <footer>
+ <%@ include file="utilities/footer.jsp" %></footer>
 </html>

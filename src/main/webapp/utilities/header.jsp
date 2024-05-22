@@ -7,19 +7,25 @@
  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Header</title>
 <link rel="stylesheet" href="css/header.css">
-<link rel="stylesheet" href="css/navbar.css">
+<!--  <link rel="stylesheet" href="css/navbar.css"> -->
 </head>
 
 <body>
+  <script>
+  
+  function redirectToPage() {
+    window.location.href = 'home.jsp' ;
+  }
+</script>
 
 <header>
-<div>
-<!--  Facciamo una tabella perchè non abbiamo fatto css e quindi non possiamo farlo diversamente -->
+<div class="container-h">
+
 
  <table width=100%>
         <tr>
             <td align="left"> <!-- qui ci va il logo-->
-                 <h3 style="font-family: 'Brush Script MT', cursive; font-size: 50px;"> &nbsp; Symposium</h3>
+                <a class="logo"> <h3 onclick="redirectToPage()" style="font-family: 'Brush Script MT', cursive; font-size: 50px;"> &nbsp; Symposium</h3></a>
             </td>
             <td align="center"> <!-- Barra di ricerca -->
                 <form action="" method="get">
@@ -33,9 +39,17 @@
             </td>
         </tr>
     </table>
+    
+    <nav class="navbar">
+    <a href="aa.html">Vini</a>
+    <a href="aa.html">Spumante</a>
+    <a href="aa.html">Champagne</a>
+    <a href="aa.html">Altri Prodotti</a>
+    <a href="aa.html">About Us</a>
+</nav>
 </div>
 </header>
 
-<%@ include file="navbar.jsp"%>
+
 </body>
 </html>

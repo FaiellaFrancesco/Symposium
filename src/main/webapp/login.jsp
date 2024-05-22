@@ -8,7 +8,6 @@
 <link rel="stylesheet" href="utilities/css/header.css">
 <link rel="stylesheet" href="utilities/css/footer.css">
 <link rel="stylesheet" href="utilities/css/carrello.css">
-<link rel="stylesheet" href="utilities/css/navbar.css">
 <link rel="stylesheet" href="utilities/css/login.css">
 
 </head>
