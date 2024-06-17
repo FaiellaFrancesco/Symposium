@@ -1,5 +1,5 @@
 @charset "UTF-8";
-.container {
+.container-car{
     display: flex;
     justify-content: space-between;
     align-items: center; /* Centra verticalmente il contenuto */
@@ -110,3 +110,14 @@ img{
 .divisore{
 	height: 300px;
 }
+.ref-cat{
+	color: #990E3C;
+	 text-decoration: none;
+	
+}
+.ref-cat:hover {
+        font-weight: bold;
+            color: #6F1C38;
+            
+        }
+

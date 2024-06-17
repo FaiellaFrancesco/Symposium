@@ -46,6 +46,7 @@ public class ControlloProdotto extends HttpServlet {
 			sessione.setAttribute("cart", cart);
 		}
 		
+		String returnPage = "/home.jsp";
 		String action = request.getParameter("action");
 
 		try {
@@ -57,6 +58,7 @@ public class ControlloProdotto extends HttpServlet {
 				}
 				if (action.equalsIgnoreCase("deleteFromC")) {
 					int id = Integer.parseInt(request.getParameter("id"));
+					returnPage = "/carrello.jsp";
 					cart.removeProdotto((Prodotto)model.doRetrieveByKey(id));
 				}
 			}
@@ -66,7 +68,7 @@ public class ControlloProdotto extends HttpServlet {
 			
 		
 		sessione.setAttribute("cart", cart);
-		RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/"+request.getHeader("referer").substring(31));
+		RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(returnPage);
 		dispatcher.forward(request, response);
 	}
 

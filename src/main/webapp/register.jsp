@@ -4,42 +4,45 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Login</title>
+<title>Registrazione</title>
 <link rel="stylesheet" href="utilities/css/header.css">
 <link rel="stylesheet" href="utilities/css/footer.css">
 <link rel="stylesheet" href="utilities/css/carrello.css">
-<link rel="stylesheet" href="utilities/css/navbar.css">
-<link rel="stylesheet" href="utilities/css/login.css">
 
+<link rel="stylesheet" href="utilities/css/login.css">
 </head>
 <body>
 <!-- Header -->
 <%@ include file="utilities/header.jsp" %>
 
-
 <div class="container">
-<div class="form">
-<p class="text-center">Crea Account</p>
-<form  action="register" method="post">
-<div>
-<input class="form-user" type="text" name="nome" placeholder="Nome">
-</div>  
-<div>
-<input class="form-user" type="text" name="cognome" placeholder="Cognome">
-</div>  
-<div>
-<input class="form-user" type="text" name="email" placeholder="Email">
-</div>   
-<div>         
-<input class="form-pass" type="password" name="password" placeholder="Password">
-</div>
-<button class="accedi">REGISTRATI</button>
-</form>
-<p class="text-right">Sei già registrato? <a href="login.jsp">Login</a></p>
-</div>
+    <div class="form">
+        <p class="text-center">Crea Account</p>
+        <form id="registerForm" action="" method="get" onsubmit="validateRegisterForm(event)">
+            <div>
+                <input class="form-user" type="text" name="Nome" placeholder="Nome" id="nome">
+                <div id="nomeError" class="error-message">Nome is required.</div>
+            </div>  
+            <div>
+                <input class="form-user" type="text" name="Cognome" placeholder="Cognome" id="cognome">
+                <div id="cognomeError" class="error-message">Cognome is required.</div>
+            </div>  
+            <div>
+                <input class="form-user" type="text" name="email" placeholder="Email" id="email">
+                <div id="emailError" class="error-message">Please enter a valid email address.</div>
+            </div>   
+            <div>         
+                <input class="form-pass" type="password" name="password" placeholder="Password" id="password">
+                <div id="passwordError" class="error-message">Password is required.</div>
+            </div>
+            <button class="accedi" type="submit">REGISTRATI</button>
+        </form>
+        <p class="text-right">Sei già registrato? <a href="login.jsp">Login</a></p>
+    </div>
 </div>
 
+<footer><%@ include file="utilities/footer.jsp" %></footer>
 
- <footer><%@ include file="utilities/footer.jsp" %></footer>
+<script src="utilities/js/validation.js"></script>
 </body>
 </html>
