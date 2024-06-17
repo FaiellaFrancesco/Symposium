@@ -8,7 +8,7 @@
 <title>Header</title>
 <link rel="stylesheet" href="css/header.css">
 <script src="utilities/js/ajax.js"></script>
-<link rel="stylesheet" href="utilities/css/home.css">
+
 <!--  <link rel="stylesheet" href="css/navbar.css"> -->
 </head>
 

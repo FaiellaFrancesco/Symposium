@@ -32,7 +32,7 @@
 <% if(sessione.getAttribute("nome") != null){%>
 Benvenuto <%= sessione.getAttribute("nome") %>
 <%} %>
-
+<body>
  <% if (products != null && products.size() != 0) { %>
 <div class="grid-container">
   <%
