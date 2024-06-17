@@ -19,7 +19,12 @@
 <link rel="stylesheet" href="utilities/css/header.css">
 <link rel="stylesheet" href="utilities/css/footer.css">
 <link rel="stylesheet" href="utilities/css/home.css">
-
+  <script>
+  //Funzione per rendere tutto il div cliccabile
+  function redirectToProduct(productId) {
+    window.location.href = 'product?id=' + productId;
+  }
+</script>
 </head>
 <!-- Header -->
 <%@ include file="utilities/header.jsp" %>
@@ -35,12 +40,6 @@ Benvenuto <%= sessione.getAttribute("nome") %>
     while (it.hasNext()) {
       Prodotto bean = (Prodotto) it.next();
   %>
-  <script>
-  //Funzione per rendere tutto il div cliccabile
-  function redirectToProduct(productId) {
-    window.location.href = 'product?id=' + productId;
-  }
-</script>
   <div class="product-container" onclick="redirectToProduct('<%= bean.getId() %>')">
     <img class="product-image" src="<%= bean.getImmagine() %>" alt="<%= bean.getNome() %>">
     <h3 class="nome"><%= bean.getNome() %></h3>

@@ -7,6 +7,8 @@
  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Header</title>
 <link rel="stylesheet" href="css/header.css">
+<script src="utilities/js/ajax.js"></script>
+<link rel="stylesheet" href="utilities/css/home.css">
 <!--  <link rel="stylesheet" href="css/navbar.css"> -->
 </head>
 
@@ -41,10 +43,11 @@
     </table>
     
     <nav class="navbar">
-    <a href="aa.html">Vini</a>
-    <a href="aa.html">Spumante</a>
-    <a href="aa.html">Champagne</a>
-    <a href="aa.html">Altri Prodotti</a>
+    <a onclick="filtro('rosso')">Rosso</a>
+    <a onclick="filtro('spumante')">Spumante</a>
+    <a onclick="filtro('champagne')">Champagne</a>
+    <a onclick="filtro('bianco')"> Bianco</a>
+    <a onclick=>Altri Prodotti(da fare)</a>
     <a href="aa.html">About Us</a>
 </nav>
 </div>
