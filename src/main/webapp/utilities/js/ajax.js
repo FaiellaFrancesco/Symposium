@@ -93,3 +93,56 @@ function checkDBEmail(event){
     };
     xhr.send();
 }
+
+
+document.addEventListener('DOMContentLoaded', function() {
+    const searchInput = document.getElementById('searchbar');
+    const suggestionsPanel = document.getElementById('suggestions');
+
+    searchInput.addEventListener('input', function() {
+        const searchText = this.value.trim();
+
+        if (searchText === '') {
+            suggestionsPanel.style.display = 'none';
+            return;
+        }
+
+        // Effettua la chiamata Ajax alla servlet Java per ottenere i suggerimenti
+        const xhr = new XMLHttpRequest();
+        xhr.open('GET', 'SearchSuggestionsServlet?pattern=' + encodeURIComponent(searchText), true);
+        xhr.setRequestHeader('Content-Type', 'application/json');
+        xhr.onreadystatechange = function() {
+            if (xhr.readyState === 4 && xhr.status === 200) {
+                var suggestions = JSON.parse(xhr.responseText);
+                console.log(suggestions);
+                displaySuggestions(suggestions);
+            }
+        };
+        xhr.send();
+    });
+
+    function displaySuggestions(suggestions) {
+        if (suggestions.length === 0) {
+			suggestionsPanel.innerHTML="";
+            suggestionsPanel.style.display = 'none';
+            return;
+        }
+		
+        const html = suggestions.map(suggestion => `
+            <div class="suggestion-item" onclick="redirectToProduct(`+suggestion.id+`)">
+                <img src="`+suggestion.immagine+`" alt="`+suggestion.nome+`">
+                <span>`+suggestion.nome+`     `+ suggestion.descrizione +`</span>
+            </div>
+        `).join('');
+
+        suggestionsPanel.innerHTML = html;
+        suggestionsPanel.style.display = 'block';
+    }
+
+    // Chiudi il pannello dei suggerimenti quando si clicca altrove sulla pagina
+    document.addEventListener('click', function(event) {
+        if (!event.target.matches('#searchInput')) {
+            suggestionsPanel.style.display = 'none';
+        }
+    });
+});

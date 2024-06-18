@@ -8,17 +8,12 @@
 <title>Header</title>
 <link rel="stylesheet" href="css/header.css">
 <script src="utilities/js/ajax.js"></script>
+<script src="utilities/js/redirect.js"></script>
 
 <!--  <link rel="stylesheet" href="css/navbar.css"> -->
 </head>
 
 <body>
-  <script>
-  
-  function redirectToPage() {
-    window.location.href = 'home.jsp' ;
-  }
-</script>
 
 <header>
 <div class="container-h">
@@ -31,9 +26,10 @@
             </td>
             <td align="center"> <!-- Barra di ricerca -->
                 <form action="" method="get">
-                    <input class="search-bar"type="text" name="q" placeholder="Cerca...">
+                    <input class="search-bar" type="text" name="searchbar" id="searchbar" placeholder="Cerca...">
                     <button class="search-button"id="search" type="submit">Cerca</button>
                 </form>
+                <div id="suggestions"></div>
             </td>
             <td align="right"> <!-- img di cart e accesso-->
                 <span><h2><a href="login.jsp" class="link">ACCEDI</a>  &nbsp; <a class="link" href="carrello.jsp">CART </a>&nbsp; </h2></span>

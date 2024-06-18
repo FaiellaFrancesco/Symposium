@@ -113,6 +113,34 @@ public class ProdottoDAO implements DaoInterface<Prodotto, Integer>{
         return prodotti;
     }
     
+    public Collection<Prodotto> doRetrieveByPattern(String pattern) throws SQLException{
+        ArrayList<Prodotto> prodotti=new ArrayList<Prodotto>();
+        Connection connessione = null;
+        try{
+            String query="SELECT * FROM "+TABLE_NAME+" WHERE nome LIKE ?";
+            connessione=ds.getConnection();         
+            
+            PreparedStatement statement=connessione.prepareStatement(query);
+            statement.setString(1, pattern+"%");
+
+            ResultSet rs=statement.executeQuery();
+            
+             while (rs.next()) {
+                Prodotto p=new Prodotto();
+                setProdotto(rs, p);
+                prodotti.add(p);
+            }
+        }
+        catch(Exception e){
+            throw e;
+        }
+        finally{
+        	connessione.close();
+        }
+
+        return prodotti;
+    }
+    
     @Override
     public void doSave(Prodotto p) throws SQLException{
         String query="INSERT INTO prodotto (nome, prezzo, iva, descrizione, immagine, stock, alcol, formato, provenienza, tipologia, annata, denominazione) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);";
