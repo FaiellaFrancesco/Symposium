@@ -65,3 +65,31 @@ function filtro(tipo){
             };
             xhr.send();
 }
+
+function checkDBEmail(event){
+	event.preventDefault();
+	var emailInput = document.getElementById('email');
+	var email = emailInput.value.trim();
+    const xhr = new XMLHttpRequest();
+    xhr.open('GET', 'checkEmail?email='+encodeURIComponent(email), true);
+    xhr.onreadystatechange = function() {
+        if (xhr.readyState === 4) {
+			var errore = document.getElementById('emailError');
+            if (xhr.status === 200) {
+                var response = xhr.responseText;
+                console.log(response);
+                if (response !== "") {
+                    errore.textContent = response;
+                    errore.style.display="block";
+                } else {
+					errore.style.display="none";
+                    event.target.submit(); // Invia il form se l'email non è già registrata
+                    alert("Ti sei registrato con successo, accedi per iniziare ad ordinare");
+                }
+            } else {
+                errore.textContent = "Errore durante il controllo dell'email.";
+            }
+        }
+    };
+    xhr.send();
+}

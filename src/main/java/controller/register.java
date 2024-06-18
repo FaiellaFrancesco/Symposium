@@ -48,15 +48,13 @@ public class register extends HttpServlet {
 	    Utente user = new Utente();
 	    Utente utente_2=null;
 	    ArrayList<String> errori = new ArrayList<>(0);
-	    HttpSession sessione = request.getSession();
 	    
 	    // Recupera i parametri dalla richiesta
 	    String email = request.getParameter("email");
 	    String password = request.getParameter("password");
 	    String nome = request.getParameter("nome");
 	    String cognome = request.getParameter("cognome");
-	    
-	    
+	    	    
 	    if(email==null || !isValidEmail(email)) errori.add("email");
 	    else {
 	    	try{
@@ -77,7 +75,6 @@ public class register extends HttpServlet {
 	    	user.setPw(password);
 	    	user.setNome(nome);
 	    	user.setCognome(cognome);
-	    	
 	    	try {
 	    		utente_dao.doSave(user);
 	    		request.setAttribute("from", 1);

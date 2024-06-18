@@ -1,3 +1,5 @@
+
+
 function validateLoginForm(event) {
     // Preveniamo l'invio del form
     event.preventDefault();
@@ -85,11 +87,7 @@ function validateRegisterForm(event) {
         document.getElementById('passwordError').style.display = 'block';
         formIsValid = false;
     }
-
-    // Se il form è valido, inviamolo
-    if (formIsValid) {
-        event.target.submit();
-    }
+    return formIsValid;
 }
 
 function isValidEmail(email) {
@@ -98,3 +96,9 @@ function isValidEmail(email) {
     return emailPattern.test(email);
 }
 
+
+function validateAndCheck(event){
+	if(validateRegisterForm(event)){
+		checkDBEmail(event);
+	}
+}

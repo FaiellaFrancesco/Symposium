@@ -18,13 +18,13 @@
 <div class="container">
     <div class="form">
         <p class="text-center">Crea Account</p>
-        <form id="registerForm" action="" method="get" onsubmit="validateRegisterForm(event)">
+        <form id="registerForm" action="register" method="POST" onsubmit="return validateAndCheck(event)">
             <div>
-                <input class="form-user" type="text" name="Nome" placeholder="Nome" id="nome">
+                <input class="form-user" type="text" name="nome" placeholder="Nome" id="nome">
                 <div id="nomeError" class="error-message">Nome is required.</div>
             </div>  
             <div>
-                <input class="form-user" type="text" name="Cognome" placeholder="Cognome" id="cognome">
+                <input class="form-user" type="text" name="cognome" placeholder="Cognome" id="cognome">
                 <div id="cognomeError" class="error-message">Cognome is required.</div>
             </div>  
             <div>
@@ -32,7 +32,7 @@
                 <div id="emailError" class="error-message">Please enter a valid email address.</div>
             </div>   
             <div>         
-                <input class="form-pass" type="password" name="password" placeholder="Password" id="password">
+                <input class="form-pass" type="password" name="password" placeholder="Password" id="password" maxlength="16">
                 <div id="passwordError" class="error-message">Password is required.</div>
             </div>
             <button class="accedi" type="submit">REGISTRATI</button>
