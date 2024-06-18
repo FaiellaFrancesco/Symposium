@@ -29,7 +29,7 @@
                     <input class="search-bar" type="text" name="searchbar" id="searchbar" placeholder="Cerca...">
                     <button class="search-button"id="search" type="submit">Cerca</button>
                 </form>
-                <div id="suggestions"></div>
+                <div id="suggestions" class="suggestions" align="center"></div>
             </td>
             <td align="right"> <!-- img di cart e accesso-->
                 <span><h2><a href="login.jsp" class="link">ACCEDI</a>  &nbsp; <a class="link" href="carrello.jsp">CART </a>&nbsp; </h2></span>

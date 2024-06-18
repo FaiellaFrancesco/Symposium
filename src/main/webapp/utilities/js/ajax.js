@@ -9,18 +9,15 @@ function filtro(tipo){
             xhr.open("GET", "catalogoAjax?type=" + encodeURIComponent(tipoVino), true);
             xhr.onreadystatechange = function() {
                 if (xhr.readyState === 4 && xhr.status === 200) {
-					var grid = document.getElementsByClassName('grid-container');
-		            grid[0].innerHTML="";
-		            grid[0].classList.add("grid-container");
-					var elementi = document.getElementsByClassName("product-container");
-		            while (elementi.length > 0) {
-		                elementi[0].parentNode.removeChild(elementi[0]);
-		            }
+					var container = document.getElementById('container');
+		            container.innerHTML="";
+		            var grid = document.createElement('div');
+					grid.classList.add('grid-container');
                     var prodotti = JSON.parse(xhr.responseText);
                     prodotti.forEach(function(prodotto){
-					var container = document.createElement("div");
-					container.classList.add("product-container");
-					container.addEventListener('click',function() {
+					var productcontainer = document.createElement("div");
+					productcontainer.classList.add("product-container");
+					productcontainer.addEventListener('click',function() {
 				        redirectToProduct(prodotto.id);
 				    });
 					
@@ -54,12 +51,13 @@ function filtro(tipo){
             
             		details.appendChild(price);
             		details.appendChild(carrelloButton);
-            		container.appendChild(img);
-            		container.appendChild(title);
-            		container.appendChild(details);
+            		productcontainer.appendChild(img);
+            		productcontainer.appendChild(title);
+            		productcontainer.appendChild(details);
 
             // Aggiunta del prodotto creato al contenitore principale
-            		grid[0].appendChild(container);
+            		grid.appendChild(productcontainer);
+            		container.appendChild(grid);
         			});
                 }
             };

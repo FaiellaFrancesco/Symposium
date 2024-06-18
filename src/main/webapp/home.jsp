@@ -23,11 +23,9 @@
 <!-- Header -->
 <%@ include file="utilities/header.jsp" %>
 
-<% if(sessione.getAttribute("nome") != null){%>
-Benvenuto <%= sessione.getAttribute("nome") %>
-<%} %>
 <body>
  <% if (products != null && products.size() != 0) { %>
+<div id=container>
 <div class="grid-container">
   <%
     Iterator<?> it = products.iterator();
@@ -41,8 +39,9 @@ Benvenuto <%= sessione.getAttribute("nome") %>
       <p class="price"><%= bean.getPrezzo() %>€ </p>
       <a href="ControlloProdotto?action=addToC&id=<%= bean.getId() %>&quantity=1" class="carrello-button">Carrello</a>
     </div>
-</div>
+  </div>
   <% } %>
+  </div>
 </div>
       <% } else { %>
       <div class="error-message">
