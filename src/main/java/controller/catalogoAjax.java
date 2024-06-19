@@ -37,17 +37,30 @@ public class catalogoAjax extends HttpServlet {
 	 */
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String tipo = request.getParameter("type");
+        String pattern = request.getParameter("pattern");
         ProdottoDAO model = new ProdottoDAO();
         ArrayList<Prodotto> prodotti = null;
-		try {
-			prodotti = (ArrayList<Prodotto>) model.doRetrieveAll("");
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-        ArrayList<Prodotto> prodottiFiltrati = (ArrayList<Prodotto>) prodotti.stream()
-                                                  .filter(p -> p.getTipologia().equalsIgnoreCase(tipo))
-                                                  .collect(Collectors.toList());
+        ArrayList<Prodotto> prodottiFiltrati = null;
+        if(tipo != null) {
+			try {
+				prodotti = (ArrayList<Prodotto>) model.doRetrieveAll("");
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+	        prodottiFiltrati = (ArrayList<Prodotto>) prodotti.stream()
+	                                                  .filter(p -> p.getTipologia().equalsIgnoreCase(tipo))
+	                                                  .collect(Collectors.toList());
+        }
+        else if(pattern!=null) {
+        	try {
+				prodotti = (ArrayList<Prodotto>) model.doRetrieveByPattern(pattern);
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+        	prodottiFiltrati = prodotti;
+        }
         response.setContentType("application/json");
         response.setCharacterEncoding("UTF-8");
         PrintWriter out = response.getWriter();

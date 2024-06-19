@@ -25,8 +25,8 @@
                 <a class="logo"> <h3 onclick="redirectToPage()" style="font-family: 'Brush Script MT', cursive; font-size: 50px;"> &nbsp; Symposium</h3></a>
             </td>
             <td align="center"> <!-- Barra di ricerca -->
-                <form action="" method="get">
-                    <input class="search-bar" type="text" name="searchbar" id="searchbar" placeholder="Cerca...">
+                <form action="" method="post" onsubmit="ricerca(this)">
+                    <input class="search-bar" type="text" name="pattern" id="searchbar" placeholder="Cerca...">
                     <button class="search-button"id="search" type="submit">Cerca</button>
                 </form>
                 <div id="suggestions" class="suggestions" align="center"></div>
