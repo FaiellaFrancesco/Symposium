@@ -1,4 +1,7 @@
 package controller;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
+
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -73,8 +76,9 @@ public class register extends HttpServlet {
 	    if(cognome==null) errori.add("cognome");
 	    
 	    if(errori.size()==0) {
+	    	String hashedPassword = hashPassword(password);
 	    	user.setEmail(email);
-	    	user.setPw(password);
+	    	user.setPw(hashedPassword);
 	    	user.setNome(nome);
 	    	user.setCognome(cognome);
 	    	
@@ -105,6 +109,20 @@ public class register extends HttpServlet {
         Matcher matcher = EMAIL_PATTERN.matcher(email);
         return matcher.matches();
     }
+	
+	private String hashPassword(String password) {
+	    try {
+	        MessageDigest md = MessageDigest.getInstance("SHA-512");
+	        byte[] hashedPassword = md.digest(password.getBytes());
+	        StringBuilder sb = new StringBuilder();
+	        for (byte b : hashedPassword) {
+	            sb.append(String.format("%02x", b));
+	        }
+	        return sb.toString();
+	    } catch (NoSuchAlgorithmException e) {
+	        throw new RuntimeException(e);
+	    }
+	}
 		
 		
 }

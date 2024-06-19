@@ -1,9 +1,17 @@
-package java.model.DAO;
+package model.DAO;
 
-import java.model.beans.OrderLine;
-import java.model.beans.Ordine;
+import model.beans.OrderLine;
+import model.beans.Ordine;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import javax.naming.Context;
+import javax.naming.InitialContext;
+import javax.naming.NamingException;
+import javax.sql.DataSource;
+import java.sql.Connection;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.*;
 
 public class OrdineDAO implements DaoInterface<Ordine, Integer>{
 
@@ -22,9 +30,10 @@ public class OrdineDAO implements DaoInterface<Ordine, Integer>{
     public Ordine doRetrieveByKey(Integer pk) throws SQLException{
         Ordine ordine=new Ordine();
         ordine.setId(pk.intValue());
+        Connection connessione=null;
         try{
             String query="SELECT * FROM "+TABLE_NAME+" WHERE id=?;";
-            Connection connessione=ds.getConnection();
+            connessione=ds.getConnection();
             PreparedStatement statement=connessione.prepareStatement(query);
             statement.setInt(1, pk.intValue());
 

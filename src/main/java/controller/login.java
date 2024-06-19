@@ -1,5 +1,8 @@
 package controller;
 
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
+
 import java.io.IOException;
 import java.sql.SQLException;
 
@@ -72,8 +75,22 @@ public class login extends HttpServlet {
 
 	private boolean checkCredentials(String mail, String pwd, Utente check) throws SQLException {
 		
-		return (mail.equals(check.getEmail()) && pwd.equals(check.getPw()));
+		return (mail.equals(check.getEmail()) && hashPassword(pwd).equals(check.getPw()));
 
+	}
+	
+	private String hashPassword(String password) {
+	    try {
+	        MessageDigest md = MessageDigest.getInstance("SHA-512");
+	        byte[] hashedPassword = md.digest(password.getBytes());
+	        StringBuilder sb = new StringBuilder();
+	        for (byte b : hashedPassword) {
+	            sb.append(String.format("%02x", b));
+	        }
+	        return sb.toString();
+	    } catch (NoSuchAlgorithmException e) {
+	        throw new RuntimeException(e);
+	    }
 	}
 
 }

@@ -18,7 +18,7 @@
 <div class="container">
     <div class="form">
         <p class="text-center">Crea Account</p>
-        <form id="registerForm" action="" method="get" onsubmit="validateRegisterForm(event)">
+        <form id="registerForm" action="register" method="post" onsubmit="validateRegisterForm(event)">
             <div>
                 <input class="form-user" type="text" name="Nome" placeholder="Nome" id="nome">
                 <div id="nomeError" class="error-message">Nome is required.</div>
