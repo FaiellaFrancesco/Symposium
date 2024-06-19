@@ -56,8 +56,8 @@ public class register extends HttpServlet {
 	    // Recupera i parametri dalla richiesta
 	    String email = request.getParameter("email");
 	    String password = request.getParameter("password");
-	    String nome = request.getParameter("nome");
-	    String cognome = request.getParameter("cognome");
+	    String nome = request.getParameter("Nome");
+	    String cognome = request.getParameter("Cognome");
 	    
 	    
 	    if(email==null || !isValidEmail(email)) errori.add("email");
@@ -81,17 +81,16 @@ public class register extends HttpServlet {
 	    	user.setPw(hashedPassword);
 	    	user.setNome(nome);
 	    	user.setCognome(cognome);
-	    	
 	    	try {
-	    		utente_dao.doSave(user);
-	    		request.setAttribute("from", 1);
-	    		request.setAttribute("email", email);
-	    		request.setAttribute("password", password);
-	    		RequestDispatcher dispatcher = request.getRequestDispatcher("/login");
-		        dispatcher.forward(request, response);
-	    	}
-	    	catch(Exception e) {
-	    		e.printStackTrace();
+	    	    utente_dao.doSave(user);
+	    	    request.setAttribute("email", email);
+	    	    request.setAttribute("password", password);
+	    	    
+	    	    // Reindirizza automaticamente alla servlet "login" dopo la registrazione
+	    	    RequestDispatcher dispatcher = request.getRequestDispatcher("/login");
+	    	    dispatcher.forward(request, response);
+	    	} catch(Exception e) {
+	    	    e.printStackTrace();
 	    	}
 	    }
 	    else {

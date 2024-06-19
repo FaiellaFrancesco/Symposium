@@ -38,15 +38,24 @@ public class login extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
+		doPost(request, response);
 
+	}
+
+	/**
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 */
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		UtenteDAO model = new UtenteDAO();
 		HttpSession sessione = request.getSession();
 		dispatcher = getServletContext().getRequestDispatcher("/login.jsp");
 		try {
-			Utente utente = model.doRetrieveByUsr(request.getParameter("username"));
+			String email=null;
+			if(request.getParameter("email")!= null) email=request.getParameter("email");
+			else email=request.getParameter("username");
+			Utente utente = model.doRetrieveByUsr(email);
 			if(utente != null) {
-				if(checkCredentials(request.getParameter("username"),request.getParameter("password"),utente)) {
+				if(checkCredentials(email,request.getParameter("password"),utente)) {
 					if(utente.isAmministratore()) {
 						sessione.setAttribute("admin", true);
 					}
@@ -62,15 +71,6 @@ public class login extends HttpServlet {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-
-	}
-
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		doGet(request, response);
 	}
 
 	private boolean checkCredentials(String mail, String pwd, Utente check) throws SQLException {
