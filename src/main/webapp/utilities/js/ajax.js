@@ -112,7 +112,6 @@ document.addEventListener('DOMContentLoaded', function() {
         xhr.onreadystatechange = function() {
             if (xhr.readyState === 4 && xhr.status === 200) {
                 var suggestions = JSON.parse(xhr.responseText);
-                console.log(suggestions);
                 displaySuggestions(suggestions);
             }
         };

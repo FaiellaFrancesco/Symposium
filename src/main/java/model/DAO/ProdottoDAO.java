@@ -121,7 +121,7 @@ public class ProdottoDAO implements DaoInterface<Prodotto, Integer>{
             connessione=ds.getConnection();         
             
             PreparedStatement statement=connessione.prepareStatement(query);
-            statement.setString(1, pattern+"%");
+            statement.setString(1, "%"+pattern+"%");
 
             ResultSet rs=statement.executeQuery();
             
