@@ -32,6 +32,8 @@ function validateLoginForm(event) {
 
     // Se il form è valido, inviamolo
     if (formIsValid) {
+		var hashedPassword = hashPassword(password);
+        document.getElementById('password').value = hashedPassword;
         event.target.submit();
     }
 }
@@ -88,6 +90,8 @@ function validateRegisterForm(event) {
 
     // Se il form è valido, inviamolo
     if (formIsValid) {
+		var hashedPassword = hashPassword(password);
+        document.getElementById('password').value = hashedPassword;
         event.target.submit();
     }
 }
@@ -96,5 +100,9 @@ function isValidEmail(email) {
     // Regex per validare una email
     var emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     return emailPattern.test(email);
+}
+
+function hashPassword(password) {
+    return CryptoJS.SHA512(password).toString(CryptoJS.enc.Hex);
 }
 

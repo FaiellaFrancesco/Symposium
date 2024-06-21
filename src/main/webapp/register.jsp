@@ -44,5 +44,6 @@
 <footer><%@ include file="utilities/footer.jsp" %></footer>
 
 <script src="utilities/js/validation.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js"></script>
 </body>
 </html>
