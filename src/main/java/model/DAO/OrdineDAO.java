@@ -1,9 +1,17 @@
-package java.model.DAO;
+package model.DAO;
 
-import java.model.beans.OrderLine;
-import java.model.beans.Ordine;
+import model.beans.OrderLine;
+import model.beans.Ordine;
+import javax.naming.Context;
+import javax.naming.InitialContext;
+import javax.naming.NamingException;
+import javax.sql.DataSource;
+import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.*;
 
 public class OrdineDAO implements DaoInterface<Ordine, Integer>{
 
@@ -22,9 +30,10 @@ public class OrdineDAO implements DaoInterface<Ordine, Integer>{
     public Ordine doRetrieveByKey(Integer pk) throws SQLException{
         Ordine ordine=new Ordine();
         ordine.setId(pk.intValue());
+        Connection connessione=null;
         try{
             String query="SELECT * FROM "+TABLE_NAME+" WHERE id=?;";
-            Connection connessione=ds.getConnection();
+            connessione=ds.getConnection();
             PreparedStatement statement=connessione.prepareStatement(query);
             statement.setInt(1, pk.intValue());
 
@@ -49,7 +58,8 @@ public class OrdineDAO implements DaoInterface<Ordine, Integer>{
                 ResultSet rs1=statement1.executeQuery();
                 while(rs1.next()){
                     OrderLine ol=new OrderLine();
-                    ol.setIdProdotto(rs1.getInt("prodotto"));
+                    ProdottoDAO pdao=new ProdottoDAO();
+                    ol.setProdotto(pdao.doRetrieveByKey(rs1.getInt("prodotto")));
                     ol.setIva(rs1.getInt("iva"));
                     ol.setQuant(rs1.getInt("quantita"));
                     ol.setPrezzo(rs1.getDouble("prezzo"));
@@ -95,7 +105,8 @@ public class OrdineDAO implements DaoInterface<Ordine, Integer>{
                 ResultSet rs1 = statement1.executeQuery();
                 while (rs1.next()) {
                     OrderLine ol = new OrderLine();
-                    ol.setIdProdotto(rs1.getInt("prodotto"));
+                    ProdottoDAO pdao=new ProdottoDAO();
+                    ol.setProdotto(pdao.doRetrieveByKey(rs1.getInt("prodotto")));
                     ol.setIva(rs1.getInt("iva"));
                     ol.setQuant(rs1.getInt("quantita"));
                     ol.setPrezzo(rs1.getDouble("prezzo"));
@@ -145,7 +156,7 @@ public class OrdineDAO implements DaoInterface<Ordine, Integer>{
 
             for (OrderLine ol : ordine.getProdotti()) {
                 elementStatement.setInt(1, ordine.getId());
-                elementStatement.setInt(2, ol.getIdProdotto());
+                elementStatement.setInt(2, ol.getProdotto().getId());
                 elementStatement.setDouble(3, ol.getPrezzo());
                 elementStatement.setInt(4, ol.getIva());
                 elementStatement.setInt(5, ol.getQuant());

@@ -99,6 +99,8 @@ public class Ordine {
     }
 
     public void addToOrdine(CartLine p){
-        prodotti.add(new OrderLine().setOrderLine(p));
+    	OrderLine ol=new OrderLine();
+    	ol.setOrderLine(p);
+        prodotti.add(ol);
     }
 }

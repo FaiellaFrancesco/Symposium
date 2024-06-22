@@ -2,15 +2,15 @@ package model.beans;
 
 public class OrderLine{
 
-    private int id_prodotto;
+    private Prodotto prodotto;
     private double prezzo; //all'acquisto
     private int iva; //all'acquisto
     private int quant;
 
     public OrderLine(){}
 
-    public int getIdProdotto(){
-        return this.id_prodotto;
+    public Prodotto getProdotto(){
+        return this.prodotto;
     }
 
     public double getPrezzo(){
@@ -25,8 +25,8 @@ public class OrderLine{
         return this.quant;
     }
 
-    public void setIdProdotto(int id){
-        this.id_prodotto=id;
+    public void setProdotto(Prodotto p){
+        this.prodotto=p;
     }
 
     public void setPrezzo(double prezzo){
@@ -43,7 +43,7 @@ public class OrderLine{
 
     //Converte le righe del carrello in righe dell'ordine.
     public void setOrderLine(CartLine p){
-        this.id_prodotto=p.getProdotto().getId();
+        this.prodotto=p.getProdotto();
         this.prezzo=p.getProdotto().getPrezzo();
         this.iva=p.getProdotto().getIva();
         this.quant=p.getQuant();
