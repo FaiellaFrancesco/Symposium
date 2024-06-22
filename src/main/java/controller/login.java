@@ -50,7 +50,7 @@ public class login extends HttpServlet {
 					else {
 						sessione.setAttribute("admin", false);
 					}
-					sessione.setAttribute("nome", utente.getNome());
+					sessione.setAttribute("id", utente.getId());
 					dispatcher = getServletContext().getRequestDispatcher("/home.jsp");
 				}
 			}

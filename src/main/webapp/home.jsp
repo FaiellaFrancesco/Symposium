@@ -19,28 +19,19 @@
 <link rel="stylesheet" href="utilities/css/header.css">
 <link rel="stylesheet" href="utilities/css/footer.css">
 <link rel="stylesheet" href="utilities/css/home.css">
-
 </head>
 <!-- Header -->
 <%@ include file="utilities/header.jsp" %>
 
-<% if(sessione.getAttribute("nome") != null){%>
-Benvenuto <%= sessione.getAttribute("nome") %>
-<%} %>
-
+<body>
  <% if (products != null && products.size() != 0) { %>
+<div id=container>
 <div class="grid-container">
   <%
     Iterator<?> it = products.iterator();
     while (it.hasNext()) {
       Prodotto bean = (Prodotto) it.next();
   %>
-  <script>
-  //Funzione per rendere tutto il div cliccabile
-  function redirectToProduct(productId) {
-    window.location.href = 'product?id=' + productId;
-  }
-</script>
   <div class="product-container" onclick="redirectToProduct('<%= bean.getId() %>')">
     <img class="product-image" src="<%= bean.getImmagine() %>" alt="<%= bean.getNome() %>">
     <h3 class="nome"><%= bean.getNome() %></h3>
@@ -48,8 +39,9 @@ Benvenuto <%= sessione.getAttribute("nome") %>
       <p class="price"><%= bean.getPrezzo() %>€ </p>
       <a href="ControlloProdotto?action=addToC&id=<%= bean.getId() %>&quantity=1" class="carrello-button">Carrello</a>
     </div>
-</div>
+  </div>
   <% } %>
+  </div>
 </div>
       <% } else { %>
       <div class="error-message">
