@@ -34,6 +34,8 @@ function validateLoginForm(event) {
 
     // Se il form è valido, inviamolo
     if (formIsValid) {
+		var hashedPassword = hashPassword(password);
+        document.getElementById('password').value = hashedPassword;
         event.target.submit();
     }
 }
@@ -87,7 +89,13 @@ function validateRegisterForm(event) {
         document.getElementById('passwordError').style.display = 'block';
         formIsValid = false;
     }
-    return formIsValid;
+
+    // Se il form è valido, inviamolo
+    if (formIsValid) {
+		var hashedPassword = hashPassword(password);
+        document.getElementById('password').value = hashedPassword;
+        event.target.submit();
+    }
 }
 
 function isValidEmail(email) {
@@ -96,9 +104,7 @@ function isValidEmail(email) {
     return emailPattern.test(email);
 }
 
-
-function validateAndCheck(event){
-	if(validateRegisterForm(event)){
-		checkDBEmail(event);
-	}
+function hashPassword(password) {
+    return CryptoJS.SHA512(password).toString(CryptoJS.enc.Hex);
 }
+

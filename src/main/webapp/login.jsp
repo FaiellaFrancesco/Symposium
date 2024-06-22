@@ -26,7 +26,7 @@
         <form id="loginForm" action="login" method="post" onsubmit="validateLoginForm(event)">
             <div>
                 <input class="form-user" type="text" name="username" placeholder="Username" id="username">
-                <div id="usernameError" class="error-message">Username is required.</div>
+                <div id="usernameError" class="error-message">Email is required.</div>
             </div>
             <div>
                 <input class="form-pass" type="password" name="password" placeholder="Password" id="password">
@@ -41,5 +41,6 @@
 <footer><%@ include file="utilities/footer.jsp" %></footer>
 
 <script src="utilities/js/validation.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js"></script>
 </body>
 </html>

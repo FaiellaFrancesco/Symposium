@@ -18,7 +18,7 @@
 <div class="container">
     <div class="form">
         <p class="text-center">Crea Account</p>
-        <form id="registerForm" action="register" method="POST" onsubmit="return validateAndCheck(event)">
+        <form id="registerForm" action="register" method="post" onsubmit="validateRegisterForm(event)">
             <div>
                 <input class="form-user" type="text" name="nome" placeholder="Nome" id="nome">
                 <div id="nomeError" class="error-message">Nome is required.</div>
@@ -44,5 +44,6 @@
 <footer><%@ include file="utilities/footer.jsp" %></footer>
 
 <script src="utilities/js/validation.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js"></script>
 </body>
 </html>
