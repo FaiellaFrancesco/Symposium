@@ -93,7 +93,6 @@ public class register extends HttpServlet {
 	    	}
 	    }
 	    else {
-	    	System.out.println(errori);
 	    	request.setAttribute("errori", errori);
 	    	RequestDispatcher dispatcher = request.getRequestDispatcher("/register.jsp");
 	        dispatcher.forward(request, response);
