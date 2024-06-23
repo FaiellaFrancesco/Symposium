@@ -108,3 +108,8 @@ function hashPassword(password) {
     return CryptoJS.SHA512(password).toString(CryptoJS.enc.Hex);
 }
 
+function validateAndCheck(event){
+	if(validateRegisterForm(event)){
+		checkDBEmail(event);
+	}
+}

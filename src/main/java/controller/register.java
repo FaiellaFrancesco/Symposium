@@ -55,8 +55,8 @@ public class register extends HttpServlet {
 	    // Recupera i parametri dalla richiesta
 	    String email = request.getParameter("email");
 	    String password = request.getParameter("password");
-	    String nome = request.getParameter("Nome");
-	    String cognome = request.getParameter("Cognome");
+	    String nome = request.getParameter("nome");
+	    String cognome = request.getParameter("cognome");
 	    
 	    
 	    if(email==null || !isValidEmail(email)) errori.add("email");
@@ -86,13 +86,14 @@ public class register extends HttpServlet {
 	    	    request.setAttribute("password", password);
 	    	    
 	    	    // Reindirizza automaticamente alla servlet "login" dopo la registrazione
-	    	    RequestDispatcher dispatcher = request.getRequestDispatcher("/login");
+	    	    RequestDispatcher dispatcher = request.getRequestDispatcher("/login.jsp");
 	    	    dispatcher.forward(request, response);
 	    	} catch(Exception e) {
 	    	    e.printStackTrace();
 	    	}
 	    }
 	    else {
+	    	System.out.println(errori);
 	    	request.setAttribute("errori", errori);
 	    	RequestDispatcher dispatcher = request.getRequestDispatcher("/register.jsp");
 	        dispatcher.forward(request, response);
