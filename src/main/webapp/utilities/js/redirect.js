@@ -3,7 +3,8 @@
  */
 
  function redirectToProduct(productId) {
-    window.location.href = 'product?id=' + productId;
+	var basePath = window.location.origin;
+    window.location.href = basePath + '/Symposium/product?id=' + productId;
   }
   
   function redirectToPage() {

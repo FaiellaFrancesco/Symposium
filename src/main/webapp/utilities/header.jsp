@@ -32,7 +32,7 @@
                 <div id="suggestions" class="suggestions" align="center"></div>
             </td>
             <td align="right"> <!-- img di cart e accesso-->
-                <span><h2><a href="login.jsp" class="link">ACCEDI</a>  &nbsp; <a class="link" href="carrello.jsp">CART </a>&nbsp; </h2></span>
+                <span><h2><% if(request.getSession().getAttribute("id") !=null) {%> <a href="logout" class="link">LOGOUT</a> <%} else { %> <a href="login.jsp" class="link">ACCEDI</a><%} %> &nbsp; <a class="link" href="carrello.jsp">CART </a>&nbsp;</span> <p> <% if(request.getSession().getAttribute("admin") !=null && (boolean)request.getSession().getAttribute("admin") ==true) {%> <a class="link" href="admin/adminFunctions.jsp"> ADMIN </a> &nbsp;<%} %></h2>
                  
             </td>
         </tr>

@@ -32,7 +32,7 @@
     while (it.hasNext()) {
       Prodotto bean = (Prodotto) it.next();
   %>
-  <div class="product-container" onclick="redirectToProduct('<%= bean.getId() %>')">
+  <div class="product-container" onclick="redirectToProduct(<%= bean.getId() %>)">
     <img class="product-image" src="<%= bean.getImmagine() %>" alt="<%= bean.getNome() %>">
     <h3 class="nome"><%= bean.getNome() %></h3>
     <div class="details">

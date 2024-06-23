@@ -52,7 +52,7 @@ public class OrdineDAO implements DaoInterface<Ordine, Integer>{
 
 
                 String query1="SELECT * FROM element WHERE ordine=?";
-                PreparedStatement statement1=connessione.prepareStatement(query);
+                PreparedStatement statement1=connessione.prepareStatement(query1);
                 statement1.setInt(1, pk.intValue());
 
                 ResultSet rs1=statement1.executeQuery();
@@ -73,6 +73,56 @@ public class OrdineDAO implements DaoInterface<Ordine, Integer>{
         }
 
         return ordine;
+    }
+    
+    public ArrayList<Ordine> doRetrieveByUsr(Integer pk) throws SQLException{
+        ArrayList<Ordine> ordini = new ArrayList<Ordine>();
+        Connection connessione=null;
+        try{
+            String query="SELECT * FROM "+TABLE_NAME+" WHERE utente=?;";
+            connessione=ds.getConnection();
+            PreparedStatement statement=connessione.prepareStatement(query);
+            statement.setInt(1, pk.intValue());
+
+            ResultSet rs=statement.executeQuery();
+
+            
+            while(rs.next()){
+            	Ordine ordine = new Ordine();
+                ordine.setId(rs.getInt("id"));
+                ordine.setData(new GregorianCalendar());
+                ordine.getData().setTime(rs.getDate("data_ordine"));
+                ordine.setStato(rs.getInt("stato"));
+                ordine.setCitta(rs.getString("citta"));
+                ordine.setVia(rs.getString("via"));
+                ordine.setCAP(rs.getString("cap"));
+                ordine.setUtente(rs.getInt("utente"));
+                ArrayList<OrderLine> prodotti = new ArrayList<OrderLine>();
+                
+                String query1="SELECT * FROM element WHERE ordine=?";
+                PreparedStatement statement1=connessione.prepareStatement(query1);
+                statement1.setInt(1, ordine.getId());
+                
+                ResultSet rs1=statement1.executeQuery();
+                while(rs1.next()){
+                    OrderLine ol=new OrderLine();
+                    ProdottoDAO pdao=new ProdottoDAO();
+                    ol.setProdotto(pdao.doRetrieveByKey(rs1.getInt("prodotto")));
+                    ol.setIva(rs1.getInt("iva"));
+                    ol.setQuant(rs1.getInt("quantita"));
+                    ol.setPrezzo(rs1.getDouble("prezzo"));
+                    prodotti.add(ol);
+                }
+                ordine.setProdotti(prodotti);
+                ordini.add(ordine); 
+            }
+        } catch(Exception e){
+            throw e;
+        }
+        finally{
+        	connessione.close();
+        }
+        return ordini;
     }
     
 
