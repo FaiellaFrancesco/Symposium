@@ -45,7 +45,7 @@ public class ordiniAdmin extends HttpServlet {
 		}
 		request.setAttribute("ordini", ordini);
 		request.setAttribute("utente", userId);
-		RequestDispatcher dispatcher = request.getRequestDispatcher("/admin/ordiniUtente.jsp");
+		RequestDispatcher dispatcher = request.getRequestDispatcher("/ordiniUtente.jsp");
         dispatcher.forward(request, response);
 	}
 
