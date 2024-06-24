@@ -3,8 +3,8 @@
 	background-color: #FFFF;
 	padding: 0px 0;
 	color: #990E3C;
-position: sticky;
-top: 0;
+	position: sticky;
+	top: 0;
     z-index: 1000;
 	}
 	.logo{
@@ -105,4 +105,9 @@ top: 0;
 
 .suggestion-item:hover {
     background-color: #f0f0f0;
-}  
+}
+h2 {
+    color: #990E3C;
+    text-align: center;
+    font-family: 'Courier New', monospace;
+}

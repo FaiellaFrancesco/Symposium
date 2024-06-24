@@ -1,8 +1,6 @@
 package controller.admin;
 
 import java.io.IOException;
-import java.sql.SQLException;
-import java.util.ArrayList;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -11,20 +9,17 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import model.DAO.OrdineDAO;
-import model.beans.Ordine;
-
 /**
- * Servlet implementation class ordiniAdmin
+ * Servlet implementation class redirectAdmin
  */
-@WebServlet("/ordiniAdmin")
-public class ordiniAdmin extends HttpServlet {
+@WebServlet("/redirectAdmin")
+public class redirectAdmin extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public ordiniAdmin() {
+    public redirectAdmin() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -34,19 +29,8 @@ public class ordiniAdmin extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		String userId = request.getParameter("id");
-		OrdineDAO order = new OrdineDAO();
-		ArrayList<Ordine> ordini = new ArrayList<Ordine>();
-		try {
-			ordini = order.doRetrieveByUsr(Integer.parseInt(userId));
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		request.setAttribute("ordini", ordini);
-		request.setAttribute("utente", userId);
-		RequestDispatcher dispatcher = request.getRequestDispatcher("/ordiniUtente.jsp");
-        dispatcher.forward(request, response);
+		RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/admin/"+request.getParameter("page")+".jsp");
+		dispatcher.forward(request, response);
 	}
 
 	/**
@@ -54,7 +38,7 @@ public class ordiniAdmin extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		doGet(request,response);
+		doGet(request, response);
 	}
 
 }

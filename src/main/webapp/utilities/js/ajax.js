@@ -6,7 +6,8 @@
 function filtro(tipo){
 	var tipoVino = tipo;
             var xhr = new XMLHttpRequest();
-            xhr.open("GET", "catalogoAjax?type=" + encodeURIComponent(tipoVino), true);
+            var basePath = window.location.origin + "/Symposium/";
+            xhr.open("GET", basePath + "catalogoAjax?type=" + encodeURIComponent(tipoVino), true);
             xhr.onreadystatechange = function() {
                 if (xhr.readyState === 4 && xhr.status === 200) {
 					var container = document.getElementById('container');
@@ -76,7 +77,6 @@ function ricerca(event){
 		            var grid = document.createElement('div');
 					grid.classList.add('grid-container');
                     var prodotti = JSON.parse(xhr.responseText);
-                    console.log(prodotti);
                     prodotti.forEach(function(prodotto){
 					var productcontainer = document.createElement("div");
 					productcontainer.classList.add("product-container");

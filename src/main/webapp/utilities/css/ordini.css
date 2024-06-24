@@ -1,0 +1,51 @@
+@charset "UTF-8";
+.order-table, .product-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+    font-family: 'Courier New', monospace;
+}
+
+.order-table th, .order-table td, .product-table th, .product-table td {
+    border: 1px solid #ddd;
+    padding: 8px;
+}
+
+.order-table th, .product-table th {
+    background-color: #990E3C;
+    color: white;
+    text-align: left;
+}
+
+.order-table tr:nth-child(even), .product-table tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+.order-table tr:hover, .product-table tr:hover {
+    background-color: #ddd;
+}
+
+.order-table td.prodotto {
+    cursor: pointer;
+}
+
+.order-table td.prodotto:hover {
+    background-color: #ffeb3b;
+}
+
+h2 {
+    color: #990E3C;
+    text-align: center;
+    font-family: 'Courier New', monospace;
+}
+
+/* Stile per il messaggio "Non ci sono ordini" */
+.no-orders {
+    text-align: center;
+    font-size: 18px;
+    color: #990E3C;
+    font-family: 'Courier New', monospace;
+    padding: 20px;
+    background-color: #f2f2f2;
+    border: 1px solid #ddd;
+}

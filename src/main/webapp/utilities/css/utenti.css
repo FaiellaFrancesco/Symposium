@@ -1,0 +1,90 @@
+@charset "UTF-8";
+
+.sticky {
+    position: sticky;
+    top: 27%;
+}
+
+/* Stili specifici per la pagina degli utenti */
+.container {
+    max-width: 80%;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #f9f9f9;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    font-family: 'Courier New', monospace;
+}
+
+.container h2 {
+    color: #990E3C;
+    text-align: center;
+    font-family: 'Courier New', monospace;
+}
+
+.container table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+.container table th,
+.container table td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+}
+
+.container table th {
+    background-color: #990E3C;
+    color: white;
+}
+
+.container table tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+.container table tr:hover {
+    background-color: #ddd;
+}
+
+.container .utente-id {
+    cursor: pointer;
+}
+
+.container form {
+    text-align: center;
+    margin-top: 20px;
+    background-color: #ffffff; /* Colore di sfondo per il form sticky */
+    padding: 10px; /* Spazio intorno al form */
+    border-radius: 8px; /* Bordo arrotondato */
+}
+
+.container label {
+    font-size: 16px;
+    margin-right: 10px;
+    color: #333;
+}
+
+.container input[type="text"] {
+    padding: 10px;
+    width: 200px;
+    border: 2px solid #990E3C;
+    border-radius: 5px;
+    font-size: 16px;
+    outline: none;
+}
+
+.container input[type="submit"] {
+    padding: 10px 20px;
+    background-color: #990E3C;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.container input[type="submit"]:hover {
+    background-color: #6F1C38;
+}
