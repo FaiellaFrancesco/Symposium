@@ -9,6 +9,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.*;
 
 
@@ -50,6 +51,28 @@ public class ProdottoDAO implements DaoInterface<Prodotto, Integer>{
         }
         
         return p;
+	}
+	
+	public int doRetrieveLastId() throws SQLException {
+		Connection connessione = null;
+		int nextId = 0;
+        try{
+        	connessione = ds.getConnection();
+        	String sql = "SELECT * FROM "+ TABLE_NAME +" ORDER BY id DESC LIMIT 1;";
+            Statement stmt = connessione.createStatement();
+            ResultSet rs = stmt.executeQuery(sql);
+
+            if (rs.next()) {
+                nextId = rs.getInt("id");
+            }
+        } catch(Exception e){
+            throw e;
+        }
+        finally{
+        	connessione.close();
+        }
+        
+        return nextId;
 	}
 
     @Override
@@ -166,6 +189,7 @@ public class ProdottoDAO implements DaoInterface<Prodotto, Integer>{
             PreparedStatement statement=connessione.prepareStatement(query);
             setProdottoStatement(statement, p);
             statement.setInt(13, p.getId());
+            setProdottoStatement(statement,p);
             statement.executeUpdate();
         }
         catch(Exception e){throw e;}

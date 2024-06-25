@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+  <%@ page import="java.util.*" %>
+  <%@ page import="model.beans.Categoria" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -39,10 +41,15 @@
     </table>
     
     <nav class="navbar">
-    <a onclick="filtro('rosso')">Rosso</a>
-    <a onclick="filtro('spumante')">Spumante</a>
-    <a onclick="filtro('champagne')">Champagne</a>
-    <a onclick="filtro('bianco')"> Bianco</a>
+    <%Collection<Categoria> categorie = (Collection<Categoria>)request.getSession().getAttribute("categorie"); 
+    	if(categorie == null){
+    		response.sendRedirect("./categorie");
+    		return;
+    	}else{
+    for(Categoria categoria : categorie){
+    %>
+    <a onclick="filtro('<%= categoria.getNome() %>')"><%= categoria.getNome() %></a>
+    <%} }%>
     <a onclick=>Altri Prodotti(da fare)</a>
     <a href="aa.html">About Us</a>
 </nav>

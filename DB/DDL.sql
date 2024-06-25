@@ -12,7 +12,7 @@ CREATE TABLE IF NOT EXISTS prodotto(
     alcol numeric(4,2) not null,
     formato numeric(5, 2) not null,
     provenienza varchar(50) not null,
-    tipologia VARCHAR(30) NOT NULL CHECK(tipologia IN('rosso', 'spumante', 'champagne', 'altro', 'bianco', 'rosé')),
+    tipologia VARCHAR(30) NOT NULL,
     annata int not null check(annata>1900),
     denominazione varchar(30) not null
 );
