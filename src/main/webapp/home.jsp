@@ -36,7 +36,9 @@
     <h3 class="nome"><%= bean.getNome() %></h3>
     <div class="details">
       <p class="price"><%= bean.getPrezzo() %>€ </p>
+      <%if(sessione.getAttribute("id")!=null) {%>
       <a href="ControlloProdotto?action=addToC&id=<%= bean.getId() %>&quantity=1" class="carrello-button">Carrello</a>
+    	<%} %>
     </div>
   </div>
   <% } %>
