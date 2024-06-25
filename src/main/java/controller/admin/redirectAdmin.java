@@ -8,6 +8,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  * Servlet implementation class redirectAdmin
@@ -29,7 +30,12 @@ public class redirectAdmin extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/admin/"+request.getParameter("page")+".jsp");
+		String dispatch = "../errore.jsp";
+		HttpSession sessione = request.getSession();
+		if((boolean)sessione.getAttribute("admin")==true) {
+			dispatch = "/admin/"+request.getParameter("page")+".jsp";
+		}
+		RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(dispatch);
 		dispatcher.forward(request, response);
 	}
 
