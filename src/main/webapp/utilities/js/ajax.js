@@ -68,63 +68,66 @@ function filtro(tipo){
 function ricerca(event){
 			event.preventDefault();
             var xhr = new XMLHttpRequest();
-            var pattern = document.getElementById("searchbar");
-            xhr.open("GET", "catalogoAjax?pattern=" + encodeURIComponent(pattern), true);
-            xhr.onreadystatechange = function() {
-                if (xhr.readyState === 4 && xhr.status === 200) {
-					var container = document.getElementById('container');
-		            container.innerHTML="";
-		            var grid = document.createElement('div');
-					grid.classList.add('grid-container');
-                    var prodotti = JSON.parse(xhr.responseText);
-                    prodotti.forEach(function(prodotto){
-					var productcontainer = document.createElement("div");
-					productcontainer.classList.add("product-container");
-					productcontainer.addEventListener('click',function() {
-				        redirectToProduct(prodotto.id);
-				    });
+            var patternInput = document.getElementById("searchbar");
+            pattern = patternInput.value.trim();
+            if(pattern !== ""){
+	            xhr.open("GET", "catalogoAjax?pattern=" + pattern, true);
+	            xhr.onreadystatechange = function() {
+	                if (xhr.readyState === 4 && xhr.status === 200) {
+						var container = document.getElementById('container');
+			            container.innerHTML="";
+			            var grid = document.createElement('div');
+						grid.classList.add('grid-container');
+	                    var prodotti = JSON.parse(xhr.responseText);
+	                    prodotti.forEach(function(prodotto){
+						var productcontainer = document.createElement("div");
+						productcontainer.classList.add("product-container");
+						productcontainer.addEventListener('click',function() {
+					        redirectToProduct(prodotto.id);
+					    });
+						
+	            // Creazione del div principale del prodotto
+	
+	            // Creazione dell'elemento immagine
+	            		var img = document.createElement('img');
+	            		img.classList.add("product-image");
+	            		img.src = prodotto.immagine;
+	            		img.alt = prodotto.nome;
+	
+	            // Creazione del titolo (h3)
+	           			var title = document.createElement('h3');
+	            		title.textContent = prodotto.nome;
+	            		title.classList.add("nome");
 					
-            // Creazione del div principale del prodotto
-
-            // Creazione dell'elemento immagine
-            		var img = document.createElement('img');
-            		img.classList.add("product-image");
-            		img.src = prodotto.immagine;
-            		img.alt = prodotto.nome;
-
-            // Creazione del titolo (h3)
-           			var title = document.createElement('h3');
-            		title.textContent = prodotto.nome;
-            		title.classList.add("nome");
+						var details = document.createElement('div');
+						details.classList.add('details');	
 				
-					var details = document.createElement('div');
-					details.classList.add('details');	
-			
-            // Creazione del paragrafo per il prezzo
-            		var price = document.createElement('p');
-            		price.classList.add("price");
-            		price.textContent = prodotto.prezzo.toFixed(2) +"€ ";
-            		details.appendChild(price);
-
-            // Creazione del link per il pulsante 'Carrello'
-            		var carrelloButton = document.createElement('a');
-            		carrelloButton.href = 'ControlloProdotto?action=addToC&id='+ prodotto.id +'&quantity=1'; // Inserisci qui il link appropriato per il carrello
-            		carrelloButton.textContent = 'Carrello';
-            		carrelloButton.classList.add('carrello-button');
-            
-            		details.appendChild(price);
-            		details.appendChild(carrelloButton);
-            		productcontainer.appendChild(img);
-            		productcontainer.appendChild(title);
-            		productcontainer.appendChild(details);
-
-            // Aggiunta del prodotto creato al contenitore principale
-            		grid.appendChild(productcontainer);
-            		container.appendChild(grid);
-        			});
-                }
-            };
-            xhr.send();
+	            // Creazione del paragrafo per il prezzo
+	            		var price = document.createElement('p');
+	            		price.classList.add("price");
+	            		price.textContent = prodotto.prezzo.toFixed(2) +"€ ";
+	            		details.appendChild(price);
+	
+	            // Creazione del link per il pulsante 'Carrello'
+	            		var carrelloButton = document.createElement('a');
+	            		carrelloButton.href = 'ControlloProdotto?action=addToC&id='+ prodotto.id +'&quantity=1'; // Inserisci qui il link appropriato per il carrello
+	            		carrelloButton.textContent = 'Carrello';
+	            		carrelloButton.classList.add('carrello-button');
+	            
+	            		details.appendChild(price);
+	            		details.appendChild(carrelloButton);
+	            		productcontainer.appendChild(img);
+	            		productcontainer.appendChild(title);
+	            		productcontainer.appendChild(details);
+	
+	            // Aggiunta del prodotto creato al contenitore principale
+	            		grid.appendChild(productcontainer);
+	            		container.appendChild(grid);
+	        			});
+	                }
+	            };
+	            xhr.send();
+	           }
 }
 
 function checkDBEmail(event){
