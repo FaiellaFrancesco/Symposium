@@ -68,3 +68,7 @@
         color: red;
         display: none;
 }
+
+.error-visible {
+    display: block; /* Mostra il messaggio di errore */
+}
