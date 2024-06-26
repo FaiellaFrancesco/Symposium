@@ -53,9 +53,10 @@ public class login extends HttpServlet {
 			String email=null;
 			if(request.getParameter("email")!= null) email=request.getParameter("email");
 			else email=request.getParameter("username");
+			email=email.toLowerCase();
 			Utente utente = model.doRetrieveByUsr(email);
 			if(utente != null) {
-				if(checkCredentials(email,request.getParameter("password"),utente)) {
+				if(checkCredentials(email,request.getParameter("password").trim(),utente)) {
 					if(utente.isAmministratore()) {
 						sessione.setAttribute("admin", true);
 					}

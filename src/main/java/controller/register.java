@@ -26,6 +26,10 @@ public class register extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private static final String EMAIL_REGEX = "^[A-Za-z0-9+_.-]+@[A-Za-z0-9.-]+$";
     private static final Pattern EMAIL_PATTERN = Pattern.compile(EMAIL_REGEX);
+    private static final String NAME_REGEX = "^[a-zA-Zà-žÀ-Ž\\s]+$";
+    private static final Pattern NAME_PATTERN = Pattern.compile(NAME_REGEX);
+    private static final String PASSWORD_REGEX = "^[a-zA-Z0-9!@#$%^&*()_+\\-=\\[\\]{};:|,.<>/?]{8,}$";
+    private static final Pattern PASSWORD_PATTERN = Pattern.compile(PASSWORD_REGEX);
     /**
      * @see HttpServlet#HttpServlet()
      */
@@ -53,10 +57,10 @@ public class register extends HttpServlet {
 	    ArrayList<String> errori = new ArrayList<>(0);
 	    
 	    // Recupera i parametri dalla richiesta
-	    String email = request.getParameter("email");
-	    String password = request.getParameter("password");
-	    String nome = request.getParameter("nome");
-	    String cognome = request.getParameter("cognome");
+	    String email = request.getParameter("email").toLowerCase();
+	    String password = request.getParameter("password").trim();
+	    String nome = request.getParameter("nome").trim();
+	    String cognome = request.getParameter("cognome").trim();
 	    
 	    
 	    if(email==null || !isValidEmail(email)) errori.add("email");
@@ -67,12 +71,12 @@ public class register extends HttpServlet {
 	    	catch(SQLException sqle) {
 	    		sqle.printStackTrace();
 	    	}
-	    	if(utente_2!=null) errori.add("Email inserita");
+	    	if(utente_2!=null) errori.add("email");
 	    }
 	    
-	    if(password==null || password.length()<=8) errori.add("password");
-	    if(nome==null) errori.add("nome");
-	    if(cognome==null) errori.add("cognome");
+	    if (password == null || !isValidPassword(password)) errori.add("password");
+	    if (nome == null || !isValidName(nome)) errori.add("nome");
+        if (cognome == null || !isValidName(cognome)) errori.add("cognome");
 	    
 	    if(errori.size()==0) {
 	    	String hashedPassword = hashPassword(password);
@@ -105,6 +109,22 @@ public class register extends HttpServlet {
             return false;
         }
         Matcher matcher = EMAIL_PATTERN.matcher(email);
+        return matcher.matches();
+    }
+	
+	private boolean isValidName(String name) {
+        if (name == null) {
+            return false;
+        }
+        Matcher matcher = NAME_PATTERN.matcher(name);
+        return matcher.matches();
+    }
+	
+	private boolean isValidPassword(String password) {
+        if (password == null) {
+            return false;
+        }
+        Matcher matcher = PASSWORD_PATTERN.matcher(password);
         return matcher.matches();
     }
 	
