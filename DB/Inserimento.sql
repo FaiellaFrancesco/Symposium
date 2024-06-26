@@ -9,12 +9,14 @@ VALUES
 ('Rose', 14.99, 22, 'Un vino rose leggero e rinfrescante, perfetto per le giornate estive.','immagini/rose', 60, 10.5, 750, 'Spagna', 'Vini Rosati', 2019, 'Rosato di Toscana');
 
 -- Inserimento nella tabella `utente`
-INSERT INTO utente (nome, cognome, email, pw, telefono, data_nascita, amministratore, via, cap, citta, nome_carta, scadenza, numero_carta, cvv)
-VALUES
-('Mario', 'Rossi', 'mario.rossi@example.com', 'password123', '1234567890', '1990-05-15', 1, 'Via Roma 123', '00100', 'Roma', 'Mario Rossi', '2026-12-31', '1234567890123456', '123'),
-('Giulia', 'Bianchi', 'giulia.bianchi@example.com', 'abc123', '0987654321', '1988-10-20', 0, 'Corso Italia 45', '20100', 'Milano', 'Giulia Bianchi', '2025-11-30', '9876543210987654', '456'),
-('Luca', 'Verdi', 'luca.verdi@example.com', 'passpass', '1122334455', '1995-03-10', 0, 'Via Garibaldi 67', '80100', 'Napoli', 'Luca Verdi', '2024-10-31', '5678901234567890', '789');
+INSERT INTO utente (nome, cognome, email, pw, telefono, data_nascita, amministratore, via, cap, citta, nome_carta, scadenza, numero_carta, cvv) 
+VALUES ('Giuseppe', 'Gambardella', 'peppeinserisci@gmail.com', '48d5e801a9fb64d19afd2902071da0b65fa3566e10f88a7ee3abaeebe51adf9e58156cf32ad7d5fd70c563ae248722bfe5b49bae7d424358e9a01cdc78837155', NULL, '1980-01-01', TRUE, 'Via Roma 1', '00100', 'Rome', NULL, NULL, NULL, NULL);
 
+INSERT INTO utente (nome, cognome, email, pw, telefono, data_nascita, amministratore, via, cap, citta, nome_carta, scadenza, numero_carta, cvv) 
+VALUES ('Francesco', 'Faiella', 'faiella@gmail.com', '2b36c28e79463e1ba7ff0ef1cac0747c3cd8c5eb5fc8dae5aacbbac11e0c8c152fc04251c404101dad520caa6d0fe75599e90d5355e0a870d58fc8e18380c277', NULL, '1980-01-01', TRUE, 'Via Roma 1', '00100', 'Rome', NULL, NULL, NULL, NULL);
+
+INSERT INTO utente (nome, cognome, email, pw, telefono, data_nascita, amministratore, via, cap, citta, nome_carta, scadenza, numero_carta, cvv) 
+VALUES ('Marco', 'Brescia', 'm.brescia16@studenti.unisa.it', 'c881ef0fe73259460fb90f821e3d69ec412861de6d34bd333bfc32cc4997012d4423540e2382171315611fb03503ccf913f4bf1839a04998ff536322fb52977a', NULL, '2003-03-26', TRUE, 'Via Castello I', '83029', 'Solofra', NULL, NULL, NULL, NULL);
 -- Inserimento nella tabella `ordine`
 INSERT INTO ordine (data_ordine, stato, citta, via, cap, utente)
 VALUES
