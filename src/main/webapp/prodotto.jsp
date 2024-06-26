@@ -18,12 +18,12 @@
 <title><%= prodotto.getNome() %></title>
 <link rel="stylesheet" href="utilities/css/prodotto.css">
 
+
 </head>
 <!-- Header -->
 <%@ include file="utilities/header.jsp" %>
 
 <body>
-<div id="container">
 	<div class="container">
 	<div class="item">
         <div class="image">
@@ -56,7 +56,6 @@
         </div>
         </div>
     </div>
-</div>
 </body>
  <!-- Footer -->
  <footer><%@ include file="utilities/footer.jsp" %></footer>
