@@ -19,7 +19,7 @@ header {
     text-decoration: none;
     cursor: pointer;
 }
-
+.logo-text2,
 .logo-text {
     color: #990E3C;
     font-family: 'Brush Script MT', cursive;
@@ -152,25 +152,43 @@ h2 {
             
         }
 
+/*     RESPONSIVE */
 
 
 @media (max-width: 767px) {
     .navbar {
-        flex-direction: column;
+       flex-direction: column;
         gap: 0px;
+    }
+    .search-form{
+    width: 250px;
     }
      .search-container{
      text-align: center;
         width: 100%;
      }
-
-    .logo-container,
-   
-    .account-container {
+      .account-container {
         text-align: center;
         width: 100%;
         margin-bottom: 10px;
     }
+     .logo-text{
+     /*Symposium scritta grande*/
+     display:none;
+     
+     }
+     .logo-text2{
+     /*  Scritta piccola */
+     margin-left: 20px;
+     
+     }
+
+	.link{
+	font-size: 20px;
+	}
+    .logo-container,
+   
+   
 
     .logo-container {
         text-align: center;
@@ -189,12 +207,30 @@ h2 {
     }
 
     .search-button {
-        padding: 5px 10px;
+        padding: 10px 10px;
         background-color: #990E3C;
         color: #fff;
         border: none;
         border-radius: 25px 25px 25px 25px;
         cursor: pointer;
     }
+}
+
+@media (min-width: 768px) and (max-width: 991px){
+   .logo-text2{
+	display:none;
+	}   
+
+}
+@media (min-width: 992px) and (max-width: 1199px){
+   .logo-text2{
+	display:none;
+	}   
+}
+@media (min-width: 1200px){
+	.logo-text2{
+	display:none;
+	}   
+
 }
 

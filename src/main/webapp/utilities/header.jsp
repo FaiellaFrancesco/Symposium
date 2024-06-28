@@ -23,6 +23,7 @@
         <div class="logo-container">
             <a class="logo">
                 <h3 onclick="redirectToPage()" class="logo-text">Symposium</h3>
+                <h3 onclick="redirectToPage()" class="logo-text2">SS</h3>
             </a>
         </div>
         <div class="search-container">
