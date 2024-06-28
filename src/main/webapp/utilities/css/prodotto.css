@@ -1,11 +1,11 @@
 @charset "UTF-8";
 
-         .container {
+        .container {
     display: flex;
     align-items: center;
     text-align: rigth;
     padding: 20px;
-    border: 1px solid #ccc;
+    /*border: 1px solid #ccc; */
 }
 	
 	.item{
