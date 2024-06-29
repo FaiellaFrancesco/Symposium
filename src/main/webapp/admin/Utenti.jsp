@@ -24,7 +24,7 @@
         <h2>Lista Utenti</h2>
 
         <% if (utenti != null && !utenti.isEmpty()) { %>
-        <form class="sticky"action="ordiniAdmin" method="POST">
+        <form class="sticky" action="ordiniAdmin" method="POST">
             <label for="utenteId">Ordini Utente ID:</label>
             <input type="text" id="utenteId" name="id" required>
             <input type="submit" value="Accedi">

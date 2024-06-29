@@ -40,7 +40,7 @@ public class ProdottoDAO implements DaoInterface<Prodotto, Integer>{
 
             ResultSet rs=statement.executeQuery();
 
-            while (rs.next()) {
+            if(rs.next()) {
                 setProdotto(rs, p);
             }
         } catch(Exception e){
@@ -49,7 +49,6 @@ public class ProdottoDAO implements DaoInterface<Prodotto, Integer>{
         finally{
         	connessione.close();
         }
-        
         return p;
 	}
 	

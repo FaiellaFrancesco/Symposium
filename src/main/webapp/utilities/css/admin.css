@@ -1,27 +1,41 @@
-@charset "UTF-8";
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #ffffff; /* Bianco */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    margin-top: 40px;
+}
+
+h1 {
+    text-align: center;
+    color: #990e3c; /* Rosso scuro */
+}
+
 .admin-functions {
-        text-align: center;
-        margin: 50px 0;
-        font-family: 'Courier New', monospace;
-    }
+    text-align: center;
+    padding: 20px;
+}
 
-    .admin-functions a {
-        display: inline-block;
-        padding: 15px 25px;
-        background-color: #990E3C;
-        color: #fff;
-        text-decoration: none;
-        border-radius: 10px;
-        font-size: 18px;
-    }
+.admin-functions a {
+    display: inline-block;
+    margin: 10px 0;
+    padding: 10px 20px;
+    background-color: #6f1c38; /* Rosso medio */
+    color: #ffffff; /* Bianco */
+    text-decoration: none;
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+}
 
-    .admin-functions a:hover {
-        background-color: #6F1C38;
-        color: #ffffff;
-    }
-
-    .admin-functions h1 {
-        color: #990E3C;
-        margin-bottom: 20px;
-        font-family: 'Courier New', monospace;
-    }
+.admin-functions a:hover {
+    background-color: #441d2a; /* Rosso scuro */
+}
