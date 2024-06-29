@@ -10,7 +10,7 @@ VALUES
 
 -- Inserimento nella tabella `utente`
 INSERT INTO utente (nome, cognome, email, pw, telefono, data_nascita, amministratore, via, cap, citta, nome_carta, scadenza, numero_carta, cvv) 
-VALUES ('Giuseppe', 'Gambardella', 'peppeinserisci@gmail.com', '2b36c28e79463e1ba7ff0ef1cac0747c3cd8c5eb5fc8dae5aacbbac11e0c8c152fc04251c404101dad520caa6d0fe75599e90d5355e0a870d58fc8e18380c277', NULL, '1980-01-01', TRUE, 'Via Roma 1', '00100', 'Rome', NULL, NULL, NULL, NULL);
+VALUES ('Giuseppe', 'Gambardella', 'peppe@gmail.com', '2b36c28e79463e1ba7ff0ef1cac0747c3cd8c5eb5fc8dae5aacbbac11e0c8c152fc04251c404101dad520caa6d0fe75599e90d5355e0a870d58fc8e18380c277', NULL, '2004-02-08', TRUE, 'Via di Casa Mia', '81100', 'Caserta', NULL, NULL, NULL, NULL);
 
 INSERT INTO utente (nome, cognome, email, pw, telefono, data_nascita, amministratore, via, cap, citta, nome_carta, scadenza, numero_carta, cvv) 
 VALUES ('Francesco', 'Faiella', 'faiella@gmail.com', '48d5e801a9fb64d19afd2902071da0b65fa3566e10f88a7ee3abaeebe51adf9e58156cf32ad7d5fd70c563ae248722bfe5b49bae7d424358e9a01cdc78837155', NULL, '1980-01-01', TRUE, 'Via Roma 1', '00100', 'Rome', NULL, NULL, NULL, NULL);
