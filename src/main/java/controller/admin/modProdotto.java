@@ -87,7 +87,7 @@ public class modProdotto extends HttpServlet {
 
                 // Reindirizza alla pagina di conferma o ad altre operazioni
                 request.setAttribute("prodotto", prodottoEsistente);
-                RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/prodotto.jsp");
+                RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/prodottiAdmin");
         		dispatcher.forward(request, response);
                 
             } else {
