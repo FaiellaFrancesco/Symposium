@@ -186,9 +186,6 @@ h2 {
 	.link{
 	font-size: 20px;
 	}
-    .logo-container,
-   
-   
 
     .logo-container {
         text-align: center;
@@ -220,6 +217,33 @@ h2 {
    .logo-text2{
 	display:none;
 	}   
+	 .navbar {
+       
+        gap: 0px;
+    }
+    .navbar a {
+          
+            font-size: 15px;
+   			
+   			 
+        }
+
+	  .search-bar {
+        padding: 10px;
+        width: 250px;
+        border: 2px solid #990E3C;
+        border-radius: 25px;
+        outline: none;
+    }
+
+    .search-button {
+        padding: 10px 10px;
+        background-color: #990E3C;
+        color: #fff;
+        border: none;
+        border-radius: 25px 25px 25px 25px;
+        cursor: pointer;
+    }
 
 }
 @media (min-width: 992px) and (max-width: 1199px){

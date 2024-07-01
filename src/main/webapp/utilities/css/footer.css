@@ -81,19 +81,19 @@ body {
     }
 
     .footer-item, .footer-item2 {
-        margin: 0 50px; /* Aumenta il margine tra gli elementi */
+        margin: 0 50px; 
     }
 }
 
 @media (min-width: 992px) and (max-width: 1199px) {
     footer {
-        padding: 3em; /* Aumenta il padding su schermi di dimensioni medie */
+        padding: 3em; /
     }
 }
 
 @media (min-width: 1200px) {
     footer {
-        padding: 3em 5em; /* Aumenta ulteriormente il padding su schermi grandi */
+        padding: 3em 5em;
     }
         	.footer-item2 {
     margin-left: 300px; 
