@@ -51,12 +51,13 @@ public class login extends HttpServlet {
 		dispatcher = getServletContext().getRequestDispatcher("/login.jsp");
 		try {
 			String email=null;
+			String password=request.getParameter("password").trim();
 			if(request.getParameter("email")!= null) email=request.getParameter("email");
 			else email=request.getParameter("username");
 			email=email.toLowerCase();
 			Utente utente = model.doRetrieveByUsr(email);
 			if(utente != null) {
-				if(checkCredentials(email,request.getParameter("password").trim(),utente)) {
+				if(checkCredentials(email,password,utente)) {
 					if(utente.isAmministratore()) {
 						sessione.setAttribute("admin", true);
 					}
