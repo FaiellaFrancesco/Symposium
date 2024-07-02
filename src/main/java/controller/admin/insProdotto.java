@@ -7,6 +7,7 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
 import java.sql.SQLException;
+import java.util.Arrays;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -36,6 +37,11 @@ public class insProdotto extends HttpServlet {
         int lastInsertedId;
         Part filePart = request.getPart("file");
         String fileName = getFileName(filePart);
+        
+        if (!isImageFile(filePart)) {
+            response.sendRedirect("errore.jsp");
+            return;
+        }
 
         ProdottoDAO model = new ProdottoDAO();
         Prodotto p = new Prodotto();
@@ -91,5 +97,24 @@ public class insProdotto extends HttpServlet {
             }
         }
         return null;
+    }
+    
+    //Metodo che verifica che il file inserito sia un'immagine (magic number)
+    private boolean isImageFile(Part filePart) throws IOException {
+        byte[] magicNumbers = new byte[8];
+        try (InputStream fileContent = filePart.getInputStream()) {
+            fileContent.read(magicNumbers);
+        }
+        
+        // Magic numbers per i tipi comuni di immagine
+        byte[] jpg = {(byte)0xFF, (byte)0xD8, (byte)0xFF};
+        byte[] png = {(byte)0x89, 'P', 'N', 'G', (byte)0x0D, (byte)0x0A, (byte)0x1A, (byte)0x0A};
+        byte[] gif = {'G', 'I', 'F', '8'};
+        byte[] bmp = {'B', 'M'};
+        
+        return Arrays.equals(Arrays.copyOf(magicNumbers, jpg.length), jpg) ||
+               Arrays.equals(Arrays.copyOf(magicNumbers, png.length), png) ||
+               Arrays.equals(Arrays.copyOf(magicNumbers, gif.length), gif) ||
+               Arrays.equals(Arrays.copyOf(magicNumbers, bmp.length), bmp);
     }
 }
