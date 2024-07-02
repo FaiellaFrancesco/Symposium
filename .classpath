@@ -13,10 +13,10 @@
 			<attribute name="owner.project.facets" value="jst.web"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="src/main/webapp/WEB-INF/lib/commons-7.2.1.jar"/>
-	<classpathentry kind="lib" path="src/main/webapp/WEB-INF/lib/io-7.2.1.jar"/>
-	<classpathentry kind="lib" path="src/main/webapp/WEB-INF/lib/kernel-7.2.1.jar"/>
-	<classpathentry kind="lib" path="src/main/webapp/WEB-INF/lib/layout-7.2.1.jar"/>
-	<classpathentry kind="lib" path="src/main/webapp/WEB-INF/lib/slf4j-api-1.7.32.jar"/>
+	<classpathentry kind="lib" path="C:/Users/marcb/Downloads/io-7.2.1.jar"/>
+	<classpathentry kind="lib" path="C:/Users/marcb/Downloads/layout-7.2.1.jar"/>
+	<classpathentry kind="lib" path="C:/Users/marcb/Downloads/slf4j-api-1.7.32.jar"/>
+	<classpathentry kind="lib" path="C:/Users/marcb/Downloads/commons-7.2.1.jar"/>
+	<classpathentry kind="lib" path="C:/Users/marcb/Downloads/kernel-7.2.1.jar"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>
