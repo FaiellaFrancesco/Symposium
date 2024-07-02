@@ -7,22 +7,18 @@ import com.itextpdf.kernel.pdf.PdfWriter;
 import com.itextpdf.layout.Document;
 import com.itextpdf.layout.borders.Border;
 import com.itextpdf.layout.element.Cell;
-import com.itextpdf.layout.element.Image;
 import com.itextpdf.layout.element.Paragraph;
 import com.itextpdf.layout.element.Table;
 import com.itextpdf.layout.properties.TextAlignment;
 
 import javax.servlet.ServletException;
-import javax.servlet.ServletOutputStream;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.GregorianCalendar;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 
@@ -37,9 +33,14 @@ public class Fattura extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        // Recupera l'ID dell'ordine dal parametro della richiesta
-        int orderId = Integer.parseInt(request.getParameter("orderId"));
-        System.out.println(1);
+        int orderId = -1;
+
+        if (request.getParameter("orderId") == null) {
+            response.sendError(HttpServletResponse.SC_BAD_REQUEST, "Missing orderId parameter");
+            return;
+        }
+        orderId = Integer.parseInt(request.getParameter("orderId"));
+
         try {
             // Recupera i dettagli dell'ordine utilizzando il DAO
             OrdineDAO orderDAO = new OrdineDAO();
@@ -52,33 +53,19 @@ public class Fattura extends HttpServlet {
 
             UtenteDAO utenteDAO = new UtenteDAO();
             Utente user = utenteDAO.doRetrieveByKey(order.getUtente());
-            System.out.println(2);
-            // Genera il PDF della fattura
-            byte[] pdfBytes = generateInvoicePDF(order, user);
-            System.out.println(3);
-            // Imposta gli header della risposta per consentire il download del file
-            response.setContentType("application/pdf");
-            response.setHeader("Content-Disposition", "attachment; filename=\"fattura_" + orderId + ".pdf\"");
-            response.setContentLength(pdfBytes.length);
-            System.out.println(4);
-            // Scrivi i byte del PDF nella risposta
-            ServletOutputStream outputStream = response.getOutputStream();
-            outputStream.write(pdfBytes);
-            outputStream.flush();
-            outputStream.close();
-            System.out.println(5);
 
+            // Genera il PDF della fattura
+            generateInvoicePDF(order, user, response);
         } catch (Exception e) {
-            throw new ServletException("Error generating or downloading invoice", e);
+            throw new ServletException("Error generating invoice", e);
         }
     }
 
-    
-    
-    private byte[] generateInvoicePDF(Ordine order, Utente user) throws IOException {
-        ByteArrayOutputStream baos = new ByteArrayOutputStream();
+    private void generateInvoicePDF(Ordine order, Utente user, HttpServletResponse response) throws IOException {
+        response.setContentType("application/pdf");
+        response.setHeader("Content-Disposition", "attachment; filename=fattura_" + order.getId() + ".pdf");
 
-        PdfWriter writer = new PdfWriter(baos);
+        PdfWriter writer = new PdfWriter(response.getOutputStream());
         PdfDocument pdfDoc = new PdfDocument(writer);
         Document document = new Document(pdfDoc);
 
@@ -107,9 +94,8 @@ public class Fattura extends HttpServlet {
         Table detailsTable = new Table(2);
         detailsTable.setWidth(100f);
 
-        Date dateToFormat = order.getData().getTime();
-	    SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy", Locale.ITALY);
-	    String formattedDate = sdf.format(dateToFormat);
+        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy", Locale.ITALY);
+        String formattedDate = sdf.format(order.getData().getTime());
 
         addTableCell(detailsTable, "Numero:", String.valueOf(order.getId()));
         addTableCell(detailsTable, "Data:", formattedDate);
@@ -131,10 +117,12 @@ public class Fattura extends HttpServlet {
         addTableHeader(itemsTable, "IVA");
         addTableHeader(itemsTable, "Importo");
 
-        List<OrderLine> items = order.getProdotti();
+        ArrayList<OrderLine> items = order.getProdotti();
         double totaleImponibile = 0;
         double totaleIva = 0;
         double totale = 0;
+        
+        System.out.println(items.size());
 
         for (OrderLine item : items) {
             double prezzoTotale = item.getQuant() * item.getPrezzo();
@@ -145,14 +133,14 @@ public class Fattura extends HttpServlet {
             totaleIva += prezzoTotale * iva / 100;
             totale += importoConIva;
 
-            // Aggiungi il dettaglio del prodotto alla tabella degli articoli
             itemsTable.addCell(String.valueOf(item.getProdotto().getId()));
             itemsTable.addCell(item.getProdotto().getNome());
             itemsTable.addCell(String.valueOf(item.getQuant()));
-            itemsTable.addCell(String.valueOf(item.getPrezzo()));
-            itemsTable.addCell(String.valueOf(iva));
-            itemsTable.addCell(String.valueOf(importoConIva));
-        }
+            itemsTable.addCell(String.format("%.2f", item.getPrezzo()));
+            itemsTable.addCell(String.format("%.2f", iva));
+            itemsTable.addCell(String.format("%.2f", importoConIva));
+            System.out.println(String.valueOf(item.getProdotto().getId())+" "+item.getProdotto().getNome()+" "+String.valueOf(item.getQuant())+" "+String.format("%.2f", item.getPrezzo())+" "+String.format("%.2f", iva)+" "+String.format("%.2f", importoConIva));
+       }
 
         document.add(itemsTable);
 
@@ -169,10 +157,6 @@ public class Fattura extends HttpServlet {
         document.add(totalTable);
 
         document.close();
-        System.out.println(2.10);
-
-        // Ottieni i byte del PDF dal ByteArrayOutputStream
-        return baos.toByteArray();
     }
 
     private void addTableCell(Table table, String label, String value) {
