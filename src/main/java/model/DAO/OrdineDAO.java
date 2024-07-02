@@ -48,7 +48,7 @@ public class OrdineDAO implements DaoInterface<Ordine, Integer>{
                 ordine.setVia(rs.getString("via"));
                 ordine.setCAP(rs.getString("cap"));
                 ordine.setUtente(rs.getInt("utente"));
-                ordine.setProdotti(new ArrayList<OrderLine>());
+                ArrayList<OrderLine> prodotti=new ArrayList<>();
 
 
                 String query1="SELECT * FROM element WHERE ordine=?";
@@ -63,7 +63,9 @@ public class OrdineDAO implements DaoInterface<Ordine, Integer>{
                     ol.setIva(rs1.getInt("iva"));
                     ol.setQuant(rs1.getInt("quantita"));
                     ol.setPrezzo(rs1.getDouble("prezzo"));
+                    prodotti.add(ol);
                 }
+                ordine.setProdotti(prodotti);
             }
         } catch(Exception e){
             throw e;
