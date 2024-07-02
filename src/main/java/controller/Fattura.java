@@ -2,14 +2,17 @@ package controller;
 
 import com.itextpdf.io.image.ImageData;
 import com.itextpdf.io.image.ImageDataFactory;
+import com.itextpdf.kernel.colors.DeviceRgb;
 import com.itextpdf.kernel.pdf.PdfDocument;
 import com.itextpdf.kernel.pdf.PdfWriter;
 import com.itextpdf.layout.Document;
 import com.itextpdf.layout.borders.Border;
 import com.itextpdf.layout.element.Cell;
+import com.itextpdf.layout.element.Image;
 import com.itextpdf.layout.element.Paragraph;
 import com.itextpdf.layout.element.Table;
 import com.itextpdf.layout.properties.TextAlignment;
+import com.itextpdf.layout.properties.UnitValue;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -19,7 +22,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.List;
+import java.util.Date;
 import java.util.Locale;
 
 import model.beans.Ordine;
@@ -71,44 +74,70 @@ public class Fattura extends HttpServlet {
 
         // Aggiungi intestazione
         Table headerTable = new Table(2);
-        headerTable.setWidth(100f);
+        headerTable.setWidth(new UnitValue(UnitValue.PERCENT, 100));
 
         Cell logoCell = new Cell();
         // Aggiungi l'immagine del logo (sostituisci il percorso con il percorso del tuo logo)
-        // ImageData imageData = ImageDataFactory.create(getServletContext().getRealPath("/path/to/logo.png"));
-        // Image img = new Image(imageData);
-        // logoCell.add(img);
+        ImageData imageData = ImageDataFactory.create("C:/Users/marcb/Downloads/Cantina.png");
+        Image img = new Image(imageData);
+        img.setWidth(100);  // Ridimensiona il logo
+        logoCell.add(img);
         logoCell.setBorder(Border.NO_BORDER);
         headerTable.addCell(logoCell);
 
-        Cell titleCell = new Cell().add(new Paragraph("Fattura").setFontSize(18));
-        titleCell.setTextAlignment(TextAlignment.RIGHT);
-        titleCell.setBorder(Border.NO_BORDER);
-        headerTable.addCell(titleCell);
+        Cell emptyCell = new Cell();
+        emptyCell.setBorder(Border.NO_BORDER);
+        headerTable.addCell(emptyCell);
 
         document.add(headerTable);
 
         document.add(new Paragraph(" "));
 
+        // Aggiungi titolo Fattura
+        Paragraph title = new Paragraph("Fattura")
+                .setFontSize(18)
+                .setTextAlignment(TextAlignment.CENTER)
+                .setMarginBottom(10);
+        document.add(title);
+
+        // Aggiungi i dettagli dell'utente
+        Table userDetailsTable = new Table(new float[]{1, 3});
+        userDetailsTable.setWidth(new UnitValue(UnitValue.PERCENT, 100));
+
+        addDetailTableCell(userDetailsTable, "Codice:", String.valueOf(user.getId()));
+        addDetailTableCell(userDetailsTable, "Nome:", user.getNome() + " " + user.getCognome());
+        addDetailTableCell(userDetailsTable, "Indirizzo di spedizione:", order.getCAP()+" "+order.getCitta()+" "+order.getVia());
+        addDetailTableCell(userDetailsTable, "Modalità di pagamento:", "Pagamento Online");
+
+        document.add(userDetailsTable);
+
+        document.add(new Paragraph(" "));
+
         // Aggiungi i dettagli dell'ordine
-        Table detailsTable = new Table(2);
-        detailsTable.setWidth(100f);
+        Table orderDetailsTable = new Table(new float[]{1, 3});
+        orderDetailsTable.setWidth(new UnitValue(UnitValue.PERCENT, 100));
 
         SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy", Locale.ITALY);
         String formattedDate = sdf.format(order.getData().getTime());
 
-        addTableCell(detailsTable, "Numero:", String.valueOf(order.getId()));
-        addTableCell(detailsTable, "Data:", formattedDate);
-        addTableCell(detailsTable, "Cliente:", user.getNome() + " " + user.getCognome());
-        addTableCell(detailsTable, "Modalità di pagamento:", "Pagamento Online");
+        addDetailTableCell(orderDetailsTable, "ID Ordine:", String.valueOf(order.getId()));
+        addDetailTableCell(orderDetailsTable, "Data Ordine:", formattedDate);
 
-        document.add(detailsTable);
+        document.add(orderDetailsTable);
 
         document.add(new Paragraph(" "));
 
+        // Aggiungi la data della fattura
+        String currentDate = sdf.format(new Date());
+        Paragraph invoiceDate = new Paragraph("Data Fattura: " + currentDate)
+                .setFontSize(10)
+                .setTextAlignment(TextAlignment.RIGHT)
+                .setMarginTop(10);
+        document.add(invoiceDate);
+
         // Aggiungi gli articoli dell'ordine
-        Table itemsTable = new Table(new float[]{1, 3, 1, 1, 1, 1});
-        itemsTable.setWidth(100f);
+        Table itemsTable = new Table(new float[]{2, 4, 1, 1, 1, 1});
+        itemsTable.setWidth(new UnitValue(UnitValue.PERCENT, 100));
 
         addTableHeader(itemsTable, "Cod. articolo");
         addTableHeader(itemsTable, "Descrizione");
@@ -121,8 +150,6 @@ public class Fattura extends HttpServlet {
         double totaleImponibile = 0;
         double totaleIva = 0;
         double totale = 0;
-        
-        System.out.println(items.size());
 
         for (OrderLine item : items) {
             double prezzoTotale = item.getQuant() * item.getPrezzo();
@@ -133,14 +160,13 @@ public class Fattura extends HttpServlet {
             totaleIva += prezzoTotale * iva / 100;
             totale += importoConIva;
 
-            itemsTable.addCell(String.valueOf(item.getProdotto().getId()));
-            itemsTable.addCell(item.getProdotto().getNome());
-            itemsTable.addCell(String.valueOf(item.getQuant()));
-            itemsTable.addCell(String.format("%.2f", item.getPrezzo()));
-            itemsTable.addCell(String.format("%.2f", iva));
-            itemsTable.addCell(String.format("%.2f", importoConIva));
-            System.out.println(String.valueOf(item.getProdotto().getId())+" "+item.getProdotto().getNome()+" "+String.valueOf(item.getQuant())+" "+String.format("%.2f", item.getPrezzo())+" "+String.format("%.2f", iva)+" "+String.format("%.2f", importoConIva));
-       }
+            itemsTable.addCell(new Cell().add(new Paragraph(String.valueOf(item.getProdotto().getId()))).setTextAlignment(TextAlignment.CENTER));
+            itemsTable.addCell(new Cell().add(new Paragraph(item.getProdotto().getNome())).setTextAlignment(TextAlignment.LEFT));
+            itemsTable.addCell(new Cell().add(new Paragraph(String.valueOf(item.getQuant()))).setTextAlignment(TextAlignment.CENTER));
+            itemsTable.addCell(new Cell().add(new Paragraph(String.format("%.2f", item.getPrezzo()))).setTextAlignment(TextAlignment.RIGHT));
+            itemsTable.addCell(new Cell().add(new Paragraph(String.format("%.2f", iva))).setTextAlignment(TextAlignment.RIGHT));
+            itemsTable.addCell(new Cell().add(new Paragraph(String.format("%.2f", importoConIva))).setTextAlignment(TextAlignment.RIGHT));
+        }
 
         document.add(itemsTable);
 
@@ -148,18 +174,18 @@ public class Fattura extends HttpServlet {
 
         // Aggiungi il totale
         Table totalTable = new Table(2);
-        totalTable.setWidth(100f);
+        totalTable.setWidth(new UnitValue(UnitValue.PERCENT, 100));
 
-        addTableCell(totalTable, "Imponibile:", String.format("%.2f", totaleImponibile));
-        addTableCell(totalTable, "Imposta IVA:", String.format("%.2f", totaleIva));
-        addTableCell(totalTable, "TOTALE FATTURA:", String.format("%.2f", totale));
+        addTotalTableCell(totalTable, "Imponibile:", String.format("%.2f", totaleImponibile));
+        addTotalTableCell(totalTable, "Imposta IVA:", String.format("%.2f", totaleIva));
+        addTotalTableCell(totalTable, "TOTALE FATTURA:", String.format("%.2f", totale));
 
         document.add(totalTable);
 
         document.close();
     }
 
-    private void addTableCell(Table table, String label, String value) {
+    private void addDetailTableCell(Table table, String label, String value) {
         Cell cell = new Cell().add(new Paragraph(label));
         cell.setBorder(Border.NO_BORDER);
         table.addCell(cell);
@@ -169,9 +195,20 @@ public class Fattura extends HttpServlet {
         table.addCell(cell);
     }
 
+    private void addTotalTableCell(Table table, String label, String value) {
+        Cell cell = new Cell().add(new Paragraph(label).setBold());
+        cell.setBorder(Border.NO_BORDER);
+        table.addCell(cell);
+
+        cell = new Cell().add(new Paragraph(value).setBold());
+        cell.setBorder(Border.NO_BORDER);
+        table.addCell(cell);
+    }
+
     private void addTableHeader(Table table, String headerTitle) {
         Cell header = new Cell().add(new Paragraph(headerTitle).setBold());
         header.setTextAlignment(TextAlignment.CENTER);
+        header.setBackgroundColor(new DeviceRgb(220, 220, 220));
         table.addCell(header);
     }
 }
