@@ -58,13 +58,13 @@ public class Fattura extends HttpServlet {
             Utente user = utenteDAO.doRetrieveByKey(order.getUtente());
 
             // Genera il PDF della fattura
-            generateInvoicePDF(order, user, response);
+            generateInvoicePDF(order, user, response, request);
         } catch (Exception e) {
             throw new ServletException("Error generating invoice", e);
         }
     }
 
-    private void generateInvoicePDF(Ordine order, Utente user, HttpServletResponse response) throws IOException {
+    private void generateInvoicePDF(Ordine order, Utente user, HttpServletResponse response, HttpServletRequest request) throws IOException {
         response.setContentType("application/pdf");
         response.setHeader("Content-Disposition", "attachment; filename=fattura_" + order.getId() + ".pdf");
 
@@ -72,42 +72,38 @@ public class Fattura extends HttpServlet {
         PdfDocument pdfDoc = new PdfDocument(writer);
         Document document = new Document(pdfDoc);
 
+        // Ottieni il percorso assoluto dell'immagine del logo
+        String logoPath = request.getServletContext().getRealPath("/immagini/logo.png");
+
         // Aggiungi intestazione
         Table headerTable = new Table(2);
         headerTable.setWidth(new UnitValue(UnitValue.PERCENT, 100));
 
         Cell logoCell = new Cell();
-        // Aggiungi l'immagine del logo (sostituisci il percorso con il percorso del tuo logo)
-        ImageData imageData = ImageDataFactory.create("C:/Users/marcb/Downloads/Cantina.png");
+        // Aggiungi l'immagine del logo
+        ImageData imageData = ImageDataFactory.create(logoPath);
         Image img = new Image(imageData);
-        img.setWidth(100);  // Ridimensiona il logo
+        img.setWidth(150);  // Ridimensiona il logo
         logoCell.add(img);
         logoCell.setBorder(Border.NO_BORDER);
         headerTable.addCell(logoCell);
 
-        Cell emptyCell = new Cell();
-        emptyCell.setBorder(Border.NO_BORDER);
-        headerTable.addCell(emptyCell);
+        Cell titleCell = new Cell().add(new Paragraph("Fattura").setFontSize(18).setTextAlignment(TextAlignment.RIGHT));
+        titleCell.setBorder(Border.NO_BORDER);
+        headerTable.addCell(titleCell);
 
         document.add(headerTable);
 
         document.add(new Paragraph(" "));
 
-        // Aggiungi titolo Fattura
-        Paragraph title = new Paragraph("Fattura")
-                .setFontSize(18)
-                .setTextAlignment(TextAlignment.CENTER)
-                .setMarginBottom(10);
-        document.add(title);
-
         // Aggiungi i dettagli dell'utente
         Table userDetailsTable = new Table(new float[]{1, 3});
         userDetailsTable.setWidth(new UnitValue(UnitValue.PERCENT, 100));
 
-        addDetailTableCell(userDetailsTable, "Codice:", String.valueOf(user.getId()));
-        addDetailTableCell(userDetailsTable, "Nome:", user.getNome() + " " + user.getCognome());
+        addDetailTableCell(userDetailsTable, "Cod. Cliente:", String.valueOf(user.getId()));
+        addDetailTableCell(userDetailsTable, "Destinatario:", user.getNome() + " " + user.getCognome());
         addDetailTableCell(userDetailsTable, "Indirizzo di spedizione:", order.getCAP()+" "+order.getCitta()+" "+order.getVia());
-        addDetailTableCell(userDetailsTable, "Modalità di pagamento:", "Pagamento Online");
+        addDetailTableCell(userDetailsTable, "Modalità di pagamento:", "Carta di credito");
 
         document.add(userDetailsTable);
 
@@ -165,7 +161,7 @@ public class Fattura extends HttpServlet {
             itemsTable.addCell(new Cell().add(new Paragraph(String.valueOf(item.getQuant()))).setTextAlignment(TextAlignment.CENTER));
             itemsTable.addCell(new Cell().add(new Paragraph(String.format("%.2f", item.getPrezzo()))).setTextAlignment(TextAlignment.RIGHT));
             itemsTable.addCell(new Cell().add(new Paragraph(String.format("%.2f", iva))).setTextAlignment(TextAlignment.RIGHT));
-            itemsTable.addCell(new Cell().add(new Paragraph(String.format("%.2f", importoConIva))).setTextAlignment(TextAlignment.RIGHT));
+            itemsTable.addCell(new Cell().add(new Paragraph(String.format("%.2f", item.getPrezzo()*item.getQuant()))).setTextAlignment(TextAlignment.RIGHT));
         }
 
         document.add(itemsTable);
