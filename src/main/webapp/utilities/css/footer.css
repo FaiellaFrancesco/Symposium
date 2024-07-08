@@ -1,70 +1,101 @@
 @charset "UTF-8";
 
-   footer h1{
-   font-family: 'Brush Script MT', cursive; 
-   text-align: left;
-   padding: 0px 0;
-   font-size: 50px;
-   color: #FFF;
-   }
-    footer p{
-   
-   color: #FFF;
-   }
-   footer a{
-   text-decoration: none;
-   color: #FFF;
-   }
-   footer a:hover{
-   color: #6F1C38;
-   }
-   footer form{
-   text-align: left;
-   }
-	footer{
-	 background-color: #990E3C;
-     text-align: center;
+footer h1 {
+    font-family: 'Brush Script MT', cursive; 
+    text-align: left;
+    padding: 0px 0;
+    font-size: 50px;
+    color: #FFF;
+}
+
+footer p {
+    color: #FFF;
+}
+
+footer a {
+    text-decoration: none;
+    color: #FFF;
+}
+
+footer a:hover {
+    color: #6F1C38;
+}
+
+footer form {
+    text-align: left;
+}
+
+footer {
+    background-color: #990E3C;
+    text-align: center;
     padding: 1em;
     margin-top: auto;
     color: #FFF;
     display: flex; /* Utilizza Flexbox per il layout */
-    justify-content: center; /* Allinea i figli al centro rispetto all'asse principale (orizzontalmente) */
-   
-	}
-	.footer-item {
-    margin: 0 10px; /* Margine tra gli elementi all'interno del footer */
+    flex-direction: column; /* Allinea i figli in colonne su schermi piccoli */
+    align-items: center; /* Centra gli elementi al centro dell'asse trasversale */
 }
-	.footer-item2 {
-    margin: 0 350px; /* Margine tra gli elementi all'interno del footer */
+
+.footer-item, .footer-item2 {
+    margin: 10px; /* Margine uniforme per tutti gli elementi footer-item */
 }
-	  .footer-search {
-            padding: 10px;
-            width: 300px;
-          
-            border-radius: 25px;
-            outline: none;
-        }
-        .footer-button {
-            padding: 10px 15px;
-            background-color: #FFF;
-            color: #990E3C;
-            border: none;
-            border-radius: 25px;
-            cursor: pointer;
-           
-        }
-        footer h3{
-      font-family: Arial, sans-serif; /* Utilizza il font "Cursive" come prima scelta */
+
+.footer-search {
+    padding: 10px;
+    width: 250px;
+    border-radius: 25px;
+    outline: none;
+}
+
+.footer-button {
+    padding: 10px 15px;
+    background-color: #FFF;
+    color: #990E3C;
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+}
+
+footer h3 {
+    font-family: Arial, sans-serif;
+}
+
+html {
+    height: 100%;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    min-height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Media Queries */
+
+@media (min-width: 768px) {
+    footer {
+        flex-direction: row; /* Disposizione in righe su schermi medi e grandi */
+        justify-content: space-between; /* Spazio tra gli elementi del footer */
     }
-    
-        
-	html{
-	height: 100%;
-	}
-	body {
-            margin: 0;
-            padding: 0;
-            min-height: 100%;
-            display: flex;
-            flex-direction: column;
-        }
+
+    .footer-item, .footer-item2 {
+        margin: 0 50px; 
+    }
+}
+
+@media (min-width: 992px) and (max-width: 1199px) {
+    footer {
+        padding: 3em; /
+    }
+}
+
+@media (min-width: 1200px) {
+    footer {
+        padding: 3em 5em;
+    }
+        	.footer-item2 {
+    margin-left: 300px; 
+}
+}
