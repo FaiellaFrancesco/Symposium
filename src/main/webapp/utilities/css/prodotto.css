@@ -1,70 +1,132 @@
 @charset "UTF-8";
 
-         .container {
+.container {
     display: flex;
+    flex-direction: column;
     align-items: center;
-    text-align: rigth;
+    text-align: right;
     padding: 20px;
-    border: 1px solid #ccc;
 }
-	
-	.item{
-	display: flex;
+
+.item {
+    display: flex;
+    flex-direction: column;
     align-items: center;
-    text-align: rigth;
-    margin: 100px auto; /* Centra il contenitore */
-    max-height: 800px; /* Limita la larghezza del contenitore */
-    height: 400px;
-	}
-	
-.name{
-	font-size: 30px;
+    text-align: right;
+    margin: 20px auto; /* Centra il contenitore */
+    max-width: 100%; /* Limita la larghezza del contenitore */
 }
-.desc{
-	font-size: 23px;
+
+.name {
+    font-size: 24px;
+    text-align: center;
 }
-.price{
-	color: #990E3C;
-	font-size: 35px; 
-	 
+
+.desc {
+    font-size: 18px;
+    text-align: center;
+}
+
+.price {
+    color: #990E3C;
+    font-size: 24px;
+    text-align: center;
 }
 
 .image img {
-	padding: 100px;
-    max-height: 500px; /* Utilizza il 50% dell'altezza della finestra del browser */
-    max-width:auto;
-  
+    width: 100%;
+    max-width: 500px;
+    height: auto;
+    padding: 0;
 }
- .product-info {
- 			margin-top: 40px;
-            font-size: 18px;
-            color: black;
-        }
-        
- .buttons .add-to-cart{
- 		border-radius: 5px;
- 	   padding: 10px 30px; /* Aggiunge spazio interno al pulsante */
-        font-size: 16px; /* Imposta la dimensione del carattere */
-        color: white; /* Imposta il colore del testo */
-        border: none; /* Rimuove il bordo */
-        cursor: pointer; /* Cambia il cursore al passaggio del mouse */
-    	margin-left: 10px;
-    	background-color: #990E3C;
+
+.product-info {
+    margin-top: 20px;
+    font-size: 16px;
+    color: black;
+    text-align: center;
+}
+
+.buttons .add-to-cart {
+    border-radius: 5px;
+    padding: 10px 30px;
+    font-size: 16px;
+    color: white;
+    border: none;
+    cursor: pointer;
+    margin: 10px auto;
+    background-color: #990E3C;
+    display: block;
+    text-align: center;
+}
+
+.buttons .add-to-cart:hover {
+    background-color: #6F1C38;
+}
+
+.buttons input[type="number"] {
+    width: 70px;
+    padding: 5px;
+    font-size: 16px;
+    border: 1px solid #990E3C;
+    border-radius: 5px;
+    box-sizing: border-box;
+    outline: none;
+    margin: 10px auto;
+    display: block;
+    text-align: center;
+}
+
+@media (min-width: 768px) {
+    .container {
+        flex-direction: row;
     }
     
-    .buttons .add-to-cart:hover{
-	background-color: #6F1C38;
-	
+    .item {
+        flex-direction: row;
+        max-width: 750px;
+    }
+    
+    .name {
+        font-size: 28px;
+    }
+    
+    .desc {
+        font-size: 20px;
+    }
+    
+    .price {
+        font-size: 28px;
+    }
+    
+    .image img {
+        max-width: 300px;
+        padding: 10px;
+    }
+    
+    .product-info {
+        text-align: left;
+    }
+    
+    .buttons {
+        display: flex;
+        justify-content: flex-start;
+    }
+    
+    .buttons .add-to-cart,
+    .buttons input[type="number"] {
+        margin: 0 10px;
+    }
 }
-.buttons input[type="number"]{
-	        width: 70px; /* Imposta la larghezza */
-        padding: 5px; /* Aggiunge spazio interno */
-        font-size: 16px; /* Imposta la dimensione del carattere */
-        border: 1px solid #990E3C; /* Aggiunge un bordo */
-        border-radius: 5px; /* Aggiunge angoli arrotondati */
-        box-sizing: border-box; 
-        outline: none;
-	
-	
+
+@media (min-width: 992px) {
+    .item {
+        max-width: 970px;
+    }
 }
- 
+
+@media (min-width: 1200px) {
+    .item {
+        max-width: 1170px;
+    }
+}

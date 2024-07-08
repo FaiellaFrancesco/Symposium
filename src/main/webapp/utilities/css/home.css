@@ -23,7 +23,7 @@
 .product-container img {
   max-width: 40%; 
 }
-
+ 
 
 .product-container a{
 	text-decoration: none;
@@ -39,6 +39,7 @@
 	 font-weight: normal;
 	font-size: 18px;
 }
+
 .product-container .price{
 	color: black;
 	margin-bottom: 5px;
@@ -50,6 +51,7 @@
 	text-align: center;
 	
 }
+
 .product-container:hover {
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5); 
 }
@@ -67,4 +69,36 @@
 .carrello-button:hover{
 	background-color: #6F1C38;
 	
+}
+
+
+
+@media (max-width: 767px){
+     body {
+
+    background-color: yellow;
+  }
+  
+     .grid-container { grid-template-columns: repeat(1, 1fr); }
+}
+@media (min-width: 768px) and (max-width: 991px){
+    body{
+    background-color: blue;
+    }
+     .grid-container { grid-template-columns: repeat(2, 1fr); }
+
+}
+@media (min-width: 992px) and (max-width: 1199px){
+    body{
+    background-color: black;
+    }
+     .grid-container { grid-template-columns: repeat(3, 1fr); }
+
+}
+@media (min-width: 1200px){
+    body{
+    background-color: red;
+    }
+     .grid-container { grid-template-columns: repeat(4, 1fr); }
+
 }

@@ -1,1 +1,3 @@
-/controller/
+# Ignora i file .class
+*.class
+.DS_Store

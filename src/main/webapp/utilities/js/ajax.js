@@ -64,7 +64,6 @@ function filtro(tipo){
             };
             xhr.send();
 }
-
 function ricerca(event){
 			event.preventDefault();
             var xhr = new XMLHttpRequest();
@@ -129,6 +128,7 @@ function ricerca(event){
 	            xhr.send();
 	           }
 }
+
 
 function checkDBEmail(event){
 	event.preventDefault();

@@ -90,7 +90,7 @@ public class register extends HttpServlet {
 	    	    request.setAttribute("password", password);
 	    	    
 	    	    // Reindirizza automaticamente alla servlet "login" dopo la registrazione
-	    	    RequestDispatcher dispatcher = request.getRequestDispatcher("/login.jsp");
+	    	    RequestDispatcher dispatcher = request.getRequestDispatcher("/login");
 	    	    dispatcher.forward(request, response);
 	    	} catch(Exception e) {
 	    	    e.printStackTrace();
