@@ -20,7 +20,6 @@ import javax.servlet.http.HttpSession;
 public class ControlloProdotto extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
-	RequestDispatcher dispatcher;
     /**
      * @see HttpServlet#HttpServlet()
      */
@@ -36,38 +35,43 @@ public class ControlloProdotto extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws IOException, ServletException {
 		
-		ProdottoDAO model = new ProdottoDAO();
-		
 		HttpSession sessione = request.getSession();
-
-		Carrello cart = (Carrello)sessione.getAttribute("cart");
-		if(cart == null) {
-			cart = new Carrello();
+		String returnPage = "/login.jsp";
+		
+		if(sessione.getAttribute("id")!=null) {
+		
+			ProdottoDAO model = new ProdottoDAO();
+	
+	
+			Carrello cart = (Carrello)sessione.getAttribute("cart");
+			if(cart == null) {
+				cart = new Carrello();
+				sessione.setAttribute("cart", cart);
+			}
+			
+			returnPage = "/home.jsp";
+			String action = request.getParameter("action");
+	
+			try {
+				if (action != null) {
+					if (action.equalsIgnoreCase("addToC")) {
+						int id = Integer.parseInt(request.getParameter("id"));
+						int quant = Integer.parseInt(request.getParameter("quantity"));
+						cart.addProdotto((Prodotto)model.doRetrieveByKey(id),quant);
+					}
+					if (action.equalsIgnoreCase("deleteFromC")) {
+						int id = Integer.parseInt(request.getParameter("id"));
+						returnPage = "/carrello.jsp";
+						cart.removeProdotto((Prodotto)model.doRetrieveByKey(id));
+					}
+				}
+			} catch (SQLException e) {
+				System.out.println("Error:" + e.getMessage());
+			}
+				
+			
 			sessione.setAttribute("cart", cart);
 		}
-		
-		String returnPage = "/home.jsp";
-		String action = request.getParameter("action");
-
-		try {
-			if (action != null) {
-				if (action.equalsIgnoreCase("addToC")) {
-					int id = Integer.parseInt(request.getParameter("id"));
-					int quant = Integer.parseInt(request.getParameter("quantity"));
-					cart.addProdotto((Prodotto)model.doRetrieveByKey(id),quant);
-				}
-				if (action.equalsIgnoreCase("deleteFromC")) {
-					int id = Integer.parseInt(request.getParameter("id"));
-					returnPage = "/carrello.jsp";
-					cart.removeProdotto((Prodotto)model.doRetrieveByKey(id));
-				}
-			}
-		} catch (SQLException e) {
-			System.out.println("Error:" + e.getMessage());
-		}
-			
-		
-		sessione.setAttribute("cart", cart);
 		RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(returnPage);
 		dispatcher.forward(request, response);
 	}

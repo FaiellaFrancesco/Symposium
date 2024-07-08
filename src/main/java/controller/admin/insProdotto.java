@@ -7,6 +7,9 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
 import java.sql.SQLException;
+import java.util.Arrays;
+
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.annotation.WebServlet;
@@ -24,15 +27,21 @@ public class insProdotto extends HttpServlet {
     private static final String UPLOAD_DIR = "immagini";
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    	
     	String applicationPath = request.getServletContext().getRealPath("/");
     	String uploadFilePath = applicationPath + UPLOAD_DIR;
         File uploadDir = new File(uploadFilePath);
         if (!uploadDir.exists()) {
             uploadDir.mkdirs();
         }
-
+        int lastInsertedId;
         Part filePart = request.getPart("file");
         String fileName = getFileName(filePart);
+        
+        if (!isImageFile(filePart)) {
+            response.sendRedirect("errore.jsp");
+            return;
+        }
 
         ProdottoDAO model = new ProdottoDAO();
         Prodotto p = new Prodotto();
@@ -53,7 +62,7 @@ public class insProdotto extends HttpServlet {
             model.doSave(p);
 
             // Ottieni l'ID dell'ultimo prodotto inserito
-            int lastInsertedId = model.doRetrieveLastId();
+            lastInsertedId = model.doRetrieveLastId();
 
             // Genera un nuovo nome per l'immagine basato sull'ID del prodotto
             String newFileName = lastInsertedId + fileName.substring(fileName.lastIndexOf("."));
@@ -70,7 +79,8 @@ public class insProdotto extends HttpServlet {
             model.doUpdate(p);
 
             // Reindirizza alla pagina di conferma o ad altre operazioni
-            response.sendRedirect("successo.jsp");
+            RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/catalogo?id="+lastInsertedId);
+            dispatcher.forward(request, response);
         } catch (SQLException e) {
             e.printStackTrace();
             // Gestisci l'errore
@@ -87,5 +97,24 @@ public class insProdotto extends HttpServlet {
             }
         }
         return null;
+    }
+    
+    //Metodo che verifica che il file inserito sia un'immagine (magic number)
+    private boolean isImageFile(Part filePart) throws IOException {
+        byte[] magicNumbers = new byte[8];
+        try (InputStream fileContent = filePart.getInputStream()) {
+            fileContent.read(magicNumbers);
+        }
+        
+        // Magic numbers per i tipi comuni di immagine
+        byte[] jpg = {(byte)0xFF, (byte)0xD8, (byte)0xFF};
+        byte[] png = {(byte)0x89, 'P', 'N', 'G', (byte)0x0D, (byte)0x0A, (byte)0x1A, (byte)0x0A};
+        byte[] gif = {'G', 'I', 'F', '8'};
+        byte[] bmp = {'B', 'M'};
+        
+        return Arrays.equals(Arrays.copyOf(magicNumbers, jpg.length), jpg) ||
+               Arrays.equals(Arrays.copyOf(magicNumbers, png.length), png) ||
+               Arrays.equals(Arrays.copyOf(magicNumbers, gif.length), gif) ||
+               Arrays.equals(Arrays.copyOf(magicNumbers, bmp.length), bmp);
     }
 }
