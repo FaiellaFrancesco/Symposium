@@ -155,13 +155,21 @@ h2 {
 /*     RESPONSIVE */
 
 
+
 @media (max-width: 767px) {
+	/*
     .navbar {
        flex-direction: column;
         gap: 0px;
     }
+   .navbar a{
+   font-size: 17px;
+    }
+    */
+    .navbar{
+    display:none;}
     .search-form{
-    width: 250px;
+    width: 150px;
     }
      .search-container{
      text-align: center;
@@ -171,6 +179,7 @@ h2 {
         text-align: center;
         width: 100%;
         margin-bottom: 10px;
+        margin-left: 10px;
     }
      .logo-text{
      /*Symposium scritta grande*/
@@ -184,7 +193,8 @@ h2 {
      }
 
 	.link{
-	font-size: 20px;
+	padding: 1px;
+	font-size: 18px;
 	}
 
     .logo-container {
@@ -244,17 +254,74 @@ h2 {
         border-radius: 25px 25px 25px 25px;
         cursor: pointer;
     }
+    
+
+
+
+.nav {
+    position: fixed;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.9);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    z-index: 999;
+}
+
+.navlist {
+    list-style: none;
+    text-align: center;
+}
+
+.navitem {
+    margin: 20px 0;
+}
+
+.navlink {
+    color: #fff;
+    text-decoration: none;
+    font-size: 24px;
+    transition: color 0.3s ease;
+}
+
+.navlink:hover {
+    color: #ff6347;
+}
+
+
+.menu-btn.open .menu-btnburger {
+    transform: translateX(-50px);
+    background: transparent;
+}
+
+.menu-btn.open .menu-btnburger::before {
+    transform: rotate(45deg) translate(35px, -35px);
+}
+
+.menu-btn.open .menu-btn__burger::after {
+    transform: rotate(-45deg) translate(35px, 35px);
+}
+
+.nav.open {
+    left: 0;
+}
 
 }
 @media (min-width: 992px) and (max-width: 1199px){
    .logo-text2{
 	display:none;
 	}   
+	
 }
 @media (min-width: 1200px){
 	.logo-text2{
 	display:none;
 	}   
+	
 
 }
 

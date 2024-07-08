@@ -12,7 +12,6 @@
 <script src="utilities/js/ajax.js"></script>
 <script src="utilities/js/redirect.js"></script>
 
-<!--  <link rel="stylesheet" href="css/navbar.css"> -->
 </head>
 
 <body>
