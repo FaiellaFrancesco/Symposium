@@ -1,6 +1,8 @@
 package controller;
 
 import java.io.IOException;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.sql.SQLException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -24,9 +26,10 @@ public class modUtente extends HttpServlet {
         response.sendRedirect(request.getContextPath() + "/index.jsp");
     }
 
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    protected void doPost(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
         // Ottieni i parametri dal form
-        String utenteId = request.getParameter("id");
+        String utenteIdStr = request.getParameter("id");
         String nome = request.getParameter("nome");
         String cognome = request.getParameter("cognome");
         String email = request.getParameter("email");
@@ -36,58 +39,96 @@ public class modUtente extends HttpServlet {
         String via = request.getParameter("via");
         String cap = request.getParameter("cap");
         String citta = request.getParameter("citta");
-        String stato = request.getParameter("stato");
-        
-        System.out.println(utenteId);
-        System.out.println(nome);
-        System.out.println(cognome);
-        System.out.println(email);
-        System.out.println(password);
-        System.out.println(telefono);
-        System.out.println(dataNascitaStr);
-        System.out.println(via);
-        System.out.println(cap);
-        System.out.println(citta);
-        System.out.println(stato);
-        
+        String nomeCarta = request.getParameter("nomeCarta");
+        String numeroCarta = request.getParameter("numeroCarta");
+        String scadenza = request.getParameter("scadenza");
+        String cvv = request.getParameter("cvv");
+
+        System.out.println("Utente ID: " + utenteIdStr);
+        System.out.println("Nome: " + nome);
+        System.out.println("Cognome: " + cognome);
+        System.out.println("Email: " + email);
+        System.out.println("Password: " + password);
+        System.out.println("Telefono: " + telefono);
+        System.out.println("Data di Nascita: " + dataNascitaStr);
+        System.out.println("Via: " + via);
+        System.out.println("CAP: " + cap);
+        System.out.println("Città: " + citta);
+        System.out.println("Nome Carta: " + nomeCarta);
+        System.out.println("Numero Carta: " + numeroCarta);
+        System.out.println("Scadenza: " + scadenza);
+        System.out.println("CVV: " + cvv);
+
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-        
+
         try {
-            Date dataNascita = sdf.parse(dataNascitaStr);
-         // Crea un oggetto Utente con i dati aggiornati
-            Utente utente = new Utente();
-            utente.setId(Integer.parseInt(utenteId));
+            // Converte utenteId in un intero
+            int utenteId = Integer.parseInt(utenteIdStr);
+
+            // Recupera l'utente dal database
+            UtenteDAO utenteDAO = new UtenteDAO();
+            Utente utente = utenteDAO.doRetrieveByKey(utenteId);
+
+            // Set dei valori dell'utente con i parametri ricevuti
             utente.setNome(nome);
             utente.setCognome(cognome);
-            utente.setEmail(email);
-            utente.setPw(password);
-            utente.setTelefono(telefono);
-            utente.setDataNascita(dataNascita);
-            utente.setVia(via);
-            utente.setCap(cap);
-            utente.setCitta(citta);
-
-            // Istanzia il model DAO per accedere al database
-            UtenteDAO utenteDAO = new UtenteDAO();
-
-            try {
-                // Esegue l'aggiornamento dell'utente nel database
-                utenteDAO.doUpdate(utente);
-
-
-                request.setAttribute("utente", utente);
-                RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/index.jsp");
-                dispatcher.forward(request, response);
-            } catch (SQLException e) {
-                e.printStackTrace();
-                // Gestisci l'errore
-                response.sendRedirect(request.getContextPath() + "/errore.jsp");
+            utente.setEmail(email.toLowerCase());
+            
+            // Se la password non è vuota, aggiorna la password
+            if (!password.isEmpty()) {
+                utente.setPw(hashPassword(password));
             }
+            
+            // Se il telefono non è "---", aggiorna il telefono
+            if (!telefono.equals("---")) {
+                utente.setTelefono(telefono);
+            }
+            
+            // Gestione della data di nascita
+            if (dataNascitaStr != null && !dataNascitaStr.isEmpty()) {
+                Date dataNascita = sdf.parse(dataNascitaStr);
+                utente.setDataNascita(dataNascita);
+            }
+            
+            // Aggiorna gli altri campi dell'utente se non sono "---"
+            if (!via.equals("---")) utente.setVia(via);
+            if (!cap.equals("---")) utente.setCap(cap);
+            if (!citta.equals("---")) utente.setCitta(citta);
+            if (!nomeCarta.equals("---")) utente.setNomeCarta(nomeCarta);
+            if (!numeroCarta.equals("---")) utente.setNumeroCarta(numeroCarta);
+            if (!scadenza.equals("---")) utente.setScadenza(scadenza);
+            if (!cvv.equals("---")) utente.setCvv(cvv);
 
+            // Esegue l'aggiornamento dell'utente nel database
+            utenteDAO.doUpdate(utente);
 
-        } catch (ParseException e) {
+            // Imposta l'utente aggiornato come attributo della richiesta
+            request.setAttribute("utente", utente);
+
+            // Esegue il forward alla pagina utente.jsp per visualizzare l'utente aggiornato
+            RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/utente.jsp");
+            dispatcher.forward(request, response);
+
+        } catch (NumberFormatException | SQLException | ParseException e) {
             e.printStackTrace();
-            // Gestire il caso in cui la stringa non sia nel formato atteso
+            // Reindirizzamento a error.jsp in caso di eccezione
+            response.sendRedirect(request.getContextPath() + "/error.jsp");
         }
     }
+
+
+    
+    private String hashPassword(String password) {
+	    try {
+	        MessageDigest md = MessageDigest.getInstance("SHA-512");
+	        byte[] hashedPassword = md.digest(password.getBytes());
+	        StringBuilder sb = new StringBuilder();
+	        for (byte b : hashedPassword) {
+	            sb.append(String.format("%02x", b));
+	        }
+	        return sb.toString();
+	    } catch (NoSuchAlgorithmException e) {
+	        throw new RuntimeException(e);
+	    }
+	}
 }

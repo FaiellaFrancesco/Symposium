@@ -19,12 +19,12 @@ body {
 
 .insert-form .contenitore {
     display: flex;
-    justify-content: center; /* Centra orizzontalmente i campi */
+    flex-direction: column; /* Dispone i blocchi verticalmente */
+    gap: 20px; /* Spazio tra i blocchi */
 }
 
-.insert-form .campi {
-    width: 100%; /* Larghezza massima del contenitore */
-    max-width: 600px; /* Larghezza massima dei campi */
+.insert-form .sezione {
+    width: 100%; /* Larghezza dei blocchi */
 }
 
 .insert-form label {
@@ -83,6 +83,13 @@ body {
 h1 {
     color: #990E3C;
     text-align: center;
+    font-family: 'Courier New', monospace;
+    margin-bottom: 20px;
+}
+
+h2 {
+    color: #990E3C;
+    text-align: left;
     font-family: 'Courier New', monospace;
     margin-bottom: 20px;
 }

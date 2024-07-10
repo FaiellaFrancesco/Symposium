@@ -17,7 +17,7 @@ public class Utente {
     private String cap;
     private String citta;
     private String nomeCarta;
-    private Date scadenza;
+    private String scadenza;
     private String numeroCarta;
     private String cvv;
     
@@ -80,8 +80,8 @@ public class Utente {
     public void setNomeCarta(String nomeCarta) { this.nomeCarta = nomeCarta; }
     public String getNomeCarta() { return this.nomeCarta; }
 
-    public void setScadenza(Date scadenza) { this.scadenza = scadenza; }
-    public Date getScadenza() { return this.scadenza; }
+    public void setScadenza(String scadenza) { this.scadenza = scadenza; }
+    public String getScadenza() { return this.scadenza; }
 
     public void setNumeroCarta(String numeroCarta) { this.numeroCarta = numeroCarta; }
     public String getNumeroCarta() { return this.numeroCarta; }

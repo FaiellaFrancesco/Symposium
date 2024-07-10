@@ -92,8 +92,7 @@ public class UtenteDAO implements DaoInterface<Utente, Integer> {
             preparedStatement.setString(9, utente.getCap());
             preparedStatement.setString(10, utente.getCitta());
             preparedStatement.setString(11, utente.getNomeCarta());
-            if(utente.getScadenza()!=null) preparedStatement.setDate(12, new java.sql.Date(utente.getScadenza().getTime()));
-            else preparedStatement.setDate(12, null);
+            preparedStatement.setString(12, utente.getScadenza());
             preparedStatement.setString(13, utente.getNumeroCarta());
             preparedStatement.setString(14, utente.getCvv());
             preparedStatement.executeUpdate();
@@ -109,13 +108,14 @@ public class UtenteDAO implements DaoInterface<Utente, Integer> {
             preparedStatement.setString(3, utente.getEmail());
             preparedStatement.setString(4, utente.getPw());
             preparedStatement.setString(5, utente.getTelefono());
-            preparedStatement.setDate(6, new java.sql.Date(utente.getDataNascita().getTime()));
+            if(utente.getDataNascita()!=null) preparedStatement.setDate(6, new java.sql.Date(utente.getDataNascita().getTime()));
+            else preparedStatement.setDate(6, null);
             preparedStatement.setBoolean(7, utente.isAmministratore());
             preparedStatement.setString(8, utente.getVia());
             preparedStatement.setString(9, utente.getCap());
             preparedStatement.setString(10, utente.getCitta());
             preparedStatement.setString(11, utente.getNomeCarta());
-            preparedStatement.setDate(12, new java.sql.Date(utente.getScadenza().getTime()));
+            preparedStatement.setString(12, utente.getScadenza());
             preparedStatement.setString(13, utente.getNumeroCarta());
             preparedStatement.setString(14, utente.getCvv());
             preparedStatement.setInt(15, utente.getId());
@@ -148,7 +148,7 @@ public class UtenteDAO implements DaoInterface<Utente, Integer> {
         utente.setCap(resultSet.getString("cap"));
         utente.setCitta(resultSet.getString("citta"));
         utente.setNomeCarta(resultSet.getString("nome_carta"));
-        utente.setScadenza(resultSet.getDate("scadenza"));
+        utente.setScadenza(resultSet.getString("scadenza"));
         utente.setNumeroCarta(resultSet.getString("numero_carta"));
         utente.setCvv(resultSet.getString("cvv"));
     }

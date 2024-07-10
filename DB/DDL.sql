@@ -32,7 +32,7 @@ CREATE TABLE IF NOT EXISTS utente(
     cap char(5),
     citta varchar(40),
     nome_carta varchar(61),
-    scadenza date,
+    scadenza varchar(10),
     numero_carta char(16),
     cvv char(3)
 ); 

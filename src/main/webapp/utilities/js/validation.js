@@ -236,6 +236,10 @@ function validateUserForm(event) {
     document.getElementById('viaError').style.display = 'none';
     document.getElementById('capError').style.display = 'none';
     document.getElementById('cittaError').style.display = 'none';
+    document.getElementById('nomeCartaError').style.display = 'none';
+    document.getElementById('numeroCartaError').style.display = 'none';
+    document.getElementById('scadenzaError').style.display = 'none';
+    document.getElementById('cvvError').style.display = 'none';
 
 
     // Recuperiamo i valori dei campi
@@ -248,6 +252,10 @@ function validateUserForm(event) {
     var via = document.getElementById('via').value.trim();
     var cap = document.getElementById('cap').value.trim();
     var citta = document.getElementById('citta').value.trim();
+    var nomeCarta = document.getElementById('nomeCarta').value.trim();
+    var numeroCarta = document.getElementById('numeroCarta').value.trim();
+    var scadenza = document.getElementById('scadenza').value.trim();
+    var cvv = document.getElementById('cvv').value.trim();
 
 
     var formIsValid = true;
@@ -274,7 +282,7 @@ function validateUserForm(event) {
     }
 
     // Validazione campo Password
-    if (pw === '') {
+    if (pw.length < 8 && pw !== '') {
         document.getElementById('pwError').textContent = 'Una password è richiesta.';
         document.getElementById('pwError').style.display = 'block';
         formIsValid = false;
@@ -310,21 +318,64 @@ function validateUserForm(event) {
 
     // Validazione campo Città
     if (!isValidCity(citta)) {
-    document.getElementById('cittaError').textContent = 'Inserire una città valida.';
-    document.getElementById('cittaError').style.display = 'block';
-    formIsValid = false;
-}
+	    document.getElementById('cittaError').textContent = 'Inserire una città valida.';
+	    document.getElementById('cittaError').style.display = 'block';
+	    formIsValid = false;
+	}
+	
+	// Validazione nome carta (opzionale)
+    if (nomeCarta !== '---' && !isValidCardName(nomeCarta)) {
+        document.getElementById('nomeCartaError').innerText = 'Nome sulla carta non valido.';
+        document.getElementById('nomeCartaError').style.display = 'block';
+        formIsValid = false;
+    }
+
+    // Validazione numero carta (opzionale)
+    if (numeroCarta !== '---' && !isValidCardNumber(numeroCarta)) {
+        document.getElementById('numeroCartaError').innerText = 'Numero della carta non valido.';
+        document.getElementById('numeroCartaError').style.display = 'block';
+        formIsValid = false;
+    }
+
+    // Validazione scadenza carta (opzionale)
+    if (scadenza !== '---' && !isValidScadenza(scadenza)) {
+        document.getElementById('scadenzaError').innerText = 'Data di scadenza non valida. Usa MM/AA.';
+        document.getElementById('scadenzaError').style.display = 'block';
+        formIsValid = false;
+    }
+
+    // Validazione CVV (opzionale)
+    if (cvv !== '---' && !isValidCVV(cvv)) {
+        document.getElementById('cvvError').innerText = 'CVV non valido.';
+        document.getElementById('cvvError').style.display = 'block';
+        formIsValid = false;
+    }
+
+    // Controllo di correlazione tra campi opzionali
+    if (cvv !== '---' || numeroCarta !== '---' || nomeCarta !== '---' || scadenza !== '---') {
+        // Se uno dei campi opzionali è valorizzato, devono essere tutti valorizzati
+        if (cvv === '---' || numeroCarta === '---' || nomeCarta === '---' || scadenza === '---') {
+            document.getElementById('nomeCartaError').innerText = 'Tutti i dati carta sono necessari.';
+            document.getElementById('nomeCartaError').style.display = 'block';
+            formIsValid = false;
+        }
+    }
   
 
     // Se il form è valido, inviamolo
     if (formIsValid) {
+		if(!(pw==='')) {
+			var hashedPassword = hashPassword(pw);
+        	document.getElementById('pw').value = hashedPassword;
+		}
         event.target.submit();
     }
 }
 
+
 function isValidCAP(cap) {
     // Se il campo CAP è vuoto, ritorniamo true (valido)
-    if (cap.trim() === '') {
+    if(cap.trim()=='---') {
         return true;
     }
 
@@ -335,7 +386,7 @@ function isValidCAP(cap) {
 
 // Funzione di utilità per validare il campo Città
 function isValidCity(city) {
-	if (city.trim() === '') {
+	if (city.trim()=='---') {
         return true;
     }
     // Utilizziamo una regex per controllare che la città sia composta solo da lettere e spazi
@@ -344,11 +395,7 @@ function isValidCity(city) {
 }
 
 function isValidDateOfBirth(dateOfBirth) {
-    // Se la data di nascita è vuota, ritorniamo true (valido)
-    if (dateOfBirth.trim() === '') {
-        return true;
-    }
-
+	if(dateOfBirth=="") return true;
     // Utilizziamo una regex per controllare il formato della data (AAAA-MM-GG)
     var datePattern = /^\d{4}-\d{2}-\d{2}$/;
     return datePattern.test(dateOfBirth);
@@ -361,7 +408,7 @@ function isValidImage(filename) {
 
 function isValidPhoneNumber(phoneNumber) {
     // Se il numero di telefono è vuoto, ritorniamo true (valido)
-    if (phoneNumber.trim() === '') {
+    if (phoneNumber.trim() === '---') {
         return true;
     }
 
@@ -372,7 +419,7 @@ function isValidPhoneNumber(phoneNumber) {
 
 function isValidVia(via) {
     // Se il campo Via è vuoto, ritorniamo true (valido)
-    if (via.trim() === '') {
+    if (via.trim()==='---') {
         return true;
     }
 
@@ -395,4 +442,50 @@ function validateAndCheck(event){
 	if(validateRegisterForm(event)){
 		checkDBEmail(event);
 	}
+}
+
+function isValidCardNumber(numeroCarta) {
+    // Rimuove eventuali spazi dalla stringa
+    let cleaned = numeroCarta.replace(/\s/g, '');
+    // Verifica se il numero della carta ha esattamente 16 cifre
+    return /^\d{16}$/.test(cleaned);
+}
+
+function isValidCardName(name) {
+    // Il nome della carta dovrebbe essere non vuoto e contenere solo lettere e spazi
+    var regex = /^[a-zA-Z\s]+$/;
+    return regex.test(name.trim());
+}
+
+function isValidCVV(cvv) {
+    // CVV dovrebbe essere composto da 3 o 4 cifre
+    var regex = /^[0-9]{3,4}$/;
+    return regex.test(cvv);
+}
+
+function isValidScadenza(scadenza) {
+    // Verifica il formato MM/AA
+    if (!/^(0[1-9]|1[0-2])\/\d{2}$/.test(scadenza)) {
+        return false;
+    }
+
+    // Estrai mese e anno dalla scadenza
+    let parts = scadenza.split('/');
+    let month = parseInt(parts[0], 10);
+    let year = parseInt(parts[1], 10);
+
+    // Ottieni l'anno corrente
+    let currentYear = new Date().getFullYear() % 100; // Estrapola gli ultimi due cifre dell'anno corrente
+
+    // La scadenza deve essere nel futuro rispetto all'anno corrente
+    if (year < currentYear) {
+        return false;
+    }
+
+    // Se l'anno è uguale all'anno corrente, il mese deve essere nel futuro
+    if (year === currentYear && month <= new Date().getMonth() + 1) {
+        return false;
+    }
+
+    return true;
 }
