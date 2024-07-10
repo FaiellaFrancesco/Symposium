@@ -35,8 +35,9 @@
         <div class="account-container">
             <h2>
                 <% if(request.getSession().getAttribute("id") != null) { %> 
-                    <a href="logout" class="link">LOGOUT</a> &nbsp; 
-                    <a class="link" href="carrello.jsp">CART</a> &nbsp;
+                    <a class="link" href="logout">L</a> &nbsp; 
+                    <a class="link" href="carrello.jsp">C</a> &nbsp;
+                     <a class="link" href="#" onclick="redirectToAreaUtente(<%=request.getSession().getAttribute("id") %>)">AU</a> &nbsp;
                 <% } else { %> 
                     <a href="login.jsp" class="link">ACCEDI</a> 
                 <% } %> 
