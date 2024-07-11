@@ -157,7 +157,7 @@ public class Fattura extends HttpServlet {
             totale += importoConIva;
 
             itemsTable.addCell(new Cell().add(new Paragraph(String.valueOf(item.getProdotto().getId()))).setTextAlignment(TextAlignment.CENTER));
-            itemsTable.addCell(new Cell().add(new Paragraph(item.getProdotto().getNome())).setTextAlignment(TextAlignment.LEFT));
+            itemsTable.addCell(new Cell().add(new Paragraph(item.getNome())).setTextAlignment(TextAlignment.LEFT));
             itemsTable.addCell(new Cell().add(new Paragraph(String.valueOf(item.getQuant()))).setTextAlignment(TextAlignment.CENTER));
             itemsTable.addCell(new Cell().add(new Paragraph(String.format("%.2f", item.getPrezzo()))).setTextAlignment(TextAlignment.RIGHT));
             itemsTable.addCell(new Cell().add(new Paragraph(String.format("%.2f", iva))).setTextAlignment(TextAlignment.RIGHT));
