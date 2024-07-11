@@ -63,6 +63,7 @@ public class OrdineDAO implements DaoInterface<Ordine, Integer>{
                     ol.setIva(rs1.getInt("iva"));
                     ol.setQuant(rs1.getInt("quantita"));
                     ol.setPrezzo(rs1.getDouble("prezzo"));
+                    ol.setNome(rs1.getString("nome"));
                     prodotti.add(ol);
                 }
                 ordine.setProdotti(prodotti);
@@ -113,6 +114,7 @@ public class OrdineDAO implements DaoInterface<Ordine, Integer>{
                     ol.setIva(rs1.getInt("iva"));
                     ol.setQuant(rs1.getInt("quantita"));
                     ol.setPrezzo(rs1.getDouble("prezzo"));
+                    ol.setNome(rs1.getString("nome"));
                     prodotti.add(ol);
                 }
                 ordine.setProdotti(prodotti);
@@ -162,6 +164,7 @@ public class OrdineDAO implements DaoInterface<Ordine, Integer>{
                     ol.setIva(rs1.getInt("iva"));
                     ol.setQuant(rs1.getInt("quantita"));
                     ol.setPrezzo(rs1.getDouble("prezzo"));
+                    ol.setNome(rs1.getString("nome"));
                     ordine.getProdotti().add(ol);
                 }
                 ordini.add(ordine);
@@ -203,7 +206,7 @@ public class OrdineDAO implements DaoInterface<Ordine, Integer>{
             }
 
             // Insert products into the "element" table
-            String elementQuery = "INSERT INTO element (ordine, prodotto, prezzo, iva, quantita) VALUES (?, ?, ?, ?, ?)";
+            String elementQuery = "INSERT INTO element (ordine, prodotto, prezzo, iva, quantita, nome) VALUES (?, ?, ?, ?, ?, ?)";
             PreparedStatement elementStatement = connessione.prepareStatement(elementQuery);
 
             for (OrderLine ol : ordine.getProdotti()) {
@@ -212,6 +215,7 @@ public class OrdineDAO implements DaoInterface<Ordine, Integer>{
                 elementStatement.setDouble(3, ol.getPrezzo());
                 elementStatement.setInt(4, ol.getIva());
                 elementStatement.setInt(5, ol.getQuant());
+                elementStatement.setString(6, ol.getNome());
                 elementStatement.executeUpdate();
             }
 

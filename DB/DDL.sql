@@ -3,7 +3,7 @@ USE Symposium;
 
 CREATE TABLE IF NOT EXISTS prodotto(
 	id INT auto_increment PRIMARY KEY,
-    nome VARCHAR(64) NOT NULL,
+    nome VARCHAR(100) NOT NULL,
     prezzo numeric(10,2) not null,
     iva int not null,
     descrizione VARCHAR(1000) not null,
@@ -74,6 +74,7 @@ CREATE TABLE IF NOT EXISTS element(
     prezzo numeric(10,2) not null,
     iva int not null,
     quantita int not null,
+    nome varchar(100) not null,
     primary key (prodotto, ordine),
     foreign key (prodotto) references prodotto(id) ON DELETE RESTRICT ON UPDATE CASCADE,
     foreign key (ordine) references ordine(id) ON DELETE RESTRICT ON UPDATE CASCADE

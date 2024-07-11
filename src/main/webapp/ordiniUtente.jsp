@@ -55,7 +55,7 @@
                             for (OrderLine prodotto : prodotti) {
                         %>
                         <tr>
-                            <td class="prodotto" onclick="redirectToProduct(<%= prodotto.getProdotto().getId() %>)"><%= prodotto.getProdotto().getId() + " " + prodotto.getProdotto().getNome() %></td>
+                            <td class="prodotto" onclick="redirectToProduct(<%= prodotto.getProdotto().getId() %>)"><%= prodotto.getProdotto().getId() + " " + prodotto.getNome() %></td>
                             <td><%= prodotto.getIva() %></td>
                             <td><%= prodotto.getQuant() %></td>
                             <td><%= prodotto.getPrezzo() %></td>

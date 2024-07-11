@@ -6,6 +6,7 @@ public class OrderLine{
     private double prezzo; //all'acquisto
     private int iva; //all'acquisto
     private int quant;
+    private String nome;
 
     public OrderLine(){}
 
@@ -21,6 +22,9 @@ public class OrderLine{
         return this.iva;
     }
 
+    public String getNome() {return this.nome;}
+    public void setNome(String nome) { this.nome=nome;}
+    
     public int getQuant(){
         return this.quant;
     }
@@ -47,6 +51,7 @@ public class OrderLine{
         this.prezzo=p.getProdotto().getPrezzo();
         this.iva=p.getProdotto().getIva();
         this.quant=p.getQuant();
+        this.nome=p.getProdotto().getNome();
     }
 
 }
