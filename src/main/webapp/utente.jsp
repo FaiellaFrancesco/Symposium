@@ -7,14 +7,15 @@
     <title>Area Utente</title>
     <link rel="stylesheet" href="utilities/css/utente.css">
     <script src="utilities/js/validation.js"></script>
+     <script src="utilities/js/redirect.js"></script>
 </head>
 <body>
 <%@ include file="../utilities/header.jsp" %>
 <% Utente utente = (Utente) request.getAttribute("utente"); 
    if (utente != null) {
 %>
-
-<h1>Area Utente</h1>
+<%@ include file="../utilities/dashboard.jsp" %>
+<h1>I miei dati</h1>
 <form action="modUtente" method="post" onsubmit="validateUserForm(event)" class="insert-form">
     <div class="contenitore">
         <div class="sezione">
