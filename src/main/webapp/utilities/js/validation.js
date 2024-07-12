@@ -283,7 +283,7 @@ function validateUserForm(event) {
 
     // Validazione campo Password
     if (pw.length < 8 && pw !== '') {
-        document.getElementById('pwError').textContent = 'Una password è richiesta.';
+        document.getElementById('pwError').textContent = 'Una password è richiesta (Piu di 8 caratteri).';
         document.getElementById('pwError').style.display = 'block';
         formIsValid = false;
     }
@@ -364,7 +364,7 @@ function validateUserForm(event) {
 
     // Se il form è valido, inviamolo
     if (formIsValid) {
-		if(!(pw==='')) {
+		if(!(pw.trim().length===0)) {
 			var hashedPassword = hashPassword(pw);
         	document.getElementById('pw').value = hashedPassword;
 		}
@@ -375,7 +375,11 @@ function validateUserForm(event) {
 
 function isValidCAP(cap) {
     // Se il campo CAP è vuoto, ritorniamo true (valido)
-    if(cap.trim()=='---') {
+    if(cap.trim()==='---') {
+        return true;
+    }
+    
+    if(cap.trim()==='') {
         return true;
     }
 
@@ -386,7 +390,11 @@ function isValidCAP(cap) {
 
 // Funzione di utilità per validare il campo Città
 function isValidCity(city) {
-	if (city.trim()=='---') {
+	if (city.trim()==='---') {
+        return true;
+    }
+    
+    if (city.trim()==='') {
         return true;
     }
     // Utilizziamo una regex per controllare che la città sia composta solo da lettere e spazi
@@ -411,6 +419,10 @@ function isValidPhoneNumber(phoneNumber) {
     if (phoneNumber.trim() === '---') {
         return true;
     }
+    
+    if (phoneNumber.trim() === '') {
+        return true;
+    }
 
     // Utilizziamo una regex per controllare se il numero è composto solo da cifre numeriche
     var phonePattern = /^\d+$/;
@@ -420,6 +432,10 @@ function isValidPhoneNumber(phoneNumber) {
 function isValidVia(via) {
     // Se il campo Via è vuoto, ritorniamo true (valido)
     if (via.trim()==='---') {
+        return true;
+    }
+    
+    if (via.trim()==='') {
         return true;
     }
 
@@ -445,6 +461,9 @@ function validateAndCheck(event){
 }
 
 function isValidCardNumber(numeroCarta) {
+	if(numeroCarta.trim()===''){
+		return true;
+	}
     // Rimuove eventuali spazi dalla stringa
     let cleaned = numeroCarta.replace(/\s/g, '');
     // Verifica se il numero della carta ha esattamente 16 cifre
@@ -454,17 +473,26 @@ function isValidCardNumber(numeroCarta) {
 function isValidCardName(name) {
     // Il nome della carta dovrebbe essere non vuoto e contenere solo lettere e spazi
     var regex = /^[a-zA-Z\s]+$/;
+    if(name.trim()===''){
+		return true;
+	}
     return regex.test(name.trim());
 }
 
 function isValidCVV(cvv) {
     // CVV dovrebbe essere composto da 3 o 4 cifre
     var regex = /^[0-9]{3,4}$/;
+    if(cvv.trim()===''){
+		return true;
+	}
     return regex.test(cvv);
 }
 
 function isValidScadenza(scadenza) {
     // Verifica il formato MM/AA
+    if(scadenza.trim()===''){
+		return true;
+	}
     if (!/^(0[1-9]|1[0-2])\/\d{2}$/.test(scadenza)) {
         return false;
     }

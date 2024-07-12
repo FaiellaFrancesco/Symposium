@@ -7,7 +7,8 @@
     <title>Area Utente</title>
     <link rel="stylesheet" href="utilities/css/utente.css">
     <script src="utilities/js/validation.js"></script>
-     <script src="utilities/js/redirect.js"></script>
+    <script src="utilities/js/redirect.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js"></script>
 </head>
 <body>
 <%@ include file="../utilities/header.jsp" %>
@@ -18,6 +19,7 @@
 <h1>I miei dati</h1>
 <form action="modUtente" method="post" onsubmit="validateUserForm(event)" class="insert-form">
     <div class="contenitore">
+        <!-- Sezione Info Personali -->
         <div class="sezione">
             <h2>Info Personali</h2>
             <label>Nome:</label>
@@ -50,6 +52,7 @@
             <span id="cittaError" class="error-message"></span>
         </div>
 
+        <!-- Sezione Dati Account e Pagamento -->
         <div class="sezione">
             <h2>Dati Account</h2>
             <label>Email:</label>

@@ -49,3 +49,24 @@ h2 {
     background-color: #f2f2f2;
     border: 1px solid #ddd;
 }
+
+/* Stile per il pulsante "Scarica Fattura" */
+.order-table button {
+    background-color: #990E3C;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+.order-table button:hover {
+    background-color: #6F1C38;
+}
+
+.order-table button:active {
+    background-color: #4F0E2C;
+    transform: scale(0.95);
+}

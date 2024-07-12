@@ -37,6 +37,7 @@ public class ordiniUtente extends HttpServlet {
 		ArrayList <Ordine> ordine=null;
 		Utente utente = null;
 		int id = Integer.parseInt(request.getParameter("id"));
+		
 		try {
 			utente = model.doRetrieveByKey(id);
 			ordine = ordinedao.doRetrieveByUsr(utente.getId());

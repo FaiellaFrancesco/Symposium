@@ -103,22 +103,26 @@ public class UtenteDAO implements DaoInterface<Utente, Integer> {
     public void doUpdate(Utente utente) throws SQLException {
         String query = "UPDATE " + TABLE_NAME + " SET nome=?, cognome=?, email=?, pw=?, telefono=?, data_nascita=?, amministratore=?, via=?, cap=?, citta=?, nome_carta=?, scadenza=?, numero_carta=?, cvv=? WHERE id=?";
         try (Connection connection = ds.getConnection(); PreparedStatement preparedStatement = connection.prepareStatement(query)) {
-            preparedStatement.setString(1, utente.getNome());
-            preparedStatement.setString(2, utente.getCognome());
-            preparedStatement.setString(3, utente.getEmail());
-            preparedStatement.setString(4, utente.getPw());
-            preparedStatement.setString(5, utente.getTelefono());
-            if(utente.getDataNascita()!=null) preparedStatement.setDate(6, new java.sql.Date(utente.getDataNascita().getTime()));
-            else preparedStatement.setDate(6, null);
-            preparedStatement.setBoolean(7, utente.isAmministratore());
-            preparedStatement.setString(8, utente.getVia());
-            preparedStatement.setString(9, utente.getCap());
-            preparedStatement.setString(10, utente.getCitta());
-            preparedStatement.setString(11, utente.getNomeCarta());
-            preparedStatement.setString(12, utente.getScadenza());
-            preparedStatement.setString(13, utente.getNumeroCarta());
-            preparedStatement.setString(14, utente.getCvv());
-            preparedStatement.setInt(15, utente.getId());
+        	
+        	preparedStatement.setString(1, utente.getNome());
+        	preparedStatement.setString(2, utente.getCognome());
+        	preparedStatement.setString(3, utente.getEmail());
+        	preparedStatement.setString(4, utente.getPw());
+        	preparedStatement.setString(5, utente.getTelefono());
+        	if (utente.getDataNascita() != null) {
+        	    preparedStatement.setDate(6, new java.sql.Date(utente.getDataNascita().getTime()+86400000)); //sommo un giorno il valore, inserito nel db era un giorno indietro
+        	} else {
+        	    preparedStatement.setNull(6, java.sql.Types.DATE); // Imposta il parametro a NULL se la data è null
+        	}
+        	preparedStatement.setBoolean(7, utente.isAmministratore());
+        	preparedStatement.setString(8, utente.getVia());
+        	preparedStatement.setString(9, utente.getCap());
+        	preparedStatement.setString(10, utente.getCitta());
+        	preparedStatement.setString(11, utente.getNomeCarta());
+        	preparedStatement.setString(12, utente.getScadenza());
+        	preparedStatement.setString(13, utente.getNumeroCarta());
+        	preparedStatement.setString(14, utente.getCvv());
+        	preparedStatement.setInt(15, utente.getId());
             preparedStatement.executeUpdate();
         }
     }

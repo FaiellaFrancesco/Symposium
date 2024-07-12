@@ -100,6 +100,7 @@ header {
     display: none;
     width: 42%;
     left: 28%;
+    top:110px;
     
 }
 
@@ -167,7 +168,8 @@ h2 {
     }
     */
     .navbar{
-    display:none;}
+    display:none;
+    }
     .search-form{
     width: 150px;
     }

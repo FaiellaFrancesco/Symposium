@@ -44,21 +44,6 @@ public class modUtente extends HttpServlet {
         String scadenza = request.getParameter("scadenza");
         String cvv = request.getParameter("cvv");
 
-        System.out.println("Utente ID: " + utenteIdStr);
-        System.out.println("Nome: " + nome);
-        System.out.println("Cognome: " + cognome);
-        System.out.println("Email: " + email);
-        System.out.println("Password: " + password);
-        System.out.println("Telefono: " + telefono);
-        System.out.println("Data di Nascita: " + dataNascitaStr);
-        System.out.println("Via: " + via);
-        System.out.println("CAP: " + cap);
-        System.out.println("Città: " + citta);
-        System.out.println("Nome Carta: " + nomeCarta);
-        System.out.println("Numero Carta: " + numeroCarta);
-        System.out.println("Scadenza: " + scadenza);
-        System.out.println("CVV: " + cvv);
-
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 
         try {
@@ -75,19 +60,20 @@ public class modUtente extends HttpServlet {
             utente.setEmail(email.toLowerCase());
             
             // Se la password non è vuota, aggiorna la password
-            if (!password.isEmpty()) {
+            if (!password.isEmpty() && !password.trim().isEmpty()) {
                 utente.setPw(hashPassword(password));
             }
-            
+
             // Se il telefono non è "---", aggiorna il telefono
             if (!telefono.equals("---")) {
                 utente.setTelefono(telefono);
             }
+
             
             // Gestione della data di nascita
             if (dataNascitaStr != null && !dataNascitaStr.isEmpty()) {
                 Date dataNascita = sdf.parse(dataNascitaStr);
-                utente.setDataNascita(dataNascita);
+                utente.setDataNascita(new java.sql.Date(dataNascita.getTime()));
             }
             
             // Aggiorna gli altri campi dell'utente se non sono "---"
@@ -98,6 +84,13 @@ public class modUtente extends HttpServlet {
             if (!numeroCarta.equals("---")) utente.setNumeroCarta(numeroCarta);
             if (!scadenza.equals("---")) utente.setScadenza(scadenza);
             if (!cvv.equals("---")) utente.setCvv(cvv);
+            if (via.equals("")) utente.setVia(null);
+            if (cap.equals("")) utente.setCap(null);
+            if (citta.equals("")) utente.setCitta(null);
+            if (nomeCarta.equals("")) utente.setNomeCarta(null);
+            if (numeroCarta.equals("")) utente.setNumeroCarta(null);
+            if (scadenza.equals("")) utente.setScadenza(null);
+            if (cvv.equals("")) utente.setCvv(null);
 
             // Esegue l'aggiornamento dell'utente nel database
             utenteDAO.doUpdate(utente);

@@ -23,3 +23,12 @@
         .content {
             padding: 20px;
         }
+        h1, h2 {
+    		color: #990E3C;
+    		font-family: 'Courier New', monospace;
+    		margin-bottom: 20px;
+		}
+		
+		h1 {
+		    text-align: center;
+		}
