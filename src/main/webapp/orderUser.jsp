@@ -3,13 +3,7 @@
 <%@ page import="java.util.ArrayList" %>
 <%@ page import="model.beans.Ordine" %>
 <%@ page import="model.beans.OrderLine" %>
-<%
-
-    if(request.getSession().getAttribute("id") == null) {
-        response.sendRedirect("./login.jsp");
-    }
-    
-%>
+<%@ include file="utilities/filtro.jsp" %>
 <!DOCTYPE html>
 <html>
 <head>

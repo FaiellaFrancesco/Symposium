@@ -29,9 +29,19 @@
 	    <filter-class>filter.AdminFilter</filter-class>
 	</filter>
 	
+	<filter>
+	    <filter-name>AccessFilter</filter-name>
+	    <filter-class>filter.AccessFilter</filter-class>
+	</filter>
+	
 	<filter-mapping>
         <filter-name>AdminFilter</filter-name>
         <url-pattern>/admin/*</url-pattern>
+    </filter-mapping>
+    
+    <filter-mapping>
+        <filter-name>AccessFilter</filter-name>
+        <url-pattern>/utilities/*</url-pattern>
     </filter-mapping>
     
 </web-app>

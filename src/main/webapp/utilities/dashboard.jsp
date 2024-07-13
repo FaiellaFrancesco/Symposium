@@ -3,7 +3,6 @@
 <%@ page import="java.util.ArrayList" %>
 <%@ page import="model.beans.Ordine" %>
 <%@ page import="model.beans.OrderLine" %>
-<%@ page import="model.beans.Utente" %>
 <html>
 <head>
 <meta charset="UTF-8">
