@@ -11,8 +11,8 @@
 <script src="utilities/js/redirect.js"></script>
 </head>
 <body>
-<%String utenteId = (String)request.getAttribute("utenteId"); 
-  if(utenteId == null){
+<%int utenteId = (int)request.getAttribute("id"); 
+  if(utenteId == (int)request.getSession().getAttribute("id")){
 %>
 <h1>Ciao, sei nell'area utente</h1>
 <div class="navbar">

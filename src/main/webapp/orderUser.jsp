@@ -9,7 +9,6 @@
 <head>
     <title>Dashboard Utente</title>
     <link rel="stylesheet" href="utilities/css/ordini.css">
-    <script src="utilities/js/redirect.js"></script>
 </head>
 <body>
 <%@ include file="utilities/header.jsp" %>
@@ -19,7 +18,22 @@
 %>
 <div class="content">
     <h1>Ordini</h1>
-
+	
+	<form id="filterForm" method="POST" action="filtroOrdini">
+    <div class="filter-container">
+        <label for="startDate">Data Inizio:</label>
+        <input type="date" id="startDate" name="startDate" value="<%= request.getParameter("startDate") %>">
+        
+        <label for="endDate">Data Fine:</label>
+        <input type="date" id="endDate" name="endDate" value="<%= request.getParameter("endDate") %>">
+        
+        <!-- Campo hidden per l'ID utente -->
+        <input type="hidden" id="userId" name="id" value="<%= request.getAttribute("id")  %>">
+        
+        <button type="submit">Filtra</button>
+    </div>
+</form>
+    <div id="orderTableContainer">
     <table class="order-table">
         <thead>
             <tr>
@@ -87,8 +101,9 @@
             <%
                 }
             %>
-        </tbody>
+        	</tbody>
     </table>
+	</div>
 </div>
 <%  
     } else {

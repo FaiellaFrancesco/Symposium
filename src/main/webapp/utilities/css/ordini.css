@@ -70,3 +70,46 @@ h2 {
     background-color: #4F0E2C;
     transform: scale(0.95);
 }
+
+/* Stile per i campi delle date e il pulsante di ricerca */
+.filter-container {
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+.filter-container label {
+    font-family: 'Courier New', monospace;
+    font-size: 16px;
+    color: #990E3C;
+}
+
+.filter-container input[type="date"] {
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-family: 'Courier New', monospace;
+    font-size: 14px;
+}
+
+.filter-container button {
+    background-color: #990E3C;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+.filter-container button:hover {
+    background-color: #6F1C38;
+}
+
+.filter-container button:active {
+    background-color: #4F0E2C;
+    transform: scale(0.95);
+}

@@ -47,6 +47,7 @@ public class campiUtente extends HttpServlet {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+      request.setAttribute("id",id);
 	  request.setAttribute("utente", utente);
 	  dispatcher = getServletContext().getRequestDispatcher(returnPage);
 	  dispatcher.forward(request, response);
