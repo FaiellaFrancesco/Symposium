@@ -24,7 +24,7 @@
    if (ord != null) {
 %>
 <div class="content">
-    <h2>I miei ordini</h2>
+    <h1>Ordini</h1>
 
     <table class="order-table">
         <thead>
@@ -80,7 +80,7 @@
                     </table>
                 </td>
                 <td>
-                    <button onclick="window.location.href='Fattura?orderId=<%= ordine.getId() %>'">Scarica Fattura</button>
+                    <button onclick="redirectToFattura(<%= ordine.getId() %>)">Scarica Fattura</button>
                 </td> <!-- Aggiunta del pulsante Fattura -->
             </tr>
             <%

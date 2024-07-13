@@ -12,7 +12,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import model.DAO.OrdineDAO;
+import model.DAO.UtenteDAO;
 import model.beans.Ordine;
+import model.beans.Utente;
 
 /**
  * Servlet implementation class ordiniAdmin
@@ -36,6 +38,8 @@ public class ordiniAdmin extends HttpServlet {
 		// TODO Auto-generated method stub
 		String userId = request.getParameter("id");
 		OrdineDAO order = new OrdineDAO();
+		Utente utente = new Utente();
+		UtenteDAO user = new UtenteDAO();
 		ArrayList<Ordine> ordini = new ArrayList<Ordine>();
 		try {
 			ordini = order.doRetrieveByUsr(Integer.parseInt(userId));
@@ -44,8 +48,8 @@ public class ordiniAdmin extends HttpServlet {
 			e.printStackTrace();
 		}
 		request.setAttribute("ordini", ordini);
-		request.setAttribute("utente", userId);
-		RequestDispatcher dispatcher = request.getRequestDispatcher("/ordiniUtente.jsp");
+		request.setAttribute("utenteId", userId);
+		RequestDispatcher dispatcher = request.getRequestDispatcher("/orderUser.jsp");
         dispatcher.forward(request, response);
 	}
 

@@ -19,6 +19,8 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
 import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -35,8 +37,9 @@ import model.DAO.UtenteDAO;
 public class Fattura extends HttpServlet {
 
     @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         int orderId = -1;
+        HttpSession sessione = request.getSession();
 
         if (request.getParameter("orderId") == null) {
             response.sendError(HttpServletResponse.SC_BAD_REQUEST, "Missing orderId parameter");
@@ -56,9 +59,14 @@ public class Fattura extends HttpServlet {
 
             UtenteDAO utenteDAO = new UtenteDAO();
             Utente user = utenteDAO.doRetrieveByKey(order.getUtente());
-
+            
+            if(order.getUtente() == (int)sessione.getAttribute("id") || (boolean)sessione.getAttribute("admin")) {
             // Genera il PDF della fattura
-            generateInvoicePDF(order, user, response, request);
+            	generateInvoicePDF(order, user, response, request);
+            }
+            else {
+            	response.sendRedirect(request.getContextPath() + "/errore.jsp");
+            }
         } catch (Exception e) {
             throw new ServletException("Error generating invoice", e);
         }

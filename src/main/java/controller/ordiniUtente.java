@@ -46,7 +46,6 @@ public class ordiniUtente extends HttpServlet {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-	  request.setAttribute("utente", utente);
 	  request.setAttribute("ordini", ordine);
 	  dispatcher = getServletContext().getRequestDispatcher(returnPage);
 	  dispatcher.forward(request, response);
