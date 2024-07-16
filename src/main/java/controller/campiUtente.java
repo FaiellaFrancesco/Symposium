@@ -9,6 +9,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import model.DAO.ProdottoDAO;
 import model.DAO.UtenteDAO;
@@ -39,18 +40,25 @@ public class campiUtente extends HttpServlet {
 		String returnPage = "/utente.jsp";
 		UtenteDAO model = new UtenteDAO();
 		Utente utente = null;
+		HttpSession sessione = request.getSession();
 		int id = Integer.parseInt(request.getParameter("id"));
-		try {
-			utente = model.doRetrieveByKey(id);
-		} catch (SQLException e) {
-			returnPage = "/errore.jsp";
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+		if((int)sessione.getAttribute("id")==id) {
+			try {
+				utente = model.doRetrieveByKey(id);
+			} catch (SQLException e) {
+				returnPage = "/errore.jsp";
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+	      request.setAttribute("id",id);
+		  request.setAttribute("utente", utente);
+		  dispatcher = getServletContext().getRequestDispatcher(returnPage);
+		  dispatcher.forward(request, response);
 		}
-      request.setAttribute("id",id);
-	  request.setAttribute("utente", utente);
-	  dispatcher = getServletContext().getRequestDispatcher(returnPage);
-	  dispatcher.forward(request, response);
+		else {
+			dispatcher = getServletContext().getRequestDispatcher("/home.jsp");
+			dispatcher.forward(request, response);
+		}
 	  
 	}
 

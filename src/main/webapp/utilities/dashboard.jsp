@@ -7,7 +7,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Dashboard Utente</title>
-<link rel="stylesheet" href="utilities/css/dashboard.css">
+<link rel="stylesheet" href="/Symposium/utilities/css/dashboard.css">
 <script src="utilities/js/redirect.js"></script>
 </head>
 <body>

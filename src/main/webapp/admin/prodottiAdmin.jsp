@@ -6,7 +6,7 @@
 <%
     Collection<Prodotto> prodotti = (Collection<Prodotto>) request.getAttribute("prodotti");
     if (prodotti == null) {
-        response.sendRedirect("./prodottiAdmin");
+        response.sendRedirect("./admin/prodottiAdmin");
         return;
     }
 %>
@@ -16,7 +16,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Lista Prodotti</title>
-    <link rel="stylesheet" href="utilities/css/utenti.css">
+    <link rel="stylesheet" href="../utilities/css/utenti.css">
 </head>
 <%@ include file="../utilities/header.jsp" %>
 <body>
@@ -63,7 +63,7 @@
                     <td><%= prodotto.getTipologia() %></td>
                     <td><%= prodotto.getAnnata() %></td>
                     <td><%= prodotto.getDenominazione() %></td>
-                    <td><img src="<%= prodotto.getImmagine() %>" alt="<%= prodotto.getNome() %>" width="100"></td>
+                    <td><img src="/Symposium/<%= prodotto.getImmagine() %>" alt="<%= prodotto.getNome() %>" width="100"></td>
                 </tr>
                 <% } %>
             </tbody>

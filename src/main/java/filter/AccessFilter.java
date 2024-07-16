@@ -10,7 +10,7 @@ import javax.servlet.annotation.WebFilter;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebFilter("/restricted/*") // Applica il filtro a tutte le risorse sotto /restricted/
+// Applica il filtro a tutte le risorse sotto /restricted/
 public class AccessFilter implements Filter {
     public void init(FilterConfig fConfig) throws ServletException {
         // Inizializzazione del filtro, se necessaria

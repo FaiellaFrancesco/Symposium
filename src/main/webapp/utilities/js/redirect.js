@@ -20,13 +20,18 @@ function redirectToProduct(productId) {
         }
 
         function redirectToPage() {
-            var form = document.createElement("form");
-
-            form.setAttribute("method", "post");
-            form.setAttribute("action", 'home.jsp');
-
-            document.body.appendChild(form);
-            form.submit();
+			var basePath = window.location.origin;
+            window.location.href=basePath+"/Symposium/home.jsp";
+        }
+        
+        function redirectToCarrello() {
+			var basePath = window.location.origin;
+            window.location.href=basePath+"/Symposium/carrello.jsp";
+        }
+        
+        function redirectToLogout() {
+			var basePath = window.location.origin;
+            window.location.href=basePath+"/Symposium/logout";
         }
 
         function redirectToOrder(id) {
@@ -34,7 +39,7 @@ function redirectToProduct(productId) {
             var form = document.createElement("form");
 
             form.setAttribute("method", "post");
-            form.setAttribute("action", basePath + '/Symposium/ordiniAdmin');
+            form.setAttribute("action", basePath + '/Symposium/admin/ordiniAdmin');
 
             var hiddenField = document.createElement("input");
             hiddenField.setAttribute("type", "hidden");
@@ -51,7 +56,7 @@ function redirectToProduct(productId) {
     var form = document.createElement("form");
 
     form.setAttribute("method", "post");
-    form.setAttribute("action", basePath + '/Symposium/campiProdotto');
+    form.setAttribute("action", basePath + '/Symposium/admin/campiProdotto');
 
     var hiddenField = document.createElement("input");
     hiddenField.setAttribute("type", "hidden");
@@ -64,10 +69,11 @@ function redirectToProduct(productId) {
   }
   
 function redirectToAreaUtente(id) {
+		var basePath = window.location.origin;
         // Crea un form nascosto dinamicamente
         var form = document.createElement('form');
         form.method = 'POST'; // Metodo POST
-        form.action = 'campiUtente'; // URL dell'azione
+        form.action = basePath+'/Symposium/campiUtente'; // URL dell'azione
 
         // Aggiungi campi input nascosti per i parametri
         var idInput = document.createElement('input');
@@ -86,9 +92,10 @@ function redirectToAreaUtente(id) {
 
 function redirectToProdottiUtente(id){
 	// Crea un form nascosto dinamicamente
+		var basePath = window.location.origin;
         var form = document.createElement('form');
         form.method = 'POST'; // Metodo POST
-        form.action = 'ordiniUtente'; // URL dell'azione
+        form.action = basePath + '/Symposium/ordiniUtente'; // URL dell'azione
 
         // Aggiungi campi input nascosti per i parametri
         var idInput = document.createElement('input');
@@ -107,9 +114,10 @@ function redirectToProdottiUtente(id){
 
 
 function redirectToFattura(id){
+	var basePath = window.location.origin;
 	var form = document.createElement('form');
         form.method = 'POST'; // Metodo POST
-        form.action = 'Fattura'; // URL dell'azione
+        form.action = basePath + '/Symposium/Fattura'; // URL dell'azione
 
         // Aggiungi campi input nascosti per i parametri
         var idInput = document.createElement('input');

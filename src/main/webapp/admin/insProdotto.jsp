@@ -7,8 +7,8 @@
 <head>
     <meta charset="UTF-8">
     <title>Nuovo Prodotto</title>
-    <link rel="stylesheet" href="utilities/css/inserimento.css">
-    <script src="utilities/js/validation.js"></script>
+    <link rel="stylesheet" href="/Symposium/utilities/css/inserimento.css">
+    <script src="../utilities/js/validation.js"></script>
 </head>
 <body>
     <%@ include file="../utilities/header.jsp" %>

@@ -97,7 +97,7 @@ public class modUtente extends HttpServlet {
 
             // Imposta l'utente aggiornato come attributo della richiesta
             request.setAttribute("utente", utente);
-
+            request.setAttribute("id", utenteId);
             // Esegue il forward alla pagina utente.jsp per visualizzare l'utente aggiornato
             RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/utente.jsp");
             dispatcher.forward(request, response);

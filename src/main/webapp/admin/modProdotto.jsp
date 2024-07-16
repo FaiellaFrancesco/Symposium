@@ -6,8 +6,8 @@
 <head>
     <meta charset="UTF-8">
     <title>Modifica Prodotto</title>
-    <link rel="stylesheet" href="utilities/css/inserimento.css">
-    <script src="utilities/js/validation.js"></script>
+    <link rel="stylesheet" href="../utilities/css/inserimento.css">
+    <script src="../utilities/js/validation.js"></script>
 </head>
 <body>
 <%@ include file="../utilities/header.jsp" %>
@@ -72,7 +72,7 @@
             <span id="denominazioneError" class="error-message"></span>
             
             <label>Immagine attuale:</label>
-            <img src="<%= prodotto.getImmagine() %>" alt="Immagine Prodotto" class="imgprodotto">
+            <img src="/Symposium/<%= prodotto.getImmagine() %>" alt="Immagine Prodotto" class="imgprodotto">
             
             <label>Nuova Immagine:</label>
             <input type="file" name="file" accept="image/*">

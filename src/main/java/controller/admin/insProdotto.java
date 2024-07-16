@@ -20,7 +20,7 @@ import javax.servlet.http.Part;
 import model.DAO.ProdottoDAO;
 import model.beans.Prodotto;
 
-@WebServlet("/insProdotto")
+@WebServlet("/admin/insProdotto")
 @MultipartConfig
 public class insProdotto extends HttpServlet {
     private static final long serialVersionUID = 1L;

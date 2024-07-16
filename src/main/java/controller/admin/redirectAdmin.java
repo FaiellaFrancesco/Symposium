@@ -30,11 +30,12 @@ public class redirectAdmin extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		String dispatch = "../errore.jsp";
+		String dispatch = "/errore.jsp";
 		HttpSession sessione = request.getSession();
 		if((boolean)sessione.getAttribute("admin")==true) {
 			dispatch = "/admin/"+request.getParameter("page")+".jsp";
 		}
+		System.out.println(dispatch);
 		RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(dispatch);
 		dispatcher.forward(request, response);
 	}

@@ -19,7 +19,7 @@ import model.beans.Utente;
 /**
  * Servlet implementation class ordiniAdmin
  */
-@WebServlet("/ordiniAdmin")
+@WebServlet("/admin/ordiniAdmin")
 public class ordiniAdmin extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        

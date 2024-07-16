@@ -8,7 +8,7 @@
 <html>
 <head>
     <title>Dashboard Utente</title>
-    <link rel="stylesheet" href="utilities/css/ordini.css">
+    <link rel="stylesheet" href="/Symposium/utilities/css/ordini.css">
 </head>
 <body>
 <%@ include file="utilities/header.jsp" %>
@@ -19,7 +19,7 @@
 <div class="content">
     <h1>Ordini</h1>
 	
-	<form id="filterForm" method="POST" action="filtroOrdini">
+	<form id="filterForm" method="POST" action="/Symposium/filtroOrdini">
     <div class="filter-container">
         <label for="startDate">Data Inizio:</label>
         <input type="date" id="startDate" name="startDate" value="<%= request.getParameter("startDate") %>">
