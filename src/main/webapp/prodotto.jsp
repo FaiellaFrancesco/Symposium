@@ -16,7 +16,7 @@
 <head>
 <meta charset="UTF-8">
 <title><%= prodotto.getNome() %></title>
-<link rel="stylesheet" href="utilities/css/prodotto.css">
+<link rel="stylesheet" href="/Symposium/utilities/css/prodotto.css">
 
 
 </head>
@@ -27,7 +27,7 @@
 	<div class="container">
 	<div class="item">
         <div class="image">
-            <img src="<%= prodotto.getImmagine() %>" alt="Immagine Prodotto">
+            <img src="/Symposium/<%= prodotto.getImmagine() %>" alt="Immagine Prodotto">
         </div>
         <div class="details">
             <h2 class="name"><%= prodotto.getNome() %></h2>

@@ -196,7 +196,7 @@ function validateProductForm(event) {
     }
 
     // Validazione campo Annata
-    if (annata === '' || isNaN(annata) || annata<=0 || annata>=new Date().getFullYear+1) {
+    if (annata === '' || isNaN(annata) || annata<=1900 || annata>=new Date().getFullYear+1) {
         document.getElementById('annataError').textContent = 'Inserire un\'Annata valida.';
         document.getElementById('annataError').style.display = 'block';
         formIsValid = false;

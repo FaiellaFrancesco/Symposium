@@ -7,7 +7,7 @@
     <meta charset="UTF-8">
     <title>Modifica Prodotto</title>
     <link rel="stylesheet" href="../utilities/css/inserimento.css">
-    <script src="../utilities/js/validation.js"></script>
+    <script src="/Symposium/utilities/js/validation.js"></script>
 </head>
 <body>
 <%@ include file="../utilities/header.jsp" %>

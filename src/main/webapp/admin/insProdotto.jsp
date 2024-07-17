@@ -8,12 +8,12 @@
     <meta charset="UTF-8">
     <title>Nuovo Prodotto</title>
     <link rel="stylesheet" href="/Symposium/utilities/css/inserimento.css">
-    <script src="../utilities/js/validation.js"></script>
+    <script src="/Symposium/utilities/js/validation.js"></script>
 </head>
 <body>
     <%@ include file="../utilities/header.jsp" %>
     <h1>Inserimento Nuovo Prodotto</h1>
-    <form action="insProdotto" method="post" enctype="multipart/form-data" class="insert-form" onsubmit="validateProductForm(event)">
+    <form action="admin/insProdotto" method="post" enctype="multipart/form-data" class="insert-form" onsubmit="validateProductForm(event)">
         <div class="contenitore">
             <div class="campi">
                 <label>Nome:</label>

@@ -16,7 +16,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Lista Prodotti</title>
-    <link rel="stylesheet" href="../utilities/css/utenti.css">
+    <link rel="stylesheet" href="/Symposium/utilities/css/utenti.css">
 </head>
 <%@ include file="../utilities/header.jsp" %>
 <body>
