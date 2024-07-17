@@ -32,7 +32,7 @@ public class redirectAdmin extends HttpServlet {
 		// TODO Auto-generated method stub
 		String dispatch = "/errore.jsp";
 		HttpSession sessione = request.getSession();
-		if((boolean)sessione.getAttribute("admin")==true) {
+		if(sessione.getAttribute("admin")!=null && (boolean)sessione.getAttribute("admin")) {
 			dispatch = "/admin/"+request.getParameter("page")+".jsp";
 		}
 		RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(dispatch);

@@ -60,7 +60,7 @@ public class filtroOrdini extends HttpServlet {
 			}
 	        
 	    }
-      request.setAttribute("id", id);
+      request.setAttribute("id", sessione.getAttribute("id"));
       request.setAttribute("ordini", ordiniFiltrati);
       request.getRequestDispatcher("/orderUser.jsp").forward(request, response);
     }
