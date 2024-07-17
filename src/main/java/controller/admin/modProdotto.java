@@ -20,7 +20,7 @@ import javax.servlet.http.Part;
 import model.DAO.ProdottoDAO;
 import model.beans.Prodotto;
 
-@WebServlet("/modProdotto")
+@WebServlet("/admin/modProdotto")
 @MultipartConfig
 public class modProdotto extends HttpServlet {
     private static final long serialVersionUID = 1L;
@@ -93,7 +93,7 @@ public class modProdotto extends HttpServlet {
 
                 // Reindirizza alla pagina di conferma o ad altre operazioni
                 request.setAttribute("prodotto", prodottoEsistente);
-                RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/prodottiAdmin");
+                RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/admin/prodottiAdmin");
         		dispatcher.forward(request, response);
                 
             } else {

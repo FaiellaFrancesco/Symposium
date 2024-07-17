@@ -1,4 +1,4 @@
-package controller.admin;
+package controller;
 
 import java.io.IOException;
 import java.sql.SQLException;
@@ -10,57 +10,55 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import model.DAO.ProdottoDAO;
+import model.DAO.OrdineDAO;
+import model.DAO.UtenteDAO;
 import model.beans.Prodotto;
+import model.beans.Utente;
+import model.beans.Ordine;
 
 /**
- * Servlet implementation class prodottiAdmin
+ * Servlet implementation class campiProdotto
  */
-@WebServlet("/admin/prodottiAdmin")
-public class prodottiAdmin extends HttpServlet {
+@WebServlet("/ordiniUtente")
+public class ordiniUtente extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public prodottiAdmin() {
-        super();
-        // TODO Auto-generated constructor stub
-    }
-
+	RequestDispatcher dispatcher;
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		ProdottoDAO model = new ProdottoDAO();
-		ArrayList<Prodotto> prodotti = null;
-		Prodotto prodotto = null;
-		if(request.getParameter("id") == null || request.getParameter("id").equals("")) {
+		String returnPage = "/orderUser.jsp";
+		UtenteDAO model = new UtenteDAO();
+		OrdineDAO ordinedao=new OrdineDAO();
+		ArrayList <Ordine> ordine=null;
+		Utente utente = null;
+		HttpSession sessione = request.getSession();
+		int id = Integer.parseInt(request.getParameter("id"));
+		if((int)sessione.getAttribute("id")==id) {
 			try {
-				prodotti = (ArrayList<Prodotto>) model.doRetrieveAll("");
+				utente = model.doRetrieveByKey(id);
+				ordine = ordinedao.doRetrieveByUsr(utente.getId());
 			} catch (SQLException e) {
+				returnPage = "/errore.jsp";
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
+		   request.setAttribute("id", id);
+		   request.setAttribute("ordini", ordine);
+		   dispatcher = getServletContext().getRequestDispatcher(returnPage);
+		   dispatcher.forward(request, response);
 		}
-		else{
-			try {
-				int prodottoId = Integer.parseInt(request.getParameter("id"));
-				prodotto = model.doRetrieveByKey(prodottoId);
-				prodotti=new ArrayList<Prodotto>();
-				prodotti.add(prodotto);
-			} catch (SQLException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}	
+		else {
+			dispatcher = getServletContext().getRequestDispatcher("/home.jsp");
+			dispatcher.forward(request, response);
 		}
-        request.setAttribute("prodotti", prodotti);
-        
-        RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/admin/prodottiAdmin.jsp");
-		dispatcher.forward(request, response);
-        
+		
+	  
 	}
 
 	/**

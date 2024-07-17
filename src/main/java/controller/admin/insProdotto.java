@@ -20,7 +20,7 @@ import javax.servlet.http.Part;
 import model.DAO.ProdottoDAO;
 import model.beans.Prodotto;
 
-@WebServlet("/insProdotto")
+@WebServlet("/admin/insProdotto")
 @MultipartConfig
 public class insProdotto extends HttpServlet {
     private static final long serialVersionUID = 1L;
@@ -79,7 +79,7 @@ public class insProdotto extends HttpServlet {
             model.doUpdate(p);
 
             // Reindirizza alla pagina di conferma o ad altre operazioni
-            RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/catalogo?id="+lastInsertedId);
+            RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/product?id="+lastInsertedId);
             dispatcher.forward(request, response);
         } catch (SQLException e) {
             e.printStackTrace();

@@ -5,16 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Login</title>
-<link rel="stylesheet" href="utilities/css/header.css">
-<link rel="stylesheet" href="utilities/css/footer.css">
-<link rel="stylesheet" href="utilities/css/carrello.css">
 <link rel="stylesheet" href="utilities/css/login.css">
-<style>
-    .error-message {
-        color: red;
-        display: none;
-    }
-</style>
 </head>
 <body>
 <!-- Header -->

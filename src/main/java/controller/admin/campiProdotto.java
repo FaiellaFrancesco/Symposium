@@ -16,7 +16,7 @@ import model.beans.Prodotto;
 /**
  * Servlet implementation class campiProdotto
  */
-@WebServlet("/campiProdotto")
+@WebServlet("/admin/campiProdotto")
 public class campiProdotto extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        

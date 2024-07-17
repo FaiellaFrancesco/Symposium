@@ -98,9 +98,13 @@ header {
     background: #fff;
     z-index: 1000;
     display: none;
-    width: 42%;
-    left: 28%;
-    
+    width: 480px; /* Occupa tutta la larghezza del contenitore */
+    max-width: 700px; /* Limita la larghezza massima per una migliore leggibilità */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Aggiunge una leggera ombra per il rilievo */
+    padding: 10px;
+    top: 110px;/* Posiziona sotto l'elemento di riferimento con un piccolo margine */
+    left: 28%; /* Allinea al centro rispetto al contenitore padre */
+    border-radius: 8px; /* Bordo arrotondato */
 }
 
 .suggestion-item {
@@ -108,16 +112,36 @@ header {
     align-items: center;
     padding: 10px;
     cursor: pointer;
+    transition: background-color 0.3s ease; /* Effetto transizione al passaggio del mouse */
 }
 
 .suggestion-item img {
-    width: 30px;
-    height: 30px;
+    width: 50px; /* Dimensione dell'immagine */
+    height: 50px;
     margin-right: 10px;
+    border-radius: 50%; /* Immagine rotonda */
+    object-fit: cover; /* Scalatura e ritaglio dell'immagine */
+}
+
+.suggestion-item .product-details {
+    flex: 1; /* Occupa lo spazio rimanente */
+    margin-left: 10px; /* Margine a sinistra per separare dall'immagine */
+}
+
+.suggestion-item .product-name {
+    font-size: 16px; /* Dimensione del nome del prodotto */
+    font-weight: bold; /* Testo in grassetto */
+    color: #333; /* Colore del testo */
+}
+
+.suggestion-item .product-description {
+    font-size: 14px; /* Dimensione della descrizione del prodotto */
+    color: #666; /* Colore del testo più scuro */
+    margin-top: 5px; /* Margine superiore per separare dal nome del prodotto */
 }
 
 .suggestion-item:hover {
-    background-color: #f0f0f0;
+    background-color: #f0f0f0; /* Cambio colore al passaggio del mouse */
 }
 
 h2 {
@@ -166,13 +190,17 @@ h2 {
    font-size: 17px;
     }
     */
+    .suggestions{
+     width:40%;
+     left:28%
+    }
     .navbar{
     display:none;}
     .search-form{
-    width: 150px;
+    width: 100%;
     }
      .search-container{
-     text-align: center;
+     text-align: left;
         width: 100%;
      }
       .account-container {
@@ -224,6 +252,15 @@ h2 {
 }
 
 @media (min-width: 768px) and (max-width: 991px){
+	
+	.search-container{
+     text-align: left;
+        width: 100%;
+     }
+	.suggestions{
+     width:40%;
+     left:28%
+    }
    .logo-text2{
 	display:none;
 	}   
@@ -315,13 +352,43 @@ h2 {
    .logo-text2{
 	display:none;
 	}   
+	.suggestions{
+     width:55%;
+     left:20%;
+    }
+    .search-container{
+     text-align: left;
+        width: 100%;
+     }
 	
 }
 @media (min-width: 1200px){
 	.logo-text2{
 	display:none;
 	}   
-	
+	.suggestions{
+     width:55%;
+     left:22%;
+    }
+    .search-container{
+     text-align: left;
+        width: 100%;
+     }
+
+}
+
+@media (min-width: 1400px){
+	.logo-text2{
+	display:none;
+	}   
+	.suggestions{
+     width:50%;
+     left:24%;
+    }
+    .search-container{
+     text-align: left;
+        width: 100%;
+     }
 
 }
 

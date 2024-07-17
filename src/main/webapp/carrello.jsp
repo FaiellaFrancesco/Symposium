@@ -2,13 +2,8 @@
     pageEncoding="UTF-8"%>
 <%@ page import="java.util.*"%>
 <%@ page import="model.beans.*"%>
-<% Carrello cart = (Carrello) request.getSession().getAttribute("cart"); 
-
-	if(request.getSession().getAttribute("id")==null){
-		response.sendRedirect("./login.jsp");
-	}
- 	
-%>
+<%@ include file="utilities/filtro.jsp" %>
+<% Carrello cart = (Carrello) request.getSession().getAttribute("cart"); %>
 <!DOCTYPE html>
 <html>
 <head>

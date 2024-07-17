@@ -158,54 +158,78 @@ function checkDBEmail(event){
     xhr.send();
 }
 
-
 document.addEventListener('DOMContentLoaded', function() {
-    const searchInput = document.getElementById('searchbar');
-    const suggestionsPanel = document.getElementById('suggestions');
+        const searchInput = document.getElementById('searchbar');
+        const suggestionsPanel = document.getElementById('suggestions');
 
-    searchInput.addEventListener('input', function() {
-        const searchText = this.value.trim();
+        searchInput.addEventListener('input', function() {
+            const searchText = this.value.trim();
 
-        if (searchText === '') {
-            suggestionsPanel.style.display = 'none';
-            return;
-        }
-
-        // Effettua la chiamata Ajax alla servlet Java per ottenere i suggerimenti
-        const xhr = new XMLHttpRequest();
-        xhr.open('GET', 'SearchSuggestionsServlet?pattern=' + encodeURIComponent(searchText), true);
-        xhr.setRequestHeader('Content-Type', 'application/json');
-        xhr.onreadystatechange = function() {
-            if (xhr.readyState === 4 && xhr.status === 200) {
-                var suggestions = JSON.parse(xhr.responseText);
-                displaySuggestions(suggestions);
+            if (searchText === '') {
+                suggestionsPanel.style.display = 'none';
+                return;
             }
-        };
-        xhr.send();
-    });
 
-    function displaySuggestions(suggestions) {
-        if (suggestions.length === 0) {
-			suggestionsPanel.innerHTML="";
-            suggestionsPanel.style.display = 'none';
-            return;
+            // Effettua la chiamata Ajax alla servlet Java per ottenere i suggerimenti
+            const xhr = new XMLHttpRequest();
+            xhr.open('GET', 'SearchSuggestionsServlet?pattern=' + encodeURIComponent(searchText), true);
+            xhr.setRequestHeader('Content-Type', 'application/json');
+            xhr.onreadystatechange = function() {
+                if (xhr.readyState === 4 && xhr.status === 200) {
+                    var suggestions = JSON.parse(xhr.responseText);
+                    displaySuggestions(suggestions);
+                }
+            };
+            xhr.send();
+        });
+
+        function displaySuggestions(suggestions) {
+            if (suggestions.length === 0) {
+                suggestionsPanel.innerHTML = "";
+                suggestionsPanel.style.display = 'none';
+                return;
+            }
+
+            suggestionsPanel.innerHTML = ''; // Pulisce i suggerimenti precedenti
+
+            suggestions.forEach(function(suggestion) {
+                const suggestionItem = document.createElement('div');
+                suggestionItem.classList.add('suggestion-item');
+                suggestionItem.onclick = function() {
+                    redirectToProduct(suggestion.id);
+                };
+
+                const img = document.createElement('img');
+                img.src = suggestion.immagine;
+                img.alt = suggestion.nome;
+
+                const productDetails = document.createElement('div');
+                productDetails.classList.add('product-details');
+
+                const productName = document.createElement('div');
+                productName.classList.add('product-name');
+                productName.textContent = suggestion.nome;
+
+                const productDescription = document.createElement('div');
+                productDescription.classList.add('product-description');
+                productDescription.textContent = suggestion.descrizione;
+
+                productDetails.appendChild(productName);
+                productDetails.appendChild(productDescription);
+
+                suggestionItem.appendChild(img);
+                suggestionItem.appendChild(productDetails);
+
+                suggestionsPanel.appendChild(suggestionItem);
+            });
+
+            suggestionsPanel.style.display = 'block';
         }
-		
-        const html = suggestions.map(suggestion => `
-            <div class="suggestion-item" onclick="redirectToProduct(`+suggestion.id+`)">
-                <img src="`+suggestion.immagine+`" alt="`+suggestion.nome+`">
-                <span>`+suggestion.nome+`     `+ suggestion.descrizione +`</span>
-            </div>
-        `).join('');
 
-        suggestionsPanel.innerHTML = html;
-        suggestionsPanel.style.display = 'block';
-    }
-
-    // Chiudi il pannello dei suggerimenti quando si clicca altrove sulla pagina
-    document.addEventListener('click', function(event) {
-        if (!event.target.matches('#searchInput')) {
-            suggestionsPanel.style.display = 'none';
-        }
+        // Chiudi il pannello dei suggerimenti quando si clicca altrove sulla pagina
+        document.addEventListener('click', function(event) {
+            if (!event.target.matches('#searchbar')) {
+                suggestionsPanel.style.display = 'none';
+            }
+        });
     });
-});
