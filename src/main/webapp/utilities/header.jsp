@@ -43,7 +43,7 @@
                 <% } %> 
                 &nbsp;
                 <% if(request.getSession().getAttribute("admin") != null && (boolean)request.getSession().getAttribute("admin") == true) { %> 
-                    <a class="link" href="./redirectAdmin?page=adminFunctions"> ADMIN </a> &nbsp;
+                    <a class="link" href="/Symposium/redirectAdmin?page=adminFunctions"> ADMIN </a> &nbsp;
                 <% } %>
             </h2>
         </div>

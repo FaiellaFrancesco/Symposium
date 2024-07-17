@@ -35,7 +35,6 @@ public class redirectAdmin extends HttpServlet {
 		if((boolean)sessione.getAttribute("admin")==true) {
 			dispatch = "/admin/"+request.getParameter("page")+".jsp";
 		}
-		System.out.println(dispatch);
 		RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(dispatch);
 		dispatcher.forward(request, response);
 	}

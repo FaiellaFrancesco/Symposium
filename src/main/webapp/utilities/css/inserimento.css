@@ -9,6 +9,8 @@ body {
             text-align: center;
             margin: 20px auto;
             width: 60%;
+            max-width: 1000px;
+            min-width: 300px;
             padding: 20px;
             border: 2px solid #990E3C;
             border-radius: 10px;
@@ -87,3 +89,19 @@ body {
   justify-content: space-between;
   
   }
+ /* Stili per layout responsive */
+@media screen and (max-width: 768px) {
+    .insert-form .contenitore {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .insert-form .campi {
+        width: 100%;
+    }
+
+    .insert-form .campi label {
+        text-align: center;
+    }
+}

@@ -2,13 +2,18 @@
 
 .sticky {
     position: sticky;
-    top: 240px;
+    top: 242px;
+    z-index: 1000; /* Porta in avanti lo sticky */
+    background-color: #ffffff; /* Assicurati che lo sfondo sia bianco */
+    padding: 10px; /* Spazio intorno al form */
+    border-radius: 8px; /* Bordo arrotondato */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Aggiungi ombreggiatura per visibilità */
 }
 
 /* Stili specifici per la pagina degli utenti */
 .container {
     max-width: 80%;
-    margin: 20px auto;
+    margin: 20px 100px;
     padding: 20px;
     background-color: #f9f9f9;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
@@ -33,6 +38,8 @@
     border: 1px solid #ddd;
     padding: 8px;
     text-align: left;
+    word-wrap: break-word; /* Forza il ritorno a capo delle parole lunghe */
+    overflow-wrap: break-word; /* Modern alternative */
 }
 
 .container table th {
@@ -87,4 +94,161 @@
 
 .container input[type="submit"]:hover {
     background-color: #6F1C38;
+}
+
+
+
+/* Layout per schermi piccoli */
+@media (max-width: 1000px){
+    .container table, 
+    .container table thead, 
+    .container table tbody, 
+    .container table th, 
+    .container table td, 
+    .container table tr { 
+        display: block; 
+    }
+
+    .container table thead tr { 
+        position: absolute;
+        top: -9999px;
+        left: -9999px;
+    }
+
+    .container table tr { 
+        border: 1px solid #ddd; 
+        margin-bottom: 10px;
+    }
+
+    .container table td { 
+        border: none;
+        border-bottom: 1px solid #ddd; 
+        position: relative; 
+        padding-left: 50%; 
+        text-align: left;
+    }
+
+    .container table td:before { 
+        position: absolute;
+        top: 50%;
+        left: 10px;
+        transform: translateY(-50%);
+        width: calc(50% - 20px); 
+        padding-right: 10px; 
+        white-space: nowrap;
+        content: attr(data-label);
+        font-weight: bold;
+        color: #990E3C;
+    }
+}
+
+@media (min-width: 1001px) and (max-width: 1150px) {
+    .container {
+        max-width: 80%;
+    }
+    
+    .container table th,
+    .container table td {
+        font-size: 10px; /* Riduci la dimensione del font */
+    }
+    
+    .container table th {
+        padding: 6px; /* Riduci il padding delle intestazioni */
+    }
+    
+    .container table td {
+        padding: 6px; /* Riduci il padding delle celle */
+    }
+    .container table{
+    	max-width:100%
+    }
+}
+
+/* Layout per schermi medi (tra 1001px e 1300px) */
+@media (min-width: 1151px) and (max-width: 1300px) {
+    .container {
+        max-width: 80%;
+    }
+    
+    .container table th,
+    .container table td {
+        font-size: 12px; /* Riduci la dimensione del font */
+    }
+    
+    .container table th {
+        padding: 6px; /* Riduci il padding delle intestazioni */
+    }
+    
+    .container table td {
+        padding: 6px; /* Riduci il padding delle celle */
+    }
+    .container table{
+    	max-width:100%
+    }
+}
+
+@media (min-width: 1172px) and (max-width: 1372px) {
+    .sticky{
+    	top: 265px;
+    }
+}
+
+@media (min-width: 992px) and (max-width: 1171px) {
+    .sticky{
+    	top: 281px;
+    }
+}
+
+@media (min-width: 859px) and (max-width: 991px) {
+    .sticky{
+    	top: 252px;
+    }
+}
+
+@media (min-width: 768px) and (max-width: 858px) {
+    .sticky{
+    	top: 264px;
+    }
+}
+
+@media (max-width: 767px) {
+    .sticky{
+    	top: 172px;
+    }
+}
+/* Layout per schermi grandi (tra 1301px e 1500px) */
+@media (min-width: 1301px) and (max-width: 1500px) {
+    .container {
+        max-width: 80%;
+    }
+    
+    .container table th,
+    .container table td {
+        font-size: 14px; /* Riduci la dimensione del font */
+    }
+    
+    .container table th {
+        padding: 7px; /* Riduci il padding delle intestazioni */
+    }
+    
+    .container table td {
+        padding: 7px; /* Riduci il padding delle celle */
+    }
+}
+
+/* Layout per schermi molto grandi (oltre 1500px) */
+@media (min-width: 1501px) {
+    .container {
+        max-width: 80%;
+    }
+    
+    .container table th,
+    .container table td {
+        font-size: 16px; /* Dimensione del font normale */
+    }
+    
+    .container table th,
+    .container table td {
+        padding: 8px; /* Padding normale */
+    }
 }

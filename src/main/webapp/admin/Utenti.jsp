@@ -46,15 +46,15 @@
             <tbody>
                 <% for (Utente utente : utenti) { %>
                 <tr class="utente-id" onclick="redirectToOrder(<%= utente.getId() %>)">
-                    <td><%= utente.getId() %></td>
-                    <td><%= utente.getNome() %></td>
-                    <td><%= utente.getCognome() %></td>
-                    <td><%= utente.getEmail() %></td>
-                    <td><%= utente.getTelefono() != null ? utente.getTelefono().toString() : "" %></td>
-                    <td><%= utente.getDataNascita() != null ? utente.getDataNascita().toString() : "" %></td>
-                    <td><%= utente.getVia() != null ? utente.getVia().toString() : "" %></td>
-                    <td><%= utente.getCap() != null ? utente.getCap().toString() : "" %></td>
-                    <td><%= utente.getCitta() != null ? utente.getCitta().toString() : "" %></td>
+                    <td data-label="ID"><%= utente.getId() %></td>
+                    <td data-label="Nome"><%= utente.getNome() %></td>
+                    <td data-label="Cognome"><%= utente.getCognome() %></td>
+                    <td data-label="Email"><%= utente.getEmail() %></td>
+                    <td data-label="Telefono"><%= utente.getTelefono() != null ? utente.getTelefono().toString() : "" %></td>
+                    <td data-label="Nascita"><%= utente.getDataNascita() != null ? utente.getDataNascita().toString() : "" %></td>
+                    <td data-label="Via"><%= utente.getVia() != null ? utente.getVia().toString() : "" %></td>
+                    <td data-label="Cap"><%= utente.getCap() != null ? utente.getCap().toString() : "" %></td>
+                    <td data-label="Citta"><%= utente.getCitta() != null ? utente.getCitta().toString() : "" %></td>
                 </tr>
                 <% } %>
             </tbody>
