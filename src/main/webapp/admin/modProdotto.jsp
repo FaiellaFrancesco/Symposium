@@ -11,6 +11,7 @@
 </head>
 <body>
 <%@ include file="../utilities/header.jsp" %>
+<%@ include file="admindsh.jsp" %>
 <% Prodotto prodotto = (Prodotto) request.getAttribute("prodotto"); 
    if (prodotto != null) {
 %>

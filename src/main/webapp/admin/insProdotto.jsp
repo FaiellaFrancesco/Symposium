@@ -12,6 +12,7 @@
 </head>
 <body>
     <%@ include file="../utilities/header.jsp" %>
+    <%@ include file="admindsh.jsp" %>
     <h1>Inserimento Nuovo Prodotto</h1>
     <form action="admin/insProdotto" method="post" enctype="multipart/form-data" class="insert-form" onsubmit="validateProductForm(event)">
         <div class="contenitore">

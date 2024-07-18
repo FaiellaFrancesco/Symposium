@@ -24,6 +24,11 @@ function redirectToProduct(productId) {
             window.location.href=basePath+"/Symposium/home.jsp";
         }
         
+        function redirectToAboutUs() {
+			var basePath = window.location.origin;
+            window.location.href=basePath+"/Symposium/AboutUs.jsp";
+        }
+        
         function redirectToCarrello() {
 			var basePath = window.location.origin;
             window.location.href=basePath+"/Symposium/carrello.jsp";
