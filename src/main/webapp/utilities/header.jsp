@@ -62,7 +62,7 @@
     <a onclick="filtro('<%= categoria.getNome() %>')"><%= categoria.getNome() %></a>
     <%} }%>
     <a onclick=>Altri Prodotti(da fare)</a>
-    <a onclick=>About Us</a>
+    <a onclick="redirectToAboutUs()">About Us</a>
 </nav>
 </header>
 
