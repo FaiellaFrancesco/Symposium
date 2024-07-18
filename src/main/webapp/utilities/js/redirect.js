@@ -148,3 +148,23 @@ function redirectToFattura(id){
         // Invia il form
         form.submit(); 
 }
+
+function redirectToCampiPayment(id){
+	var basePath = window.location.origin;
+	var form = document.createElement('form');
+        form.method = 'POST'; // Metodo POST
+        form.action = basePath + '/Symposium/campiPagamento'; // URL dell'azione
+
+		// Aggiungi campi input nascosti per i parametri
+        var idInput = document.createElement('input');
+        idInput.type = 'hidden';
+        idInput.name = 'id'; // Nome del parametro
+        idInput.value = id; // Valore del parametro
+        form.appendChild(idInput);
+			
+        // Aggiungi il form al corpo del documento (nascosto)
+        document.body.appendChild(form);
+
+        // Invia il form
+        form.submit(); 
+}

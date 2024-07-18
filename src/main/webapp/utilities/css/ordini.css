@@ -1,4 +1,6 @@
 @charset "UTF-8";
+
+/* Stili generali per le tabelle */
 .order-table, .product-table {
     width: 100%;
     border-collapse: collapse;
@@ -112,4 +114,112 @@ h2 {
 .filter-container button:active {
     background-color: #4F0E2C;
     transform: scale(0.95);
+}
+
+/* Layout per schermi piccoli */
+@media (max-width: 1000px) {
+    .order-table, 
+    .product-table, 
+    .order-table thead, 
+    .product-table thead, 
+    .order-table tbody, 
+    .product-table tbody, 
+    .order-table th, 
+    .product-table th, 
+    .order-table td, 
+    .product-table td, 
+    .order-table tr, 
+    .product-table tr { 
+        display: block; 
+    }
+
+    .order-table thead tr, 
+    .product-table thead tr { 
+        position: absolute;
+        top: -9999px;
+        left: -9999px;
+    }
+
+    .order-table tr, 
+    .product-table tr { 
+        border: 1px solid #ddd; 
+        margin-bottom: 10px;
+    }
+
+    .order-table td, 
+    .product-table td { 
+        border: none;
+        border-bottom: 1px solid #ddd; 
+        position: relative; 
+        padding-left: 50%; 
+        text-align: left;
+    }
+
+    .order-table td:before, 
+    .product-table td:before { 
+        position: absolute;
+        top: 50%;
+        left: 10px;
+        transform: translateY(-50%);
+        width: calc(50% - 20px); 
+        padding-right: 10px; 
+        white-space: nowrap;
+        content: attr(data-label);
+        font-weight: bold;
+        color: #990E3C;
+    }
+    
+}
+
+/* Adjustments for different screen sizes */
+@media (min-width: 1001px) and (max-width: 1150px) {
+    .order-table th, .order-table td, .product-table th, .product-table td {
+        font-size: 10px; /* Riduci la dimensione del font */
+    }
+
+    .order-table th, .product-table th {
+        padding: 6px; /* Riduci il padding delle intestazioni */
+    }
+
+    .order-table td, .product-table td {
+        padding: 6px; /* Riduci il padding delle celle */
+    }
+}
+
+@media (min-width: 1151px) and (max-width: 1300px) {
+    .order-table th, .order-table td, .product-table th, .product-table td {
+        font-size: 12px; /* Riduci la dimensione del font */
+    }
+
+    .order-table th, .product-table th {
+        padding: 6px; /* Riduci il padding delle intestazioni */
+    }
+
+    .order-table td, .product-table td {
+        padding: 6px; /* Riduci il padding delle celle */
+    }
+}
+
+@media (min-width: 1301px) and (max-width: 1500px) {
+    .order-table th, .order-table td, .product-table th, .product-table td {
+        font-size: 14px; /* Riduci la dimensione del font */
+    }
+
+    .order-table th, .product-table th {
+        padding: 7px; /* Riduci il padding delle intestazioni */
+    }
+
+    .order-table td, .product-table td {
+        padding: 7px; /* Riduci il padding delle celle */
+    }
+}
+
+@media (min-width: 1501px) {
+    .order-table th, .order-table td, .product-table th, .product-table td {
+        font-size: 16px; /* Dimensione del font normale */
+    }
+
+    .order-table th, .product-table th, .order-table td, .product-table td {
+        padding: 8px; /* Padding normale */
+    }
 }

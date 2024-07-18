@@ -372,20 +372,96 @@ function validateUserForm(event) {
     }
 }
 
+function validateCheckoutForm(event) {
+    // Preveniamo l'invio del form
+    event.preventDefault();
+
+    // Puliamo i messaggi di errore precedenti
+    const errorIds = ['cittaError', 'indirizzoError', 'capError', 'cartaError', 'cvvError', 'scadenzaError'];
+    errorIds.forEach(id => {
+        document.getElementById(id).style.display = 'none';
+    });
+
+    // Recuperiamo i valori dei campi
+    var citta = document.getElementById('citta').value.trim();
+    var indirizzo = document.getElementById('indirizzo').value.trim();
+    var cap = document.getElementById('cap').value.trim();
+    var carta = document.getElementById('carta').value.trim();
+    var cvv = document.getElementById('cvv').value.trim();
+    var scadenza = document.getElementById('scadenza').value.trim();
+
+    var formIsValid = true;
+
+    // Validazione campo Città
+    if (citta === '') {
+        document.getElementById('cittaError').textContent = 'La città è richiesta.';
+        document.getElementById('cittaError').style.display = 'block';
+        formIsValid = false;
+    }
+
+    // Validazione campo Indirizzo
+    if (indirizzo === '') {
+        document.getElementById('indirizzoError').textContent = 'L\'indirizzo è richiesto.';
+        document.getElementById('indirizzoError').style.display = 'block';
+        formIsValid = false;
+    }
+
+    // Validazione campo CAP
+    if (!isValidCAP(cap)) {
+        document.getElementById('capError').textContent = 'Inserire un CAP valido.';
+        document.getElementById('capError').style.display = 'block';
+        formIsValid = false;
+    }
+
+    // Validazione campo Carta
+    if (carta === '' || !isValidCardNumber(carta)) {
+        document.getElementById('cartaError').textContent = 'Il numero della carta è richiesto.';
+        document.getElementById('cartaError').style.display = 'block';
+        formIsValid = false;
+    }
+
+    // Validazione campo CVV
+    if (cvv === '' || !isValidCVV(cvv)) {
+        document.getElementById('cvvError').textContent = 'Il CVV è richiesto.';
+        document.getElementById('cvvError').style.display = 'block';
+        formIsValid = false;
+    }
+
+    // Validazione campo Scadenza
+    if (scadenza === '' || !isValidScadenza(scadenza)) {
+        document.getElementById('scadenzaError').textContent = 'La data di scadenza è richiesta.';
+        document.getElementById('scadenzaError').style.display = 'block';
+        formIsValid = false;
+    }
+
+    // Validazione correlata tra i campi della carta di credito
+    if (carta !== '' || cvv !== '' || scadenza !== '') {
+        if (carta === '' || cvv === '' || scadenza === '') {
+            document.getElementById('cartaError').textContent = 'Tutti i dati della carta sono necessari.';
+            document.getElementById('cartaError').style.display = 'block';
+            formIsValid = false;
+        }
+    }
+
+    // Se il form è valido, inviamolo
+    if (formIsValid) {
+        event.target.submit();
+    }
+}
+
 
 function isValidCAP(cap) {
-    // Se il campo CAP è vuoto, ritorniamo true (valido)
-    if(cap.trim()==='---') {
-        return true;
-    }
-    
-    if(cap.trim()==='') {
-        return true;
-    }
+    return /^[0-9]{5}$/.test(cap); // Esempio per CAP a 5 cifre
+}
 
-    // Utilizziamo una regex per controllare che il CAP sia composto solo da cifre numeriche
-    var capPattern = /^\d+$/;
-    return capPattern.test(cap);
+// Funzione di validazione per il nome sulla carta (esempio, personalizzabile)
+function isValidCardName(name) {
+    return name.length > 0; // Verifica semplice che il nome sulla carta non sia vuoto
+}
+
+// Funzione di validazione per il numero della carta (esempio, personalizzabile)
+function isValidCardNumber(number) {
+    return /^[0-9]{13,19}$/.test(number); // Verifica semplice per numeri di carta
 }
 
 // Funzione di utilità per validare il campo Città
