@@ -34,7 +34,7 @@
             	<div class="div-img-product"><img class="img-product"src="<%= prodotto.getProdotto().getImmagine()%>" alt=""></div>
             	<div class="details">
                 <h3 class="name"><%= prodotto.getProdotto().getNome() %></h3>
-                <p class="price"><%= prodotto.getProdotto().getPrezzo() %></p>
+                <p class="price"><%= String.format("%.2f", prodotto.getProdotto().getPrezzo()) %></p>
                 Quantita: <%= prodotto.getQuant() %>
                </div>
                <a href="ControlloProdotto?action=deleteFromC&id=<%= prodotto.getProdotto().getId() %>">Rimuovi</a>

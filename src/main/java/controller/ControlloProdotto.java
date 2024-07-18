@@ -49,7 +49,7 @@ public class ControlloProdotto extends HttpServlet {
 				sessione.setAttribute("cart", cart);
 			}
 			
-			returnPage = "/home.jsp";
+			returnPage = "/catalogo.jsp";
 			String action = request.getParameter("action");
 	
 			try {

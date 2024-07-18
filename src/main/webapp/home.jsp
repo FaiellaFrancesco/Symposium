@@ -49,7 +49,7 @@ su vari argomenti, dalla politica alla cultura.</p>
                 <img class="product-image" src="<%= p.getImmagine() %>" alt="<%= p.getNome() %>">
                 <h3 class="nome"><%= p.getNome() %></h3>
                 <div class="details">
-                    <p class="price"><%= p.getPrezzo() %>€</p>
+                    <p class="price"><%= String.format("%.2f", p.getPrezzo())  %>€</p>
                     <a href="ControlloProdotto?action=addToC&id=<%= p.getId() %>&quantity=1" class="carrello-button">Carrello</a>
                 </div>
             </div>
