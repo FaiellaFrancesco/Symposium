@@ -42,6 +42,7 @@
 	
 }
 .grid-container {
+	margin-top:30px;
   display: grid;
   grid-template-columns: repeat(4, 1fr); /* Crea 4 colonne con la stessa larghezza */
   gap: 20px; /* Spazio tra le colonne */
@@ -106,6 +107,30 @@
 .carrello-button:hover{
 	background-color: #6F1C38;
 	
+}
+.catalogo-btn{
+	
+justify-content: center;
+margin-bottom: 100px;
+display: flex;
+margin-top: 50px;
+}
+
+.catalogo-button{
+	cursor: pointer;
+	text-decoration: none;
+	
+	padding: 20px 100px;
+	background-color: #FFFF ;
+	border: 2px solid #6F1C38;
+	border-radius: 40px;
+	color: #6F1C38 !important;
+}
+
+
+.catalogo-button:hover {
+    background-color: #6F1C38;
+    color: #FFF !important;
 }
 
 
