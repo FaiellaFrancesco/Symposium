@@ -204,21 +204,25 @@ h2 {
     }
    .minimo {
   display: flex;
+  flex-direction: column;
 
   justify-content: space-between;
   
 }
 
+
 .logo-text2{
-	font-size:50px;
-	margin-top:15px;
-	margin-bottom:15px;
+	width:300px;
 	text-align:center;
 }
 
 .alto-sx {
- 
+ margin-left:150px;
   justify-content:center;
+}
+.icon{ display:inline;
+	
+	 justify-content:center;
 }
 
 
@@ -245,13 +249,13 @@ h2 {
         margin-bottom: 10px;
         margin-left: 10px;
     }
-     .logo-text{
-     /*Symposium scritta grande*/
+     .logo-text2{
+ 
      display:none;
      
      }
-     .logo-text2{
-     /*  Scritta piccola */
+     .logo-text{
+     
      margin-left: 20px;
      
      }
@@ -299,9 +303,9 @@ h2 {
      left:28%
     }
     .logo-text{
-    font-size:40px;}
+    display:none;}
    .logo-text2{
-	display:none;
+	width:100px;
 	}   
 	 .navbar {
        

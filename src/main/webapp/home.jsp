@@ -24,6 +24,7 @@
 <!-- Header -->
 <%@ include file="utilities/header.jsp" %>
 <body>
+<span style="display: block; margin-top: 50px; "></span>
 <div class="container-sym">
 <img class="symposium" src="/Symposium/immagini/symposium.jpg">
 <div class="testo-presentazione">
