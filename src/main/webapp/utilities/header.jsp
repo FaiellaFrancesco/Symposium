@@ -89,25 +89,20 @@
             <div id="suggestions" class="suggestions"></div>
     	</div>
     	
-    
-    
-   
-
-
-    <nav class="navbar">
-    <%Collection<Categoria> categorie = (Collection<Categoria>)request.getSession().getAttribute("categorie"); 
+	<%Collection<Categoria> categorie = (Collection<Categoria>)request.getSession().getAttribute("categorie"); 
     	if(categorie == null){
     		response.sendRedirect("./categorie");
     		return;
-    	}else{
-    for(Categoria categoria : categorie){
+    	}
     %>
-    <a onclick="filtro('<%= categoria.getNome() %>')"><%= categoria.getNome() %></a>
-    <%} %>
-    <a onclick="filtro('Altro')">Altri Prodotti</a>
-    <%	}%>
-    <a onclick="redirectToAboutUs()">About Us</a>
-</nav>
+
+    <nav class="navbar">
+    
+	    <a onclick="redirectToACatalogo()">Catalogo</a>
+	    <a onclick="redirectToRoll()">☆Scopri☆</a>
+	    <a onclick="redirectToAboutUs()">About Us</a>
+  
+	</nav>
 </header>
 
 

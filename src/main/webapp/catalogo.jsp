@@ -18,11 +18,25 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Home</title>
 <link rel="stylesheet" href="utilities/css/home.css">
+<script src="/Symposium/utilities/js/ajax.js"></script>
+<script src="/Symposium/utilities/js/redirect.js"></script>
 </head>
 <!-- Header -->
 <%@ include file="utilities/header.jsp" %>
 
 <body>
+	
+	<!-- Campi di filtraggio -->
+	<div class="filter">
+	    	<a onclick="redirectToACatalogo()">Mostra tutto</a>
+	    	<a onclick="filtro('Vini Rossi')">Vini Rossi</a>
+	    	<a onclick="filtro('Vini Bianchi')">Vini Bianchi</a>
+	    	<a onclick="filtro('Vini Rosati')">Vini Rosati</a>
+	    	<a onclick="filtro('Champagne')">Champagne</a>
+	    	<a onclick="filtro('Spumanti')">Spumanti</a>
+	    	<a onclick="filtro('Altro')">Altri prodotti</a>
+	</div>
+
  <% if (products != null && products.size() != 0) { %>
 <div id=container>
 <div class="grid-container">
