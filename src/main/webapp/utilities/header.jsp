@@ -43,7 +43,7 @@
                 <% } %> 
                 &nbsp;
                 <% if(request.getSession().getAttribute("admin") != null && (boolean)request.getSession().getAttribute("admin") == true) { %> 
-                    <a class="link" href="/Symposium/redirectAdmin?page=adminFunctions"> ADMIN </a> &nbsp;
+                    <a class="link" href="/Symposium/redirectAdmin?page=Utenti"> ADMIN </a> &nbsp;
                 <% } %>
             </h2>
         </div>
@@ -60,9 +60,10 @@
     for(Categoria categoria : categorie){
     %>
     <a onclick="filtro('<%= categoria.getNome() %>')"><%= categoria.getNome() %></a>
-    <%} }%>
-    <a onclick=>Altri Prodotti(da fare)</a>
-    <a onclick=>About Us</a>
+    <%} %>
+    <a onclick="filtro('Altro')">Altri Prodotti</a>
+    <%	}%>
+    <a onclick="redirectToAboutUs()">About Us</a>
 </nav>
 </header>
 
