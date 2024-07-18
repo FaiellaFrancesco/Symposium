@@ -47,17 +47,22 @@
     margin-left: 5px;
 }
 
-.image {
-    margin-bottom: 20px;
+.image img {
+    width: 100%;            /* L'immagine si adatta alla larghezza del contenitore */
+    max-width: 500px;       /* Dimensione massima della larghezza */
+    height: auto;           /* Mantiene le proporzioni */
+    object-fit: cover;      /* Ritaglia l'immagine mantenendo le proporzioni */
+    display: block;
+    margin: 0 auto;         /* Centra l'immagine */
 }
 
-.image img {
+/* Aggiungi anche uno stile per il contenitore delle immagini per garantire la responsività */
+.image {
     width: 100%;
-    max-width: 500px;
-    height: auto;
-    object-fit: cover; /* Mantiene le proporzioni e riempie l'area disponibile */
-    padding: 0;
+    max-width: 500px;       /* Massima larghezza del contenitore */
+    margin: 0 auto;         /* Centra il contenitore */
 }
+
 
 .product-info {
     margin-top: 20px;

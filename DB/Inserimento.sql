@@ -78,7 +78,8 @@ VALUES
 INSERT INTO prodotto (nome, prezzo, iva, descrizione, immagine, stock, alcol, formato, provenienza, tipologia, annata, denominazione)
 VALUES
 ("Jack Daniel's Tennessee Whiskey", 18.90, 22, "'Old no. 7' è tra i più celebri e apprezzati Whisky Tennesse al mondo, legato al successo di grandi personaggi nel mondo della musica, come Frank Sinatra o Lemmy Kilmister.", 'immagini/43.jpg', 104, 40.0, 70, 'Italia', 'Altro', 2024, 'Whisky'),
-('Lala (Teletubbies)', 44.44, 22, 'Tinky Winky, Dipsy, LALA!!!, Po!', 'immagini/44.jpg', 4444, 44.44, 44, 'Mondo dei Teletubbies', 'Altro', 1997, 'Teletubbies');
+('Lala (Teletubbies)', 44.44, 22, 'Tinky Winky, Dipsy, LALA!!!, Po!', 'immagini/44.jpg', 4444, 44.44, 44, 'Mondo dei Teletubbies', 'Altro', 1997, 'Teletubbies'),
+('Scwarz', 6.66, 22, 'In figura una dività di origine medio-orientale.', 'immagini/45.jpg', 666, 66.6, 66, 'Meme di Faiella', 'Altro', 2000, 'Dachau');
 
 
 -- Inserimento nella tabella `ordine`
@@ -96,7 +97,8 @@ VALUES
 ('Spumanti', 'Categoria che include tutti i tipi di spumanti.'),
 ('Champagne', 'Categoria che include tutti i tipi di champagne.'),
 ('Vini Bianchi', 'Categoria che include tutti i tipi di vini bianchi.'),
-('Vini Rosati', 'Categoria che include tutti i tipi di vini rosati.');
+('Vini Rosati', 'Categoria che include tutti i tipi di vini rosati.'),
+('Altro', 'altri prodotti');
 
 -- Inserimento nella tabella `appartenenza`
 INSERT INTO appartenenza (prodotto, categoria)

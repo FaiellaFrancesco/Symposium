@@ -60,8 +60,9 @@
     for(Categoria categoria : categorie){
     %>
     <a onclick="filtro('<%= categoria.getNome() %>')"><%= categoria.getNome() %></a>
-    <%} }%>
-    <a onclick=>Altri Prodotti(da fare)</a>
+    <%} %>
+    <a onclick="filtro('Altro')">Altri Prodotti</a>
+    <%	}%>
     <a onclick="redirectToAboutUs()">About Us</a>
 </nav>
 </header>

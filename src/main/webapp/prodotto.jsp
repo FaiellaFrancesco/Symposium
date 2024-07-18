@@ -23,7 +23,7 @@
     <div class="container">
         <div class="item">
             <div class="image">
-                <img src="/Symposium/<%= prodotto.getImmagine() %>" alt="Immagine Prodotto">
+                <img src="/Symposium/<%= prodotto.getImmagine() %>" alt="Immagine Prodotto" class="product-image">
             </div>
             <div class="details">
                 <h2 class="name"><%= prodotto.getNome() %></h2>
