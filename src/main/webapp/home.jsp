@@ -24,6 +24,7 @@
 <!-- Header -->
 <%@ include file="utilities/header.jsp" %>
 <body>
+<span style="display: block; margin-top: 50px; "></span>
 <div class="container-sym">
 <img class="symposium" src="/Symposium/immagini/symposium.jpg">
 <div class="testo-presentazione">
@@ -56,7 +57,10 @@ su vari argomenti, dalla politica alla cultura.</p>
         <% } %>
         <% } %>
     </div>
-    
+   <div class="catalogo-btn">
+   <a href="/Symposium/catalogo.jsp"
+    class="catalogo-button">VEDI ALTRO</a>
+   </div>
 
 
  <footer><%@ include file="utilities/footer.jsp" %></footer>

@@ -21,8 +21,10 @@
    <div class="container-header">
         <div class="logo-container">
             <a class="logo">
-                <h3 onclick="redirectToPage()" class="logo-text">Symposium</h3>
-                <h3 onclick="redirectToPage()" class="logo-text2">SS</h3>
+               <!--   <h3 onclick="redirectToPage()" class="logo-text">Symposium</h3>
+                <h3 onclick="redirectToPage()" class="logo-text2">SS</h3>--> 
+                <a class="logo-text" href="#" onclick="redirectToPage()"><img src="/Symposium/immagini/logo.png" width=200></a>
+                <a class="logo-text2" href="#" onclick="redirectToPage()"><img src="/Symposium/immagini/minilogo.png" width=100></a>
             </a>
         </div>
         <div class="search-container">
@@ -60,8 +62,11 @@
     <div class="minimo">
     	<div class="alto-sx">
     	 <a class="logo">
-                <h3 onclick="redirectToPage()" class="logo-text2">Symposium</h3></a>
+                <a class="logo-text" href="#" onclick="redirectToPage()"><img src="/Symposium/immagini/logo.png" width=200></a>
+                 <a class="logo-text2" href="#" onclick="redirectToPage()"><img src="/Symposium/immagini/minilogo.png" width=100></a>
+                </div>
                  <% if(request.getSession().getAttribute("id") != null) { %> 
+                 <div class="icon">
     	  <a class="link" href="#" onclick="redirectToAreaUtente(<%=request.getSession().getAttribute("id") %>)"><img src="/Symposium/immagini/scheda.svg" width=100></a>
                     <a class="link" href="#" onclick="redirectToCarrello()"><img src="/Symposium/immagini/cart.svg" width=100></a>
                     <a class="link" href="#" onclick="redirectToLogout()"><img src="/Symposium/immagini/logout-2.svg" width=100></a>

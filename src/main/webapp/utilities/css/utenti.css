@@ -1,7 +1,7 @@
 @charset "UTF-8";
 
 .sticky {
-    position: sticky;
+    
     top: 242px;
     z-index: 1000; /* Porta in avanti lo sticky */
     background-color: #ffffff; /* Assicurati che lo sfondo sia bianco */

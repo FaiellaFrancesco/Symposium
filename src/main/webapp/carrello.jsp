@@ -37,7 +37,7 @@
                 <p class="price"><%= String.format("%.2f", prodotto.getProdotto().getPrezzo()) %></p>
                 Quantita: <%= prodotto.getQuant() %>
                </div>
-               <a href="ControlloProdotto?action=deleteFromC&id=<%= prodotto.getProdotto().getId() %>">Rimuovi</a>
+               <a href="ControlloProdotto?action=deleteFromC&id=<%= prodotto.getProdotto().getId() %>"><img src="/Symposium/immagini/cestino.svg" width=100 ></a>
             </div>
          <% } %>
         <div class="cart">
