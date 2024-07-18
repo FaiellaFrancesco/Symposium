@@ -44,7 +44,7 @@
                 <th>Via</th>
                 <th>CAP</th>
                 <th>Prodotti</th>
-                <th>Fattura</th> <!-- Aggiunta della colonna Fattura -->
+                <th>Fattura</th>
             </tr>
         </thead>
         <tbody>
@@ -54,13 +54,13 @@
                     for (Ordine ordine : ordini) {
             %>
             <tr>
-                <td><%= ordine.getId() %></td>
-                <td><%= ordine.getData().getTime() %></td>
-                <td><%= ordine.getStato() %></td>
-                <td><%= ordine.getCitta() %></td>
-                <td><%= ordine.getVia() %></td>
-                <td><%= ordine.getCAP() %></td>
-                <td>
+                <td data-label="ID Ordine"><%= ordine.getId() %></td>
+                <td data-label="Data Ordine"><%= ordine.getData().getTime() %></td>
+                <td data-label="Stato"><%= ordine.getStato() %></td>
+                <td data-label="Città"><%= ordine.getCitta() %></td>
+                <td data-label="Via"><%= ordine.getVia() %></td>
+                <td data-label="CAP"><%= ordine.getCAP() %></td>
+                <td data-label="Prodotti">
                     <table class="product-table">
                         <thead>
                             <tr>
@@ -76,10 +76,10 @@
                                 for (OrderLine prodotto : prodotti) {
                             %>
                             <tr>
-                                <td class="prodotto" onclick="redirectToProduct(<%= prodotto.getProdotto().getId() %>)"><%= prodotto.getNome() %></td>
-                                <td><%= prodotto.getIva() %></td>
-                                <td><%= prodotto.getQuant() %></td>
-                                <td><%= prodotto.getPrezzo() %></td>
+                                <td class="prodotto" data-label="Prodotto" onclick="redirectToProduct(<%= prodotto.getProdotto().getId() %>)"><%= prodotto.getNome() %></td>
+                                <td data-label="IVA"><%= prodotto.getIva() %></td>
+                                <td data-label="Quantità"><%= prodotto.getQuant() %></td>
+                                <td data-label="Prezzo"><%= prodotto.getPrezzo() %></td>
                             </tr>
                             <%
                                 }
@@ -87,23 +87,23 @@
                         </tbody>
                     </table>
                 </td>
-                <td>
-                    <button onclick="redirectToFattura(<%= ordine.getId() %>)">Scarica Fattura</button>
-                </td> <!-- Aggiunta del pulsante Fattura -->
+                <td data-label="Fattura">
+                    <button onclick="scaricaFattura(<%= ordine.getId() %>)">Scarica Fattura</button>
+                </td>
             </tr>
             <%
                     }
                 } else {
             %>
             <tr>
-                <td colspan="8" class="no-orders">Non ci sono ordini</td> <!-- Aggiornato colspan -->
+                <td colspan="8" class="no-orders">Non ci sono ordini</td>
             </tr>
             <%
                 }
             %>
-        	</tbody>
+        </tbody>
     </table>
-	</div>
+    </div>
 </div>
 <%  
     } else {
