@@ -1,0 +1,88 @@
+/* Stili di base */
+
+body {
+  font-family: Arial, sans-serif;
+  line-height: 1.6;
+  margin: 0;
+  padding: 0;
+  background-color: #fff; /* Sfondo bianco */
+}
+
+.container {
+  width: 80%;
+  max-width: 1200px;
+  margin: auto;
+  padding: 20px;
+}
+
+#chi-siamo,
+#nostri-fondatori,
+#fondatori {
+  width: 100%;
+  margin-bottom: 30px;
+}
+
+h2 {
+  color: #333;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+p {
+  color: #666;
+  text-align: justify;
+}
+
+.fondatore {
+  margin-bottom: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.fondatore.reverse {
+  flex-direction: row-reverse;
+}
+
+.founder-info {
+  flex: 1;
+  padding: 0 20px; /* Aggiungiamo spazio tra l'immagine e il testo */
+}
+
+.founder-info h3 {
+  color: #333;
+  font-size: 1.5em;
+  margin-bottom: 10px;
+}
+
+.founder-info p {
+  color: #666;
+  text-align: justify;
+}
+
+.founder-image {
+  max-width: 200px;
+  border-radius: 50%;
+}
+
+.about-image {
+  width: 70%;
+  margin-bottom: 20px;
+}
+
+/* Media Queries per layout responsive */
+
+@media (max-width: 991px) {
+  .fondatore,
+  .fondatore.reverse {
+    flex-direction: column;
+  }
+
+  .fondatore img {
+    margin-bottom: 10px;
+  }
+
+  .founder-info {
+    text-align: center;
+  }
+}

@@ -24,6 +24,21 @@ function redirectToProduct(productId) {
             window.location.href=basePath+"/Symposium/home.jsp";
         }
         
+        function redirectToAboutUs() {
+			var basePath = window.location.origin;
+            window.location.href=basePath+"/Symposium/AboutUs.jsp";
+        }
+        
+        function redirectToACatalogo() {
+			var basePath = window.location.origin;
+            window.location.href=basePath+"/Symposium/catalogo.jsp";
+        }
+        
+        function redirectToRoll() {
+			var basePath = window.location.origin;
+            window.location.href=basePath+"/Symposium/product?id="+(Math.floor(Math.random() * 45) + 1);
+        }
+        
         function redirectToCarrello() {
 			var basePath = window.location.origin;
             window.location.href=basePath+"/Symposium/carrello.jsp";

@@ -39,7 +39,6 @@
             <tr>
                 <th>ID Ordine</th>
                 <th>Data Ordine</th>
-                <th>Stato</th>
                 <th>Città</th>
                 <th>Via</th>
                 <th>CAP</th>
