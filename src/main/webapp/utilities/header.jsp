@@ -33,19 +33,27 @@
             <div id="suggestions" class="suggestions"></div>
         </div>
         <div class="account-container">
-            <h2>
+           
                 <% if(request.getSession().getAttribute("id") != null) { %> 
-                    <a class="link" href="#" onclick="redirectToLogout()">L</a> &nbsp; 
-                    <a class="link" href="#" onclick="redirectToCarrello()">C</a> &nbsp;
-                     <a class="link" href="#" onclick="redirectToAreaUtente(<%=request.getSession().getAttribute("id") %>)">AU</a> &nbsp;
+                   <!--   <a class="link" href="#" onclick="redirectToLogout()">L</a> <!--  &nbsp;--> 
+                   <!--  <a class="link" href="#" onclick="redirectToAreaUtente(<%=request.getSession().getAttribute("id") %>)">AU</a> &nbsp; -->
+                   <!--  <a class="link" href="#" onclick="redirectToCarrello()">C</a> &nbsp;--> 
+                    <a class="link" href="#" onclick="redirectToAreaUtente(<%=request.getSession().getAttribute("id") %>)"><img src="/Symposium/immagini/scheda.svg" width=100></a>
+                    <a class="link" href="#" onclick="redirectToCarrello()"><img src="/Symposium/immagini/cart.svg" width=100></a>
+                    <a class="link" href="#" onclick="redirectToLogout()"><img src="/Symposium/immagini/logout-2.svg" width=100></a>
+                    
                 <% } else { %> 
-                    <a href="login.jsp" class="link">ACCEDI</a> 
+                  <!--   <a href="login.jsp" class="link">ACCEDI</a>  -->
+                    <a href="login.jsp"><img src="/Symposium/immagini/profilo.svg" width=100></a>
+            
+              
                 <% } %> 
-                &nbsp;
+              <!--   &nbsp;--> 
                 <% if(request.getSession().getAttribute("admin") != null && (boolean)request.getSession().getAttribute("admin") == true) { %> 
-                    <a class="link" href="/Symposium/redirectAdmin?page=adminFunctions"> ADMIN </a> &nbsp;
+                    <!--  <a class="link" href="/Symposium/redirectAdmin?page=adminFunctions"> ADMIN </a> &nbsp; -->
+                     <a class="link" href="/Symposium/redirectAdmin?page=adminFunctions" ><img src="/Symposium/immagini/admin.svg" width=100></a>
                 <% } %>
-            </h2>
+           
         </div>
     </div>
     </div>

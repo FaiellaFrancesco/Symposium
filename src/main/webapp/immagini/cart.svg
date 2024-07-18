@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="1000" height="1000" viewBox="0 0 1000 1000" xml:space="preserve">
+<desc>Created with Fabric.js 3.5.0</desc>
+<defs>
+</defs>
+<rect x="0" y="0" width="100%" height="100%" fill="#ffffff"/>
+<g transform="matrix(1.1914 0 0 1.1914 499.9992 499.9992)" id="962384">
+<g style="" vector-effect="non-scaling-stroke">
+		<g transform="matrix(1 0 0 1 0 0)" id="shopping-cart-simple">
+<rect style="stroke: none; stroke-width: 1; stroke-dasharray: none; stroke-linecap: butt; stroke-dashoffset: 0; stroke-linejoin: miter; stroke-miterlimit: 4; is-custom-font: none; font-file-url: none; fill: none; fill-rule: nonzero; opacity: 1;" x="-128" y="-128" rx="0" ry="0" width="256" height="256"/>
+</g>
+		<g transform="matrix(1 0 0 1 -48 88)" id="shopping-cart-simple">
+<circle style="stroke: none; stroke-width: 1; stroke-dasharray: none; stroke-linecap: butt; stroke-dashoffset: 0; stroke-linejoin: miter; stroke-miterlimit: 4; is-custom-font: none; font-file-url: none; fill: rgb(111,28,56); fill-rule: nonzero; opacity: 1;" cx="0" cy="0" r="12"/>
+</g>
+		<g transform="matrix(1 0 0 1 56 88)" id="shopping-cart-simple">
+<circle style="stroke: none; stroke-width: 1; stroke-dasharray: none; stroke-linecap: butt; stroke-dashoffset: 0; stroke-linejoin: miter; stroke-miterlimit: 4; is-custom-font: none; font-file-url: none; fill: rgb(111,28,56); fill-rule: nonzero; opacity: 1;" cx="0" cy="0" r="12"/>
+</g>
+		<g transform="matrix(1 0 0 1 -13.1429 -24)" id="shopping-cart-simple">
+<path style="stroke: rgb(111,28,56); stroke-width: 8; stroke-dasharray: none; stroke-linecap: round; stroke-dashoffset: 0; stroke-linejoin: round; stroke-miterlimit: 4; is-custom-font: none; font-file-url: none; fill: none; fill-rule: nonzero; opacity: 1;" transform=" translate(-114.8571, -104)" d="M 42.28575 72 H 221.71429 l -26.39873 92.39554 A 16 16 0 0 1 179.93118 176 H 84.06882 a 16 16 0 0 1 -15.38438 -11.60446 L 32.51492 37.80223 A 8 8 0 0 0 24.82273 32 H 8" stroke-linecap="round"/>
+</g>
+</g>
+</g>
+</svg>
