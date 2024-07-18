@@ -54,7 +54,7 @@
                 <tr onclick="redirectToMod(<%= prodotto.getId() %>)">
                     <td data-label="ID"><%= prodotto.getId() %></td>
                     <td data-label="Nome"><%= prodotto.getNome() %></td>
-                    <td data-label="Prezzo"><%= prodotto.getPrezzo() %></td>
+                    <td data-label="Prezzo"><%= String.format("%.2f", prodotto.getPrezzo()) %></td>
                     <td data-label="Iva"><%= prodotto.getIva() %></td>
                     <td data-label="Descrizione"><%= prodotto.getDescrizione() %></td>
                     <td data-label="Stock"><%= prodotto.getStock() %></td>

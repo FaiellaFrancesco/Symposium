@@ -34,7 +34,7 @@
             	<div class="div-img-product"><img class="img-product"src="<%= prodotto.getProdotto().getImmagine()%>" alt=""></div>
             	<div class="details">
                 <h3 class="name"><%= prodotto.getProdotto().getNome() %></h3>
-                <p class="price"><%= prodotto.getProdotto().getPrezzo() %></p>
+                <p class="price"><%= String.format("%.2f", prodotto.getProdotto().getPrezzo()) %></p>
                 Quantita: <%= prodotto.getQuant() %>
                </div>
                <a href="ControlloProdotto?action=deleteFromC&id=<%= prodotto.getProdotto().getId() %>"><img src="/Symposium/immagini/cestino.svg" width=100 ></a>
@@ -43,7 +43,7 @@
         <div class="cart">
        
             <p><h1>Totale:</h1> <span class="total-price"><%=String.format("%.2f", cart.getProdotti().stream().mapToDouble((e) -> e.getProdotto().getPrezzo() * e.getQuant()).sum()) %> <b>€</b></span></p>
-            <button type="submit" class="checkout">Acquista</button>
+            <button type="submit" class="checkout" onclick="redirectToCampiPayment()">Acquista</button>
         </div>
         <%  } else {%>
           <h4>Il tuo carrello è vuoto! Ritorna al <a class="ref-cat" href="home.jsp">catalogo</a></h4>

@@ -1,0 +1,223 @@
+/* General styles */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+    color: #333;
+}
+
+.container {
+    gap: 20px; /* Spazio tra le colonne */
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #ffffff; /* Sfondo bianco per la container */
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    border-radius: 8px;
+}
+
+/* Checkout section styles */
+.checkout-section {
+    flex: 1; /* Permette alla sezione di checkout di occupare tutto lo spazio disponibile */
+    min-width: 300px; /* Larghezza minima per la sezione di checkout */
+    padding: 20px; /* Spazio interno */
+    box-sizing: border-box; /* Include padding e bordo nel calcolo della larghezza e altezza */
+    background-color: #f9f9f9; /* Colore di sfondo per differenziare la sezione */
+    border: 1px solid #ddd; /* Bordo grigio chiaro */
+    border-radius: 8px; /* Arrotonda gli angoli del bordo */
+}
+
+/* Layout dei campi di checkout */
+.checkout-form {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px; /* Spazio tra i campi */
+}
+
+.field-container {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    min-width: calc(50% - 10px); /* Imposta una larghezza minima per i campi */
+    box-sizing: border-box;
+}
+
+.field-container label {
+    font-weight: bold;
+    margin-bottom: 5px;
+    color: #333; /* Testo nero per le etichette */
+}
+
+.field-container input[type="text"],
+.field-container input[type="tel"] {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd; /* Bordo grigio chiaro per gli input */
+    border-radius: 5px;
+    box-sizing: border-box; /* Include padding e bordo nel calcolo della larghezza */
+}
+
+/* Pulsante di invio */
+.checkout-section input[type="submit"] {
+    background-color: #990E3C; /* Rosso scuro per il pulsante */
+    color: #ffffff; /* Testo bianco sul pulsante */
+    border: none;
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s;
+    width: 100%; /* Rende il pulsante a larghezza piena */
+}
+
+.checkout-section input[type="submit"]:hover {
+    background-color: #6F1C38; /* Rosso scuro scuro per l'hover del pulsante */
+}
+
+/* Stile per i messaggi di errore */
+.error-message {
+    color: #990E3C; /* Rosso Scuro per gli errori */
+    display: none; /* Nasconde i messaggi per default */
+    font-size: 0.875em; /* Font più piccolo per i messaggi di errore */
+    margin-top: 5px;
+}
+
+/* Cart section styles */
+.cart-section {
+    flex: 1; /* Permette alla sezione del carrello di occupare tutto lo spazio disponibile */
+    min-width: 300px; /* Larghezza minima per la sezione del carrello */
+    padding: 20px; /* Spazio interno */
+    box-sizing: border-box; /* Include padding e bordo nel calcolo della larghezza e altezza */
+}
+
+.informazioni {
+    margin-bottom: 20px;
+}
+
+.info {
+    font-size: 24px;
+    margin: 0;
+    color: #333; /* Testo nero per le informazioni */
+}
+
+.container-car {
+    padding-top: 20px;
+}
+
+.num-products {
+    font-size: 18px;
+    color: #333; /* Testo nero per il numero di prodotti */
+    margin-bottom: 10px;
+}
+
+.products {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: flex-start; /* Allinea i prodotti a sinistra */
+}
+
+.product {
+    width: calc(20% - 20px); /* Larghezza per 5 prodotti per riga */
+    height: 400px; /* Altezza fissa per i blocchi dei prodotti */
+    border: 1px solid #ddd; /* Bordo grigio chiaro per i prodotti */
+    border-radius: 8px;
+    overflow: hidden;
+    background-color: #ffffff; /* Sfondo bianco per i prodotti */
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box; /* Include padding e bordo nel calcolo della larghezza e altezza */
+}
+
+.img-product {
+    width: 100%;
+    height: 60%; /* Altezza del contenitore dell'immagine */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.img-product img {
+    max-width: 100%; /* Mantiene l'immagine proporzionale */
+    max-height: 100%; /* Mantiene l'immagine proporzionale */
+    object-fit: contain; /* Mostra l'immagine intera senza deformarla */
+}
+
+.details {
+    padding: 10px;
+    text-align: center; /* Centra il testo all'interno del contenitore dei dettagli */
+}
+
+.name {
+    font-size: 18px;
+    margin: 0 0 10px;
+    color: #333; /* Testo nero per il nome del prodotto */
+}
+
+.price {
+    font-size: 16px;
+    color: #990E3C; /* Rosso scuro per il prezzo */
+}
+
+.cart {
+    margin-top: 20px;
+    text-align: right;
+}
+
+.total-price {
+    font-size: 24px;
+    font-weight: bold;
+    color: #990E3C; /* Rosso scuro per il totale */
+}
+
+.checkout {
+    background-color: #990E3C; /* Rosso scuro per il pulsante */
+    color: #ffffff; /* Testo bianco sul pulsante */
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s;
+}
+
+.checkout:hover {
+    background-color: #6F1C38; /* Rosso scuro scuro per l'hover del pulsante */
+}
+
+@media (max-width: 768px) {
+    .container {
+        flex-direction: column;
+        align-items: center; /* Centra le colonne su schermi più piccoli */
+    }
+
+    .checkout-section,
+    .cart-section {
+        min-width: 100%;
+        border: none; /* Rimuove i bordi laterali su schermi piccoli */
+        padding: 20px; /* Aggiunge padding su schermi piccoli */
+    }
+
+    .checkout-form {
+        flex-direction: column; /* Dispone i campi in colonna su schermi piccoli */
+    }
+
+    .field-container {
+        min-width: 100%; /* Ogni campo occupa tutta la larghezza disponibile */
+        margin-bottom: 15px; /* Spazio tra le righe dei campi */
+    }
+
+    .products {
+        flex-direction: column;
+        align-items: center; /* Centra i prodotti su schermi più piccoli */
+    }
+
+    .product {
+        width: 100%; /* Ogni prodotto occupa tutta la larghezza disponibile */
+        max-width: 600px; /* Imposta una larghezza massima per i prodotti */
+    }
+}
