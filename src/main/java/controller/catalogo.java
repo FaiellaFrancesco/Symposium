@@ -42,7 +42,7 @@ public class catalogo extends HttpServlet {
 			}
             request.setAttribute("prodotti", prodotti);
             
-            RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/home.jsp");
+            RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/catalogo.jsp");
     		dispatcher.forward(request, response);
             
 	}
