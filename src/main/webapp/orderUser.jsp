@@ -39,7 +39,6 @@
             <tr>
                 <th>ID Ordine</th>
                 <th>Data Ordine</th>
-                <th>Stato</th>
                 <th>Città</th>
                 <th>Via</th>
                 <th>CAP</th>
@@ -56,7 +55,6 @@
             <tr>
                 <td><%= ordine.getId() %></td>
                 <td><%= ordine.getData().getTime() %></td>
-                <td><%= ordine.getStato() %></td>
                 <td><%= ordine.getCitta() %></td>
                 <td><%= ordine.getVia() %></td>
                 <td><%= ordine.getCAP() %></td>
@@ -96,7 +94,7 @@
                 } else {
             %>
             <tr>
-                <td colspan="8" class="no-orders">Non ci sono ordini</td> <!-- Aggiornato colspan -->
+                <td colspan="7" class="no-orders">Non ci sono ordini</td> <!-- Aggiornato colspan -->
             </tr>
             <%
                 }

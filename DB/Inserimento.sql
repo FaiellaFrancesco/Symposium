@@ -84,9 +84,10 @@ VALUES
 -- Inserimento nella tabella `ordine`
 INSERT INTO ordine (data_ordine, stato, citta, via, cap, utente)
 VALUES
-('2024-04-19', 1, 'Roma', 'Via Appia 12', '00100', 1),
-('2024-04-20', 0, 'Milano', 'Corso Buenos Aires 123', '20100', 2),
-('2024-04-21', 2, 'Napoli', 'Via Toledo 45', '80100', 3);
+('2024-05-01', 1, 'Firenze', 'Via Roma 10', '50100', 1),
+('2024-05-02', 0, 'Torino', 'Via Garibaldi 50', '10100', 2),
+('2024-05-03', 2, 'Bologna', 'Via Indipendenza 20', '40100', 2);
+
 
 -- Inserimento nella tabella `categoria`
 INSERT INTO categoria (nome, descrizione)
@@ -109,11 +110,18 @@ VALUES
 -- Inserimento nella tabella `element`
 INSERT INTO element (prodotto, ordine, prezzo, iva, quantita, nome)
 VALUES
-(1, 1, 12.99, 22, 2, 'Vino Rosso'),
-(2, 2, 19.99, 22, 1, 'Spumante Brut'),
-(3, 3, 39.99, 22, 1, 'Champagne Rose'),
-(4, 1, 9.99, 22, 3, 'Vino Bianco'),
-(5, 3, 14.99, 22, 2, 'Rose');
+-- Ordine 4 (Firenze)
+(1, 1, 8.50, 22, 2, 'Primitivo Doppio Passo 2022'),
+(2, 1, 19.20, 22, 1, "Cannonau 'Mamuthone' Sedilesu"),
+
+-- Ordine 5 (Torino)
+(3, 2, 235.00, 22, 1, 'Tignanello Antinori'),
+(4, 2, 250.10, 22, 2, "Barolo 'Otin Fiorin - Piè Rupestris' Cappellano"),
+
+-- Ordine 6 (Bologna)
+(5, 3, 74.00, 22, 1, 'Kairos Zymé 2019'),
+(6, 3, 20.90, 22, 3, 'Insoglio del Cinghiale Campo di Sasso');
+
 
 -- Inserimento nella tabella `cart_line`
 INSERT INTO cart_line (prodotto, utente, quantita, data_aggiunta)

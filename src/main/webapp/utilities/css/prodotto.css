@@ -55,6 +55,7 @@
     width: 100%;
     max-width: 500px;
     height: auto;
+    object-fit: cover; /* Mantiene le proporzioni e riempie l'area disponibile */
     padding: 0;
 }
 
