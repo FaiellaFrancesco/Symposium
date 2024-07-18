@@ -4,6 +4,9 @@ body {
     margin: 0;
     padding: 0;
 }
+.minimo{
+	display:none;
+}
 
 header {
     background-color: #FFFF;
@@ -192,6 +195,32 @@ h2 {
    font-size: 17px;
     }
     */
+    .container-h{
+    display:none;
+    }
+   .minimo {
+  display: flex;
+
+  justify-content: space-between;
+  
+}
+.logo-text2{
+	font-size:50px;
+	margin-top:15px;
+	margin-bottom:15px;
+	text-align:center;
+}
+
+.alto-sx {
+ 
+  justify-content:left;
+}
+
+
+
+.basso {
+  order: 2; /* Imposta l'ordine di visualizzazione */
+}
     .suggestions{
      width:40%;
      left:28%
