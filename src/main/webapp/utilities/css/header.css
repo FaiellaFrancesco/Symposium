@@ -7,6 +7,10 @@ body {
 .minimo{
 	display:none;
 }
+.basso{
+	display:none;
+	
+}
 
 header {
     background-color: #FFFF;
@@ -204,6 +208,7 @@ h2 {
   justify-content: space-between;
   
 }
+
 .logo-text2{
 	font-size:50px;
 	margin-top:15px;
@@ -213,13 +218,13 @@ h2 {
 
 .alto-sx {
  
-  justify-content:left;
+  justify-content:center;
 }
 
 
 
 .basso {
-  order: 2; /* Imposta l'ordine di visualizzazione */
+		 display:inline;
 }
     .suggestions{
      width:40%;
@@ -254,6 +259,7 @@ h2 {
 	.link{
 	padding: 1px;
 	font-size: 18px;
+	margin-left:30px;
 	}
 
     .logo-container {
@@ -292,6 +298,8 @@ h2 {
      width:40%;
      left:28%
     }
+    .logo-text{
+    font-size:40px;}
    .logo-text2{
 	display:none;
 	}   
@@ -307,8 +315,10 @@ h2 {
         }
 
 	  .search-bar {
+	  margin-right:10px;
+	  margin-left:10px;
         padding: 10px;
-        width: 250px;
+        width: 150px;
         border: 2px solid #990E3C;
         border-radius: 25px;
         outline: none;
@@ -361,22 +371,6 @@ h2 {
 }
 
 
-.menu-btn.open .menu-btnburger {
-    transform: translateX(-50px);
-    background: transparent;
-}
-
-.menu-btn.open .menu-btnburger::before {
-    transform: rotate(45deg) translate(35px, -35px);
-}
-
-.menu-btn.open .menu-btn__burger::after {
-    transform: rotate(-45deg) translate(35px, 35px);
-}
-
-.nav.open {
-    left: 0;
-}
 
 }
 
@@ -387,6 +381,16 @@ h2 {
    .logo-text2{
 	display:none;
 	}   
+	  .search-bar {
+	  margin-right:10px;
+	  margin-left:10px;
+        padding: 10px;
+        width: 300px;
+        border: 2px solid #990E3C;
+        border-radius: 25px;
+        outline: none;
+    }
+	
 	.suggestions{
      width:55%;
      left:20%;
