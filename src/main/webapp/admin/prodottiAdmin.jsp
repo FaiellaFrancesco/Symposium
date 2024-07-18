@@ -19,6 +19,7 @@
     <link rel="stylesheet" href="/Symposium/utilities/css/utenti.css">
 </head>
 <%@ include file="../utilities/header.jsp" %>
+<%@ include file="admindsh.jsp" %>
 <body>
     <div class="container">
         <h2>Lista Prodotti</h2>
