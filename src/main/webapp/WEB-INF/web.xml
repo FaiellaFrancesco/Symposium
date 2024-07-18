@@ -43,7 +43,7 @@
         <filter-class>filter.loginFilter</filter-class>
         <init-param>
             <param-name>excludedServlets</param-name>
-            <param-value>login,catalogo,categorie,checkEmail,product,register,SearchSuggestionsServlet,catalogoAjax,utilities,immagini,home.jsp</param-value>
+            <param-value>login,catalogo,categorie,checkEmail,product,register,SearchSuggestionsServlet,catalogoAjax,utilities,immagini,catalogo.jsp,home.jsp,Home</param-value>
         </init-param>
     </filter>
 	

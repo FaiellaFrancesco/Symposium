@@ -38,7 +38,7 @@
     margin-bottom: 10px;
     
 }
-.img-product{
+.div-img-product{
 	 width: 250px;
     height: 100px;
     justify-content: left !important;
@@ -46,7 +46,7 @@
 
 }
 
-img{
+.img-product{
 	
   max-height: 100%; 
   width:auto;

@@ -15,14 +15,14 @@ import model.beans.Prodotto;
 /**
  * Servlet implementation class product
  */
-@WebServlet("/catalogo")
-public class catalogo extends HttpServlet {
+@WebServlet("/Home")
+public class HomepageServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public catalogo() {
+    public HomepageServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -42,7 +42,7 @@ public class catalogo extends HttpServlet {
 			}
             request.setAttribute("prodotti", prodotti);
             
-            RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/catalogo.jsp");
+            RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/home.jsp");
     		dispatcher.forward(request, response);
             
 	}
@@ -56,4 +56,3 @@ public class catalogo extends HttpServlet {
 	}
 
 }
-

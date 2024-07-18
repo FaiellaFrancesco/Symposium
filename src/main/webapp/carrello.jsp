@@ -31,7 +31,7 @@
         	%>
             <!-- Blocchi con i vari prodotti -->
             <div class="product">
-            	<div class="img-product"><img src="<%= prodotto.getProdotto().getImmagine()%>" alt=""></div>
+            	<div class="div-img-product"><img class="img-product"src="<%= prodotto.getProdotto().getImmagine()%>" alt=""></div>
             	<div class="details">
                 <h3 class="name"><%= prodotto.getProdotto().getNome() %></h3>
                 <p class="price"><%= prodotto.getProdotto().getPrezzo() %></p>
