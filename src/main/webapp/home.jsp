@@ -38,7 +38,8 @@ su vari argomenti, dalla politica alla cultura.</p>
 <div class="titolo-prod">
 <h3 class="titolo-prod">I nostri prodotti..</h3>
 </div>
- <div class="grid-container">
+<div id="container">
+        <div class="grid-container">
   <% if (prodotti != null) { %>
          <%
     int i=1;
@@ -46,17 +47,36 @@ su vari argomenti, dalla politica alla cultura.</p>
     	Prodotto p=prodotti.get(i*11-1);
     	i++;
   %>
-            <div class="product-container" onclick="redirectToProduct(<%= p.getId() %>)">
-                <img class="product-image" src="<%= p.getImmagine() %>" alt="<%= p.getNome() %>">
-                <h3 class="nome"><%= p.getNome() %></h3>
-                <div class="details">
-                    <p class="price"><%= String.format("%.2f", p.getPrezzo())  %>€</p>
-                    <a href="ControlloProdotto?action=addToC&id=<%= p.getId() %>&quantity=1" class="carrello-button">Carrello</a>
+            <div class="product-card">
+                <div class="product-container" onclick="redirectToProduct(<%= p.getId() %>)">
+                    <div class="product-front">
+                        <img class="product-image" src="<%= p.getImmagine() %>" alt="<%= p.getNome() %>">
+                        <h3 class="nome"><%= p.getNome() %></h3>
+                        <div class="details">
+                            <p class="price"><%= String.format("%.2f", p.getPrezzo()) %>€ </p>
+                        </div>
+                    </div>
+                    <div class="product-back">
+                        <!-- Retro della carta -->
+					    <div class="product-info">
+					        <p><b>Tipologia: </b><%= p.getTipologia() %></p>
+					        <p><b>Provenienza: </b><%= p.getProvenienza() %></p>
+					        <p><b>Denominazione: </b><%= p.getDenominazione() %></p>
+					        <p><b>Annata: </b><%= p.getAnnata() %></p>
+					        <p><b>Alcol: </b><%= p.getAlcol() %> %</p>
+					        <p><b>Formato: </b><%= p.getFormato() %> cl</p>
+					        <!-- Aggiungi altre informazioni se necessario -->
+					    </div>
+                        <a href="ControlloProdotto?action=addToC&id=<%= p.getId() %>&quantity=1" class="carrello-button">Aggiungi al Carrello</a>
+                    </div>
                 </div>
             </div>
-        <% } %>
-        <% } %>
+            <% } %>
+        </div>
     </div>
+        <% } %>
+   </div>
+
    <div class="catalogo-btn">
    <a href="/Symposium/catalogo.jsp"
     class="catalogo-button">VEDI ALTRO</a>
