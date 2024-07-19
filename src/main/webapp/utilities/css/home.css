@@ -14,6 +14,9 @@ body {
 
 /* Stile della griglia dei prodotti */
 .grid-container {
+	margin-right: 30px;
+margin-left: 30px;
+margin-top: 40px;
   display: grid;
   grid-template-columns: repeat(4, 1fr); /* 4 colonne di larghezza uguale */
   gap: 30px; /* Spazio tra le colonne (maggiore distanza tra le carte) */
@@ -27,8 +30,8 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: space-between; /* Spinge il contenuto verso l'estremità inferiore */
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15); /* Ombra più prominente per effetto di profondità */
+  justify-content: space-between; /* Spinge il contenuto verso l'estremitï¿½ inferiore */
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15); /* Ombra piï¿½ prominente per effetto di profonditï¿½ */
   border-radius: 12px; /* Angoli arrotondati per la carta */
   padding: 20px; /* Padding interno per spazio extra */
   transition: box-shadow 0.3s ease; /* Transizione dell'ombra per un effetto hover */
@@ -76,8 +79,8 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: space-between; /* Spinge il contenuto verso l'estremità inferiore */
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15); /* Ombra più prominente per effetto di profondità */
+  justify-content: space-between; /* Spinge il contenuto verso l'estremitï¿½ inferiore */
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15); /* Ombra piï¿½ prominente per effetto di profonditï¿½ */
   border-radius: 12px; /* Angoli arrotondati per la carta */
   padding: 20px; /* Padding interno per spazio extra */
   transition: box-shadow 0.3s ease; /* Transizione dell'ombra per un effetto hover */
@@ -85,7 +88,7 @@ body {
 }
 
 .product-front:hover {
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.25); /* Ombra più intensa al passaggio del mouse */
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.25); /* Ombra piï¿½ intensa al passaggio del mouse */
 }
 
 /* Stile per l'immagine del prodotto */
@@ -101,9 +104,9 @@ body {
 /* Stile per il nome del prodotto */
 .product-front .nome {
   font-weight: bold;
-  font-size: 22px; /* Leggermente più grande per maggiore visibilità */
+  font-size: 22px; /* Leggermente piï¿½ grande per maggiore visibilitï¿½ */
   color: #333; /* Colore del testo */
-  margin: 0; /* Rimuove margini per un allineamento più preciso */
+  margin: 0; /* Rimuove margini per un allineamento piï¿½ preciso */
 }
 
 /* Stile per il prezzo del prodotto */
@@ -122,7 +125,7 @@ body {
   align-items: center;
   justify-content: flex-start; /* Spinge il contenuto verso il bordo superiore */
   transform: rotateY(180deg); /* Ruota il retro della carta */
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15); /* Ombra più prominente per effetto di profondità */
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15); /* Ombra piï¿½ prominente per effetto di profonditï¿½ */
   text-align: center;
   padding: 20px; /* Padding interno per il retro */
   overflow: hidden; /* Nasconde contenuti che escono dai bordi */
@@ -131,7 +134,7 @@ body {
 /* Stile per la sezione delle informazioni */
 .product-info {
   text-align: left; /* Allinea il testo a sinistra */
-  line-height: 1.8; /* Maggiore spazio tra le righe per una migliore leggibilità */
+  line-height: 1.8; /* Maggiore spazio tra le righe per una migliore leggibilitï¿½ */
   font-size: 16px; /* Dimensione del font ingrandita */
   color: #333; /* Colore del testo */
   margin-bottom: 20px; /* Spazio sotto la sezione delle informazioni */
@@ -146,7 +149,7 @@ body {
 
 /* Stile per il pulsante nel retro della carta */
 .product-back .carrello-button {
-  padding: 14px 28px; /* Aumenta il padding per un pulsante più grande */
+  padding: 14px 28px; /* Aumenta il padding per un pulsante piï¿½ grande */
   background-color: #990E3C; /* Colore di sfondo del pulsante */
   color: #fff;
   border: none;
@@ -160,14 +163,63 @@ body {
 .product-back .carrello-button:hover {
   background-color: #6F1C38; /* Colore di sfondo del pulsante al passaggio del mouse */
 }
+.filter{
+	margin-right:20px;
+	grid-template-columns: repeat(6, 1fr);
+	display:grid;
+	margin-left:20px;
+	gap:40px;	
+	text-align:center;
+	 outline: none;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
 
-/* Media Queries per la reattività */
+/* Media Queries per la reattivitï¿½ */
 @media (max-width: 767px){
 
     .grid-container { grid-template-columns: repeat(1, 1fr); }
+.filtro{
+	padding: 10px 10px;
+	border-radius: 100px;
+	border: 1px solid #6F1C38;
+	background-color:white;
+	color:#6F1C38;
+	
+}
+.filtro.active{
+	 color:white;
+	    background-color: #990E3C;
+	
+}
+
+.go-to-cart-btn{
+	width:100px;
+}
+.go-to-cart:hover{
+	 
+	
+	
+}
+
+
+@media (max-width: 767px){
+   
+     .grid-container { 
+     grid-template-columns: repeat(1, 1fr);
+     
+      }
+      .filter{
+      
+      grid-template-columns: repeat(1, 1fr);
+      }
 }
 
 @media (min-width: 768px) and (max-width: 991px){
+      .filter{
+      
+      grid-template-columns: repeat(2, 1fr);
+      }
 
     .grid-container { grid-template-columns: repeat(2, 1fr); }
 }
@@ -178,6 +230,7 @@ body {
 }
 
 @media (min-width: 1200px){
+
 
     .grid-container { grid-template-columns: repeat(4, 1fr); }
 }

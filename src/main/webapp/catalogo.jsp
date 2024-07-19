@@ -24,6 +24,39 @@
 <!-- Header -->
 <%@ include file="utilities/header.jsp" %>
 
+
+<script type="text/javascript">
+let lastClickedLink = null;
+
+document.addEventListener('DOMContentLoaded', function() {
+    const links = document.querySelectorAll('.filtro');
+
+    links.forEach(link => {
+        // Aggiunge un secondo evento click per cambiare colore
+        link.addEventListener('click', function(event) {
+            event.preventDefault(); // Previene il comportamento predefinito del link
+
+            // Rimuove la classe 'active' dal link precedentemente cliccato, se presente
+            if (lastClickedLink && lastClickedLink !== link) {
+                lastClickedLink.classList.remove('active');
+            }
+
+            // Alterna la classe 'active' sul link attualmente cliccato
+            link.classList.toggle('active');
+
+            // Aggiorna il riferimento al link attualmente cliccato
+            lastClickedLink = link.classList.contains('active') ? link : null;
+        });
+    });
+});
+
+
+function toggleColor(link) {
+    link.classList.toggle('active');
+}
+
+
+</script>
 <body>
     <!-- Campi di filtraggio -->
     <div class="filter">

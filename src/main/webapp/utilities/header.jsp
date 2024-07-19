@@ -59,7 +59,6 @@
             </div>
         </div>
     </div>
-	
 	<%Collection<Categoria> categorie = (Collection<Categoria>)request.getSession().getAttribute("categorie"); 
     	if(categorie == null){
     		response.sendRedirect("./categorie");

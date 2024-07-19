@@ -49,11 +49,11 @@
 
 /* Stile della griglia dei prodotti */
 .grid-container {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr); /* 4 colonne di larghezza uguale */
-  gap: 30px; /* Spazio tra le colonne (maggiore distanza tra le carte) */
-  justify-items: center; /* Allinea gli elementi al centro */
-  padding: 20px; /* Padding interno per evitare che i prodotti tocchino i bordi */
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); /* 4 colonne di larghezza uguale */
+    gap: 30px; /* Spazio tra le colonne (maggiore distanza tra le carte) */
+    justify-items: center; /* Allinea gli elementi al centro */
+    padding: 20px; /* Padding interno per evitare che i prodotti tocchino i bordi */
 }
 
 /* Stile per il fronte della carta */
@@ -245,6 +245,7 @@ margin-top: 50px;
 
 @media (max-width: 767px){
 
+
   .container-sym{
   display: flex;
     flex-direction: column;
@@ -259,6 +260,8 @@ margin-top: 50px;
 
 @media (min-width: 768px) and (max-width: 991px){
 
+
+
      .grid-container { grid-template-columns: repeat(2, 1fr);
      
      
@@ -267,10 +270,13 @@ margin-top: 50px;
 }
 @media (min-width: 992px) and (max-width: 1199px){
 
+
      .grid-container { grid-template-columns: repeat(2, 1fr); }
 
 }
 @media (min-width: 1200px){
+
+
 
      .grid-container { grid-template-columns: repeat(4, 1fr); }
 
