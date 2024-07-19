@@ -220,7 +220,8 @@ h2 {
  margin-left:150px;
   justify-content:center;
 }
-.icon{ display:inline;
+.icon{ 
+	display:inline;
 	
 	 justify-content:center;
 }
@@ -290,6 +291,14 @@ h2 {
         border-radius: 25px 25px 25px 25px;
         cursor: pointer;
     }
+    .profilo2{
+    margin-left: 230px;
+margin-right: 230px;
+    }
+}
+.logo-text,logo-text2{
+	margin-left:40px;
+	
 }
 
 @media (min-width: 768px) and (max-width: 991px){
@@ -305,6 +314,7 @@ h2 {
     .logo-text{
     display:none;}
    .logo-text2{
+   margin-left:40px;
 	width:100px;
 	}   
 	 .navbar {
