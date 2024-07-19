@@ -93,7 +93,7 @@ function toggleColor(link) {
                         <img class="product-image" src="<%= bean.getImmagine() %>" alt="<%= bean.getNome() %>">
                         <h3 class="nome"><%= bean.getNome() %></h3>
                         <div class="details">
-                            <p class="price"><%= String.format("%.2f", bean.getPrezzo()) %>€ </p>
+                            <p class="price"><%= String.format(Locale.US, "%.2f", bean.getPrezzo()) %>€ </p>
                         </div>
                     </div>
                     <div class="product-back">

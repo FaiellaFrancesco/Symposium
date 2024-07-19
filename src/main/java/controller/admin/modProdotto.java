@@ -17,6 +17,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.Part;
+
+import controller.InputSanitizer;
 import model.DAO.ProdottoDAO;
 import model.beans.Prodotto;
 
@@ -43,7 +45,7 @@ public class modProdotto extends HttpServlet {
         }
 
         ProdottoDAO model = new ProdottoDAO();
-        int prodottoId = Integer.parseInt(request.getParameter("id"));
+        int prodottoId = Integer.parseInt(InputSanitizer.sanitize(request.getParameter("id")));
 
         try {
             // Recupera il prodotto esistente dal database
@@ -53,17 +55,17 @@ public class modProdotto extends HttpServlet {
                 // Crea un nuovo oggetto Prodotto con i dati aggiornati
                 Prodotto p = new Prodotto();
                 p.setId(prodottoId);
-                p.setNome(request.getParameter("nome"));
-                p.setPrezzo(Double.parseDouble(request.getParameter("prezzo")));
-                p.setIva(Integer.parseInt(request.getParameter("iva")));
-                p.setDescrizione(request.getParameter("descrizione"));
-                p.setStock(Integer.parseInt(request.getParameter("stock")));
-                p.setAlcol(Double.parseDouble(request.getParameter("alcol")));
-                p.setFormato(Double.parseDouble(request.getParameter("formato")));
-                p.setProvenienza(request.getParameter("provenienza"));
-                p.setTipologia(request.getParameter("tipologia"));
-                p.setAnnata(Integer.parseInt(request.getParameter("annata")));
-                p.setDenominazione(request.getParameter("denominazione"));
+                p.setNome(InputSanitizer.sanitize(request.getParameter("nome")));
+                p.setPrezzo(Double.parseDouble(InputSanitizer.sanitize(request.getParameter("prezzo"))));
+                p.setIva(Integer.parseInt(InputSanitizer.sanitize(request.getParameter("iva"))));
+                p.setDescrizione(InputSanitizer.sanitize(request.getParameter("descrizione")));
+                p.setStock(Integer.parseInt(InputSanitizer.sanitize(request.getParameter("stock"))));
+                p.setAlcol(Double.parseDouble(InputSanitizer.sanitize(request.getParameter("alcol"))));
+                p.setFormato(Double.parseDouble(InputSanitizer.sanitize(request.getParameter("formato"))));
+                p.setProvenienza(InputSanitizer.sanitize(request.getParameter("provenienza")));
+                p.setTipologia(InputSanitizer.sanitize(request.getParameter("tipologia")));
+                p.setAnnata(Integer.parseInt(InputSanitizer.sanitize(request.getParameter("annata"))));
+                p.setDenominazione(InputSanitizer.sanitize(request.getParameter("denominazione")));
 
                 // Se è stata caricata una nuova immagine, elimina quella vecchia e salva la nuova
                 if (fileName != null && !fileName.isEmpty()) {

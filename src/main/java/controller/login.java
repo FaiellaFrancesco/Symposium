@@ -46,34 +46,36 @@ public class login extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		UtenteDAO model = new UtenteDAO();
-		HttpSession sessione = request.getSession();
-		dispatcher = getServletContext().getRequestDispatcher("/login.jsp");
-		try {
-			String email=null;
-			String password=request.getParameter("password").trim();
-			if(request.getParameter("email")!= null) email=request.getParameter("email");
-			else email=request.getParameter("username");
-			email=email.toLowerCase();
-			Utente utente = model.doRetrieveByUsr(email);
-			if(utente != null) {
-				if(checkCredentials(email,password,utente)) {
-					if(utente.isAmministratore()) {
-						sessione.setAttribute("admin", true);
-					}
-					else {
-						sessione.setAttribute("admin", false);
-					}
-					sessione.setAttribute("id", utente.getId());
-					dispatcher = getServletContext().getRequestDispatcher("/home.jsp");
-				}
-			}
-			dispatcher.forward(request, response);
-		} catch (NumberFormatException | SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-	}
+        UtenteDAO model = new UtenteDAO();
+        HttpSession sessione = request.getSession();
+        dispatcher = getServletContext().getRequestDispatcher("/login.jsp");
+
+        try {
+            String email = null;
+            String password = request.getParameter("password").trim();
+            if (request.getParameter("email") != null) {
+                email = InputSanitizer.sanitize(request.getParameter("email"));
+            } else {
+                email = InputSanitizer.sanitize(request.getParameter("username"));
+            }
+            email = email.toLowerCase();
+            Utente utente = model.doRetrieveByUsr(email);
+            if (utente != null) {
+                if (checkCredentials(email, password, utente)) {
+                    if (utente.isAmministratore()) {
+                        sessione.setAttribute("admin", true);
+                    } else {
+                        sessione.setAttribute("admin", false);
+                    }
+                    sessione.setAttribute("id", utente.getId());
+                    dispatcher = getServletContext().getRequestDispatcher("/home.jsp");
+                }
+            }
+            dispatcher.forward(request, response);
+        } catch (NumberFormatException | SQLException e) {
+            e.printStackTrace();
+        }
+    }
 
 	private boolean checkCredentials(String mail, String pwd, Utente check) throws SQLException {
 		

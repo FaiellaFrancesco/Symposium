@@ -57,10 +57,10 @@ public class register extends HttpServlet {
 	    ArrayList<String> errori = new ArrayList<>(0);
 	    
 	    // Recupera i parametri dalla richiesta
-	    String email = request.getParameter("email").toLowerCase();
-	    String password = request.getParameter("password").trim();
-	    String nome = request.getParameter("nome").trim();
-	    String cognome = request.getParameter("cognome").trim();
+	    String email = InputSanitizer.sanitize(request.getParameter("email").toLowerCase());
+	    String password = InputSanitizer.sanitize(request.getParameter("password").trim());
+	    String nome = InputSanitizer.sanitize(request.getParameter("nome").trim());
+	    String cognome = InputSanitizer.sanitize(request.getParameter("cognome").trim());
 	    
 	    
 	    if(email==null || !isValidEmail(email)) errori.add("email");

@@ -1,6 +1,8 @@
 package controller.admin;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Arrays;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -32,7 +34,9 @@ public class redirectAdmin extends HttpServlet {
 		// TODO Auto-generated method stub
 		String dispatch = "/errore.jsp";
 		HttpSession sessione = request.getSession();
-		if(sessione.getAttribute("admin")!=null && (boolean)sessione.getAttribute("admin")) {
+		String [] pagine = {"adminFunctions","insProdotto","modProdotto","prodottiAdmin","Utenti"};
+		ArrayList<String> pagineConsentite = new ArrayList<String>(Arrays.asList(pagine));
+		if(sessione.getAttribute("admin")!=null && (boolean)sessione.getAttribute("admin") && pagineConsentite.contains(request.getParameter("page"))){
 			dispatch = "/admin/"+request.getParameter("page")+".jsp";
 		}
 		RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(dispatch);
