@@ -74,9 +74,7 @@
     border-bottom: 1px solid #990E3C;
     border-left: 1px solid #990E3C;
     border-right: 1px solid #990E3C;
-    
 }
-
 .cart button {
     display: inline;
     margin-top: 10px;
@@ -127,10 +125,17 @@
         
  .rimuovi{
  	margin-top: 50px;
-justify-content: center;
-color: #6F1C38;
-text-decoration: none;
- }       
+	justify-content: center;
+	color: #6F1C38;
+	text-decoration: none;
+	font-size: 25px;
+	font-weight: bold;
+	margin-right:17px;
+}       
+
+.rimuovi:hover{
+	color: #990E3C;
+}
         /*QUERY*/
         
 @media (max-width: 767px){

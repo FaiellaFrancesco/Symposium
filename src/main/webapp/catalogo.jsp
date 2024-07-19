@@ -59,15 +59,25 @@ function toggleColor(link) {
 </script>
 <body>
     <!-- Campi di filtraggio -->
-    <div class="filter">
-        <a onclick="redirectToACatalogo()">Mostra tutto</a>
-        <a onclick="filtro('Vini Rossi')">Vini Rossi</a>
-        <a onclick="filtro('Vini Bianchi')">Vini Bianchi</a>
-        <a onclick="filtro('Vini Rosati')">Vini Rosati</a>
-        <a onclick="filtro('Champagne')">Champagne</a>
-        <a onclick="filtro('Spumanti')">Spumanti</a>
-        <a onclick="filtro('Altro')">Altri prodotti</a>
-    </div>
+    <span class="spazio"></span>
+
+		<div class="reset">
+			<a class="" onclick="redirectToACatalogo()">Mostra tutto</a>
+		</div>
+		<span class="spazio"></span>
+			<!-- Campi di filtraggio -->
+			<div class="filter">
+			    	
+			    	<a class="filtro" onclick="filtro('Vini Rossi')">Vini Rossi</a>
+			    	<a class="filtro" onclick="filtro('Vini Bianchi')">Vini Bianchi</a>
+			    	<a class="filtro" onclick="filtro('Vini Rosati')">Vini Rosati</a>
+			    	<a class="filtro" onclick="filtro('Champagne')">Champagne</a>
+			    	<a class="filtro" onclick="filtro('Spumanti')">Spumanti</a>
+			    	<a class="filtro" onclick="filtro('Altro')">Altri prodotti</a>
+			</div>
+	
+		<span class="spazio">
+	</span>
 
     <% if (products != null && products.size() != 0) { %>
     <div id="container">

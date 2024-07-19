@@ -147,6 +147,38 @@ margin-top: 40px;
   font-size: 18px; /* Dimensione del font per le etichette ingrandita */
 }
 
+.filtro{
+	padding: 10px 10px;
+	border-radius: 100px;
+	border: 1px solid #6F1C38;
+	background-color:white;
+	color:#6F1C38;
+	
+}
+
+.filtro.active{
+	 color:white;
+	    background-color: #990E3C;
+	
+}
+
+.spazio{
+	display:block;
+	margin-top:50px;
+}
+.reset{
+	
+margin-left: 50px;
+display: inline;
+justify-content: center;
+ outline: none;
+    cursor: pointer;
+}
+.reset a{
+	color:#6F1C38;
+	
+}
+
 /* Stile per il pulsante nel retro della carta */
 .product-back .carrello-button {
   padding: 14px 28px; /* Aumenta il padding per un pulsante pi� grande */
@@ -196,10 +228,6 @@ margin-top: 40px;
 .go-to-cart-btn{
 	width:100px;
 }
-.go-to-cart:hover{
-	 
-	
-	
 }
 
 
@@ -234,3 +262,4 @@ margin-top: 40px;
 
     .grid-container { grid-template-columns: repeat(4, 1fr); }
 }
+
