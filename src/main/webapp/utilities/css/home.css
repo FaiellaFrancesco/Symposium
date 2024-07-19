@@ -247,7 +247,7 @@ justify-content: center;
       }
 }
 
-@media (min-width: 768px) and (max-width: 991px){
+@media (min-width: 768px) and (max-width: 1099px){
       .filter{
       
       grid-template-columns: repeat(2, 1fr);
@@ -256,12 +256,12 @@ justify-content: center;
     .grid-container { grid-template-columns: repeat(2, 1fr); }
 }
 
-@media (min-width: 992px) and (max-width: 1199px){
+@media (min-width: 1100px) and (max-width: 1449px){
 
     .grid-container { grid-template-columns: repeat(3, 1fr); }
 }
 
-@media (min-width: 1200px){
+@media (min-width: 1450px){
 
 
     .grid-container { grid-template-columns: repeat(4, 1fr); }
