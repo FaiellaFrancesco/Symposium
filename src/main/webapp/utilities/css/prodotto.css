@@ -63,7 +63,6 @@
     margin: 0 auto;         /* Centra il contenitore */
 }
 
-
 .product-info {
     margin-top: 20px;
     font-size: 20px; /* Ingrandito il testo delle informazioni prodotto */
@@ -106,6 +105,13 @@
     box-sizing: border-box;
     outline: none;
     text-align: center;
+}
+
+.out-of-stock {
+    font-size: 24px;
+    color: red;
+    font-weight: bold;
+    margin-top: 20px;
 }
 
 @media (min-width: 768px) {

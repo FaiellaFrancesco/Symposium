@@ -14,7 +14,7 @@
 
 <div class="footer-item" style="align-items: center;"> 
  <h1 style="margin-top: 0px;">Symposium</h1>
-<form action="" method="get" >
+<form action="https://vm.tiktok.com/ZGenSGVBQ/" method="get" >
 	<p text-align= "left">Iscriviti alla Newsletter</p>
                     <input  class="footer-search" type="text" name="q" placeholder="">
                     <button class="footer-button" type="submit">Invia</button>
