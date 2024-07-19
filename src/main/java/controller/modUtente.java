@@ -29,20 +29,20 @@ public class modUtente extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         // Ottieni i parametri dal form
-        String utenteIdStr = request.getParameter("id");
-        String nome = request.getParameter("nome");
-        String cognome = request.getParameter("cognome");
-        String email = request.getParameter("email");
-        String password = request.getParameter("pw");
-        String telefono = request.getParameter("telefono");
-        String dataNascitaStr = request.getParameter("dataNascita");
-        String via = request.getParameter("via");
-        String cap = request.getParameter("cap");
-        String citta = request.getParameter("citta");
-        String nomeCarta = request.getParameter("nomeCarta");
-        String numeroCarta = request.getParameter("numeroCarta");
-        String scadenza = request.getParameter("scadenza");
-        String cvv = request.getParameter("cvv");
+    	String utenteIdStr = InputSanitizer.sanitize(request.getParameter("id"));
+        String nome = InputSanitizer.sanitize(request.getParameter("nome"));
+        String cognome = InputSanitizer.sanitize(request.getParameter("cognome"));
+        String email = InputSanitizer.sanitize(request.getParameter("email"));
+        String password = InputSanitizer.sanitize(request.getParameter("pw"));
+        String telefono = InputSanitizer.sanitize(request.getParameter("telefono"));
+        String dataNascitaStr = InputSanitizer.sanitize(request.getParameter("dataNascita"));
+        String via = InputSanitizer.sanitize(request.getParameter("via"));
+        String cap = InputSanitizer.sanitize(request.getParameter("cap"));
+        String citta = InputSanitizer.sanitize(request.getParameter("citta"));
+        String nomeCarta = InputSanitizer.sanitize(request.getParameter("nomeCarta"));
+        String numeroCarta = InputSanitizer.sanitize(request.getParameter("numeroCarta"));
+        String scadenza = InputSanitizer.sanitize(request.getParameter("scadenza"));
+        String cvv = InputSanitizer.sanitize(request.getParameter("cvv"));
 
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 

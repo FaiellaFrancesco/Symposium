@@ -49,7 +49,7 @@
     <img class="product-image" src="<%= bean.getImmagine() %>" alt="<%= bean.getNome() %>">
     <h3 class="nome"><%= bean.getNome() %></h3>
     <div class="details">
-      <p class="price"><%= String.format("%.2f", bean.getPrezzo()) %>€ </p>
+      <p class="price"><%= String.format(Locale.US, "%.2f", bean.getPrezzo()) %>€ </p>
       <a href="ControlloProdotto?action=addToC&id=<%= bean.getId() %>&quantity=1" class="carrello-button">Carrello</a>
     </div>
   </div>

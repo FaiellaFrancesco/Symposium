@@ -77,7 +77,7 @@
                                 <td class="prodotto" data-label="Prodotto" onclick="redirectToProduct(<%= prodotto.getProdotto().getId() %>)"><%= prodotto.getNome() %></td>
                                 <td data-label="IVA"><%= prodotto.getIva() %></td>
                                 <td data-label="Quantità"><%= prodotto.getQuant() %></td>
-                                <td data-label="Prezzo"><%= prodotto.getPrezzo() %></td>
+                                <td data-label="Prezzo"><%= String.format(Locale.US, "%.2f", prodotto.getPrezzo()) + "€" %></td>
                             </tr>
                             <%
                                 }

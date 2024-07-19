@@ -17,6 +17,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.Part;
+
+import controller.InputSanitizer;
 import model.DAO.ProdottoDAO;
 import model.beans.Prodotto;
 
@@ -45,17 +47,17 @@ public class insProdotto extends HttpServlet {
 
         ProdottoDAO model = new ProdottoDAO();
         Prodotto p = new Prodotto();
-        p.setNome(request.getParameter("nome"));
-        p.setPrezzo(Double.parseDouble(request.getParameter("prezzo")));
-        p.setIva(Integer.parseInt(request.getParameter("iva")));
-        p.setDescrizione(request.getParameter("descrizione"));
-        p.setStock(Integer.parseInt(request.getParameter("stock")));
-        p.setAlcol(Double.parseDouble(request.getParameter("alcol")));
-        p.setFormato(Double.parseDouble(request.getParameter("formato")));
-        p.setProvenienza(request.getParameter("provenienza"));
-        p.setTipologia(request.getParameter("tipologia"));
-        p.setAnnata(Integer.parseInt(request.getParameter("annata")));
-        p.setDenominazione(request.getParameter("denominazione"));
+        p.setNome(InputSanitizer.sanitize(request.getParameter("nome")));
+        p.setPrezzo(Double.parseDouble(InputSanitizer.sanitize(request.getParameter("prezzo"))));
+        p.setIva(Integer.parseInt(InputSanitizer.sanitize(request.getParameter("iva"))));
+        p.setDescrizione(InputSanitizer.sanitize(request.getParameter("descrizione")));
+        p.setStock(Integer.parseInt(InputSanitizer.sanitize(request.getParameter("stock"))));
+        p.setAlcol(Double.parseDouble(InputSanitizer.sanitize(request.getParameter("alcol"))));
+        p.setFormato(Double.parseDouble(InputSanitizer.sanitize(request.getParameter("formato"))));
+        p.setProvenienza(InputSanitizer.sanitize(request.getParameter("provenienza")));
+        p.setTipologia(InputSanitizer.sanitize(request.getParameter("tipologia")));
+        p.setAnnata(Integer.parseInt(InputSanitizer.sanitize(request.getParameter("annata"))));
+        p.setDenominazione(InputSanitizer.sanitize(request.getParameter("denominazione")));
 
         try {
             // Salva il prodotto nel database

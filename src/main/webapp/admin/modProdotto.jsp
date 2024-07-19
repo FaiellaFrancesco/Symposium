@@ -26,7 +26,7 @@
             <span id="nomeError" class="error-message"></span>
             
             <label>Prezzo:</label>
-            <input type="text" name="prezzo" id="prezzo" value="<%= String.format("%.2f", prodotto.getPrezzo()) %>" required>
+            <input type="text" name="prezzo" id="prezzo" value="<%= String.format(Locale.US, "%.2f", prodotto.getPrezzo()) %>" required>
             <span id="prezzoError" class="error-message"></span>
             
             <label>IVA:</label>

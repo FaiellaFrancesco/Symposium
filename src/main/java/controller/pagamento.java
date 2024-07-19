@@ -52,9 +52,9 @@ public class pagamento extends HttpServlet {
 		OrdineDAO ordineModel = new OrdineDAO();
 		Carrello cart = (Carrello) sessione.getAttribute("cart");
 		Ordine ordine = new Ordine();
-		String cap = request.getParameter("cap");
-		String citta = request.getParameter("citta");
-		String indirizzo = request.getParameter("indirizzo");
+		String cap = InputSanitizer.sanitize(request.getParameter("cap"));
+		String citta = InputSanitizer.sanitize(request.getParameter("citta"));
+		String indirizzo = InputSanitizer.sanitize(request.getParameter("indirizzo"));
 		int id = (int) sessione.getAttribute("id");
 		ArrayList<OrderLine> prodotti = new ArrayList<OrderLine>();
 		if(cart!=null && cart.getProdotti().size()>0) {
