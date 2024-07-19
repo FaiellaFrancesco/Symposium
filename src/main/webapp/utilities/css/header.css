@@ -166,6 +166,7 @@ h2 {
     padding: 15px 0; /* Aggiunto padding per spazio verticale */
     gap: 20px; /* Spazio tra gli elementi */
     border-bottom: 1px solid #ccc;
+    
 }
 
 .nav a {

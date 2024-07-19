@@ -14,6 +14,7 @@
             text-decoration: none;
             color: #555;
             padding: 10px;
+            cursor:pointer;
         }
         .navbar a.active {
             border-bottom: 2px solid #900;
