@@ -1,8 +1,12 @@
-/* Impostazioni generali */
+
 body {
   margin: 0;
+  padding: 0;
   font-family: Arial, sans-serif;
   background-color: #f5f5f5; /* Colore di sfondo chiaro per contrastare */
+   min-height: 100%;
+     display: flex;
+     flex-direction: column;
 }
 
 /* Contenitore principale dei prodotti */
