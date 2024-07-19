@@ -7,6 +7,8 @@
             justify-content: space-around;
             border-bottom: 1px solid #ccc;
             padding: 10px 0;
+            font-family: 'Courier New', monospace;
+    		font-size: 20px;
         }
         .navbar a {
             text-decoration: none;

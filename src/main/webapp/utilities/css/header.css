@@ -4,12 +4,13 @@ body {
     margin: 0;
     padding: 0;
 }
-.minimo{
-	display:none;
+
+.minimo {
+    display: none;
 }
-.basso{
-	display:none;
-	
+
+.basso {
+    display: none;
 }
 
 header {
@@ -26,6 +27,7 @@ header {
     text-decoration: none;
     cursor: pointer;
 }
+
 .logo-text2,
 .logo-text {
     color: #990E3C;
@@ -109,7 +111,7 @@ header {
     max-width: 700px; /* Limita la larghezza massima per una migliore leggibilità */
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Aggiunge una leggera ombra per il rilievo */
     padding: 10px;
-    top: 110px;/* Posiziona sotto l'elemento di riferimento con un piccolo margine */
+    top: 110px; /* Posiziona sotto l'elemento di riferimento con un piccolo margine */
     left: 28%; /* Allinea al centro rispetto al contenitore padre */
     border-radius: 8px; /* Bordo arrotondato */
 }
@@ -156,7 +158,8 @@ h2 {
     text-align: left;
     font-family: 'Courier New', monospace;
 }
-.navbar {
+
+.nav {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -165,182 +168,24 @@ h2 {
     border-bottom: 1px solid #ccc;
 }
 
-   .navbar a {
-            color: #000;
-            text-decoration: none;
-            padding: 5px 10px;
-            border-radius: 5px;
-            font-family: 'Courier New', monospace ;
-            font-size: 20px;
-   			 margin: 0 10px;
-   			 
-        }
-
-        .navbar a:hover {
-        font-weight: bold;
-            color: #990E3C;
-            cursor:pointer;
-            
-        }
-        
-        
-
-/*     RESPONSIVE */
-
-
-
-@media (max-width: 767px) {
-	/*
-    .navbar {
-       flex-direction: column;
-        gap: 0px;
-    }
-   .navbar a{
-   font-size: 17px;
-    }
-    */
-    .container-h{
-    display:none;
-    }
-   .minimo {
-  display: flex;
-  flex-direction: column;
-
-  justify-content: space-between;
-  
+.nav a {
+    color: #000;
+    text-decoration: none;
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-family: 'Courier New', monospace;
+    font-size: 20px;
+    margin: 0 10px;
 }
 
-
-.logo-text2{
-	width:300px;
-	text-align:center;
+.nav a:hover {
+    font-weight: bold;
+    color: #990E3C;
+    cursor: pointer;
 }
 
-.alto-sx {
- margin-left:150px;
-  justify-content:center;
-}
-.icon{ display:inline;
-	
-	 justify-content:center;
-}
-
-
-
-.basso {
-		 display:inline;
-}
-    .suggestions{
-     width:40%;
-     left:28%
-    }
-    .navbar{
-    display:none;}
-    .search-form{
-    width: 100%;
-    }
-     .search-container{
-     text-align: left;
-        width: 100%;
-     }
-      .account-container {
-        text-align: center;
-        width: 100%;
-        margin-bottom: 10px;
-        margin-left: 10px;
-    }
-     .logo-text2{
- 
-     display:none;
-     
-     }
-     .logo-text{
-     
-     margin-left: 20px;
-     
-     }
-
-	.link{
-	padding: 1px;
-	font-size: 18px;
-	margin-left:30px;
-	}
-
-    .logo-container {
-        text-align: center;
-    }
-
-    .account-container {
-        text-align: center;
-    }
-
-    .search-bar {
-        padding: 10px;
-        width: 100%;
-        border: 2px solid #990E3C;
-        border-radius: 25px;
-        outline: none;
-    }
-
-    .search-button {
-        padding: 10px 10px;
-        background-color: #990E3C;
-        color: #fff;
-        border: none;
-        border-radius: 25px 25px 25px 25px;
-        cursor: pointer;
-    }
-}
-
-@media (min-width: 768px) and (max-width: 991px){
-	
-	.search-container{
-     text-align: left;
-        width: 100%;
-     }
-	.suggestions{
-     width:40%;
-     left:28%
-    }
-    .logo-text{
-    display:none;}
-   .logo-text2{
-	width:100px;
-	}   
-	 .navbar {
-       
-        gap: 0px;
-    }
-    .navbar a {
-          
-            font-size: 15px;
-   			
-   			 
-        }
-
-	  .search-bar {
-	  margin-right:10px;
-	  margin-left:10px;
-        padding: 10px;
-        width: 150px;
-        border: 2px solid #990E3C;
-        border-radius: 25px;
-        outline: none;
-    }
-
-    .search-button {
-        padding: 10px 10px;
-        background-color: #990E3C;
-        color: #fff;
-        border: none;
-        border-radius: 25px 25px 25px 25px;
-        cursor: pointer;
-    }
-    
-
-
-
-.nav {
+/* Menu mobile */
+.navbar-mobile {
     position: fixed;
     top: 0;
     left: -100%;
@@ -354,84 +199,166 @@ h2 {
     z-index: 999;
 }
 
-.navlist {
-    list-style: none;
-    text-align: center;
-}
-
-.navitem {
-    margin: 20px 0;
-}
-
-.navlink {
+.navbar-mobile a {
     color: #fff;
     text-decoration: none;
     font-size: 24px;
+    margin: 20px 0;
     transition: color 0.3s ease;
 }
 
-.navlink:hover {
+.navbar-mobile a:hover {
     color: #ff6347;
 }
 
-
+.mobile-menu-toggle {
+    display: none; /* Mostra solo sotto i 550px */
+    background: none;
+    border: none;
+    font-size: 30px;
+    cursor: pointer;
+    color: #990E3C;
+    width: 100%;
+    text-align: center;
+    max-width:100px;
 
 }
 
+/* Responsive */
+@media (max-width: 767px) {
+	.search-form{
+	width:80%;
+	}
+    .container-header {
+        flex-direction: column;
+    }
+	
+	.account-container img{
+	height:75px;
+	}
+    .logo-container {
+        display: none; /* Nascondi il logo grande */
+    }
 
+    .search-container {
+        display: flex; /* Mostra la barra di ricerca */
+        justify-content: center;
+        width: 100%;
+        margin-bottom: 10px; /* Spazio sotto la barra di ricerca */
+        order: -1; /* Assicura che la barra di ricerca appaia sopra i pulsanti */
+    }
 
-/* prime query*/
-@media (min-width: 992px) and (max-width: 1199px){
-   .logo-text2{
-	display:none;
-	}   
-	  .search-bar {
-	  margin-right:10px;
-	  margin-left:10px;
+    .search-bar {
+        width: 90%; /* Larghezza ridotta della barra di ricerca */
+    }
+
+    .account-container {
+        display: flex;
+        flex-direction: row; /* Disporre i pulsanti orizzontalmente */
+        align-items: center;
+        width: 100%;
+        justify-content: space-evenly; /* Centrare i pulsanti orizzontalmente */
+        margin: 10px 0;
+        padding: 0 10px; /* Aggiungi padding per spaziatura laterale */
+    }
+
+    .account-container .button {
+        margin: 0 5px; /* Spazio tra i pulsanti */
         padding: 10px;
+        background-color: #990E3C;
+        color: #fff;
+        border-radius: 5px;
+        text-align: center;
+        text-decoration: none;
+        font-size: 16px;
+    }
+
+    .account-container .button:hover {
+        background-color: #6F1C38;
+    }
+
+    .navbar {
+        display: none; /* Nasconde la navbar desktop */
+    }
+
+    .navbar-mobile {
+        display: flex; /* Mostra il menu mobile */
+    }
+
+    .mobile-menu-toggle {
+        display: block; /* Mostra il pulsante del menu mobile */
+        font-size:22px;
+    }
+
+    .logo-text2,
+    .logo-text {
+        display: none; /* Nascondi loghi sotto i 550px */
+    }
+}
+@media (min-width: 768px) and (max-width: 991px) {
+    .search-bar {
+        width: 150px;
+    }
+
+    .search-container {
+        text-align: left;
+    }
+
+    .navbar a {
+        font-size: 15px;
+    }
+
+    .logo-text {
+        display: none;
+    }
+
+    .logo-text2 {
+        width: 100px;
+    }
+
+    .suggestions {
+        width: 40%;
+        left: 28%;
+    }
+}
+
+@media (min-width: 992px) and (max-width: 1199px) {
+    .logo-text2 {
+        display: none;
+    }
+
+    .search-bar {
         width: 300px;
-        border: 2px solid #990E3C;
-        border-radius: 25px;
-        outline: none;
     }
-	
-	.suggestions{
-     width:55%;
-     left:20%;
-    }
-    .search-container{
-     text-align: left;
-        width: 100%;
-     }
-	
-}
-@media (min-width: 1200px){
-	.logo-text2{
-	display:none;
-	}   
-	.suggestions{
-     width:55%;
-     left:22%;
-    }
-    .search-container{
-     text-align: left;
-        width: 100%;
-     }
 
+    .suggestions {
+        width: 55%;
+        left: 20%;
+    }
 }
 
-@media (min-width: 1400px){
-	.logo-text2{
-	display:none;
-	}   
-	.suggestions{
-     width:50%;
-     left:24%;
+@media (min-width: 1200px) {
+    .logo-text2 {
+        display: none;
     }
-    .search-container{
-     text-align: left;
-        width: 100%;
-     }
 
+    .suggestions {
+        width: 55%;
+        left: 22%;
+    }
+    
+    header{
+    width:100%;
+    }
 }
 
+@media (min-width: 1400px) {
+    .logo-text2 {
+        display: none;
+    }
+
+    .suggestions {
+        width: 50%;
+        left: 24%;
+    }
+}
