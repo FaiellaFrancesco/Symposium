@@ -37,9 +37,11 @@
                 <p class="price"><%= String.format("%.2f", prodotto.getProdotto().getPrezzo()) %></p>
                 Quantita: <%= prodotto.getQuant() %>
                </div>
-               <a href="ControlloProdotto?action=deleteFromC&id=<%= prodotto.getProdotto().getId() %>"><img src="/Symposium/immagini/cestino.svg" width=100 ></a>
+               <a class="rimuovi" href="ControlloProdotto?action=deleteFromC&id=<%= prodotto.getProdotto().getId() %>">X</a>
             </div>
          <% } %>
+          
+    
         <div class="cart">
        
             <p><h1>Totale:</h1> <span class="total-price"><%=String.format("%.2f", cart.getProdotti().stream().mapToDouble((e) -> e.getProdotto().getPrezzo() * e.getQuant()).sum()) %> <b>€</b></span></p>

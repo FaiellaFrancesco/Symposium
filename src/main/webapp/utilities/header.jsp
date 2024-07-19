@@ -63,7 +63,7 @@
     	<div class="alto-sx">
     	 <a class="logo">
                 <a class="logo-text" href="#" onclick="redirectToPage()"><img src="/Symposium/immagini/logo.png" width=200></a>
-                 <a class="logo-text2" href="#" onclick="redirectToPage()"><img src="/Symposium/immagini/minilogo.png" width=100></a>
+                 
                 </div>
                  <% if(request.getSession().getAttribute("id") != null) { %> 
                  <div class="icon">
@@ -73,7 +73,7 @@
                     
                 <% } else { %> 
                   
-                    <a href="login.jsp"><img src="/Symposium/immagini/profilo.svg" width=100></a>
+                    <a href="login.jsp"><img  class="profilo2"src="/Symposium/immagini/profilo.svg" width=100></a>
                      <% } %>
                     <% if(request.getSession().getAttribute("admin") != null && (boolean)request.getSession().getAttribute("admin") == true) { %> 
                     

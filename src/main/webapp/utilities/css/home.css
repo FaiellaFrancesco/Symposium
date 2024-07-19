@@ -1,7 +1,10 @@
 .grid-container {
+	margin-right: 30px;
+margin-left: 30px;
+margin-top: 40px;
   display: grid;
   grid-template-columns: repeat(4, 1fr); /* Crea 4 colonne con la stessa larghezza */
-  gap: 20px; /* Spazio tra le colonne */
+  gap: 15px; /* Spazio tra le colonne */
   justify-items: center; }
   
   .link-container{
@@ -20,7 +23,7 @@
    cursor: pointer;
 }
 
-.product-container img {
+.product-image {
   max-width: 40%; 
 }
  
@@ -37,7 +40,7 @@
 .product-container .nome{
 	text-align: left;
 	 font-weight: normal;
-	font-size: 18px;
+	font-size: 20px;
 }
 
 .product-container .price{
@@ -55,48 +58,86 @@
 .product-container:hover {
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5); 
 }
-.carrello-button {
-	margin-bottom: 5px;
-  display: inline-block;
-  padding: 10px 10px;
-  border: 1px solid #333;
-  border-radius: 3px;
-  background-color: #990E3C ;
-  color: #fff !important;
-  
-  text-decoration: none;
+
+.spazio{
+	display:block;
+	margin-top:50px;
 }
-.carrello-button:hover{
-	background-color: #6F1C38;
+.reset{
+	
+margin-left: 50px;
+display: inline;
+justify-content: center;
+ outline: none;
+    cursor: pointer;
+}
+.reset a{
+	color:#6F1C38;
+	
+}
+.filter{
+	margin-right:20px;
+	grid-template-columns: repeat(6, 1fr);
+	display:grid;
+	margin-left:20px;
+	gap:40px;	
+	text-align:center;
+	 outline: none;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.filtro{
+	padding: 10px 10px;
+	border-radius: 100px;
+	border: 1px solid #6F1C38;
+	background-color:white;
+	color:#6F1C38;
+	
+}
+.filtro.active{
+	 color:white;
+	    background-color: #990E3C;
 	
 }
 
-@media (max-width: 767px){
-     body {
+.go-to-cart-btn{
+	width:100px;
+}
+.go-to-cart:hover{
+	 
+	
+	
+}
 
-    background-color: yellow;
-  }
-  
-     .grid-container { grid-template-columns: repeat(1, 1fr); }
+
+@media (max-width: 767px){
+   
+     .grid-container { 
+     grid-template-columns: repeat(1, 1fr);
+     
+      }
+      .filter{
+      
+      grid-template-columns: repeat(1, 1fr);
+      }
 }
 @media (min-width: 768px) and (max-width: 991px){
-    body{
-    background-color: blue;
-    }
+    
      .grid-container { grid-template-columns: repeat(2, 1fr); }
+      .filter{
+      
+      grid-template-columns: repeat(2, 1fr);
+      }
 
 }
 @media (min-width: 992px) and (max-width: 1199px){
-    body{
-    background-color: black;
-    }
+    
      .grid-container { grid-template-columns: repeat(3, 1fr); }
 
 }
 @media (min-width: 1200px){
-    body{
-    background-color: red;
-    }
+    
      .grid-container { grid-template-columns: repeat(4, 1fr); }
 
 }
