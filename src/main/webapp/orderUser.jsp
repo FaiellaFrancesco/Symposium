@@ -55,7 +55,6 @@
             <tr>
                 <td data-label="ID Ordine"><%= ordine.getId() %></td>
                 <td data-label="Data Ordine"><%= ordine.getData().getTime() %></td>
-                <td data-label="Stato"><%= ordine.getStato() %></td>
                 <td data-label="Città"><%= ordine.getCitta() %></td>
                 <td data-label="Via"><%= ordine.getVia() %></td>
                 <td data-label="CAP"><%= ordine.getCAP() %></td>
