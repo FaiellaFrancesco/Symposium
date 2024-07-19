@@ -48,7 +48,7 @@
 }
 
 .image img {
-    width: 100%;            /* L'immagine si adatta alla larghezza del contenitore */
+    width: 450px;            /* L'immagine si adatta alla larghezza del contenitore */
     max-width: 500px;       /* Dimensione massima della larghezza */
     height: auto;           /* Mantiene le proporzioni */
     object-fit: cover;      /* Ritaglia l'immagine mantenendo le proporzioni */

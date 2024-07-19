@@ -86,7 +86,7 @@
                     </table>
                 </td>
                 <td data-label="Fattura">
-                    <button onclick="scaricaFattura(<%= ordine.getId() %>)">Scarica Fattura</button>
+                    <button onclick="redirectToFattura(<%= ordine.getId() %>)">Scarica Fattura</button>
                 </td>
             </tr>
             <%

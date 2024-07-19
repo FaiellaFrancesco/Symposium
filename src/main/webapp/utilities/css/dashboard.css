@@ -7,11 +7,14 @@
             justify-content: space-around;
             border-bottom: 1px solid #ccc;
             padding: 10px 0;
+            font-family: 'Courier New', monospace;
+    		font-size: 20px;
         }
         .navbar a {
             text-decoration: none;
             color: #555;
             padding: 10px;
+            cursor:pointer;
         }
         .navbar a.active {
             border-bottom: 2px solid #900;
