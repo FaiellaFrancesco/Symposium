@@ -1,102 +1,183 @@
+/* Impostazioni generali */
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background-color: #f5f5f5; /* Colore di sfondo chiaro per contrastare */
+}
+
+/* Contenitore principale dei prodotti */
+#container {
+  max-width: 1800px; /* Larghezza massima del contenitore */
+  margin: 0 auto; /* Centra il contenitore orizzontalmente */
+  padding: 20px;
+}
+
+/* Stile della griglia dei prodotti */
 .grid-container {
   display: grid;
-  grid-template-columns: repeat(4, 1fr); /* Crea 4 colonne con la stessa larghezza */
-  gap: 20px; /* Spazio tra le colonne */
-  justify-items: center; }
-  
-  .link-container{
-  width: 100%;
-  height: 100%;
-  }
+  grid-template-columns: repeat(4, 1fr); /* 4 colonne di larghezza uguale */
+  gap: 30px; /* Spazio tra le colonne (maggiore distanza tra le carte) */
+  justify-items: center; /* Allinea gli elementi al centro */
+  padding: 20px; /* Padding interno per evitare che i prodotti tocchino i bordi */
+}
+
+/* Stile per il fronte della carta */
+.product-front {
+  background-color: #fff; /* Sfondo bianco per il fronte */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between; /* Spinge il contenuto verso l'estremità inferiore */
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15); /* Ombra più prominente per effetto di profondità */
+  border-radius: 12px; /* Angoli arrotondati per la carta */
+  padding: 20px; /* Padding interno per spazio extra */
+  transition: box-shadow 0.3s ease; /* Transizione dell'ombra per un effetto hover */
+  overflow: hidden; /* Nasconde contenuti che escono dai bordi */
+  margin: 0 auto; /* Centra la carta orizzontalmente */
+}
+
+/* Aggiungi un margine inferiore per distanziare le carte */
+.product-card {
+  margin-bottom: 30px; /* Spazio inferiore tra le carte (se utilizzato come wrapper) */
+}
 
 .product-container {
-	
-  text-align: center; 
-  border: 1px solid grey;
-  padding: 20px;
-   border-radius: 10px;
-   margin: 5px 0px;
-   transition: box-shadow 0.3s ease;
-   cursor: pointer;
-}
-
-.product-container img {
-  max-width: 40%; 
-}
- 
-
-.product-container a{
-	text-decoration: none;
-  color: black;
-}
-.details {
+  width: 300px; /* Larghezza della carta */
+  height: 400px; /* Altezza della carta */
+  position: relative;
+  transform-style: preserve-3d;
+  transition: transform 0.6s; /* Durata della rotazione */
   display: flex;
-  justify-content: space-between;
   align-items: center;
-}
-.product-container .nome{
-	text-align: left;
-	 font-weight: normal;
-	font-size: 18px;
-}
-
-.product-container .price{
-	color: black;
-	margin-bottom: 5px;
-	margin: 0;
-	text-align: left;
-	font-size: 40px; 
-}
-.product-container .desc{
-	text-align: center;
-	
+  justify-content: center;
+  text-align:center;
 }
 
 .product-container:hover {
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5); 
+  transform: rotateY(180deg); /* Ruota la carta di 180 gradi quando hover */
 }
-.carrello-button {
-	margin-bottom: 5px;
-  display: inline-block;
-  padding: 10px 10px;
-  border: 1px solid #333;
-  border-radius: 3px;
-  background-color: #990E3C ;
-  color: #fff !important;
-  
+
+/* Stile per il fronte della carta */
+.product-front, .product-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden; /* Nasconde il retro quando ruotato */
+  border-radius: 10px; /* Angoli arrotondati */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between; /* Spinge gli elementi al bordo inferiore */
+}
+
+/* Stile per il fronte della carta */
+/* Stile per il fronte della carta */
+.product-front {
+  background-color: #fff; /* Sfondo bianco per il fronte */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between; /* Spinge il contenuto verso l'estremità inferiore */
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15); /* Ombra più prominente per effetto di profondità */
+  border-radius: 12px; /* Angoli arrotondati per la carta */
+  padding: 20px; /* Padding interno per spazio extra */
+  transition: box-shadow 0.3s ease; /* Transizione dell'ombra per un effetto hover */
+  overflow: hidden; /* Nasconde contenuti che escono dai bordi */
+}
+
+.product-front:hover {
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.25); /* Ombra più intensa al passaggio del mouse */
+}
+
+/* Stile per l'immagine del prodotto */
+.product-image {
+  max-width: 90%; /* Aumenta la dimensione dell'immagine per un migliore impatto visivo */
+  max-height: 50%; /* Mantiene l'immagine proporzionata */
+  object-fit: cover;
+  border-radius: 8px; /* Angoli arrotondati per l'immagine */
+  margin-bottom: 15px; /* Spazio sotto l'immagine */
+  background-color: #f9f9f9; /* Colore di sfondo chiaro per contrastare l'immagine */
+}
+
+/* Stile per il nome del prodotto */
+.product-front .nome {
+  font-weight: bold;
+  font-size: 22px; /* Leggermente più grande per maggiore visibilità */
+  color: #333; /* Colore del testo */
+  margin: 0; /* Rimuove margini per un allineamento più preciso */
+}
+
+/* Stile per il prezzo del prodotto */
+.product-front .price {
+  font-size: 26px; /* Dimensione maggiore per evidenziare il prezzo */
+  color: #990E3C; /* Colore del prezzo */
+  margin: 10px 0; /* Margini sopra e sotto il prezzo */
+  font-weight: bold; /* Testo in grassetto per maggior enfasi */
+}
+
+/* Stile per il retro della carta */
+.product-back {
+  background-color: #f0f0f0; /* Sfondo chiaro per il retro */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start; /* Spinge il contenuto verso il bordo superiore */
+  transform: rotateY(180deg); /* Ruota il retro della carta */
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15); /* Ombra più prominente per effetto di profondità */
+  text-align: center;
+  padding: 20px; /* Padding interno per il retro */
+  overflow: hidden; /* Nasconde contenuti che escono dai bordi */
+}
+
+/* Stile per la sezione delle informazioni */
+.product-info {
+  text-align: left; /* Allinea il testo a sinistra */
+  line-height: 1.8; /* Maggiore spazio tra le righe per una migliore leggibilità */
+  font-size: 16px; /* Dimensione del font ingrandita */
+  color: #333; /* Colore del testo */
+  margin-bottom: 20px; /* Spazio sotto la sezione delle informazioni */
+  width: 100%; /* Garantisce che le informazioni occupino tutta la larghezza disponibile */
+}
+
+/* Stile per le etichette nel retro */
+.product-info b {
+  color: #990E3C; /* Colore per le etichette */
+  font-size: 18px; /* Dimensione del font per le etichette ingrandita */
+}
+
+/* Stile per il pulsante nel retro della carta */
+.product-back .carrello-button {
+  padding: 14px 28px; /* Aumenta il padding per un pulsante più grande */
+  background-color: #990E3C; /* Colore di sfondo del pulsante */
+  color: #fff;
+  border: none;
+  border-radius: 5px;
   text-decoration: none;
-}
-.carrello-button:hover{
-	background-color: #6F1C38;
-	
+  font-size: 18px; /* Dimensione del font del pulsante ingrandita */
+  transition: background-color 0.3s; /* Transizione del colore di sfondo */
+  margin-top: auto; /* Spinge il pulsante verso il basso all'interno del contenitore */
 }
 
+.product-back .carrello-button:hover {
+  background-color: #6F1C38; /* Colore di sfondo del pulsante al passaggio del mouse */
+}
+
+/* Media Queries per la reattività */
 @media (max-width: 767px){
-     body {
 
-    background-color: yellow;
-  }
-  
-     .grid-container { grid-template-columns: repeat(1, 1fr); }
+    .grid-container { grid-template-columns: repeat(1, 1fr); }
 }
+
 @media (min-width: 768px) and (max-width: 991px){
-    body{
-    background-color: blue;
-    }
-     .grid-container { grid-template-columns: repeat(2, 1fr); }
 
+    .grid-container { grid-template-columns: repeat(2, 1fr); }
 }
+
 @media (min-width: 992px) and (max-width: 1199px){
-    body{
-    background-color: black;
-    }
-     .grid-container { grid-template-columns: repeat(3, 1fr); }
 
+    .grid-container { grid-template-columns: repeat(3, 1fr); }
 }
-@media (min-width: 1200px){
-    body{
-    background-color: red;
-    }
-     .grid-container { grid-template-columns: repeat(4, 1fr); }
 
+@media (min-width: 1200px){
+
+    .grid-container { grid-template-columns: repeat(4, 1fr); }
 }
