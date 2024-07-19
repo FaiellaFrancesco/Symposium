@@ -5,8 +5,6 @@
     align-items: center;
     background-color: #6F1C38;
     padding: 20px;
-
-   
 }
 
 .symposium {
@@ -16,7 +14,7 @@
 }
 
 .testo-presentazione {
-	margin-top:30px;
+    margin-top: 30px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -28,256 +26,217 @@
     text-align: center;
     color: white;
     width: 100%; 
-    
 }
-.presentazione{
-	text-align: center;
-	color: white;
-	
-}    
 
-.titolo-prod{
-	margin-left:10px;
-	font-size:40px;
-	
+.presentazione {
+    text-align: center;
+    color: white;
 }
+
+.titolo-prod {
+    margin-left: 10px;
+    font-size: 40px;
+}
+
 #container {
-  max-width: 1800px; /* Larghezza massima del contenitore */
-  margin: 0 auto; /* Centra il contenitore orizzontalmente */
-  padding: 20px;
+    max-width: 1800px;
+    margin: 0 auto;
+    padding: 20px;
 }
 
-/* Stile della griglia dei prodotti */
 .grid-container {
     display: grid;
-    grid-template-columns: repeat(4, 1fr); /* 4 colonne di larghezza uguale */
-    gap: 30px; /* Spazio tra le colonne (maggiore distanza tra le carte) */
-    justify-items: center; /* Allinea gli elementi al centro */
-    padding: 20px; /* Padding interno per evitare che i prodotti tocchino i bordi */
+    grid-template-columns: repeat(4, 1fr);
+    gap: 30px;
+    justify-items: center;
+    padding: 20px;
 }
 
-/* Stile per il fronte della carta */
 .product-front {
-  background-color: #fff; /* Sfondo bianco per il fronte */
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: space-between; /* Spinge il contenuto verso l'estremità inferiore */
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15); /* Ombra più prominente per effetto di profondità */
-  border-radius: 12px; /* Angoli arrotondati per la carta */
-  padding: 20px; /* Padding interno per spazio extra */
-  transition: box-shadow 0.3s ease; /* Transizione dell'ombra per un effetto hover */
-  overflow: hidden; /* Nasconde contenuti che escono dai bordi */
-  margin: 0 auto; /* Centra la carta orizzontalmente */
+    background-color: #fff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+    border-radius: 12px;
+    padding: 20px;
+    transition: box-shadow 0.3s ease;
+    overflow: hidden;
+    margin: 0 auto;
 }
 
-/* Aggiungi un margine inferiore per distanziare le carte */
 .product-card {
-  margin-bottom: 30px; /* Spazio inferiore tra le carte (se utilizzato come wrapper) */
+    margin-bottom: 30px;
 }
 
 .product-container {
-  width: 300px; /* Larghezza della carta */
-  height: 400px; /* Altezza della carta */
-  position: relative;
-  transform-style: preserve-3d;
-  transition: transform 0.6s; /* Durata della rotazione */
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-align:center;
+    width: 300px;
+    height: 400px;
+    position: relative;
+    transform-style: preserve-3d;
+    transition: transform 0.6s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
 }
 
 .product-container:hover {
-  transform: rotateY(180deg); /* Ruota la carta di 180 gradi quando hover */
+    transform: rotateY(180deg);
 }
 
-/* Stile per il fronte della carta */
 .product-front, .product-back {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  backface-visibility: hidden; /* Nasconde il retro quando ruotato */
-  border-radius: 10px; /* Angoli arrotondati */
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between; /* Spinge gli elementi al bordo inferiore */
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
 
-/* Stile per il fronte della carta */
-/* Stile per il fronte della carta */
 .product-front {
-  background-color: #fff; /* Sfondo bianco per il fronte */
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: space-between; /* Spinge il contenuto verso l'estremità inferiore */
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15); /* Ombra più prominente per effetto di profondità */
-  border-radius: 12px; /* Angoli arrotondati per la carta */
-  padding: 20px; /* Padding interno per spazio extra */
-  transition: box-shadow 0.3s ease; /* Transizione dell'ombra per un effetto hover */
-  overflow: hidden; /* Nasconde contenuti che escono dai bordi */
+    background-color: #fff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+    border-radius: 12px;
+    padding: 20px;
+    transition: box-shadow 0.3s ease;
+    overflow: hidden;
 }
 
 .product-front:hover {
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.25); /* Ombra più intensa al passaggio del mouse */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.25);
 }
 
-/* Stile per l'immagine del prodotto */
 .product-image {
-  max-width: 90%; /* Aumenta la dimensione dell'immagine per un migliore impatto visivo */
-  max-height: 50%; /* Mantiene l'immagine proporzionata */
-  object-fit: cover;
-  border-radius: 8px; /* Angoli arrotondati per l'immagine */
-  margin-bottom: 15px; /* Spazio sotto l'immagine */
-  background-color: #f9f9f9; /* Colore di sfondo chiaro per contrastare l'immagine */
+    max-width: 90%;
+    max-height: 50%;
+    object-fit: cover;
+    border-radius: 8px;
+    margin-bottom: 15px;
+    background-color: #f9f9f9;
 }
 
-/* Stile per il nome del prodotto */
 .product-front .nome {
-  font-weight: bold;
-  font-size: 22px; /* Leggermente più grande per maggiore visibilità */
-  color: #333; /* Colore del testo */
-  margin: 0; /* Rimuove margini per un allineamento più preciso */
+    font-weight: bold;
+    font-size: 22px;
+    color: #333;
+    margin: 0;
 }
 
-/* Stile per il prezzo del prodotto */
 .product-front .price {
-  font-size: 26px; /* Dimensione maggiore per evidenziare il prezzo */
-  color: #990E3C; /* Colore del prezzo */
-  margin: 10px 0; /* Margini sopra e sotto il prezzo */
-  font-weight: bold; /* Testo in grassetto per maggior enfasi */
+    font-size: 26px;
+    color: #990E3C;
+    margin: 10px 0;
+    font-weight: bold;
 }
 
-/* Stile per il retro della carta */
 .product-back {
-  background-color: #f0f0f0; /* Sfondo chiaro per il retro */
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: flex-start; /* Spinge il contenuto verso il bordo superiore */
-  transform: rotateY(180deg); /* Ruota il retro della carta */
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15); /* Ombra più prominente per effetto di profondità */
-  text-align: center;
-  padding: 20px; /* Padding interno per il retro */
-  overflow: hidden; /* Nasconde contenuti che escono dai bordi */
+    background-color: #f0f0f0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    transform: rotateY(180deg);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+    text-align: center;
+    padding: 20px;
+    overflow: hidden;
 }
 
-/* Stile per la sezione delle informazioni */
 .product-info {
-  text-align: left; /* Allinea il testo a sinistra */
-  line-height: 1.8; /* Maggiore spazio tra le righe per una migliore leggibilità */
-  font-size: 16px; /* Dimensione del font ingrandita */
-  color: #333; /* Colore del testo */
-  margin-bottom: 20px; /* Spazio sotto la sezione delle informazioni */
-  width: 100%; /* Garantisce che le informazioni occupino tutta la larghezza disponibile */
+    text-align: left;
+    line-height: 1.8;
+    font-size: 16px;
+    color: #333;
+    margin-bottom: 20px;
+    width: 100%;
 }
 
-/* Stile per le etichette nel retro */
 .product-info b {
-  color: #990E3C; /* Colore per le etichette */
-  font-size: 18px; /* Dimensione del font per le etichette ingrandita */
+    color: #990E3C;
+    font-size: 18px;
 }
 
-/* Stile per il pulsante nel retro della carta */
 .product-back .carrello-button {
-  padding: 14px 28px; /* Aumenta il padding per un pulsante più grande */
-  background-color: #990E3C; /* Colore di sfondo del pulsante */
-  color: #fff;
-  border: none;
-  border-radius: 5px;
-  text-decoration: none;
-  font-size: 18px; /* Dimensione del font del pulsante ingrandita */
-  transition: background-color 0.3s; /* Transizione del colore di sfondo */
-  margin-top: auto; /* Spinge il pulsante verso il basso all'interno del contenitore */
+    padding: 14px 28px;
+    background-color: #990E3C;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    text-decoration: none;
+    font-size: 18px;
+    transition: background-color 0.3s;
+    margin-top: auto;
 }
 
 .product-back .carrello-button:hover {
-  background-color: #6F1C38; /* Colore di sfondo del pulsante al passaggio del mouse */
+    background-color: #6F1C38;
+}
+
+.product-back .out-of-stock {
+    font-size: 18px;
+    color: red;
+    font-weight: bold;
+    margin-top: auto;
 }
 
 /* Media Queries per la reattività */
-@media (max-width: 767px){
-
-    .grid-container { grid-template-columns: repeat(1, 1fr); }
+@media (max-width: 767px) {
+    .grid-container {
+        grid-template-columns: repeat(1, 1fr);
+    }
+    .container-sym {
+        flex-direction: column;
+    }
+    .symposium {
+        width: 500px;
+        height: 300px;
+    }
 }
 
-@media (min-width: 768px) and (max-width: 991px){
-
-    .grid-container { grid-template-columns: repeat(2, 1fr); }
+@media (min-width: 768px) and (max-width: 991px) {
+    .grid-container {
+        grid-template-columns: repeat(2, 1fr);
+    }
 }
 
-@media (min-width: 992px) and (max-width: 1199px){
-
-    .grid-container { grid-template-columns: repeat(3, 1fr); }
+@media (min-width: 992px) and (max-width: 1199px) {
+    .grid-container {
+        grid-template-columns: repeat(2, 1fr);
+    }
 }
 
-@media (min-width: 1200px){
-
-    .grid-container { grid-template-columns: repeat(4, 1fr); }
-}
-.catalogo-btn{
-	
-justify-content: center;
-margin-bottom: 100px;
-display: flex;
-margin-top: 50px;
+@media (min-width: 1200px) {
+    .grid-container {
+        grid-template-columns: repeat(4, 1fr);
+    }
 }
 
-.catalogo-button{
-	cursor: pointer;
-	text-decoration: none;
-	
-	padding: 20px 100px;
-	background-color: #FFFF ;
-	border: 2px solid #6F1C38;
-	border-radius: 40px;
-	color: #6F1C38 !important;
+.catalogo-btn {
+    justify-content: center;
+    margin-bottom: 100px;
+    display: flex;
+    margin-top: 50px;
 }
 
+.catalogo-button {
+    cursor: pointer;
+    text-decoration: none;
+    padding: 20px 100px;
+    background-color: #FFFF;
+    border: 2px solid #6F1C38;
+    border-radius: 40px;
+    color: #6F1C38 !important;
+}
 
 .catalogo-button:hover {
     background-color: #6F1C38;
     color: #FFF !important;
-}
-
-
-
-@media (max-width: 767px){
-
-
-  .container-sym{
-  display: flex;
-    flex-direction: column;
-  
-  }
-  .symposium{
-  width:500px;
-  height:300px;
-  }
-     .grid-container { grid-template-columns: repeat(1, 1fr); }
-     }
-
-@media (min-width: 768px) and (max-width: 991px){
-
-
-
-     .grid-container { grid-template-columns: repeat(2, 1fr);
-     
-     
-      }
-
-}
-@media (min-width: 992px) and (max-width: 1199px){
-
-
-     .grid-container { grid-template-columns: repeat(2, 1fr); }
-
-}
-@media (min-width: 1200px){
-
-
-
-     .grid-container { grid-template-columns: repeat(4, 1fr); }
-
 }
