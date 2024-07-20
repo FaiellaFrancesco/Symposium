@@ -50,7 +50,8 @@
                 </tr>
             </thead>
             <tbody>
-                <% for (Prodotto prodotto : prodotti) { %>
+                <% for (Prodotto prodotto : prodotti) { 
+                	if(prodotto.getShow()){%>
                 <tr onclick="redirectToMod(<%= prodotto.getId() %>)">
                     <td data-label="ID"><%= prodotto.getId() %></td>
                     <td data-label="Nome"><%= prodotto.getNome() %></td>
@@ -66,7 +67,7 @@
                     <td data-label="Denominazione"><%= prodotto.getDenominazione() %></td>
                     <td data-label="Imagine"><img src="/Symposium/<%= prodotto.getImmagine() %>" alt="<%= prodotto.getNome() %>" width="100"></td>
                 </tr>
-                <% } %>
+                <% }} %>
             </tbody>
         </table>
         <% } else { %>

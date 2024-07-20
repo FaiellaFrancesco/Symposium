@@ -73,6 +73,7 @@ function toggleColor(link) {
                 Iterator<?> it = products.iterator();
                 while (it.hasNext()) {
                     Prodotto bean = (Prodotto) it.next();
+                    if(bean.getShow()){
             %>
             <div class="product-card">
                 <div class="product-container" onclick="redirectToProduct(<%= bean.getId() %>)">
@@ -100,7 +101,7 @@ function toggleColor(link) {
                     </div>
                 </div>
             </div>
-            <% } %>
+            <% }} %>
         </div>
     </div>
     <% } else { %>

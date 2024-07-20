@@ -39,12 +39,37 @@
 </div>
 <div id="container">
     <div class="grid-container">
-        <% if (prodotti != null) { %>
-            <%
-            int i = 1;
-            while(i <= 4){
-                Prodotto p = prodotti.get(i * 11 - 1);
-                i++;
+        <% 
+        if (prodotti != null && !prodotti.isEmpty()) {
+            int i = 0;
+            int maxProducts = 4; // Number of products to display
+            while (i < maxProducts) {
+                int index = i * 11; // Initial index
+                Prodotto p = null;
+
+                // Search forward
+                while (index < prodotti.size()) {
+                    p = prodotti.get(index);
+                    if (p.getShow()) {
+                        break;
+                    }
+                    index++;
+                }
+
+                // If not found forward, search backward
+                if (!p.getShow()) {
+                    index = i * 11 - 1;
+                    while (index >= 0) {
+                        p = prodotti.get(index);
+                        if (p.getShow()) {
+                            break;
+                        }
+                        index--;
+                    }
+                }
+
+                // Display the product if found
+                if (p != null && p.getShow()) {
             %>
             <div class="product-card">
                 <div class="product-container" onclick="redirectToProduct(<%= p.getId() %>)">
@@ -74,10 +99,13 @@
                     </div>
                 </div>
             </div>
-            <% } %>
-        </div>
+            <% 
+                    i++;
+                } 
+            } 
+        }
+        %>
     </div>
-    <% } %>
 </div>
 
 <div class="catalogo-btn">

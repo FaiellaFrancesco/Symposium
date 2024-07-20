@@ -14,8 +14,8 @@
 <h1>Benvenuto, nell'area di amministrazione</h1>
 <div class="navbar">
     	<a class="active" href="/Symposium/redirectAdmin?page=Utenti">Ordini utenti</a>
+    	<a class="active" href="/Symposium/redirectAdmin?page=prodottiAdmin">Gestione Catalogo</a>
         <a class="active" href="/Symposium/redirectAdmin?page=insProdotto">Inserimento prodotto</a>
-        <a class="active" href="/Symposium/redirectAdmin?page=prodottiAdmin">Modifica prodotto</a>
 </div>
 </body>
 </html>

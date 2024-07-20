@@ -80,7 +80,9 @@
             <span id="fileError" class="error-message"></span>
         </div>
     </div>
-    <input type="submit" value="Modifica Prodotto">
+    <input type="submit" value="Modifica">
+    <a href="cancellaProdotto?id=<%= prodotto.getId()  %>">Cancella</a>
+    
 </form>
 <%  
     } else {

@@ -165,12 +165,12 @@ public class ProdottoDAO implements DaoInterface<Prodotto, Integer>{
     
     @Override
     public void doSave(Prodotto p) throws SQLException{
-        String query="INSERT INTO prodotto (nome, prezzo, iva, descrizione, immagine, stock, alcol, formato, provenienza, tipologia, annata, denominazione) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);";
+        String query="INSERT INTO prodotto (nome, prezzo, iva, descrizione, immagine, stock, alcol, formato, provenienza, tipologia, annata, denominazione, mostra) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, true);";
         Connection connessione=null;
         try{
             connessione=ds.getConnection();
             PreparedStatement statement=connessione.prepareStatement(query);
-            setProdottoStatement(statement, p);
+            setProdottoStatement1(statement, p);
             statement.executeUpdate();
         }
         catch (Exception e){ throw e;}
@@ -181,12 +181,12 @@ public class ProdottoDAO implements DaoInterface<Prodotto, Integer>{
 
     @Override
     public void doUpdate(Prodotto p) throws SQLException {
-        String query="UPDATE prodotto SET nome=?, prezzo=?, iva=?, descrizione=?, immagine=?, stock=?, alcol=?, formato=?, provenienza=?, tipologia=?, annata=?, denominazione=? WHERE id=?;";
+        String query="UPDATE prodotto SET nome=?, prezzo=?, iva=?, descrizione=?, immagine=?, stock=?, alcol=?, formato=?, provenienza=?, tipologia=?, annata=?, denominazione=?, mostra=true WHERE id=?;";
         Connection connessione=null;
         try{
             connessione=ds.getConnection();
             PreparedStatement statement=connessione.prepareStatement(query);
-            setProdottoStatement(statement, p);
+            setProdottoStatement1(statement, p);
             statement.setInt(13, p.getId());
             setProdottoStatement(statement,p);
             statement.executeUpdate();
@@ -200,7 +200,7 @@ public class ProdottoDAO implements DaoInterface<Prodotto, Integer>{
     @Override
     public boolean doDelete(Integer pk) throws SQLException {
         int result;
-        String query = "DELETE FROM " + TABLE_NAME + " WHERE ID = ?";
+        String query = "UPDATE prodotto SET mostra=false WHERE ID = ?";
         try (Connection connection = ds.getConnection(); PreparedStatement preparedStatement = connection.prepareStatement(query)) {
             preparedStatement.setInt(1, pk.intValue());
             result = preparedStatement.executeUpdate();
@@ -222,9 +222,26 @@ public class ProdottoDAO implements DaoInterface<Prodotto, Integer>{
         p.setTipologia(rs.getString("tipologia"));
         p.setAnnata(rs.getInt("annata"));
         p.setDenominazione(rs.getString("denominazione"));
+        p.setShow(rs.getBoolean("mostra"));
     }
 
     private void setProdottoStatement(PreparedStatement statement, Prodotto p) throws SQLException{
+        statement.setString(1, p.getNome());
+        statement.setDouble(2, p.getPrezzo());
+        statement.setInt(3, p.getIva());
+        statement.setString(4, p.getDescrizione());
+        statement.setString(5, p.getImmagine());
+        statement.setInt(6, p.getStock());
+        statement.setDouble(7, p.getAlcol());
+        statement.setDouble(8, p.getFormato());
+        statement.setString(9, p.getProvenienza());
+        statement.setString(10, p.getTipologia());
+        statement.setInt(11, p.getAnnata());
+        statement.setString(12, p.getDenominazione());
+        statement.setBoolean(12, p.getShow());
+    }
+    
+    private void setProdottoStatement1(PreparedStatement statement, Prodotto p) throws SQLException{
         statement.setString(1, p.getNome());
         statement.setDouble(2, p.getPrezzo());
         statement.setInt(3, p.getIva());
