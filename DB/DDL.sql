@@ -14,7 +14,8 @@ CREATE TABLE IF NOT EXISTS prodotto(
     provenienza varchar(50) not null,
     tipologia VARCHAR(30) NOT NULL,
     annata int not null check(annata>1900),
-    denominazione varchar(30) not null
+    denominazione varchar(30) not null,
+    mostra boolean not null
 );
 
 
@@ -59,7 +60,7 @@ CREATE TABLE IF NOT EXISTS categoria(
 
 
 CREATE TABLE IF NOT EXISTS appartenenza(
-	prodotto int not null,
+	prodotto int,
     categoria varchar(40) not null,
     primary key(prodotto, categoria),
     foreign key (prodotto) references prodotto(id) ON DELETE RESTRICT ON UPDATE CASCADE,
@@ -83,7 +84,7 @@ CREATE TABLE IF NOT EXISTS element(
 
 
 CREATE TABLE IF NOT EXISTS cart_line(
-	prodotto int not null,
+	prodotto int,
     utente int not null,
     quantita int not null,
     data_aggiunta date not null,

@@ -6,7 +6,7 @@
 <%
 	Collection<Utente> utenti = (Collection<Utente>) request.getAttribute("utenti");
 	if(utenti == null) {
-		response.sendRedirect("./admin/utenti");
+		response.sendRedirect("/Symposium/admin/utenti");
 		return;
 	}
 %>

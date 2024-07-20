@@ -36,6 +36,7 @@ public class product extends HttpServlet {
 				p = pd.doRetrieveByKey(productId);
 				if (p.getId()==productId.intValue()) {
 			        // Procedi con l'instradamento alla pagina prodotto.jsp
+					if(!p.getShow()) request.getRequestDispatcher("/error.jsp").forward(request, response);
 			        request.setAttribute("prodotto", p);
 			        request.getRequestDispatcher("/prodotto.jsp").forward(request, response);
 			    } else {

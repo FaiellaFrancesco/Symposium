@@ -16,6 +16,7 @@ public class Prodotto{
 	private String provenienza;
 	private String tipologia;
 	private int annata;
+	private boolean show;
 	
 	
 	//method
@@ -60,6 +61,9 @@ public class Prodotto{
 	
 	public void setAnnata(int annata) {	this.annata=annata;}
 	public int getAnnata() { return this.annata;}
+	
+	public void setShow(boolean show) {	this.show=show;}
+	public boolean getShow() { return this.show;}
 	
 	@Override
 	public String toString() {

@@ -47,6 +47,7 @@ function redirectToProduct(productId) {
         function redirectToLogout() {
 			var basePath = window.location.origin;
             window.location.href=basePath+"/Symposium/logout";
+            alert("Hai fatto logout correttamente");
         }
 
         function redirectToOrder(id) {
@@ -81,6 +82,7 @@ function redirectToProduct(productId) {
     form.appendChild(hiddenField);
     document.body.appendChild(form);
     form.submit();
+    alert("Hai modificato correttamente il prodotto");
   }
   
 function redirectToAreaUtente(id) {
@@ -125,6 +127,29 @@ function redirectToProdottiUtente(id){
 
         // Invia il form
         form.submit();
+}
+
+function redirectToCancella(id){
+	// Crea un form nascosto dinamicamente
+		var basePath = window.location.origin;
+        var form = document.createElement('form');
+        form.method = 'POST'; // Metodo POST
+        form.action = basePath + '/Symposium/admin/cancellaProdotto'; // URL dell'azione
+
+        // Aggiungi campi input nascosti per i parametri
+        var idInput = document.createElement('input');
+        idInput.type = 'hidden';
+        idInput.name = 'id'; // Nome del parametro
+        idInput.value = id; // Valore del parametro
+        form.appendChild(idInput);
+
+
+        // Aggiungi il form al corpo del documento (nascosto)
+        document.body.appendChild(form);
+
+        // Invia il form
+        form.submit();
+        alert("Hai cancellato correttamente");
 }
 
 
