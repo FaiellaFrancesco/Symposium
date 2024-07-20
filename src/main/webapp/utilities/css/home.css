@@ -196,6 +196,14 @@ body {
   transition: background-color 0.3s;
 }
 
+/* Stile per il titolo del catalogo */
+.bo {
+	margin-left: 40px;
+  text-align: left;
+  font-size: 36px;
+  color: #000000;
+}
+
 /* Media Queries per la reattività */
 @media (max-width: 767px) {
   .grid-container {
