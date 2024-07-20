@@ -33,12 +33,16 @@
                     <span class="iva">+IVA</span>
                 </p>
                 <div class="buttons">
-                    <form action="ControlloProdotto" method="GET">
-                        <input type="hidden" name="action" value="addToC">
-                        <input type="hidden" name="id" value="<%= prodotto.getId() %>">
-                        <input type="number" id="quantity" name="quantity" min="1" max="<%= prodotto.getStock() %>" value="1">
-                        <input type="submit" class="add-to-cart" value="Aggiungi al carrello">
-                    </form>
+                    <% if (prodotto.getStock() > 0) { %>
+                        <form action="ControlloProdotto" method="GET">
+                            <input type="hidden" name="action" value="addToC">
+                            <input type="hidden" name="id" value="<%= prodotto.getId() %>">
+                            <input type="number" id="quantity" name="quantity" min="1" max="<%= prodotto.getStock() %>" value="1">
+                            <input type="submit" class="add-to-cart" value="Aggiungi al carrello">
+                        </form>
+                    <% } else { %>
+                        <p class="out-of-stock">ESAURITO</p>
+                    <% } %>
                 </div>
                 <div class="product-info">
                     <p><b>Tipologia: </b><%= prodotto.getTipologia() %></p>
