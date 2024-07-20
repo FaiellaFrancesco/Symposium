@@ -29,7 +29,7 @@
             <h3>QUICK LINKS</h3>
             <p><a href="home.html">Home</a></p>
             <p><a href="services.html">Servizi</a></p>
-            <p><a href="about.html">Chi Siamo</a></p>
+            <p><a href="AboutUs.jsp">Chi Siamo</a></p>
         </div>
         <div class="footer-item">
             <h3>FOLLOW US</h3>
