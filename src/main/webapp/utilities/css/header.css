@@ -85,12 +85,13 @@ header {
 }
 
 .search-button {
-    padding: 10px 20px;
-    background-color: #990E3C;
-    color: #fff;
-    border: none;
-    border-radius: 25px;
-    cursor: pointer;
+	margin:10px;
+    padding: 10px 10px;
+	background-color: #990E3C;
+	color: #fff;
+	border: none;
+	border-radius: 25px;
+	cursor: pointer;
 }
 
 .search-button:hover {
