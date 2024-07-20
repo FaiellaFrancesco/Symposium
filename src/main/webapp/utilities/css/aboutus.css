@@ -72,17 +72,36 @@ p {
 
 /* Media Queries per layout responsive */
 
-@media (max-width: 991px) {
+@media (max-width: 1099px){
   .fondatore,
   .fondatore.reverse {
     flex-direction: column;
+    text-align: center;
   }
 
-  .fondatore img {
+  .fondatore img,
+  .fondatore.reverse img {
     margin-bottom: 10px;
   }
 
   .founder-info {
-    text-align: center;
+    padding: 0;
+  }
+}
+
+@media (min-width: 1100px) {
+  .fondatore,
+  .fondatore.reverse {
+    flex-direction: row;
+    text-align: left;
+  }
+
+  .fondatore img,
+  .fondatore.reverse img {
+    margin-bottom: 0;
+  }
+
+  .founder-info {
+    padding: 0 20px;
   }
 }

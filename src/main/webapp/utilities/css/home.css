@@ -1,8 +1,12 @@
-/* Impostazioni generali */
+
 body {
   margin: 0;
+  padding: 0;
   font-family: Arial, sans-serif;
-  background-color: #f5f5f5;
+  background-color: #f5f5f5; /* Colore di sfondo chiaro per contrastare */
+   min-height: 100%;
+     display: flex;
+     flex-direction: column;
 }
 
 /* Contenitore principale dei prodotti */
@@ -176,6 +180,38 @@ body {
   background-color: #6F1C38;
 }
 
+/* Media Queries per la reattivitï¿½ */
+@media (max-width: 767px){
+
+    .grid-container { grid-template-columns: repeat(1, 1fr); }
+.filtro{
+	padding: 10px 10px;
+	border-radius: 100px;
+	border: 1px solid #6F1C38;
+	background-color:white;
+	color:#6F1C38;
+	
+}
+.filtro.active{
+	 color:white;
+	    background-color: #990E3C;
+	
+}
+
+.go-to-cart-btn{
+	width:100px;
+}
+}
+
+@media (min-width: 1100px) and (max-width: 1449px){
+
+    .grid-container { grid-template-columns: repeat(3, 1fr); }
+}
+
+@media (min-width: 1450px){
+
+
+    .grid-container { grid-template-columns: repeat(4, 1fr); }
 /* Stile per la scritta "ESAURITO" */
 .product-back .out-of-stock {
   font-size: 18px;
@@ -196,7 +232,7 @@ body {
   transition: background-color 0.3s;
 }
 
-/* Media Queries per la reattivit� */
+/* Media Queries per la reattività */
 @media (max-width: 767px) {
   .grid-container {
     grid-template-columns: repeat(1, 1fr);
@@ -226,24 +262,13 @@ body {
   }
 }
 
-@media (min-width: 768px) and (max-width: 991px) {
+@media (min-width: 768px) and (max-width: 1099px) {
   .filter {
     grid-template-columns: repeat(2, 1fr);
   }
   .grid-container {
     grid-template-columns: repeat(2, 1fr);
   }
-}
-
-@media (min-width: 992px) and (max-width: 1199px) {
-  .grid-container {
-    grid-template-columns: repeat(3, 1fr);
-  }
-}
-
-@media (min-width: 1200px) {
-  .grid-container {
-    grid-template-columns: repeat(4, 1fr);
   }
 }
 

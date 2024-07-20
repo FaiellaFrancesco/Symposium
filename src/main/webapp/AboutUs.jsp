@@ -43,11 +43,12 @@ Presso Symposium, non trattiamo il vino come una semplice merce da acquistare, m
             </div>
 
             <div class="fondatore reverse">
+             <img src="immagini/fondatore2.jpg" alt="Foto Fondatore 2" class="founder-image">
                 <div class="founder-info">
                     <h3>Marco Brescia</h3>
                     <p>Ha coltivato la sua passione per il vino sin dai giorni del liceo, dove ha scoperto il suo amore per l'arte e la precisione nel bere. È noto per la sua attitudine da perfezionista, che si riflette nel modo in cui ha trasformato la sua passione e mania per il vino in un lavoro gratificante. Marco collabora con gli altri fondatori di Symposium per creare un'esperienza vinicola che non solo celebra la qualità e la varietà delle etichette proposte, ma anche per guidare gli appassionati attraverso un viaggio di scoperta e apprezzamento delle tradizioni vinicole globali.</p>
                 </div>
-                <img src="immagini/fondatore2.jpg" alt="Foto Fondatore 2" class="founder-image">
+               
             </div>
 
             <div class="fondatore">
