@@ -57,6 +57,7 @@ public class pagamento extends HttpServlet {
 		String indirizzo = InputSanitizer.sanitize(request.getParameter("indirizzo"));
 		int id = (int) sessione.getAttribute("id");
 		ArrayList<OrderLine> prodotti = new ArrayList<OrderLine>();
+		ArrayList<Ordine> ordini = new ArrayList<Ordine>();
 		if(cart!=null && cart.getProdotti().size()>0) {
 			cart.getProdotti().stream().forEach((product) -> {
 			    OrderLine orderLine = new OrderLine();
@@ -78,7 +79,14 @@ public class pagamento extends HttpServlet {
 			throw new ServletException("Database access error: ", e); // Lancia una ServletException per segnalare l'errore al container
 		  }
 		  sessione.setAttribute("cart", null);
-		  RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/home.jsp");
+		  try {
+			ordini = (ArrayList<Ordine>) ordineModel.doRetrieveAll("id");
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		  request.setAttribute("idOrdine", ordini.get(ordini.size()-1).getId());
+		  RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/Torna al catalogo.jsp");
   		  dispatcher.forward(request, response);
 		}
 		else {
