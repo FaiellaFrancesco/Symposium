@@ -26,7 +26,7 @@
 <div class="container-sym">
     <img class="symposium" src="/Symposium/immagini/symposium.jpg">
     <div class="testo-presentazione">
-        <h1 class="titolo">Symposium</h1>
+        <img src="/Symposium/immagini/banner.png">
         <p class="presentazione">
             Il symposium greco era un incontro sociale tra uomini dell'antica Grecia, caratterizzato da conversazioni filosofiche, poesie, musica e bevute di vino.
             Il simposio era visto come un'importante istituzione culturale e sociale, un luogo dove si costruivano e rinforzavano le relazioni sociali e si discutevano idee e opinioni. Era anche una manifestazione del valore attribuito alla convivialità e alla cultura nella vita greca.
