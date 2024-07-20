@@ -24,7 +24,7 @@ import model.beans.Prodotto;
 
 @WebServlet("/admin/cancellaProdotto")
 @MultipartConfig
-public class cancellaProdotto extends HttpServlet {
+public class CancellaProdotto extends HttpServlet {
     private static final long serialVersionUID = 1L;
     private static final String UPLOAD_DIR = "immagini";
     
@@ -36,7 +36,7 @@ public class cancellaProdotto extends HttpServlet {
     	ProdottoDAO pdao=new ProdottoDAO();
     	try {
 			if(pdao.doDelete(Integer.valueOf(request.getParameter("id")))) {
-				response.sendRedirect("Utente.jsp");
+				response.sendRedirect("/Symposium/admin/Utenti.jsp");
 			}
 			else {
 				response.sendRedirect("errore.jsp");

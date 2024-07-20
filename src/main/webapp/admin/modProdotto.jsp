@@ -81,7 +81,7 @@
         </div>
     </div>
     <input type="submit" value="Modifica">
-    <a href="cancellaProdotto?id=<%= prodotto.getId()  %>">Cancella</a>
+    <input type="button" onclick="redirectToCancella(<%= prodotto.getId() %>)" value="Cancella">
     
 </form>
 <%  
