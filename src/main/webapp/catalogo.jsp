@@ -20,10 +20,6 @@
 <link rel="stylesheet" href="utilities/css/home.css">
 <script src="/Symposium/utilities/js/ajax.js"></script>
 <script src="/Symposium/utilities/js/redirect.js"></script>
-</head>
-<!-- Header -->
-<%@ include file="utilities/header.jsp" %>
-
 <script type="text/javascript">
 let lastClickedLink = null;
 
@@ -33,11 +29,17 @@ document.addEventListener('DOMContentLoaded', function() {
     links.forEach(link => {
         link.addEventListener('click', function(event) {
             event.preventDefault();
-            if (lastClickedLink && lastClickedLink !== link) {
-                lastClickedLink.classList.remove('active');
+            if (lastClickedLink === link) {
+                // If the clicked link is already active, redirect to catalog
+                redirectToACatalogo();
+            } else {
+                if (lastClickedLink) {
+                    lastClickedLink.classList.remove('active');
+                }
+                link.classList.add('active');
+                lastClickedLink = link;
+                filtro(link.textContent.trim());
             }
-            link.classList.toggle('active');
-            lastClickedLink = link.classList.contains('active') ? link : null;
         });
     });
 });
@@ -46,12 +48,14 @@ function toggleColor(link) {
     link.classList.toggle('active');
 }
 </script>
+</head>
+<!-- Header -->
+<%@ include file="utilities/header.jsp" %>
 <body>
     <span class="spazio"></span>
-    <div class="reset">
-        <a class="" onclick="redirectToACatalogo()">Mostra tutto</a>
-    </div>
+    <h1 class="bo">Il nostro catalogo</h1>
     <span class="spazio"></span>
+    <!-- <span class="spazio"></span> -->
     <div class="filter">
         <a class="filtro" onclick="filtro('Vini Rossi')">Vini Rossi</a>
         <a class="filtro" onclick="filtro('Vini Bianchi')">Vini Bianchi</a>
