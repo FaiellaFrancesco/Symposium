@@ -8,12 +8,29 @@ body {
      display: flex;
      flex-direction: column;
 }
+.filter {
+  margin-right: 20px;
+  grid-template-columns: repeat(6, 1fr);
+  display: grid;
+  margin-left: 20px;
+  gap: 40px;
+  text-align: center;
+  outline: none;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
 
 /* Contenitore principale dei prodotti */
 #container {
   max-width: 1800px;
   margin: 0 auto;
   padding: 20px;
+}
+.bo {
+	margin-left: 40px;
+  text-align: left;
+  font-size: 36px;
+  color: #000000;
 }
 
 /* Stile della griglia dei prodotti */
@@ -180,9 +197,10 @@ body {
   background-color: #6F1C38;
 }
 
+
 /* Media Queries per la reattivitï¿½ */
 @media (max-width: 767px){
-
+/*buono*/
     .grid-container { grid-template-columns: repeat(1, 1fr); }
 .filtro{
 	padding: 10px 10px;
@@ -201,7 +219,21 @@ body {
 .go-to-cart-btn{
 	width:100px;
 }
+  .grid-container {
+    grid-template-columns: repeat(1, 1fr);
+  }
+  .filter {
+    grid-template-columns: repeat(1, 1fr);
+  }
 }
+@media (min-width: 768px) and (max-width: 1099px) {
+  .filter {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .grid-container {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  }
 
 @media (min-width: 1100px) and (max-width: 1449px){
 
@@ -232,50 +264,9 @@ body {
   transition: background-color 0.3s;
 }
 
-/* Stile per il titolo del catalogo */
-.bo {
-	margin-left: 40px;
-  text-align: left;
-  font-size: 36px;
-  color: #000000;
+
 }
 
-@media (max-width: 767px) {
-  .grid-container {
-    grid-template-columns: repeat(1, 1fr);
-  }
-  .filtro {
-    padding: 10px 10px;
-    border-radius: 100px;
-    border: 1px solid #6F1C38;
-    background-color: white;
-    color: #6F1C38;
-  }
-  .filtro.active {
-    color: white;
-    background-color: #990E3C;
-  }
-  .go-to-cart-btn {
-    width: 100px;
-  }
-}
 
-@media (max-width: 767px) {
-  .grid-container {
-    grid-template-columns: repeat(1, 1fr);
-  }
-  .filter {
-    grid-template-columns: repeat(1, 1fr);
-  }
-}
 
-@media (min-width: 768px) and (max-width: 1099px) {
-  .filter {
-    grid-template-columns: repeat(2, 1fr);
-  }
-  .grid-container {
-    grid-template-columns: repeat(2, 1fr);
-  }
-  }
-}
 
