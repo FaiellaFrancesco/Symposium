@@ -37,7 +37,6 @@ function validateLoginForm(event) {
 		var hashedPassword = hashPassword(password);
         document.getElementById('password').value = hashedPassword;
         event.target.submit();
-        alert("Ti sei loggato correttamente");
     }
 }
 
@@ -96,7 +95,6 @@ function validateRegisterForm(event) {
 		var hashedPassword = hashPassword(password);
         document.getElementById('password').value = hashedPassword;
         event.target.submit();
-        alert("Ti sei registrato correttamente\n Vai al login per accedere");
     }
 }
 

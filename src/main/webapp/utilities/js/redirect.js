@@ -47,7 +47,6 @@ function redirectToProduct(productId) {
         function redirectToLogout() {
 			var basePath = window.location.origin;
             window.location.href=basePath+"/Symposium/logout";
-            alert("Hai fatto logout correttamente");
         }
 
         function redirectToOrder(id) {
@@ -82,7 +81,6 @@ function redirectToProduct(productId) {
     form.appendChild(hiddenField);
     document.body.appendChild(form);
     form.submit();
-    alert("Hai modificato correttamente il prodotto");
   }
   
 function redirectToAreaUtente(id) {
@@ -149,7 +147,6 @@ function redirectToCancella(id){
 
         // Invia il form
         form.submit();
-        alert("Hai cancellato correttamente");
 }
 
 
