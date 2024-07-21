@@ -52,9 +52,10 @@
             <p class="iva-info">+ IVA: <%= String.format("%.2f", totaleIva) %> €</p>
             <button type="submit" class="checkout" onclick="redirectToCampiPayment()">Acquista</button>
         </div>
-        <%  } else { %>
-        <h4>Il tuo carrello è vuoto! Ritorna al <a class="ref-cat" href="home.jsp">catalogo</a></h4>
-        <% } %>
+        <%  } else {%>
+          <h4>Il tuo carrello è vuoto! Ritorna al <a class="ref-cat" href="catalogo.jsp">catalogo</a></h4>
+           <% } %>
+    	</div>
     </div>
   </div>
   <div class="divisore"></div>

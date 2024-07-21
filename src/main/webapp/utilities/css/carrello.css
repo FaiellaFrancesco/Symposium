@@ -1,9 +1,10 @@
 /* General styles */
 .container-car {
     display: flex;
-    justify-content: space-between;
-    align-items: center; /* Centra verticalmente il contenuto */
-    margin: 20px;
+	justify-content: space-between;
+	align-items: center;
+	margin-bottom: 400px;
+	margin-left: 10px;
 }
 .spazio {
     margin-top: 50px;
@@ -87,7 +88,7 @@
 
 .iva-info {
     color: #555; /* Colore grigio per l'IVA */
-    font-size: 16px; /* Dimensione del carattere più piccola rispetto al totale */
+    font-size: 16px; /* Dimensione del carattere piï¿½ piccola rispetto al totale */
     margin-top: 5px; /* Margine superiore per separarlo dal totale */
 }
 
@@ -258,9 +259,9 @@
 
 @media (min-width: 992px) and (max-width: 1350px) {
     .container-car {
-        flex-direction: row;
+        flex-direction: column;
         justify-content: space-between;
-        align-items: flex-start;
+        align-items: center;
     }
 
     .products {
@@ -276,12 +277,23 @@
     .total-price {
         font-size: 25px;
     }
-    .details {
-        margin-left: 40px;
-    }
-    .img-product {
-        margin-top: 10px;
-    }
+
+    .details{
+	margin-left:40px;
+	}
+	.img-product{
+	margin-top:10px;
+	}
+	.rimuovi{
+	margin-left: 300px;
+	margin-top: 50px;
+	justify-content: center;
+	color: #6F1C38;
+	text-decoration: none;
+	font-size: 25px;
+	font-weight: bold;
+	margin-right: 17px;
+	}
 }
 
 @media (min-width: 1200px) {
