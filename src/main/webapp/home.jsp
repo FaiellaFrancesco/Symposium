@@ -18,6 +18,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Symposium</title>
     <link rel="stylesheet" href="/Symposium/utilities/css/Homepage.css">
+    
 </head>
 <!-- Header -->
 <%@ include file="utilities/header.jsp" %>
@@ -37,7 +38,55 @@
 </div>
 
 <div class="titolo-prod">
-    <h3 class="titolo-prod">I nostri prodotti..</h3>
+    <h3 class="titolo-prod">Le nostre Esclusive</h3>
+</div>
+<div id="container">
+    <div class="grid-container">
+        <% 
+        // Define an array of specific product IDs for "Le nostre Esclusive"
+        int[] exclusiveProductIds = {5, 45, 44, 28};
+        for (int id : exclusiveProductIds) {
+            for (Prodotto p : prodotti) {
+                if (p.getId() == id) {
+        %>
+        <div class="product-card">
+            <div class="product-container" onclick="redirectToProduct(<%= p.getId() %>)">
+                <div class="product-front">
+                    <img class="product-image" src="<%= p.getImmagine() %>" alt="<%= p.getNome() %>">
+                    <h3 class="nome"><%= p.getNome() %></h3>
+                    <div class="details">
+                        <p class="price"><%= String.format("%.2f", p.getPrezzo()) %>€ </p>
+                    </div>
+                </div>
+                <div class="product-back">
+                    <!-- Retro della carta -->
+                    <div class="product-info">
+                        <p><b>Tipologia: </b><%= p.getTipologia() %></p>
+                        <p><b>Provenienza: </b><%= p.getProvenienza() %></p>
+                        <p><b>Denominazione: </b><%= p.getDenominazione() %></p>
+                        <p><b>Annata: </b><%= p.getAnnata() %></p>
+                        <p><b>Alcol: </b><%= p.getAlcol() %> %</p>
+                        <p><b>Formato: </b><%= p.getFormato() %> cl</p>
+                        <!-- Aggiungi altre informazioni se necessario -->
+                    </div>
+                    <% if (p.getStock() > 0) { %>
+                        <a href="ControlloProdotto?action=addToC&id=<%= p.getId() %>&quantity=1" class="carrello-button">Aggiungi al Carrello</a>
+                    <% } else { %>
+                        <p class="out-of-stock">ESAURITO</p>
+                    <% } %>
+                </div>
+            </div>
+        </div>
+        <% 
+                }
+            }
+        }
+        %>
+    </div>
+</div>
+
+<div class="titolo-prod">
+    <h3 class="titolo-prod">Le nostre selezioni</h3>
 </div>
 <div id="container">
     <div class="grid-container">
@@ -117,3 +166,4 @@
 <footer><%@ include file="utilities/footer.jsp" %></footer>
 </body>
 </html>
+
