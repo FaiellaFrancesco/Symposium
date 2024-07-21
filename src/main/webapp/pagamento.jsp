@@ -59,7 +59,7 @@
             <span id="scadenzaError" class="error-message"></span>
         </div>
        </div>
-	</div>
+    </div>
     <div class="cart-section">
         <div class="informazioni">
             <h2 class="info">Riepilogo Ordine</h2>
@@ -68,10 +68,20 @@
         <div class="container-car">
         <p class="num-products"><b><%= cart.getProdotti().stream().count() %></b> Articoli</p>
             <div class="products">
-                <% Iterator<CartLine> it = cart.getProdotti().iterator();
-                   CartLine prodotto;
-                   while (it.hasNext()) {
-                       prodotto = it.next();
+                <% 
+                    double totale = 0;
+                    double totaleIva = 0;
+                    Iterator<CartLine> it = cart.getProdotti().iterator();
+                    CartLine prodotto;
+                    while (it.hasNext()) {
+                        prodotto = it.next();
+                        double prezzo = prodotto.getProdotto().getPrezzo();
+                        int quantita = prodotto.getQuant();
+                        double ivaProdotto = prodotto.getProdotto().getIva(); // Supponendo che ogni prodotto abbia il proprio IVA
+                        double prezzoTotaleProdotto = prezzo * quantita;
+                        double ivaTotaleProdotto = prezzoTotaleProdotto * ivaProdotto / 100;
+                        totale += prezzoTotaleProdotto;
+                        totaleIva += ivaTotaleProdotto;
                 %>
                 <div class="product">
                     <div class="img-product">
@@ -79,16 +89,17 @@
                     </div>
                     <div class="details">
                         <h3 class="name"><%= prodotto.getProdotto().getNome() %></h3>
-                        <p class="price"><%= prodotto.getProdotto().getPrezzo() %> €</p>
-                        Quantità: <%= prodotto.getQuant() %>
+                        <p class="price"><%= String.format("%.2f", prezzo) %> €</p>
+                        Quantità: <%= quantita %>
                     </div>
                 </div>
                 <% } %>
             </div>
             <div class="cart">
-                <p><h1>Totale:</h1> <span class="total-price">
-                    <%= String.format("%.2f", cart.getProdotti().stream().mapToDouble((e) -> e.getProdotto().getPrezzo() * e.getQuant()).sum()) %> €</span></p>
-                    <button type="submit" class="checkout">Acquista</button>
+                <p><span class="imponibile">Totale Imponibile: <%= String.format("%.2f", totale) %> €</span></p>
+                <p><span class="iva">Totale IVA: <%= String.format("%.2f", totaleIva) %> €</span></p>
+                <p><h1>Totale:</h1> <span class="total-price"><%= String.format("%.2f", totale+totaleIva) %> €</span></p>
+                <button type="submit" class="checkout">Acquista</button>
             </div>
             <% } else { 
                 response.sendRedirect("/Symposium/home.jsp");

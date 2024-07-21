@@ -16,6 +16,69 @@
 <meta charset="UTF-8">
 <title><%= prodotto.getNome() %></title>
 <link rel="stylesheet" href="/Symposium/utilities/css/prodotto.css">
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const quantityInput = document.querySelector('#quantity');
+    const minusButton = document.querySelector('.quantity-btn.minus');
+    const plusButton = document.querySelector('.quantity-btn.plus');
+    
+    // Ottieni il valore dello stock dal server e impostalo come valore massimo
+    const stock = parseInt('<%= prodotto.getStock() %>', 10);
+    quantityInput.setAttribute('max', stock);
+    quantityInput.setAttribute('min', 1); // Imposta il valore minimo a 1
+
+    let interval;
+    
+    function updateButtons() {
+        const currentQuantity = parseInt(quantityInput.value, 10);
+        minusButton.disabled = currentQuantity <= 1;
+        plusButton.disabled = currentQuantity >= stock;
+    }
+
+    function changeQuantity(amount) {
+        let currentQuantity = parseInt(quantityInput.value, 10);
+        const newQuantity = currentQuantity + amount;
+        if (newQuantity >= 1 && newQuantity <= stock) {
+            quantityInput.value = newQuantity;
+            updateButtons();
+        }
+    }
+
+    minusButton.addEventListener('mousedown', function() {
+        interval = setInterval(function() {
+            changeQuantity(-1);
+        }, 100); // Modifica il tempo in millisecondi per la velocità di incremento/decremento
+    });
+
+    plusButton.addEventListener('mousedown', function() {
+        interval = setInterval(function() {
+            changeQuantity(1);
+        }, 100); // Modifica il tempo in millisecondi per la velocità di incremento/decremento
+    });
+
+    document.addEventListener('mouseup', function() {
+        clearInterval(interval);
+    });
+
+    document.addEventListener('mouseleave', function() {
+        clearInterval(interval);
+    });
+
+    minusButton.addEventListener('click', function() {
+        changeQuantity(-1);
+    });
+
+    plusButton.addEventListener('click', function() {
+        changeQuantity(1);
+    });
+
+    // Verifica inizialmente i pulsanti
+    updateButtons();
+});
+
+</script>
+
 </head>
 <!-- Header -->
 <%@ include file="utilities/header.jsp" %>
@@ -35,11 +98,17 @@
                 <div class="buttons">
                     <% if (prodotto.getStock() > 0) { %>
                         <form action="ControlloProdotto" method="GET">
-                            <input type="hidden" name="action" value="addToC">
-                            <input type="hidden" name="id" value="<%= prodotto.getId() %>">
-                            <input type="number" id="quantity" name="quantity" min="1" max="<%= prodotto.getStock() %>" value="1">
-                            <input type="submit" class="add-to-cart" value="Aggiungi al carrello">
-                        </form>
+						    <input type="hidden" name="action" value="addToC">
+						    <input type="hidden" name="id" value="<%= prodotto.getId() %>">
+						    <div class="buttons">
+						        <div class="quantity-control">
+						            <button type="button" class="quantity-btn minus">-</button>
+						            <input type="number" id="quantity" name="quantity" min="1" max="<%= prodotto.getStock() %>" value="1">
+						            <button type="button" class="quantity-btn plus">+</button>
+						        </div>
+						        <input type="submit" class="add-to-cart" value="Aggiungi al carrello">
+						    </div>
+						</form>
                     <% } else { %>
                         <p class="out-of-stock">ESAURITO</p>
                     <% } %>
