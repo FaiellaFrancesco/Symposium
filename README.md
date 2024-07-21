@@ -7,7 +7,7 @@ creato da:
 - [Marco Brescia](https://github.com/Marco-Brescia)
 - [Giuseppe Gambardella](https://github.com/GiuseppeGambardella)
 
-#Documentazione
+# Documentazione
 Per una descrizione dettagliata del sito e delle sue funzionalità, consultare il file PDF nella cartella `documentazione`.
 
 - [Documentazione Completa](Progetto_TSWFinale.pdf)
