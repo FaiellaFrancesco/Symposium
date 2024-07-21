@@ -1,4 +1,4 @@
-# Symposium
+# [Alt img](src/main/webapp/immagini/logo.png)
 
 Progetto per il corso di Tecnologie software per il web
 
