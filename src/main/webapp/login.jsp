@@ -23,7 +23,7 @@
                 <input class="form-pass" type="password" name="password" placeholder="Password" id="password">
                 <div id="passwordError" class="error-message">Password is required.</div>
             </div>
-            <button class="accedi" type="submit">ACCEDI</button>
+            <button class="accedi" type="submit" >ACCEDI</button>
         </form>
         <p class="text-right">Non sei registrato? <a href="register.jsp">Registrati</a></p>
     </div>
