@@ -11,7 +11,7 @@
 
 /* Stili specifici per la pagina degli utenti */
 .container {
-    max-width: 80%;
+    max-width: 100%;
     margin: 20px auto; /* Cambiato da margin: 20px 100px a margin: 20px auto per centrare il contenitore */
     padding: 20px;
     background-color: #f9f9f9;
@@ -107,7 +107,7 @@
 }
 
 /* Layout per schermi piccoli */
-@media (max-width: 1000px){
+@media (max-width: 1001px){
     .container table, 
     .container table thead, 
     .container table tbody, 
@@ -150,9 +150,9 @@
     }
 }
 
-@media (min-width: 1001px) and (max-width: 1150px) {
+@media (min-width: 1002px) and (max-width: 1150px) {
     .container {
-        max-width: 80%;
+        max-width: 100%;
     }
     
     .container table th,
@@ -175,7 +175,7 @@
 /* Layout per schermi medi (tra 1151px e 1300px) */
 @media (min-width: 1151px) and (max-width: 1300px) {
     .container {
-        max-width: 80%;
+        max-width: 100%;
     }
     
     .container table th,
@@ -228,7 +228,7 @@
 /* Layout per schermi grandi (tra 1301px e 1500px) */
 @media (min-width: 1301px) and (max-width: 1500px) {
     .container {
-        max-width: 80%;
+        max-width: 100%;
     }
     
     .container table th,
@@ -248,7 +248,7 @@
 /* Layout per schermi molto grandi (oltre 1500px) */
 @media (min-width: 1501px) {
     .container {
-        max-width: 80%;
+        max-width: 100%;
     }
     
     .container table th,

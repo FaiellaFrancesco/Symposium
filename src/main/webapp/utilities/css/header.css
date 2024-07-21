@@ -5,6 +5,10 @@ body {
     padding: 0;
 }
 
+ .img{
+	width:300px;
+}
+
 .minimo {
     display: none;
 }
@@ -337,6 +341,9 @@ h2 {
         width: 55%;
         left: 20%;
     }
+        .img{
+	width:200px;
+}
 }
 
 @media (min-width: 1200px) {
@@ -352,6 +359,10 @@ h2 {
     header{
     width:100%;
     }
+    
+    .img{
+	width:200px;
+}
 }
 
 @media (min-width: 1400px) {

@@ -18,7 +18,7 @@
         <div class="container-header">
             <div class="logo-container">
                 <a class="logo-text" href="#" onclick="redirectToPage()">
-                    <img src="/Symposium/immagini/logo.png" width="300">
+                    <img class="img" src="/Symposium/immagini/logo.png">
                 </a>
                 <a class="logo-text2" href="#" onclick="redirectToPage()">
                     <img src="/Symposium/immagini/minilogo.png" width="100">
