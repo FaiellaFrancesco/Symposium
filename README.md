@@ -11,6 +11,6 @@ creato da:
 # Documentazione
 Per una descrizione dettagliata del sito e delle sue funzionalità, consultare il file PDF nella cartella `documentazione`.
 
-- [Scarica la Documentazione Completa](Documentazione/Progetto_TSWFinale.pdf)
+- [Scarica la Documentazione Completa](Documentazione/Symposium.pdf)
 
 Alcune volte GitHub potrebbe dare problemi riguardo la visualizzazione di file pdf
