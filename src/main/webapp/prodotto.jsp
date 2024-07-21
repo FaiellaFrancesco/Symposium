@@ -28,8 +28,6 @@ document.addEventListener('DOMContentLoaded', function() {
     quantityInput.setAttribute('max', stock);
     quantityInput.setAttribute('min', 1); // Imposta il valore minimo a 1
 
-    let interval;
-    
     function updateButtons() {
         const currentQuantity = parseInt(quantityInput.value, 10);
         minusButton.disabled = currentQuantity <= 1;
@@ -45,26 +43,6 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
 
-    minusButton.addEventListener('mousedown', function() {
-        interval = setInterval(function() {
-            changeQuantity(-1);
-        }, 100); // Modifica il tempo in millisecondi per la velocità di incremento/decremento
-    });
-
-    plusButton.addEventListener('mousedown', function() {
-        interval = setInterval(function() {
-            changeQuantity(1);
-        }, 100); // Modifica il tempo in millisecondi per la velocità di incremento/decremento
-    });
-
-    document.addEventListener('mouseup', function() {
-        clearInterval(interval);
-    });
-
-    document.addEventListener('mouseleave', function() {
-        clearInterval(interval);
-    });
-
     minusButton.addEventListener('click', function() {
         changeQuantity(-1);
     });
@@ -76,7 +54,6 @@ document.addEventListener('DOMContentLoaded', function() {
     // Verifica inizialmente i pulsanti
     updateButtons();
 });
-
 </script>
 
 </head>
