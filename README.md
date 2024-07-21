@@ -10,4 +10,4 @@ creato da:
 # Documentazione
 Per una descrizione dettagliata del sito e delle sue funzionalità, consultare il file PDF nella cartella `documentazione`.
 
-- [Documentazione Completa](Progetto_TSWFinale.pdf)
+- [Documentazione Completa](Documentazione/Progetto_TSWFinale.pdf)
