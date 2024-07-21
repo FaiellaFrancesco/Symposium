@@ -37,6 +37,26 @@
     </div>
 </div>
 
+<span style="display: block; margin-top: 50px; "></span>
+
+<div class="container-info">
+		<div class="info-card"><p class="info">Qualità, velocità ed efficienza ci permettono 
+		di essere il punto di riferimento nella vendita di vini e 
+		spirits online</p>
+		</div>
+		<div class="info-card"><p class="info">Il nostro team di esperti Sommelier assaggia personalmente ogni bottiglia che proponiamo, 
+			per selezionare i migliori vini provenienti 
+			dall'Italia e dal mondo</p>
+		</div>
+		<div class="info-card"><p class="info">Nel nostro vasto assortimento prodotti tra vini, Champagne e Spirits accuratamente selezionati, troverai
+		 sempre la bottiglia giusta per ogni occasione!</p>
+		</div>
+
+
+</div>
+
+<span style="display: block; margin-top: 50px; "></span>
+
 <div class="titolo-prod">
     <h3 class="titolo-prod">Le nostre Esclusive</h3>
 </div>
