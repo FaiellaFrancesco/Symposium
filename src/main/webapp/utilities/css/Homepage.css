@@ -230,6 +230,42 @@ display: flex;
   margin-top: auto;
 }
 
+.info-text-section {
+  background-color: #ffffff; /* Colore di sfondo bianco per contrastare con il testo */
+  padding: 30px; /* Aumenta il padding per dare più spazio al testo */
+  border-radius: 12px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  margin: 30px auto; /* Margine per separare il riquadro dal contenuto circostante */
+  max-width: 1200px; /* Aumenta la larghezza massima per un riquadro più largo */
+  width: 90%; /* Usa una larghezza percentuale per adattarsi ai dispositivi */
+}
+
+.info-text-section h2 {
+  font-size: 32px; /* Aumenta la dimensione del titolo per maggiore visibilità */
+  color: #6F1C38; /* Colore del titolo per coerenza con il tema */
+  text-align: center;
+  margin-bottom: 30px; /* Aumenta lo spazio sotto il titolo */
+}
+
+.info-text-section p {
+  font-size: 20px; /* Aumenta la dimensione del testo per una lettura più facile */
+  line-height: 1.8; /* Aumenta l'altezza della linea per una migliore leggibilità */
+  color: #333;
+  margin-bottom: 20px;
+}
+
+.info-text-section a {
+  color: #990E3C;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.info-text-section a:hover {
+  text-decoration: underline;
+}
+
+
+
 /* Media Queries per la reattività */
 @media (max-width: 767px) {
   .grid-container {

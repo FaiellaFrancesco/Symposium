@@ -30,36 +30,38 @@
             <input type="text" id="utenteId" name="id" required>
             <input type="submit" value="Accedi">
         </form>
-        <table>
-            <thead>
-                <tr>
-                    <th>ID</th>
-                    <th>Nome</th>
-                    <th>Cognome</th>
-                    <th>Email</th>
-                    <th>Telefono</th>
-                    <th>Data di Nascita</th>
-                    <th>Via</th>
-                    <th>CAP</th>
-                    <th>Città</th>
-                </tr>
-            </thead>
-            <tbody>
-                <% for (Utente utente : utenti) { %>
-                <tr class="utente-id" onclick="redirectToOrder(<%= utente.getId() %>)">
-                    <td data-label="ID"><%= utente.getId() %></td>
-                    <td data-label="Nome"><%= utente.getNome() %></td>
-                    <td data-label="Cognome"><%= utente.getCognome() %></td>
-                    <td data-label="Email"><%= utente.getEmail() %></td>
-                    <td data-label="Telefono"><%= utente.getTelefono() != null ? utente.getTelefono().toString() : "" %></td>
-                    <td data-label="Nascita"><%= utente.getDataNascita() != null ? utente.getDataNascita().toString() : "" %></td>
-                    <td data-label="Via"><%= utente.getVia() != null ? utente.getVia().toString() : "" %></td>
-                    <td data-label="Cap"><%= utente.getCap() != null ? utente.getCap().toString() : "" %></td>
-                    <td data-label="Citta"><%= utente.getCitta() != null ? utente.getCitta().toString() : "" %></td>
-                </tr>
-                <% } %>
-            </tbody>
-        </table>
+        <div class="centered-table">
+            <table>
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Nome</th>
+                        <th>Cognome</th>
+                        <th>Email</th>
+                        <th>Telefono</th>
+                        <th>Data di Nascita</th>
+                        <th>Via</th>
+                        <th>CAP</th>
+                        <th>Città</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% for (Utente utente : utenti) { %>
+                    <tr class="utente-id" onclick="redirectToOrder(<%= utente.getId() %>)">
+                        <td data-label="ID"><%= utente.getId() %></td>
+                        <td data-label="Nome"><%= utente.getNome() %></td>
+                        <td data-label="Cognome"><%= utente.getCognome() %></td>
+                        <td data-label="Email"><%= utente.getEmail() %></td>
+                        <td data-label="Telefono"><%= utente.getTelefono() != null ? utente.getTelefono().toString() : "" %></td>
+                        <td data-label="Nascita"><%= utente.getDataNascita() != null ? utente.getDataNascita().toString() : "" %></td>
+                        <td data-label="Via"><%= utente.getVia() != null ? utente.getVia().toString() : "" %></td>
+                        <td data-label="Cap"><%= utente.getCap() != null ? utente.getCap().toString() : "" %></td>
+                        <td data-label="Citta"><%= utente.getCitta() != null ? utente.getCitta().toString() : "" %></td>
+                    </tr>
+                    <% } %>
+                </tbody>
+            </table>
+        </div>
         <% } else { %>
         <p>Non ci sono utenti registrati.</p>
         <% } %>

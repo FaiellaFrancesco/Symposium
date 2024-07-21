@@ -1,7 +1,6 @@
 @charset "UTF-8";
 
 .sticky {
-    
     top: 242px;
     z-index: 1000; /* Porta in avanti lo sticky */
     background-color: #ffffff; /* Assicurati che lo sfondo sia bianco */
@@ -13,7 +12,7 @@
 /* Stili specifici per la pagina degli utenti */
 .container {
     max-width: 80%;
-    margin: 20px 100px;
+    margin: 20px auto; /* Cambiato da margin: 20px 100px a margin: 20px auto per centrare il contenitore */
     padding: 20px;
     background-color: #f9f9f9;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
@@ -27,16 +26,22 @@
     font-family: 'Courier New', monospace;
 }
 
+.centered-table {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
 .container table {
     width: 100%;
+    max-width: 1200px; /* Aumenta la larghezza massima della tabella */
     border-collapse: collapse;
-    margin-top: 20px;
 }
 
 .container table th,
 .container table td {
     border: 1px solid #ddd;
-    padding: 8px;
+    padding: 12px; /* Aumenta il padding per ingrandire le celle */
     text-align: left;
     word-wrap: break-word; /* Forza il ritorno a capo delle parole lunghe */
     overflow-wrap: break-word; /* Modern alternative */
@@ -45,6 +50,11 @@
 .container table th {
     background-color: #990E3C;
     color: white;
+    font-size: 16px; /* Aumenta la dimensione del font delle intestazioni */
+}
+
+.container table td {
+    font-size: 14px; /* Aumenta la dimensione del font delle celle */
 }
 
 .container table tr:nth-child(even) {
@@ -95,8 +105,6 @@
 .container input[type="submit"]:hover {
     background-color: #6F1C38;
 }
-
-
 
 /* Layout per schermi piccoli */
 @media (max-width: 1000px){
@@ -149,22 +157,22 @@
     
     .container table th,
     .container table td {
-        font-size: 10px; /* Riduci la dimensione del font */
+        font-size: 12px; /* Riduci la dimensione del font */
     }
     
     .container table th {
-        padding: 6px; /* Riduci il padding delle intestazioni */
+        padding: 8px; /* Riduci il padding delle intestazioni */
     }
     
     .container table td {
-        padding: 6px; /* Riduci il padding delle celle */
+        padding: 8px; /* Riduci il padding delle celle */
     }
-    .container table{
-    	max-width:100%
+    .container table {
+        max-width: 100%;
     }
 }
 
-/* Layout per schermi medi (tra 1001px e 1300px) */
+/* Layout per schermi medi (tra 1151px e 1300px) */
 @media (min-width: 1151px) and (max-width: 1300px) {
     .container {
         max-width: 80%;
@@ -172,50 +180,51 @@
     
     .container table th,
     .container table td {
-        font-size: 12px; /* Riduci la dimensione del font */
+        font-size: 14px; /* Aumenta la dimensione del font */
     }
     
     .container table th {
-        padding: 6px; /* Riduci il padding delle intestazioni */
+        padding: 8px; /* Aumenta il padding delle intestazioni */
     }
     
     .container table td {
-        padding: 6px; /* Riduci il padding delle celle */
+        padding: 8px; /* Aumenta il padding delle celle */
     }
-    .container table{
-    	max-width:100%
+    .container table {
+        max-width: 100%;
     }
 }
 
 @media (min-width: 1172px) and (max-width: 1372px) {
-    .sticky{
-    	top: 265px;
+    .sticky {
+        top: 265px;
     }
 }
 
 @media (min-width: 992px) and (max-width: 1171px) {
-    .sticky{
-    	top: 281px;
+    .sticky {
+        top: 281px;
     }
 }
 
 @media (min-width: 859px) and (max-width: 991px) {
-    .sticky{
-    	top: 252px;
+    .sticky {
+        top: 252px;
     }
 }
 
 @media (min-width: 768px) and (max-width: 858px) {
-    .sticky{
-    	top: 264px;
+    .sticky {
+        top: 264px;
     }
 }
 
 @media (max-width: 767px) {
-    .sticky{
-    	top: 172px;
+    .sticky {
+        top: 172px;
     }
 }
+
 /* Layout per schermi grandi (tra 1301px e 1500px) */
 @media (min-width: 1301px) and (max-width: 1500px) {
     .container {
@@ -224,15 +233,15 @@
     
     .container table th,
     .container table td {
-        font-size: 14px; /* Riduci la dimensione del font */
+        font-size: 16px; /* Aumenta la dimensione del font */
     }
     
     .container table th {
-        padding: 7px; /* Riduci il padding delle intestazioni */
+        padding: 10px; /* Aumenta il padding delle intestazioni */
     }
     
     .container table td {
-        padding: 7px; /* Riduci il padding delle celle */
+        padding: 10px; /* Aumenta il padding delle celle */
     }
 }
 
@@ -244,11 +253,23 @@
     
     .container table th,
     .container table td {
-        font-size: 16px; /* Dimensione del font normale */
+        font-size: 18px; /* Dimensione del font normale */
     }
     
     .container table th,
     .container table td {
-        padding: 8px; /* Padding normale */
+        padding: 12px; /* Padding normale */
     }
+}
+
+
+.container table th[data-label="Via"],
+.container table td[data-label="Via"] {
+    min-width: 150px; /* Allarga la colonna per "Via" */
+}
+
+/* Allargamento delle colonne specifiche */
+.container table th[data-label="Data di Nascita"],
+.container table td[data-label="Data di Nascita"] {
+    min-width: 150px; /* Allarga la colonna per "Data di Nascita" */
 }
