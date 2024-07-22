@@ -232,6 +232,13 @@ h2 {
 
 /* Responsive */
 @media (max-width: 767px) {
+	
+	.suggestions {
+    width: 320px; /* Occupa tutta la larghezza del contenitore */
+    top: 90px; /* Posiziona sotto l'elemento di riferimento con un piccolo margine */
+    left: 12%; /* Allinea al centro rispetto al contenitore padre */
+}
+	
 	.search-form{
 	width:80%;
 	}
