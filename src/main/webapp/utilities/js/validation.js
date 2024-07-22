@@ -451,6 +451,9 @@ function validateCheckoutForm(event) {
 
 
 function isValidCAP(cap) {
+	if (cap.trim()==='---') {
+        return true;
+    }
     return /^[0-9]{5}$/.test(cap); // Esempio per CAP a 5 cifre
 }
 
